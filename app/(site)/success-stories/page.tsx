@@ -1,7 +1,6 @@
-import { getAllCaseStudies } from "@/lib/case-studies";
-import StoriesListingView from "@/components/success-stories/StoriesListingView";
-import { listPublishedStories } from "@/lib/services/stories.service";
-import { successStoryToCaseStudy } from "@/lib/success-stories/mapper";
+import { Suspense } from "react";
+import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
+import StoriesListingContent from "./StoriesListingContent";
 
 export const metadata = {
   title: "Success Stories | BHEARD",
@@ -11,13 +10,10 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function SuccessStoriesIndexPage() {
-  let cases = getAllCaseStudies();
-  try {
-    const rows = await listPublishedStories();
-    if (rows.length) {
-      cases = rows.map(successStoryToCaseStudy);
-    }
-  } catch {}
-  return <StoriesListingView cases={cases} />;
+export default function SuccessStoriesIndexPage() {
+  return (
+    <Suspense fallback={<DbLoadingSkeleton variant="stories" />}>
+      <StoriesListingContent />
+    </Suspense>
+  );
 }

@@ -1,29 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useState } from "react";
 import { PageHeader } from "@/components/admin/PageHeader";
 import BlogsTable from "@/components/admin/lists/BlogsTable";
+import { useAdminApiList } from "@/components/admin/useAdminApiList";
+import DbErrorState from "@/components/system/DbErrorState";
 
 export default function AdminBlogListPage() {
-  const [posts, setPosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    const run = async () => {
-      setLoading(true);
-      const res = await fetch("/api/blog?includeDraft=true");
-      const json = await res.json().catch(() => ({ data: [] }));
-      if (cancelled) return;
-      setPosts(Array.isArray(json.data) ? json.data : []);
-      setLoading(false);
-    };
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const { rows: posts, loading, error, retry } = useAdminApiList<any>("/api/blog?includeDraft=true");
 
   return (
     <div className="space-y-6">
@@ -33,7 +17,13 @@ export default function AdminBlogListPage() {
         description="Create, edit, and curate blog content with reusable filters, sorting, and pagination."
         action={{ href: "/admin/blog/new", label: "New Post" }}
       />
-      {loading ? <div className="h-40 animate-pulse rounded-lg border border-border bg-card" /> : <BlogsTable rows={posts as any} />}
+      {loading ? (
+        <div className="h-40 animate-pulse rounded-lg border border-border bg-card" />
+      ) : error ? (
+        <DbErrorState title="Could not load blog posts" message={error} onRetry={retry} />
+      ) : (
+        <BlogsTable rows={posts as any} />
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { connectToDatabase } from "@/lib/db/mongoose";
+import { withDbRetry } from "@/lib/db/withDbRetry";
 import { ContactLeadModel } from "@/lib/db/models";
 import type { ContactLeadInput } from "@/lib/validators/contactLead.validator";
 
@@ -8,31 +8,35 @@ function requireDb() {
   }
 }
 
+function runDb<T>(fn: () => Promise<T>): Promise<T> {
+  requireDb();
+  return withDbRetry(fn);
+}
+
 export type CreateContactLeadInput = ContactLeadInput & {
   ipAddress?: string | null;
   userAgent?: string | null;
 };
 
 export async function createContactLead(input: CreateContactLeadInput) {
-  requireDb();
-  await connectToDatabase();
-  const row = await ContactLeadModel.create({
-    fullName: input.fullName,
-    email: input.email,
-    phone: input.phone || null,
-    company: input.company || null,
-    message: input.message,
-    sourcePage: input.sourcePage || null,
-    ipAddress: input.ipAddress || null,
-    userAgent: input.userAgent || null,
+  return runDb(async () => {
+    const row = await ContactLeadModel.create({
+      fullName: input.fullName,
+      email: input.email,
+      phone: input.phone || null,
+      company: input.company || null,
+      message: input.message,
+      sourcePage: input.sourcePage || null,
+      ipAddress: input.ipAddress || null,
+      userAgent: input.userAgent || null,
+    });
+    return row.toJSON();
   });
-  return row.toJSON();
 }
 
 export async function listContactLeads() {
-  requireDb();
-  await connectToDatabase();
-  const rows = await ContactLeadModel.find({}).sort({ createdAt: -1 });
-  return rows.map((row) => row.toJSON());
+  return runDb(async () => {
+    const rows = await ContactLeadModel.find({}).sort({ createdAt: -1 });
+    return rows.map((row) => row.toJSON());
+  });
 }
-

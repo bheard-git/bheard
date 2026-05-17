@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import CareersListingView from "@/components/careers/CareersListingView";
-import { listActiveCareers } from "@/lib/services/careers.service";
-import { seedCareers } from "@/lib/content/careersSeed";
+import { Suspense } from "react";
+import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
+import CareersListingContent from "./CareersListingContent";
 
 export const metadata: Metadata = {
   title: "Careers | BHEARD",
@@ -10,12 +10,10 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function CareersListingPage() {
-  let roles = [];
-  try {
-    roles = await listActiveCareers();
-  } catch {
-    roles = seedCareers.filter((role) => role.active);
-  }
-  return <CareersListingView roles={roles} />;
+export default function CareersListingPage() {
+  return (
+    <Suspense fallback={<DbLoadingSkeleton variant="careers" />}>
+      <CareersListingContent />
+    </Suspense>
+  );
 }

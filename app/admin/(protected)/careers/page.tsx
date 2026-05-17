@@ -1,29 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useState } from "react";
 import { PageHeader } from "@/components/admin/PageHeader";
 import CareersTable from "@/components/admin/lists/CareersTable";
+import { useAdminApiList } from "@/components/admin/useAdminApiList";
+import DbErrorState from "@/components/system/DbErrorState";
 
 export default function AdminCareersListPage() {
-  const [roles, setRoles] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    const run = async () => {
-      setLoading(true);
-      const res = await fetch("/api/careers?includeInactive=true");
-      const json = await res.json().catch(() => ({ data: [] }));
-      if (cancelled) return;
-      setRoles(Array.isArray(json.data) ? json.data : []);
-      setLoading(false);
-    };
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const { rows: roles, loading, error, retry } = useAdminApiList<any>("/api/careers?includeInactive=true");
 
   return (
     <div className="space-y-6">
@@ -33,7 +17,13 @@ export default function AdminCareersListPage() {
         description="Control active openings with reusable sorting, search and pagination."
         action={{ href: "/admin/careers/new", label: "New Role" }}
       />
-      {loading ? <div className="h-40 animate-pulse rounded-lg border border-border bg-card" /> : <CareersTable rows={roles as any} />}
+      {loading ? (
+        <div className="h-40 animate-pulse rounded-lg border border-border bg-card" />
+      ) : error ? (
+        <DbErrorState title="Could not load careers" message={error} onRetry={retry} />
+      ) : (
+        <CareersTable rows={roles as any} />
+      )}
     </div>
   );
 }

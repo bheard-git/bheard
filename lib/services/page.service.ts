@@ -1,4 +1,4 @@
-import { connectToDatabase } from "@/lib/db/mongoose";
+import { withDbRetry } from "@/lib/db/withDbRetry";
 import { PageModel } from "@/lib/db/models";
 import type { PageUpdateInput } from "@/lib/validators/page.validator";
 
@@ -6,6 +6,11 @@ function requireDb() {
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not configured");
   }
+}
+
+function runDb<T>(fn: () => Promise<T>): Promise<T> {
+  requireDb();
+  return withDbRetry(fn);
 }
 
 function buildPageTitleFromSlug(slug: string) {
@@ -17,41 +22,40 @@ function buildPageTitleFromSlug(slug: string) {
 }
 
 export async function getPageBySlug(slug: string) {
-  requireDb();
-  await connectToDatabase();
-  const row = await PageModel.findOne({ slug });
-  return row ? row.toJSON() : null;
+  return runDb(async () => {
+    const row = await PageModel.findOne({ slug });
+    return row ? row.toJSON() : null;
+  });
 }
 
 export async function listAllPages() {
-  requireDb();
-  await connectToDatabase();
-  const rows = await PageModel.find({}).sort({ updatedAt: -1 });
-  return rows.map((row) => row.toJSON());
+  return runDb(async () => {
+    const rows = await PageModel.find({}).sort({ updatedAt: -1 });
+    return rows.map((row) => row.toJSON());
+  });
 }
 
 export async function upsertPage(slug: string, input: PageUpdateInput) {
-  requireDb();
-  await connectToDatabase();
+  return runDb(async () => {
+    const updateData: Record<string, unknown> = {
+      content: input.content,
+    };
+    if (input.title) {
+      updateData.title = input.title;
+    }
 
-  const updateData: Record<string, unknown> = {
-    content: input.content,
-  };
-  if (input.title) {
-    updateData.title = input.title;
-  }
-
-  const row = await PageModel.findOneAndUpdate(
-    { slug },
-    {
-      $set: updateData,
-      $setOnInsert: {
-        slug,
-        title: input.title ?? buildPageTitleFromSlug(slug),
+    const row = await PageModel.findOneAndUpdate(
+      { slug },
+      {
+        $set: updateData,
+        $setOnInsert: {
+          slug,
+          title: input.title ?? buildPageTitleFromSlug(slug),
+        },
       },
-    },
-    { upsert: true, new: true }
-  );
+      { upsert: true, new: true }
+    );
 
-  return row ? row.toJSON() : null;
+    return row ? row.toJSON() : null;
+  });
 }
