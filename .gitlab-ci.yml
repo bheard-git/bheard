@@ -1,11 +1,15 @@
-# GitLab CI for BHeard (Next.js)
-# Set CI/CD variables in GitLab: Settings → CI/CD → Variables (masked)
-# Required: DATABASE_URL, IMAGEKIT_PRIVATE_KEY, ADMIN_EMAIL, ADMIN_PASSWORD,
-#           ADMIN_SESSION_SECRET, AZURE_* or SMTP_*, LEAD_NOTIFICATION_TO, etc.
+# GitLab CI for BHeard (Next.js) + Vercel deploy
+#
+# GitLab → Settings → CI/CD → Variables (masked):
+#   VERCEL_TOKEN          — https://vercel.com/account/tokens
+#   VERCEL_ORG_ID         — team_J74CBMJ1XANWAyp6qcqAj6vz (or override)
+#   VERCEL_PROJECT_ID     — prj_MRAJhuPxXccDF1EdvZFe2GCKOO4k (or override)
+#   DATABASE_URL, IMAGEKIT_PRIVATE_KEY, ADMIN_*, AZURE_* or SMTP_*, etc.
 
 stages:
   - test
   - build
+  - deploy
 
 default:
   image: node:22-bookworm
@@ -16,6 +20,8 @@ default:
 
 variables:
   NEXT_TELEMETRY_DISABLED: "1"
+  VERCEL_ORG_ID: "team_J74CBMJ1XANWAyp6qcqAj6vz"
+  VERCEL_PROJECT_ID: "prj_MRAJhuPxXccDF1EdvZFe2GCKOO4k"
 
 before_script:
   - npm ci
@@ -39,3 +45,39 @@ build:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
     - if: $CI_COMMIT_BRANCH == "seo_and_performaceoptimization"
+
+.deploy_vercel:
+  stage: deploy
+  image: node:22-bookworm
+  before_script:
+    - npm install -g vercel@latest
+  script:
+    - vercel pull --yes --environment=$VERCEL_ENV --token=$VERCEL_TOKEN
+    - vercel build $VERCEL_BUILD_FLAGS --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt $VERCEL_DEPLOY_FLAGS --token=$VERCEL_TOKEN -m gitlabCommitRef="$CI_COMMIT_REF_NAME" -m gitlabCommitSha="$CI_COMMIT_SHA"
+  rules:
+    - if: $VERCEL_TOKEN
+
+deploy_preview:
+  extends: .deploy_vercel
+  variables:
+    VERCEL_ENV: preview
+    VERCEL_BUILD_FLAGS: ""
+    VERCEL_DEPLOY_FLAGS: ""
+  rules:
+    - if: $VERCEL_TOKEN && $CI_COMMIT_BRANCH != "main"
+  environment:
+    name: preview/$CI_COMMIT_REF_SLUG
+    url: https://bheard-website.vercel.app
+
+deploy_production:
+  extends: .deploy_vercel
+  variables:
+    VERCEL_ENV: production
+    VERCEL_BUILD_FLAGS: "--prod"
+    VERCEL_DEPLOY_FLAGS: "--prod"
+  rules:
+    - if: $VERCEL_TOKEN && $CI_COMMIT_BRANCH == "main"
+  environment:
+    name: production
+    url: https://bheard-website.vercel.app
