@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import BlogListingView from "@/components/blog/BlogListingView";
-import { listPublishedBlogPosts } from "@/lib/services/blog.service";
-import { seedBlogPosts } from "@/lib/content/blogSeed";
+import { Suspense } from "react";
+import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
+import BlogListingContent from "./BlogListingContent";
 
 export const metadata: Metadata = {
   title: "Blog | BHEARD",
@@ -10,13 +10,10 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function BlogListingPage() {
-  let posts = [];
-  try {
-    posts = await listPublishedBlogPosts();
-  } catch {
-    posts = seedBlogPosts;
-  }
-
-  return <BlogListingView posts={posts} />;
+export default function BlogListingPage() {
+  return (
+    <Suspense fallback={<DbLoadingSkeleton variant="blog" />}>
+      <BlogListingContent />
+    </Suspense>
+  );
 }

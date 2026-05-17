@@ -1,0 +1,41 @@
+# GitLab CI for BHeard (Next.js)
+# Set CI/CD variables in GitLab: Settings → CI/CD → Variables (masked)
+# Required: DATABASE_URL, IMAGEKIT_PRIVATE_KEY, ADMIN_EMAIL, ADMIN_PASSWORD,
+#           ADMIN_SESSION_SECRET, AZURE_* or SMTP_*, LEAD_NOTIFICATION_TO, etc.
+
+stages:
+  - test
+  - build
+
+default:
+  image: node:22-bookworm
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+variables:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+before_script:
+  - npm ci
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "seo_and_performaceoptimization"

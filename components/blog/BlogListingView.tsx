@@ -153,6 +153,14 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
             </Link>
           ) : null}
 
+          {posts.length === 0 ? (
+            <div className="mt-14 border-t border-outline-variant/60 py-12 text-center">
+              <p className="font-body text-on-surface-variant">No posts published yet. Check back soon.</p>
+            </div>
+          ) : null}
+
+          {posts.length > 0 ? (
+          <>
           <div className={`mt-14 ${sectionTitleMarginCompact}`}>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Latest posts</p>
             <h3 className="mt-3 font-headline text-[clamp(1.8rem,3vw,2.5rem)] font-black uppercase tracking-tight text-on-background">
@@ -196,6 +204,8 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
               </Link>
             ))}
           </div>
+          </>
+          ) : null}
 
           <p className="mt-14 border-t border-outline-variant/60 pt-6 font-body text-sm text-on-surface-variant">
             Have a topic you want us to cover?{" "}

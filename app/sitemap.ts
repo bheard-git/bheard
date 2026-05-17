@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getCaseStudySlugs } from "@/lib/case-studies";
-import { seedBlogPosts } from "@/lib/content/blogSeed";
-import { seedCareers } from "@/lib/content/careersSeed";
 import { listPublishedBlogPosts } from "@/lib/services/blog.service";
 import { listActiveCareers } from "@/lib/services/careers.service";
 import { listPublishedStories } from "@/lib/services/stories.service";
 import { getSiteUrl } from "@/lib/seo/site";
+
+export const dynamic = "force-dynamic";
 
 const STATIC_PATHS = [
   "",
@@ -45,60 +44,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  let blogRows: Array<{ slug: string; updatedAt?: unknown; publishedAt?: unknown }> = [];
   try {
-    blogRows = await listPublishedBlogPosts();
-  } catch {
-    blogRows = seedBlogPosts.filter((p) => p.published).map((p) => ({
-      slug: p.slug,
-      publishedAt: p.publishedAt,
-    }));
-  }
-  for (const post of blogRows) {
-    const lastModified = asDate(post.updatedAt) ?? asDate(post.publishedAt) ?? now;
-    setEntry(`/blog/${post.slug}`, {
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    });
+    const blogRows = await listPublishedBlogPosts();
+    for (const post of blogRows) {
+      const lastModified = asDate(post.updatedAt) ?? asDate(post.publishedAt) ?? now;
+      setEntry(`/blog/${post.slug}`, {
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.65,
+      });
+    }
+  } catch (err) {
+    console.warn("[sitemap] skipping blog URLs:", err instanceof Error ? err.message : err);
   }
 
-  const storyLast = new Map<string, Date>();
-  for (const slug of getCaseStudySlugs()) {
-    storyLast.set(slug, now);
-  }
   try {
-    const rows = await listPublishedStories();
-    for (const row of rows) {
+    const storyRows = await listPublishedStories();
+    for (const row of storyRows) {
       const r = row as { slug?: string; updatedAt?: unknown };
       if (!r.slug) continue;
-      const lm = asDate(r.updatedAt) ?? now;
-      storyLast.set(r.slug, lm);
+      const lastModified = asDate(r.updatedAt) ?? now;
+      setEntry(`/success-stories/${r.slug}`, {
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.65,
+      });
     }
-  } catch {
-    /* keep static case-study slugs only */
-  }
-  for (const [slug, lastModified] of storyLast) {
-    setEntry(`/success-stories/${slug}`, {
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    });
+  } catch (err) {
+    console.warn("[sitemap] skipping story URLs:", err instanceof Error ? err.message : err);
   }
 
-  let careerRows: Array<{ slug: string; updatedAt?: unknown }> = [];
   try {
-    careerRows = (await listActiveCareers()) as Array<{ slug: string; updatedAt?: unknown }>;
-  } catch {
-    careerRows = seedCareers.filter((c) => c.active).map((c) => ({ slug: c.slug }));
-  }
-  for (const c of careerRows) {
-    const lastModified = asDate(c.updatedAt) ?? now;
-    setEntry(`/careers/${c.slug}`, {
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    });
+    const careerRows = (await listActiveCareers()) as Array<{ slug: string; updatedAt?: unknown }>;
+    for (const c of careerRows) {
+      const lastModified = asDate(c.updatedAt) ?? now;
+      setEntry(`/careers/${c.slug}`, {
+        lastModified,
+        changeFrequency: "weekly",
+        priority: 0.7,
+      });
+    }
+  } catch (err) {
+    console.warn("[sitemap] skipping career URLs:", err instanceof Error ? err.message : err);
   }
 
   return Array.from(byUrl.values());

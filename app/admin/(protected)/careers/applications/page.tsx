@@ -3,6 +3,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useAdminApiList } from "@/components/admin/useAdminApiList";
+import DbErrorState from "@/components/system/DbErrorState";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { Button } from "@/components/admin/ui/button";
 import { tableStyles } from "@/components/admin/ui/styles";
@@ -18,25 +20,8 @@ export default function AdminCareerApplicationsPage() {
 
   const careerId =
     rawCareerId && /^[a-f\d]{24}$/i.test(rawCareerId) ? rawCareerId : undefined;
-  const [rows, setRows] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    const run = async () => {
-      setLoading(true);
-      const qs = careerId ? `?careerId=${encodeURIComponent(careerId)}` : "";
-      const res = await fetch(`/api/admin/career-applications${qs}`);
-      const json = await res.json().catch(() => ({ data: [] }));
-      if (cancelled) return;
-      setRows(Array.isArray(json.data) ? json.data : []);
-      setLoading(false);
-    };
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, [careerId]);
+  const listUrl = `/api/admin/career-applications${careerId ? `?careerId=${encodeURIComponent(careerId)}` : ""}`;
+  const { rows, loading, error, retry } = useAdminApiList<any>(listUrl);
 
   return (
     <div className="space-y-6">
@@ -67,6 +52,8 @@ export default function AdminCareerApplicationsPage() {
       ) : null}
 
       {loading ? <div className="h-40 animate-pulse rounded-lg border border-border bg-card" /> : null}
+      {error ? <DbErrorState title="Could not load applications" message={error} onRetry={retry} /> : null}
+      {!loading && !error ? (
       <div className={tableStyles.wrapper}>
         <table className={tableStyles.table}>
           <thead>
@@ -131,6 +118,7 @@ export default function AdminCareerApplicationsPage() {
           </tbody>
         </table>
       </div>
+      ) : null}
     </div>
   );
 }

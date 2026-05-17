@@ -16,9 +16,9 @@
 1. [`lib/seo/site.ts`](lib/seo/site.ts) — `getSiteUrl()` from `NEXT_PUBLIC_SITE_URL`, then `VERCEL_URL`, else `https://bheard.in` (trim trailing slashes).
 2. [`app/sitemap.ts`](app/sitemap.ts) — `export default async function sitemap()` returning static marketing URLs plus dynamic URLs:
    - **Static:** `/`, `/about`, `/contact`, `/brand-solutions`, `/tech-solutions`, `/blog`, `/success-stories`, `/careers`, `/privacy-policy`, `/terms-and-conditions`
-   - **Blog:** `listPublishedBlogPosts()`; on failure (no `DATABASE_URL` / DB error) fall back to published [`seedBlogPosts`](lib/content/blogSeed.ts)
-   - **Success stories:** union of [`getCaseStudySlugs()`](lib/case-studies/data.ts) and `listPublishedStories()` (with `updatedAt` when DB works)
-   - **Careers:** `listActiveCareers()`; on failure fall back to active [`seedCareers`](lib/content/careersSeed.ts)
+   - **Blog:** `listPublishedBlogPosts()` only (no seed fallback on DB error)
+   - **Success stories:** `listPublishedStories()` only (no static case-study slug union)
+   - **Careers:** `listActiveCareers()` only (no seed fallback on DB error)
    - Use sensible `lastModified`, `changeFrequency`, and `priority` per URL type.
 3. [`app/robots.ts`](app/robots.ts) — `allow: "/"`, `disallow: ["/admin", "/admin/"]`, `sitemap: \`${base}/sitemap.xml\``, optional `host`.
 

@@ -1,38 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import BlogForm from "@/components/admin/BlogForm";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { Card, CardContent } from "@/components/admin/ui/card";
+import { useAdminEntityById } from "@/components/admin/useAdminApiList";
+import DbErrorState from "@/components/system/DbErrorState";
 
 export default function AdminBlogEditPage() {
   const params = useParams<{ id: string }>();
   const id = params?.id;
-  const [row, setRow] = useState<any | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!id) return;
-    let cancelled = false;
-    const run = async () => {
-      setLoading(true);
-      const res = await fetch("/api/blog?includeDraft=true");
-      const json = await res.json().catch(() => ({ data: [] }));
-      if (cancelled) return;
-      const found = (json.data ?? []).find((item: any) => item.id === id) ?? null;
-      setRow(found);
-      setLoading(false);
-    };
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, [id]);
+  const { entity: row, loading, error, retry, notFound } = useAdminEntityById<any>(
+    "/api/blog?includeDraft=true",
+    id
+  );
 
   if (loading) return <div className="h-48 animate-pulse rounded-lg border border-border bg-card" />;
-  if (!row) return <p className="text-sm text-muted-foreground">Post not found.</p>;
+  if (error) return <DbErrorState title="Could not load post" message={error} onRetry={retry} />;
+  if (notFound || !row) return <p className="text-sm text-muted-foreground">Post not found.</p>;
 
   const rowWithOptionalAuthorFields = row as typeof row & {
     subtitle?: string | null;

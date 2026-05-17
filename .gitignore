@@ -18,6 +18,10 @@
 # misc
 .DS_Store
 *.pem
+src.zip
+
+# one-time migration artifacts (local only)
+scripts/.migration/
 
 # debug
 npm-debug.log*
