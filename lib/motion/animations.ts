@@ -80,16 +80,27 @@ export function scrollScrub(
   );
 }
 
+export type ParallaxScrollOptions = {
+  /** Anchor transform origin so parallax does not expose container edges */
+  anchor?: "center" | "bottom";
+};
+
 /** Vertical parallax while scrolling — clearly visible but still refined */
 export function parallaxScroll(
   el: Element | null,
-  yPercent: number = -22
+  yPercent: number = -22,
+  options?: ParallaxScrollOptions
 ): gsap.core.Tween | null {
   if (!el) {
     return null;
   }
   const trigger =
     el.closest("figure") ?? el.closest("article") ?? el.parentElement ?? el;
+
+  const anchor = options?.anchor ?? "center";
+  if (anchor === "bottom") {
+    gsap.set(el, { transformOrigin: "50% 100%" });
+  }
 
   return gsap.to(el, {
     yPercent,
