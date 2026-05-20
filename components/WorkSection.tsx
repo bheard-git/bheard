@@ -17,9 +17,9 @@ gsap.registerPlugin(useGSAP);
 const projects = [
   {
     id: "01",
-    title: "PREMIUM HOSPITALITY + LIFESTYLE",
-    metric: "LUXURY EXPERIENCE MARKETING & REVENUE GROWTH ",
-    category: "Performance + Creative",
+    category: "PREMIUM HOSPITALITY + LIFESTYLE",
+    title: "LUXURY EXPERIENCE MARKETING & REVENUE GROWTH",
+    metric: "+182% qualified booking inquiries in 90 days",
     image:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80",
     gridClass:
@@ -27,45 +27,45 @@ const projects = [
   },
   {
     id: "02",
-    title: "DESTINATION + COMMUNITY",
-    metric: "BUILDING CULTURAL RELEVANCE & COMMUNITY FOR DESTINATIONS",
-    category: "Brand + Content",
+    category: "DESTINATION + COMMUNITY",
+    title: "BUILDING CULTURAL RELEVANCE & COMMUNITY FOR DESTINATIONS",
+    metric: "3.4× engagement lift across owned channels",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
     id: "03",
-    title: "WELLNESS + PERSONAL BRAND",
-    metric: "PERSONAL BRAND BUILDING & GROWTH STRATEGY",
-    category: "Social + Video",
+    category: "WELLNESS + PERSONAL BRAND",
+    title: "PERSONAL BRAND BUILDING & GROWTH STRATEGY",
+    metric: "+126% organic reach, month-on-month growth",
     image:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
     id: "04",
-    title: "EDUCATION + TECH",
-    metric: "EDTECH PLATFORM DEVELOPMENT & CONTENT SYSTEMS ",
-    category: "Ads + Funnel Design",
+    category: "EDUCATION + TECH",
+    title: "EDTECH PLATFORM DEVELOPMENT & CONTENT SYSTEMS",
+    metric: "41% lower cost per acquisition on Meta",
     image:
       "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1400&q=80",
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
     id: "05",
-    title: "TECH + CULTURE",
-    metric: "APP DEVELOPMENT FOR TRAVEL & LIFESTYLE DISCOVERY",
-    category: "Growth + Automation",
+    category: "TECH + CULTURE",
+    title: "APP DEVELOPMENT FOR TRAVEL & LIFESTYLE DISCOVERY",
+    metric: "4.1× lead velocity achieved in 45 days",
     image:
       "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80",
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
     id: "06",
-    title: "GROWTH DRIVEN MARKETING",
-    metric: "GROWTH DRIVEN MARKETING FOR HOTELS",
-    category: "Experience + Commerce",
+    category: "GROWTH DRIVEN MARKETING",
+    title: "GROWTH DRIVEN MARKETING FOR HOTELS",
+    metric: "+89% store-to-site conversion rate",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
     gridClass: "md:col-span-4 md:min-h-[220px]",
