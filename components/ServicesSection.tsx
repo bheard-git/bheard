@@ -125,11 +125,11 @@ function PaneBlock({
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="flex-1">{service.name}</span>
-              <ArrowRight
+              {/* <ArrowRight
                 className={`h-4 w-4 -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-within:translate-x-0 group-focus-within:opacity-100 ${
                   isTech ? "text-white/60" : "text-primary"
                 }`}
-              />
+              /> */}
             </div>
             <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr] motion-reduce:duration-0">
               <div className="overflow-hidden">

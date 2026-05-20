@@ -6,14 +6,9 @@ import { useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight } from "lucide-react";
+import HeroStatsBar from "@/components/hero/HeroStatsBar";
 
 gsap.registerPlugin(useGSAP);
-
-const HERO_STATS = [
-  { value: "10+", label: "Years of Experience" },
-  { value: "50+", label: "Brands Partnered With" },
-  { value: "200+", label: "Campaigns & Digital Launches" },
-] as const;
 
 const HERO_TEXT = "CAPTURING\nVOICE IN THE\nNOISE.";
 
@@ -164,7 +159,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative isolate flex min-h-screen items-end overflow-hidden px-8 pb-24 pt-12 md:pb-40"
+      className="relative isolate flex min-h-screen items-end overflow-hidden px-8 pb-16 pt-12 md:pb-24"
     >
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-surface-container-low to-surface-container-lowest" />
       <div
@@ -192,7 +187,7 @@ export default function HeroSection() {
         />
       </div>
       {/* In-flow grid + original section padding = same vertical position as before; pointer-events-none passes input to Spline */}
-      <div className="relative z-[4] mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-12 pointer-events-none md:grid-cols-12">
+      <div className="relative z-[4] mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-8 pointer-events-none md:grid-cols-12 md:gap-10">
         <div className="md:col-span-10">
           <span
             data-anim="hero-eyebrow"
@@ -205,7 +200,7 @@ export default function HeroSection() {
           {/* Decorative animated layer — hidden from assistive tech */}
           <div
             aria-hidden="true"
-            className="font-headline kinetic-text mb-12 text-[clamp(3.5rem,12vw,10rem)] font-black text-neutral-900"
+            className="font-headline kinetic-text mb-8 text-[clamp(3.5rem,12vw,10rem)] font-black text-neutral-900 md:mb-10"
           >
             {heroLetters}
           </div>
@@ -228,33 +223,18 @@ export default function HeroSection() {
               <span>See Our Work</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-            <Link
+            {/* <Link
               href="#services"
               className="group inline-flex items-center gap-2 font-headline text-sm font-bold uppercase tracking-widest text-neutral-900 transition-colors duration-300 hover:text-primary"
             >
               <span className="border-b border-neutral-900/40 pb-0.5 transition-colors duration-300 group-hover:border-primary">
                 Explore What We Do
               </span>
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className="md:col-span-12">
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-outline-variant/60 bg-outline-variant/40 sm:grid-cols-3">
-            {HERO_STATS.map((stat) => (
-              <div
-                key={stat.label}
-                data-anim="hero-stat"
-                className="flex flex-col gap-1 bg-surface px-6 py-5 opacity-0 motion-reduce:opacity-100"
-              >
-                <p className="font-headline text-3xl font-black text-neutral-900 md:text-4xl">
-                  {stat.value}
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-on-surface-variant md:text-sm">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+          <HeroStatsBar />
         </div>
       </div>
     </section>

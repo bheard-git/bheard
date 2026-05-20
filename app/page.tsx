@@ -97,7 +97,7 @@ export default function Home() {
       <main>
         <TickerStrip />
         <HeroSection />
-        <OurBeliefSection />
+        {/* <OurBeliefSection /> */}
         <ServicesSection />
         <ClientLogos />
         <ServicesVariantOne />
