@@ -4,6 +4,8 @@ import Image from "next/image";
 import SectionCharReveal from "@/components/motion/SectionCharReveal";
 import { sectionPageX, sectionStackTop } from "@/components/system/sectionTheme";
 
+const ABOUT_IMAGE_SRC = "/assets/home/about/team%20work.jpg";
+
 export default function AboutSection() {
   return (
     <section
@@ -11,7 +13,7 @@ export default function AboutSection() {
       className={`bg-surface-container-lowest ${sectionPageX} ${sectionStackTop} pb-32 md:pb-52`}
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-24 md:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.85fr)_minmax(0,1fr)] md:gap-x-14 lg:gap-x-16">
           <div className="relative">
             <div className="sticky top-40 self-start">
               <div className="mb-12">
@@ -24,21 +26,21 @@ export default function AboutSection() {
                 />
               </div>
               <div className="mb-8 h-1 w-24 bg-primary" />
-              <div className="mt-6 max-w-[min(100%,22rem)] overflow-hidden rounded-lg">
+              <div className="mt-6 w-full max-w-[min(100%,20rem)] overflow-hidden rounded-lg sm:max-w-md md:max-w-lg lg:max-w-xl">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
                     alt="BHEARD team collaborating on brand strategy - BHEARD Mumbai"
                     className="object-cover grayscale transition-all duration-700 hover:scale-105 hover:grayscale-0"
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                    src={ABOUT_IMAGE_SRC}
                     fill
-                    sizes="(max-width: 768px) 100vw, 28vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 36vw"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-10 md:gap-12 md:pt-32">
+          <div className="flex flex-col gap-10 md:gap-12 md:pt-32 md:pr-6 lg:pr-10 xl:pr-14">
             <p className="font-body text-2xl font-light leading-tight text-neutral-700 md:text-4xl">
               <span className="font-bold italic text-neutral-900">BHeard</span>{" "}
               is a brand and technology studio helping businesses build{" "}

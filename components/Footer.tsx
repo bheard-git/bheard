@@ -15,11 +15,31 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/bheard.in",
+    href: "https://www.instagram.com/letsbheard",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/bheard",
+    href: "https://www.linkedin.com/company/letsbheard/",
+  },
+] as const;
+
+const offices = [
+  {
+    title: "Head Office – Mumbai",
+    lines: [
+      "B1-604, Marathon Innova Corporate Centre,",
+      "Marathon NextGen Compound, Lower Parel,",
+      "Mumbai, Maharashtra – 400013",
+    ],
+    phone: "+91 9326602832",
+    email: "hello@bheard.in",
+  },
+  {
+    title: "Branch Office – Delhi",
+    lines: [
+      "WH-75, Mayapuri Industrial Area, Phase-1,",
+      "South West Delhi, Delhi – 110064",
+    ],
   },
 ] as const;
 
@@ -64,10 +84,10 @@ export default function Footer() {
     <footer
       ref={footerRef}
       data-motion-exclude
-      className="mx-auto flex min-h-[614px] w-full max-w-screen-2xl flex-col justify-end bg-white px-8 py-16"
+      className="mx-auto flex w-full max-w-screen-2xl flex-col justify-end bg-white px-8 py-16"
     >
-      <div className="mb-24 grid grid-cols-1 items-start gap-16 md:grid-cols-12">
-        <div data-footer-reveal className="md:col-span-6">
+      <div className="mb-14 grid grid-cols-1 items-start gap-16 md:grid-cols-12">
+        <div data-footer-reveal className="md:col-span-5">
           <div className="mb-8">
             <Image
               src={logo}
@@ -102,16 +122,45 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div data-footer-reveal className="md:col-span-3">
+        <div data-footer-reveal className="md:col-span-4">
           <h6 className="mb-6 text-sm font-bold uppercase text-orange-500">
             Contact
           </h6>
-          <p className="mb-2 font-headline text-2xl lowercase text-neutral-900">
-            hello@bheard.in
-          </p>
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-neutral-500">
-            Mumbai, India
-          </p>
+          <div className="space-y-2">
+            {offices.map((office) => (
+              <address key={office.title} className="not-italic">
+                
+                {"phone" in office && (
+                  <a
+                    href={`tel:${office.phone.replace(/\s/g, "")}`}
+                    className="mt-2 block font-body text-sm font-semibold text-neutral-600 transition-colors duration-300 hover:text-orange-500"
+                  >
+                    {office.phone}
+                  </a>
+                )}
+                {"email" in office && (
+                  <a
+                    href={`mailto:${office.email}`}
+                    className="mt-1 block font-headline text-lg lowercase text-neutral-900 transition-colors duration-300 hover:text-orange-500"
+                  >
+                    {office.email}
+                  </a>
+                )}
+                <br />
+                <p className="mb-2 font-headline text-sm font-bold uppercase tracking-wide text-neutral-900">
+                  {office.title}
+                </p>
+                <p className="font-body text-sm leading-relaxed text-neutral-600">
+                  {office.lines.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i < office.lines.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </address>
+            ))}
+          </div>
         </div>
       </div>
       <div className="relative overflow-visible border-t border-outline-variant/10 pt-16">
