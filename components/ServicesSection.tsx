@@ -261,6 +261,7 @@ export default function ServicesSection() {
         className={`mx-auto max-w-7xl ${sectionTitleMarginCompact} lg:mb-14`}
         eyebrow="How we work"
         title="Our services"
+        descriptionClassName="max-w-4xl"
         description="Strategy, content, design, and technology connected to create brands and digital experiences that move together."
       />
 

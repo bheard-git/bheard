@@ -14,60 +14,56 @@ import {
 
 gsap.registerPlugin(useGSAP);
 
+/** Encode filename segments so spaces and + work from /public */
+function publicAsset(...parts: string[]) {
+  const file = parts[parts.length - 1] ?? "";
+  const dirs = parts.slice(0, -1);
+  return `/${dirs.join("/")}/${encodeURIComponent(file)}`;
+}
+
 const projects = [
   {
     id: "01",
     category: "PREMIUM HOSPITALITY + LIFESTYLE",
-    title: "LUXURY EXPERIENCE MARKETING & REVENUE GROWTH",
-    metric: "+182% qualified booking inquiries in 90 days",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80",
+    title: "LUXURY EXPERIENCE MARKETING & REVENUE GROWTH ",
+    image: publicAsset("assets", "home", "work", "hospitality-lifestyle.jpg"),
+    unoptimized: true,
     gridClass:
       "md:col-span-8 md:row-span-2 md:min-h-[min(52vw,420px)] lg:min-h-[440px]",
   },
   {
     id: "02",
-    category: "DESTINATION + COMMUNITY",
-    title: "BUILDING CULTURAL RELEVANCE & COMMUNITY FOR DESTINATIONS",
-    metric: "3.4× engagement lift across owned channels",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    category: "TOURISM + COMMUNITY",
+    title: "DESTINATION MARKETING & TOURISM STORYTELLING",
+    image: publicAsset("assets", "home", "work", "T+C Option 1-compressed.jpg"),
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
     id: "03",
-    category: "WELLNESS + PERSONAL BRAND",
-    title: "PERSONAL BRAND BUILDING & GROWTH STRATEGY",
-    metric: "+126% organic reach, month-on-month growth",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
+    category: "HEALTH +  WELLNESS",
+    title: "BRAND BUILDING & GROWTH STRATEGY",
+    image: publicAsset("assets", "home", "work", "image-7-compressed.jpg"),
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
     id: "04",
-    category: "EDUCATION + TECH",
-    title: "EDTECH PLATFORM DEVELOPMENT & CONTENT SYSTEMS",
-    metric: "41% lower cost per acquisition on Meta",
-    image:
-      "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1400&q=80",
+    category: "EDUCATION - TECH",
+    title: "EDTECH PLATFORM DEVELOPMENT & CONTENT SYSTEMS ",
+    image: publicAsset("assets", "home", "work", "image-5-compressed.jpg"),
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
     id: "05",
-    category: "TECH + CULTURE",
-    title: "APP DEVELOPMENT FOR TRAVEL & LIFESTYLE DISCOVERY",
-    metric: "4.1× lead velocity achieved in 45 days",
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80",
+    category: "E-Commerce + LIFESTYLE",
+    title: "APP DEVELOPMENT FOR TRAVEL & LIFESTYLE DISCOVERY ",
+    image: publicAsset("assets", "home", "work", "image-4-compressed.jpg"),
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
     id: "06",
-    category: "GROWTH DRIVEN MARKETING",
-    title: "GROWTH DRIVEN MARKETING FOR HOTELS",
-    metric: "+89% store-to-site conversion rate",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
+    category: "AI FOR HOSPITALITY",
+    title: "AI REVENUE AGENTS & GUEST EXPERIENCE AUTOMATION",
+    image: publicAsset("assets", "home", "work", "image-3-compressed.jpg"),
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
 ];
@@ -75,9 +71,10 @@ const projects = [
 function WorkBentoCard({
   id,
   title,
-  metric,
+  // metric,
   category,
   image,
+  unoptimized = false,
   gridClass,
 }: (typeof projects)[number]) {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -136,7 +133,13 @@ function WorkBentoCard({
             className="h-full w-full object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
             src={image}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            unoptimized={unoptimized}
+            quality={unoptimized ? undefined : 90}
+            sizes={
+              unoptimized
+                ? undefined
+                : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            }
           />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15 opacity-65 transition-opacity duration-300 ease-out group-hover:opacity-95" />
@@ -147,9 +150,9 @@ function WorkBentoCard({
           <h4 className="mt-2 font-headline text-xl font-black uppercase leading-tight text-surface md:text-2xl">
             {title}
           </h4>
-          <p className="mt-1 translate-y-3 text-xs font-semibold uppercase tracking-wider text-surface/95 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:text-sm">
+          {/* <p className="mt-1 translate-y-3 text-xs font-semibold uppercase tracking-wider text-surface/95 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:text-sm">
             {metric}
-          </p>
+          </p> */}
         </div>
       </div>
     </article>
