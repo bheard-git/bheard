@@ -1,7 +1,7 @@
 /** Curated Unsplash assets for Brand / Tech solution pages (hostname allowed in next.config). */
 
 export const BRAND_HERO_MEDIA = {
-  src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2000&q=80",
+  src: "/assets/brand%20solutions/hero/hero%20image-2.png",
   alt: "Creative team reviewing brand mood boards and strategy notes in a bright studio",
 } as const;
 

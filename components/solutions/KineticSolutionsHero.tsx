@@ -62,6 +62,7 @@ export default function KineticSolutionsHero({
       const sub = root.querySelector<HTMLElement>("[data-hero-sub]");
       const ctas = root.querySelectorAll<HTMLElement>("[data-hero-cta]");
       const floaters = root.querySelectorAll<HTMLElement>("[data-hero-float]");
+      const drifters = root.querySelectorAll<HTMLElement>("[data-brand-drift]");
 
       if (prefersReducedMotion()) {
         gsap.set(words, { opacity: 1, y: 0 });
@@ -76,6 +77,18 @@ export default function KineticSolutionsHero({
       if (sub) tl.fromTo(sub, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 0.18);
       tl.fromTo(ctas, { y: 22, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.5 }, 0.28);
       tl.fromTo(floaters, { y: 18, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.06, duration: 0.55 }, 0.22);
+      tl.fromTo(drifters, { opacity: 0 }, { opacity: 1, stagger: 0.08, duration: 0.65 }, 0.25);
+
+      drifters.forEach((node, i) => {
+        gsap.to(node, {
+          y: i % 2 === 0 ? -10 : 8,
+          x: i % 2 === 0 ? 6 : -5,
+          duration: 4.8 + i * 0.9,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      });
 
       gsap.fromTo(
         root,
@@ -185,31 +198,23 @@ export default function KineticSolutionsHero({
       className={`relative overflow-hidden bg-grain px-gutter-sm pb-16 pt-28 md:px-gutter md:pb-20 md:pt-32 ${
         isTech
           ? "bg-gradient-to-b from-surface-container-high via-surface to-surface"
-          : "bg-gradient-to-b from-surface-container via-surface to-surface-container-low"
+          : "bg-[#ffffff]"
       }`}
     >
       {media ? (
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(46%,640px)] md:block"
+          className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[min(48%,680px)] lg:block"
           aria-hidden
         >
-          <div ref={mediaRef} className="absolute -top-[8%] left-0 h-[118%] w-full will-change-transform">
+          <div ref={mediaRef} className="absolute inset-0 will-change-transform">
             <Image
               src={media.src}
               alt={media.alt}
               fill
               priority
-              sizes="(max-width: 768px) 0vw, 45vw"
-              className="object-cover opacity-95"
+              sizes="(max-width: 1024px) 0vw, 48vw"
+              className="object-contain"
             />
-            <div
-              className={`absolute inset-0 ${
-                isTech
-                  ? "bg-gradient-to-l from-surface via-surface/75 to-transparent"
-                  : "bg-gradient-to-l from-surface via-surface/65 to-transparent"
-              }`}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface/50 via-transparent to-surface/30" />
           </div>
         </div>
       ) : null}
@@ -225,20 +230,7 @@ export default function KineticSolutionsHero({
         }}
       />
 
-      {!isTech ? (
-        <>
-          <div
-            data-hero-float
-            aria-hidden
-            className="pointer-events-none absolute right-[8%] top-[22%] h-24 w-24 rotate-12 rounded-3xl border border-inverse-surface/10 bg-surface-bright/70 shadow-lg backdrop-blur-md md:h-28 md:w-28"
-          />
-          <div
-            data-hero-float
-            aria-hidden
-            className="pointer-events-none absolute bottom-[18%] left-[6%] h-20 w-32 -rotate-6 rounded-2xl border border-primary/25 bg-primary/10 backdrop-blur-sm md:h-24 md:w-40"
-          />
-        </>
-      ) : (
+      {isTech ? (
         <>
           <div
             data-hero-float
@@ -253,7 +245,7 @@ export default function KineticSolutionsHero({
             className="pointer-events-none absolute bottom-[20%] left-[8%] h-16 w-44 rounded-lg border border-inverse-surface/10 bg-surface-container-high/90 shadow-sm backdrop-blur md:h-[4.5rem] md:w-52"
           />
         </>
-      )}
+      ) : null}
 
       <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-content-max flex-col gap-10">
         <p className="font-label text-label-sm uppercase tracking-[0.22em] text-primary">{eyebrow}</p>
@@ -272,9 +264,9 @@ export default function KineticSolutionsHero({
             {subtext}
           </p>
 
-          <div ref={morphRef} className="mt-8 inline-flex min-h-[2.75rem] items-center gap-3">
+          <div ref={morphRef} className="mt-8 inline-flex items-center gap-3">
             <span className="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Focus</span>
-            <div ref={morphParallaxRef} className="relative h-11 min-w-[11.5rem] will-change-transform">
+            <div ref={morphParallaxRef} className="relative min-h-[1.8rem] min-w-[9.25rem] will-change-transform">
               {morphWords.map((w, idx) => (
                 <span
                   key={w}
@@ -305,6 +297,18 @@ export default function KineticSolutionsHero({
             {secondaryCta.label} <span aria-hidden>→</span>
           </Link>
         </div>
+
+        {media ? (
+          <div className="relative mt-2 h-[min(56vw,360px)] w-full overflow-hidden lg:hidden">
+            <Image
+              src={media.src}
+              alt={media.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 0vw"
+              className="object-cover"
+            />
+          </div>
+        ) : null}
       </div>
     </header>
   );
