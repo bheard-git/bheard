@@ -92,7 +92,7 @@ export default function BrandPhilosophySection() {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-14 aspect-[16/11] w-full max-w-content-max px-gutter-sm md:mt-20 md:px-gutter">
+      <div className="relative mx-auto mt-10 h-[min(58vh,460px)] w-full max-w-content-max px-gutter-sm md:mt-14 md:h-[min(62vh,560px)] md:px-gutter">
         <div
           ref={mediaRef}
           className="pointer-events-none absolute -inset-x-4 -inset-y-6 hidden opacity-40 will-change-transform md:block"

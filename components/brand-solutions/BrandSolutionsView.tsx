@@ -1,11 +1,11 @@
 "use client";
 
 import BrandPhilosophySection from "@/components/solutions/BrandPhilosophySection";
-import CaseMomentsStrip from "@/components/solutions/CaseMomentsStrip";
+import BrandServicesStickyFeed from "@/components/brand-solutions/BrandServicesStickyFeed";
 import HorizontalProcessRail, { type ProcessRailStep } from "@/components/solutions/HorizontalProcessRail";
 import KineticSolutionsHero from "@/components/solutions/KineticSolutionsHero";
 import MockSocialScroller from "@/components/solutions/MockSocialScroller";
-import ServicePinStack, { type ServicePinItem } from "@/components/solutions/ServicePinStack";
+import { type ServicePinItem } from "@/components/solutions/ServicePinStack";
 import SolutionsClosingCta from "@/components/solutions/SolutionsClosingCta";
 import {
   BRAND_HERO_MEDIA,
@@ -96,7 +96,7 @@ export default function BrandSolutionsView() {
 
       <BrandPhilosophySection />
 
-      <ServicePinStack
+      <BrandServicesStickyFeed
         eyebrow="Services"
         heading="What we build"
         intro="Each layer is deliberate — social, narrative, motion, design, and campaigns built to compound recall."
@@ -108,9 +108,12 @@ export default function BrandSolutionsView() {
         heading="A system, not guesswork."
         subheading="A repeatable spine from discovery to optimization — built for clarity and compounding recall."
         steps={BRAND_PROCESS}
+        pinHeightClassName="min-h-[calc(100dvh-6.5rem)] md:min-h-[calc(100dvh-6.5rem)]"
+        cardClassName="h-[calc(100dvh-6.5rem)] md:h-[calc(100dvh-6.5rem)]"
+        immersiveCardStyle
       />
 
-      <CaseMomentsStrip />
+      {/* <CaseMomentsStrip /> */}
 
       <SolutionsClosingCta
         id="brand-journey"
