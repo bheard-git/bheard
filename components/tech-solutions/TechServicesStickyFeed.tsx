@@ -87,16 +87,18 @@ export default function TechServicesStickyFeed({ eyebrow, heading, intro, items 
     <section className="bg-surface py-section-y-sm md:py-section-y">
       <div className="mx-auto grid max-w-content-max grid-cols-1 gap-10 px-gutter-sm md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 md:px-gutter lg:gap-12">
         <aside className="md:sticky md:top-24 md:h-[calc(100dvh-7rem)] md:self-start">
-          <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-          <h2 className="mt-3 max-w-xl font-headline text-[clamp(2rem,4.2vw,3.25rem)] font-black uppercase leading-[1.02] tracking-tight text-on-background">
-            {heading}
-          </h2>
-          {intro ? (
-            <p className="mt-4 max-w-lg font-body text-body-lg leading-relaxed text-on-surface-variant">{intro}</p>
-          ) : null}
+          <div className="flex flex-col item-center justify-center h-full">
+            <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+            <h2 className="mt-3 max-w-xl font-headline text-[clamp(2rem,4.2vw,3.25rem)] font-black uppercase leading-[1.02] tracking-tight text-on-background">
+              {heading}
+            </h2>
+            {intro ? (
+              <p className="mt-4 max-w-lg font-body text-body-lg leading-relaxed text-on-surface-variant">{intro}</p>
+            ) : null}
 
-          <div className="mt-7 max-w-xl">
-            <TechServiceScrollVisual activeId={activeId} />
+            <div className="mt-7 max-w-xl">
+              <TechServiceScrollVisual activeId={activeId} />
+            </div>
           </div>
         </aside>
 

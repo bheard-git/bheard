@@ -166,15 +166,15 @@ export default function TechServiceScrollVisual({ activeId }: TechServiceScrollV
 
   return (
     <div className={`transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}>
-      <p className="font-label text-[10px] uppercase tracking-[0.2em] text-primary">{panel.label}</p>
+      <p className="font-label text-[10px] xl:text-sm uppercase tracking-[0.2em] text-primary">{panel.label}</p>
 
       <div className="mt-4">
         <p className="font-label text-[10px] uppercase tracking-[0.18em] text-on-surface-variant">{panel.stackLabel}</p>
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-3">
+        <div className="mt-3 flex flex-wrap gap-x-7 gap-y-5">
           {panel.tools.map((tool) => (
             <div key={tool.id} className="inline-flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={tool.logoSrc} alt={tool.logoAlt ?? tool.name} className="h-6 w-6 object-contain" loading="lazy" />
+              <img src={tool.logoSrc} alt={tool.logoAlt ?? tool.name} className="h-10 w-10 object-contain" loading="lazy" />
               <span className="font-body text-sm text-on-background">{tool.name}</span>
             </div>
           ))}
