@@ -24,7 +24,7 @@ const rowOneLogos: ClientLogo[] = [
   { src: "/assets/client-logos/devaaya.webp", alt: "Devaaya" },
   { src: "/assets/client-logos/diva-maharashtracha.webp", alt: "Diva Maharashtracha" },
   { src: "/assets/client-logos/goa-portuguesa.webp", alt: "Goa Portuguesa" },
-  { src: "/assets/client-logos/goa-tourism.png", alt: "Goa Tourism" },
+  { src: "/assets/client-logos/goa-tourism.webp", alt: "Goa Tourism" },
   { src: "/assets/client-logos/gsbr.webp", alt: "GSBR" },
   { src: "/assets/client-logos/hindustan-unilever.webp", alt: "Hindustan Unilever" },
   { src: "/assets/client-logos/itc.png", alt: "ITC" },
@@ -33,7 +33,6 @@ const rowOneLogos: ClientLogo[] = [
 
 const rowTwoLogos: ClientLogo[] = [
   { src: "/assets/client-logos/mickey-mehta.webp", alt: "Mickey Mehta" },
-  { src: "/assets/client-logos/modakam.webp", alt: "Modakam" },
   { src: "/assets/client-logos/novotel.webp", alt: "Novotel" },
   { src: "/assets/client-logos/radisson-blu.webp", alt: "Radisson Blu" },
   { src: "/assets/client-logos/radisson-candolim.webp", alt: "Radisson Candolim" },

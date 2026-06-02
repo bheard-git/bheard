@@ -119,9 +119,14 @@ const config: Config = {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(-50%)" },
         },
+        "team-marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "social-marquee": "social-marquee 22s linear infinite",
+        "team-marquee": "team-marquee 42s linear infinite",
       },
     },
   },

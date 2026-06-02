@@ -181,6 +181,12 @@ export default function Footer() {
             >
               Terms
             </Link>
+            <Link
+              className="text-sm font-bold uppercase tracking-widest text-neutral-600 transition-colors duration-400 ease-out hover:text-neutral-900"
+              href="/sitemap.xml"
+            >
+              Sitemap
+            </Link>
           </div>
         </div>
       </div>

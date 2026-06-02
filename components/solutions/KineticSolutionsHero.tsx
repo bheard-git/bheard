@@ -191,14 +191,13 @@ export default function KineticSolutionsHero({
   );
 
   const isTech = variant === "tech";
+  const editorialLayout = Boolean(media);
 
   return (
     <header
       ref={rootRef}
       className={`relative overflow-hidden bg-grain px-gutter-sm pb-16 pt-28 md:px-gutter md:pb-20 md:pt-32 ${
-        isTech
-          ? "bg-gradient-to-b from-surface-container-high via-surface to-surface"
-          : "bg-[#ffffff]"
+        editorialLayout || !isTech ? "bg-[#ffffff]" : "bg-gradient-to-b from-surface-container-high via-surface to-surface"
       }`}
     >
       {media ? (
@@ -223,14 +222,15 @@ export default function KineticSolutionsHero({
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.55]"
         style={{
-          backgroundImage: isTech
-            ? "linear-gradient(90deg, rgba(17,24,39,0.05) 1px, transparent 1px),linear-gradient(rgba(17,24,39,0.04) 1px, transparent 1px)"
-            : "radial-gradient(circle at 12% 18%, rgba(255,146,62,0.12), transparent 40%), radial-gradient(circle at 88% 8%, rgba(248,194,41,0.12), transparent 38%)",
-          backgroundSize: isTech ? "32px 32px" : "auto",
+          backgroundImage:
+            isTech && !editorialLayout
+              ? "linear-gradient(90deg, rgba(17,24,39,0.05) 1px, transparent 1px),linear-gradient(rgba(17,24,39,0.04) 1px, transparent 1px)"
+              : "radial-gradient(circle at 12% 18%, rgba(255,146,62,0.12), transparent 40%), radial-gradient(circle at 88% 8%, rgba(248,194,41,0.12), transparent 38%)",
+          backgroundSize: isTech && !editorialLayout ? "32px 32px" : "auto",
         }}
       />
 
-      {isTech ? (
+      {isTech && !editorialLayout ? (
         <>
           <div
             data-hero-float

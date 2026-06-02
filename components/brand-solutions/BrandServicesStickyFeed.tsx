@@ -9,6 +9,8 @@ type BrandServicesStickyFeedProps = {
   heading: string;
   intro?: string;
   items: ServicePinItem[];
+  /** Decorative visual in the sticky aside (all items render as cards). */
+  asideVisual?: React.ReactNode;
 };
 
 export default function BrandServicesStickyFeed({
@@ -16,8 +18,8 @@ export default function BrandServicesStickyFeed({
   heading,
   intro,
   items,
+  asideVisual = <MockSocialScroller />,
 }: BrandServicesStickyFeedProps) {
-  const [lead, ...cards] = items;
 
   return (
     <section className="bg-surface py-section-y-sm md:py-section-y">
@@ -32,22 +34,20 @@ export default function BrandServicesStickyFeed({
           ) : null}
 
           <div className="mt-7 h-[min(62dvh,520px)] md:h-[calc(100dvh-15rem)]">
-            {lead?.visual ? (
-              <div className="h-full">{lead.visual}</div>
-            ) : (
-              <MockSocialScroller />
-            )}
+            <div className="h-full">{asideVisual}</div>
           </div>
         </aside>
 
         <div className="space-y-7 md:space-y-10">
-          {cards.map((item, index) => (
+          {items.map((item, index) => (
             <article
               key={item.id}
               className="group relative sticky top-24 h-[calc(100dvh-7.5rem)] overflow-hidden rounded-[1.75rem] border border-inverse-surface/10 shadow-[0_30px_90px_-52px_rgba(17,24,39,0.42)]"
               style={{ zIndex: 20 + index }}
             >
-              {item.imageSrc ? (
+              {item.visual ? (
+                <div className="absolute inset-0">{item.visual}</div>
+              ) : item.imageSrc ? (
                 <Image
                   src={item.imageSrc}
                   alt={item.imageAlt ?? item.title}
@@ -63,7 +63,7 @@ export default function BrandServicesStickyFeed({
               <div className="absolute inset-0 bg-gradient-to-r from-black/72 via-black/36 to-transparent" />
               <div className="absolute inset-0 flex items-end justify-start p-7 md:p-10">
                 <div className="max-w-2xl text-left">
-                  <p className="font-label text-[10px] uppercase tracking-[0.22em] text-primary">Service Layer</p>
+                  <p className="font-label text-[10px] uppercase tracking-[0.22em] text-primary">Service</p>
                   <h3 className="mt-3 font-headline text-[clamp(1.6rem,3.2vw,2.45rem)] font-black uppercase leading-[1.04] tracking-tight text-surface">
                     {item.title}
                   </h3>

@@ -6,8 +6,8 @@ export const BRAND_HERO_MEDIA = {
 } as const;
 
 export const TECH_HERO_MEDIA = {
-  src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=80",
-  alt: "Code on a monitor with a clean desk setup representing engineered product work",
+  src: "/assets/tech%20solutions/hero/hero%20image.png",
+  alt: "Product team collaborating on digital platform design and development",
 } as const;
 
 export const BRAND_CHAOS_MEDIA = {
@@ -21,6 +21,14 @@ export const BRAND_STRUCTURE_MEDIA = {
 } as const;
 
 export const BRAND_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: string }> = {
+  toolkit: {
+    imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "Brand strategy workshop with team planning at a whiteboard",
+  },
+  social: {
+    imageSrc: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "Social media apps on a smartphone representing community and engagement",
+  },
   copy: {
     imageSrc: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80",
     imageAlt: "Notebook and pen for copywriting and narrative craft",
@@ -37,24 +45,32 @@ export const BRAND_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: 
     imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
     imageAlt: "Analytics dashboard suggesting campaign performance",
   },
+  influencer: {
+    imageSrc: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "Creator filming content for an influencer marketing collaboration",
+  },
 };
 
 export const TECH_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: string }> = {
+  web: {
+    imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "Custom web development on a developer workstation",
+  },
   mobile: {
     imageSrc: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Hands holding a smartphone showing a polished mobile interface",
+    imageAlt: "Custom mobile app on iOS and Android devices",
   },
   ux: {
     imageSrc: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "UI wireframes and sticky notes on a desk",
+    imageAlt: "UI/UX design wireframes and user experience planning",
   },
   commerce: {
     imageSrc: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Checkout and ecommerce shopping experience on a laptop",
+    imageAlt: "E-commerce platform checkout and shopping experience",
   },
   ai: {
     imageSrc: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Abstract neural visualization representing AI automation",
+    imageAlt: "AI chatbots and intelligent virtual agents",
   },
 };
 
@@ -63,44 +79,44 @@ export const PROCESS_THUMB_BRAND: Record<string, { imageSrc: string; imageAlt: s
     imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Team discovery workshop",
   },
-  Define: {
+  Strategize: {
     imageSrc: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Strategist presenting positioning slides",
   },
-  Design: {
+  Create: {
     imageSrc: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Design workspace with layouts",
   },
-  Deploy: {
+  Amplify: {
     imageSrc: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Campaign launch and collaboration",
   },
-  Optimize: {
+  "Measure & Evolve": {
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Analytics charts for optimization",
   },
 };
 
 export const PROCESS_THUMB_TECH: Record<string, { imageSrc: string; imageAlt: string }> = {
-  Ideation: {
+  Discover: {
     imageSrc: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Whiteboard ideation session",
+    imageAlt: "Team discovery workshop for technology requirements",
   },
-  Wireframing: {
+  Strategize: {
+    imageSrc: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    imageAlt: "Strategist presenting product architecture and roadmap",
+  },
+  Design: {
     imageSrc: "https://images.unsplash.com/photo-1505238680356-667803448bb6?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Product flow wireframes arranged on a design desk",
+    imageAlt: "UI/UX wireframes and prototypes on a design desk",
   },
-  Development: {
+  Develop: {
     imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Developer typing on a laptop",
+    imageAlt: "Developer building scalable digital products",
   },
-  Testing: {
-    imageSrc: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "QA testing devices on a desk",
-  },
-  "Launch & scale": {
-    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Growth metrics on a dashboard",
+  "Optimize & Scale": {
+    imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    imageAlt: "Analytics and performance monitoring for optimization",
   },
 };
 
