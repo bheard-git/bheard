@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={submit} className="grid gap-4">
-              <FormField label="Username / Email" error={form.formState.errors.email?.message}>
+              <FormField label="Username" error={form.formState.errors.email?.message}>
                 <Input {...form.register("email")} placeholder="bheard_app" />
               </FormField>
               <FormField label="Password" error={form.formState.errors.password?.message}>
