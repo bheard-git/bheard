@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" width="400" height="225">
+  <defs>
+    <pattern id="course-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="white" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="course-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="225" fill="url(#course-grad)" rx="8"/>
+  <rect width="400" height="225" fill="url(#course-dots)" rx="8"/>
+  <rect x="160" y="72" width="80" height="80" rx="12" fill="none" stroke="#F97316" stroke-width="1.5" opacity="0.3"/>
+  <polygon points="190,92 190,132 220,112" fill="#F97316" opacity="0.4"/>
+  <text x="200" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.3" letter-spacing="2">COURSE</text>
+</svg>

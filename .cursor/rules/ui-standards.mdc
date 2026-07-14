@@ -1,0 +1,16 @@
+---
+description: Pixel-perfect UI, tokens, responsive-first for TSX
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# UI Standards
+
+- Treat approved mockups as design source of truth (`rodha home page UI screen.png`, `cat landing page Ui.png`)
+- Use tokens and utilities from `src/app/globals.css` — no inconsistent one-off styles
+- Prefer `.btn-primary`, `.card-base`, `.section-spacing`, `Container`, shared UI components
+- Avoid inline styles and hardcoded hex/spacing when tokens exist
+- Implement responsive layouts from the start (320px → 1536px+)
+- Match typography scale (`text-hero` … `text-caption`), orange primary, dark backgrounds
+
+See `docs/knowledge/UI_STANDARDS.md` and `DESIGN_TOKENS.md`.

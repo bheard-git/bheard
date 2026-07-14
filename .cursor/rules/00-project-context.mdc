@@ -1,0 +1,20 @@
+---
+description: Read Rodha project knowledge base before any task
+alwaysApply: true
+---
+
+# Project Context
+
+Before any task:
+
+1. Read `docs/knowledge/README.md` (index)
+2. Skim `docs/knowledge/PROJECT_CONTEXT.md` and `docs/knowledge/PROGRESS.md`
+3. For UI work: also `UI_STANDARDS.md`, `DESIGN_TOKENS.md`, `REUSABLE_INVENTORY.md`
+
+Authoritative refs:
+- Phase 1 detail → `docs/PHASE1_PRD.md`
+- Phase boundaries → `docs/knowledge/SCOPE.md`
+- Homepage design → `docs/UI_DESIGN_ANALYSIS.md` + `rodha home page UI screen.png`
+- Tokens → `src/app/globals.css`
+
+Do not ask the user to restate standards already in the knowledge base.

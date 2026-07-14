@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <filter id="blob-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20"/>
+    </filter>
+  </defs>
+  <path d="M200 50c55 0 100 20 130 60s40 90 20 140-60 90-110 100-100-5-135-40-50-85-35-140S145 50 200 50z" fill="#F97316" opacity="0.1" filter="url(#blob-blur)"/>
+</svg>

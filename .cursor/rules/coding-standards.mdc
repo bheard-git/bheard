@@ -1,0 +1,17 @@
+---
+description: TypeScript and React coding conventions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Coding Standards
+
+- Path alias `@/` → `src/`
+- Shared types in `src/lib/types.ts`; static data in `src/data/`
+- Merge classes with `cn()` from `@/lib/utils`
+- PascalCase component files; `use*` hooks; kebab-case routes
+- No `any`; reuse `CategoryId` and existing interfaces
+- Phase 1: no fake API layer — external redirects + static data only
+- Forms: validate per PRD; do not invent unverified backends
+
+See `docs/knowledge/CODING_STANDARDS.md` and `NAMING_CONVENTIONS.md`.

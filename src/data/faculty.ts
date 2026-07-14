@@ -1,0 +1,85 @@
+﻿import type { Faculty } from "@/lib/types";
+
+export const faculty: Faculty[] = [
+  {
+    id: "faculty-1",
+    name: "Anand Mishra",
+    slug: "anand-mishra",
+    title: "QA Expert",
+    qualification: "IIM Ahmedabad, B.Tech IIT Delhi",
+    specialization: ["Quantitative Aptitude", "Data Interpretation"],
+    experience: "15+ Years Exp.",
+    bio: "Former IIM-A faculty with a passion for making Quant accessible to every aspirant.",
+    image: "/assets/images/faculty/anand-mishra.jpg",
+    rating: 4.9,
+    studentsMentored: "25K+",
+    achievements: ["Mentored 5000+ students", "Author of QA guidebook"],
+    categories: ["cat", "ipmat"],
+  },
+  {
+    id: "faculty-2",
+    name: "Vishal Gupta",
+    slug: "vishal-gupta",
+    title: "VARC Specialist",
+    qualification: "IIM Bangalore, MA English",
+    specialization: ["Verbal Ability", "Reading Comprehension"],
+    experience: "12+ Years Exp.",
+    bio: "Specialist in building reading speed and comprehension accuracy for competitive exams.",
+    image: "/assets/images/faculty/vishal-gupta.jpg",
+    rating: 4.8,
+    studentsMentored: "18K+",
+    categories: ["cat"],
+  },
+  {
+    id: "faculty-3",
+    name: "Neha Agarwal",
+    slug: "neha-agarwal",
+    title: "DILR Strategist",
+    qualification: "IIM Calcutta, B.Tech IIT Bombay",
+    specialization: ["Logical Reasoning", "Data Interpretation"],
+    experience: "10+ Years Exp.",
+    bio: "Known for simplifying complex DI and LR sets with structured approaches.",
+    image: "/assets/images/faculty/neha-agarwal.jpg",
+    rating: 4.9,
+    studentsMentored: "22K+",
+    categories: ["cat", "ipmat"],
+  },
+  {
+    id: "faculty-4",
+    name: "Rahul Sharma",
+    slug: "rahul-sharma",
+    title: "CAT Mentor",
+    qualification: "IIM Indore IPM Alumnus",
+    specialization: ["Quantitative Ability", "Verbal Ability"],
+    experience: "8+ Years Exp.",
+    bio: "CAT & IPMAT specialist focused on percentile improvement and exam temperament.",
+    image: "/assets/images/faculty/rahul-sharma.jpg",
+    rating: 4.7,
+    studentsMentored: "12K+",
+    categories: ["cat", "ipmat"],
+  },
+  {
+    id: "faculty-5",
+    name: "Megha Jivedi",
+    slug: "megha-jivedi",
+    title: "CLAT Legal Expert",
+    qualification: "NLSIU Bangalore, LLM Oxford",
+    specialization: ["Legal Reasoning", "Constitutional Law"],
+    experience: "9+ Years Exp.",
+    bio: "CLAT topper turned mentor, focused on demystifying legal reasoning for aspirants.",
+    image: "/assets/images/faculty/megha-jivedi.jpg",
+    rating: 4.8,
+    studentsMentored: "9K+",
+    categories: ["clat"],
+  },
+];
+
+export function getFacultyByCategory(categoryId: string): Faculty[] {
+  return faculty.filter((f) =>
+    f.categories.includes(categoryId as Faculty["categories"][number])
+  );
+}
+
+export function getFacultyBySlug(slug: string): Faculty | undefined {
+  return faculty.find((f) => f.slug === slug);
+}

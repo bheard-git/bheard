@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <radialGradient id="hero-ill-glow" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#F97316" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="building-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A2A2A"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="sky-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F0F0F"/>
+      <stop offset="100%" stop-color="#0A0A0A"/>
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="600" height="400" fill="url(#sky-grad)"/>
+  <!-- Orange glow behind buildings -->
+  <ellipse cx="300" cy="280" rx="300" ry="180" fill="url(#hero-ill-glow)"/>
+  <!-- Ground -->
+  <rect x="0" y="320" width="600" height="80" fill="#111111"/>
+  <!-- Main building (center) -->
+  <rect x="230" y="140" width="140" height="180" fill="url(#building-grad)" rx="4"/>
+  <rect x="280" y="120" width="40" height="20" fill="#222" rx="2"/>
+  <!-- Dome -->
+  <ellipse cx="300" cy="120" rx="35" ry="20" fill="#252525" stroke="#F97316" stroke-width="0.5" opacity="0.8"/>
+  <!-- Windows - main building -->
+  <rect x="245" y="160" width="15" height="20" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="270" y="160" width="15" height="20" rx="1" fill="#F97316" opacity="0.2"/>
+  <rect x="295" y="160" width="15" height="20" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="320" y="160" width="15" height="20" rx="1" fill="#F97316" opacity="0.18"/>
+  <rect x="345" y="160" width="15" height="20" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="245" y="195" width="15" height="20" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="270" y="195" width="15" height="20" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="295" y="195" width="15" height="20" rx="1" fill="#F97316" opacity="0.25"/>
+  <rect x="320" y="195" width="15" height="20" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="345" y="195" width="15" height="20" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="245" y="230" width="15" height="20" rx="1" fill="#F97316" opacity="0.18"/>
+  <rect x="270" y="230" width="15" height="20" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="295" y="230" width="15" height="20" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="320" y="230" width="15" height="20" rx="1" fill="#F97316" opacity="0.2"/>
+  <rect x="345" y="230" width="15" height="20" rx="1" fill="#F97316" opacity="0.15"/>
+  <!-- Door -->
+  <rect x="280" y="275" width="40" height="45" rx="20 20 0 0" fill="#F97316" opacity="0.08" stroke="#F97316" stroke-width="0.5" stroke-opacity="0.3"/>
+  <!-- Left building -->
+  <rect x="100" y="200" width="100" height="120" fill="#1C1C1C" rx="3"/>
+  <rect x="115" y="215" width="12" height="16" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="138" y="215" width="12" height="16" rx="1" fill="#F97316" opacity="0.18"/>
+  <rect x="161" y="215" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="115" y="245" width="12" height="16" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="138" y="245" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="161" y="245" width="12" height="16" rx="1" fill="#F97316" opacity="0.2"/>
+  <rect x="115" y="275" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="138" y="275" width="12" height="16" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="161" y="275" width="12" height="16" rx="1" fill="#F97316" opacity="0.12"/>
+  <!-- Right building -->
+  <rect x="400" y="180" width="110" height="140" fill="#1E1E1E" rx="3"/>
+  <rect x="415" y="195" width="12" height="16" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="440" y="195" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="465" y="195" width="12" height="16" rx="1" fill="#F97316" opacity="0.2"/>
+  <rect x="415" y="225" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="440" y="225" width="12" height="16" rx="1" fill="#F97316" opacity="0.18"/>
+  <rect x="465" y="225" width="12" height="16" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="415" y="255" width="12" height="16" rx="1" fill="#F97316" opacity="0.12"/>
+  <rect x="440" y="255" width="12" height="16" rx="1" fill="#F97316" opacity="0.15"/>
+  <rect x="465" y="255" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="415" y="285" width="12" height="16" rx="1" fill="#F97316" opacity="0.2"/>
+  <rect x="440" y="285" width="12" height="16" rx="1" fill="#F97316" opacity="0.1"/>
+  <rect x="465" y="285" width="12" height="16" rx="1" fill="#F97316" opacity="0.15"/>
+  <!-- Trees -->
+  <ellipse cx="210" cy="290" rx="15" ry="25" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="0.5"/>
+  <rect x="208" y="305" width="4" height="15" fill="#1A1A1A"/>
+  <ellipse cx="390" cy="295" rx="12" ry="20" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="0.5"/>
+  <rect x="388" y="308" width="4" height="12" fill="#1A1A1A"/>
+  <!-- Path/road -->
+  <path d="M260 320 L300 380 L340 320" fill="#151515" stroke="#1E1E1E" stroke-width="0.5"/>
+  <!-- Stars -->
+  <circle cx="80" cy="60" r="1" fill="white" opacity="0.3"/>
+  <circle cx="150" cy="40" r="1.2" fill="white" opacity="0.2"/>
+  <circle cx="450" cy="50" r="1" fill="white" opacity="0.25"/>
+  <circle cx="520" cy="80" r="0.8" fill="white" opacity="0.2"/>
+  <circle cx="350" cy="30" r="1" fill="white" opacity="0.15"/>
+  <circle cx="50" cy="100" r="0.8" fill="white" opacity="0.2"/>
+  <circle cx="550" cy="40" r="1.2" fill="white" opacity="0.18"/>
+</svg>

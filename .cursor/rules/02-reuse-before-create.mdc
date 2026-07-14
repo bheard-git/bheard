@@ -1,0 +1,15 @@
+---
+description: Search and reuse existing code before creating new files
+alwaysApply: true
+---
+
+# Reuse Before Create
+
+Before creating components, hooks, utils, types, constants, icons, helpers, services, layouts, animations, or style utilities:
+
+1. Check `docs/knowledge/REUSABLE_INVENTORY.md`
+2. Search `src/components/`, `src/hooks/`, `src/lib/`, `src/data/`, `public/assets/`
+3. Reuse or extend existing implementations
+4. Create new files only when existing ones cannot support the need
+
+Prefer shared components over page-specific markup. Do not duplicate logic or styles. Put new files in the correct folder (`ui` / `layout` / `sections` / `cards` / `forms`).

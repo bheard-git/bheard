@@ -1,0 +1,20 @@
+---
+description: Standard development workflow for every Rodha task
+alwaysApply: true
+---
+
+# Development Workflow
+
+For every implementation:
+
+1. Understand the requirement
+2. Review existing structure and related files
+3. Search for reusable code and assets (`docs/knowledge/REUSABLE_INVENTORY.md`)
+4. Plan against PRD/scope and design mocks
+5. Build or extend reusable pieces first
+6. Implement the feature
+7. Verify responsiveness (mobile → XL)
+8. Verify design-system consistency (tokens / utilities)
+9. Update progress docs (`PROGRESS.md`, `FEATURE_CHECKLIST.md`, `DECISIONS.md`, inventory as needed)
+
+Never assume functionality exists — verify first. Prefer reuse over duplication. Keep diffs focused.

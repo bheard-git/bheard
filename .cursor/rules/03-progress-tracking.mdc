@@ -1,0 +1,15 @@
+---
+description: Update knowledge base progress after meaningful work
+alwaysApply: true
+---
+
+# Progress Tracking
+
+After meaningful implementation work, update:
+
+1. `docs/knowledge/PROGRESS.md` — completed / in-progress / remaining / blockers / debt
+2. `docs/knowledge/FEATURE_CHECKLIST.md` — page/section statuses
+3. `docs/knowledge/DECISIONS.md` — if an architectural or notable implementation choice was made
+4. `docs/knowledge/REUSABLE_INVENTORY.md` — if new reusable components, hooks, utils, or assets were added
+
+Skip updates for trivial typos or pure Q&A with no code changes.

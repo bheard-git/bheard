@@ -1,0 +1,16 @@
+---
+description: Component-first architecture for src/components
+globs: "src/components/**"
+alwaysApply: false
+---
+
+# Component Architecture
+
+- Keep folders: `ui` (primitives), `layout`, `sections`, `cards`, `forms`
+- Prefer reusable, composable components — avoid page coupling
+- Support `className` + `cn()` for composition
+- Default to Server Components; `"use client"` only for interactivity
+- Extend variant maps on existing components before creating parallels
+- Named exports; import from explicit file paths (no barrel files)
+
+See `docs/knowledge/COMPONENT_GUIDELINES.md`.

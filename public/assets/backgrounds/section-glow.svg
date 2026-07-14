@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" width="1440" height="400">
+  <defs>
+    <radialGradient id="section-glow-gradient" cx="50%" cy="50%" rx="40%" ry="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.1"/>
+      <stop offset="40%" stop-color="#F97316" stop-opacity="0.05"/>
+      <stop offset="70%" stop-color="#F97316" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="section-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+  </defs>
+  <ellipse cx="720" cy="200" rx="580" ry="200" fill="url(#section-glow-gradient)" filter="url(#section-blur)"/>
+</svg>

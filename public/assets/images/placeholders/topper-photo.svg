@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <linearGradient id="topper-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" fill="url(#topper-grad)" rx="12"/>
+  <circle cx="100" cy="95" r="35" fill="none" stroke="white" stroke-width="1.5" opacity="0.15"/>
+  <path d="M55 180 c0-35 20-55 45-55 s45 20 45 55" fill="none" stroke="white" stroke-width="1.5" opacity="0.15"/>
+  <rect x="60" y="200" width="80" height="8" rx="2" fill="white" opacity="0.08"/>
+  <rect x="70" y="216" width="60" height="6" rx="2" fill="#F97316" opacity="0.15"/>
+  <text x="100" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.25" letter-spacing="2">TOPPER</text>
+</svg>

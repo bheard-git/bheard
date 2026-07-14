@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rodha Web Frontend
 
-## Getting Started
+India’s trusted platform for **CAT, IPMAT, GDPI, and CLAT** preparation. Phase 1 is a dark-themed static marketing site; enrollment, login, and tests redirect to Graphy, ThinkExam, and Rodha Buddy.
 
-First, run the development server:
+## Tech Stack
+
+- **Next.js 16** (App Router) · **React 19** · **TypeScript**
+- **Tailwind CSS v4** (tokens in `src/app/globals.css`)
+- Font: Inter via `next/font`
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Context (agents & developers)
 
-## Learn More
+Persistent standards, architecture, progress, and inventory live in:
 
-To learn more about Next.js, take a look at the following resources:
+**→ [`docs/knowledge/README.md`](docs/knowledge/README.md)**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Also see:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [`docs/PHASE1_PRD.md`](docs/PHASE1_PRD.md) — Phase 1 product requirements
+- [`docs/UI_DESIGN_ANALYSIS.md`](docs/UI_DESIGN_ANALYSIS.md) — approved homepage design extract
+- [`AGENTS.md`](AGENTS.md) — Cursor / agent entry instructions
+- `.cursor/rules/` — always-on development rules
 
-## Deploy on Vercel
+## Design References
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Asset | Location |
+|-------|----------|
+| Homepage UI (approved) | `rodha home page UI screen.png` |
+| CAT landing UI | `cat landing page Ui.png` |
+| Combined scope (Word) | `Rodha_Combined_Scope_Document.docx` |
+| Scope (Markdown) | `docs/knowledge/SCOPE.md` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure (summary)
+
+```
+src/app/           # App Router pages
+src/components/    # ui, layout, sections, cards, forms
+src/data/          # Static content
+src/lib/           # types, constants, utils
+public/assets/     # icons, images, backgrounds
+docs/knowledge/    # Knowledge base
+```

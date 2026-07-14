@@ -1,0 +1,15 @@
+---
+description: Next.js 16 APIs differ from training data — read local docs
+alwaysApply: true
+---
+
+# Next.js 16
+
+This is NOT the Next.js you know. APIs, conventions, and file structure may differ from training data.
+
+Before writing Next.js-specific code (routing, metadata, images, fonts, configs, caching):
+
+- Read the relevant guide under `node_modules/next/dist/docs/`
+- Heed deprecation notices
+
+Use App Router under `src/app/`. Prefer Server Components; add `"use client"` only when required.
