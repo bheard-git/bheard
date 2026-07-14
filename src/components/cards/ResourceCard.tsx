@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
-import type { ResourceItem } from "@/data/cat-landing";
+import type { ResourceItem } from "@/lib/types";
 
 interface ResourceCardProps {
   item: ResourceItem;

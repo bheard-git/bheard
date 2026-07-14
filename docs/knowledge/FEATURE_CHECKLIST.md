@@ -14,7 +14,7 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Header — global nav state | Partial | Exam switcher beside logo; verify PRD links |
 | Header — category nav state | Partial | Needs verification vs PRD |
 | Mobile nav | Partial | Exists; test against all breakpoints |
-| Footer | Partial | Social icons: transparent + thin white borders; social URLs TBD |
+| Footer | Partial | Social `shrink-0` rounded; brand left / links right; "Made with love" removed; social URLs TBD |
 | Rodha Buddy CTA (external) | Partial | Outline orange in header; final URL TBD |
 | Login / Sign Up → Graphy | Partial | Outline button; redirect target TBD |
 | Promotion popup + lead form | Not Started | Modal + trigger logic |
@@ -25,15 +25,15 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Section | Status |
 |---------|--------|
-| Hero | Complete (hero-home.png + floating feature cards) |
-| Choose Your Exam | Complete (3D PNG icons) |
+| Hero | Complete (hero-home.png + floating features; stock JPG trust avatars) |
+| Choose Your Exam | Complete (vertical Courses/Selections list) |
 | Why Thousands Choose Rodha | Complete (icon-without-circle) |
-| Featured Courses carousel | Complete |
-| Faculty carousel | Complete (non-circular photos) |
-| Results / toppers | Complete (dark AIR badge) |
+| Featured Courses carousel | Complete (category-colored bg + flat white-text badges + cutouts) |
+| Faculty carousel | Complete (transparent profile cutouts) |
+| Results / toppers | Complete (selection/rank icons; solid AIR badge; cutouts) |
 | Blog / insights | Complete (featured + 2-col side grid) |
-| CTA Band | Complete (compact left/right layout) |
-| Pixel-perfect pass vs PNG | Partial — 6px radius, denser spacing, logo webp, photo paths restored; cutout PNGs still pending |
+| CTA Band | Complete (CAT icon + dividers + white secondary CTA) |
+| Pixel-perfect pass vs PNG | Near complete — `.section-header` spacing + badge/contrast polish |
 
 ---
 
@@ -41,17 +41,17 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Section | Status |
 |---------|--------|
-| Category hero | Complete (`/cat`) — Partial on other category routes |
-| Courses overview | Complete (`/cat`) — Not Started elsewhere |
-| Star faculty | Complete (`/cat`) — Not Started elsewhere |
-| Test series promo | Complete (`/cat`) — Not Started elsewhere |
-| Results & toppers | Complete (`/cat`) — Not Started elsewhere |
-| Demo / webinar CTA | Complete (`/cat` resource cards) — Not Started elsewhere |
+| Category hero | Complete (all four via `CategoryHeroSection`; CAT uses premium PNG trust icons) |
+| Courses overview | Complete (all four) |
+| Star faculty | Complete (all four; GDPI faculty added) |
+| Test series promo | Complete (CAT: PNG card icons; others still SVG pending assets) |
+| Results & toppers | Complete (CAT: 2 stats + left icons; all four have toppers) |
+| Demo / webinar CTA | Complete (resource cards on all four) |
 | Testimonials | Not Started |
-| Resources teaser | Complete (`/cat`) — Not Started elsewhere |
-| Category FAQ | Complete (`/cat`) — Not Started elsewhere |
-| SEO intro copy | Partial (`/cat` metadata) |
-| Match `cat landing page Ui.png` | Complete (structure); polish as needed |
+| Resources teaser | Complete (all four) |
+| Category FAQ | Complete (all four; category-specific FAQs) |
+| SEO intro copy | Partial (per-page metadata; longer SEO blocks TBD) |
+| Match `cat landing page Ui.png` | Complete (structure on all four); dedicated hero photos pending for non-CAT |
 
 ---
 
@@ -81,8 +81,11 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Blog listing `/blog` | Not Started | Placeholder (data + BlogCard exist) |
 | Blog detail `/blog/[slug]` | Not Started | Placeholder |
 | Contact `/contact` | Not Started | ContactForm exists; page stub |
-| FAQ `/faq` | Not Started | Accordion exists; content stub |
-| Privacy / Terms / Refund / Disclaimer | Not Started | Placeholders |
+| FAQ `/faq` | Complete | Search + category pills + Accordion + Pagination + CTABand |
+| Privacy `/privacy-policy` | Complete | LegalPageLayout + structured content |
+| Terms `/terms-and-conditions` | Complete | LegalPageLayout + structured content |
+| Refund `/refund-policy` | Complete | LegalPageLayout + structured content |
+| Disclaimer `/disclaimer` | Complete | LegalPageLayout + structured content |
 
 ---
 

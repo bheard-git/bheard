@@ -18,15 +18,14 @@ export function FacultyCard({ faculty, className }: FacultyCardProps) {
         className
       )}
     >
-      <div className="relative w-[42%] min-h-[150px] shrink-0 bg-bg-tertiary">
+      <div className="relative w-[42%] min-h-[150px] shrink-0 bg-transparent">
         <Image
           src={faculty.image || "/assets/images/placeholders/faculty-avatar.svg"}
           alt={faculty.name}
           fill
-          className="object-cover object-top"
+          className="object-contain object-bottom"
           sizes="130px"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-bg-secondary/40" />
       </div>
 
       <div className="relative z-10 flex-1 p-3.5 md:p-4 flex flex-col justify-center text-left min-w-0">

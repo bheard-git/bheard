@@ -1,34 +1,200 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { CategoryHeroSection } from "@/components/sections/CategoryHeroSection";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { CTABand } from "@/components/sections/CTABand";
+import { CourseCard } from "@/components/cards/CourseCard";
+import { FacultyCard } from "@/components/cards/FacultyCard";
+import { TopperCard } from "@/components/cards/TopperCard";
+import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
+import { ResourceCard } from "@/components/cards/ResourceCard";
+import { Carousel } from "@/components/ui/Carousel";
+import { Accordion } from "@/components/ui/Accordion";
+import { getCoursesByCategory } from "@/data/courses";
+import { getFacultyByCategory } from "@/data/faculty";
+import { getResultsByCategory } from "@/data/results";
+import {
+  IPMAT_FAQS,
+  IPMAT_HERO_FEATURES,
+  IPMAT_QUICK_STATS,
+  IPMAT_RESOURCES,
+  IPMAT_RESULT_STATS,
+  IPMAT_TEST_SERIES,
+} from "@/data/ipmat-landing";
+import { EXTERNAL_URLS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "IPMAT Preparation — Rodha",
-  description: "Targeted IPMAT coaching for IIM Indore, Rohtak and other top B-schools. Structured preparation with expert faculty.",
+  description:
+    "Targeted IPMAT coaching for IIM Indore, Rohtak and other top B-schools. Structured preparation with expert faculty.",
 };
 
 export default function IPMATPage() {
+  const ipmatCourses = getCoursesByCategory("ipmat");
+  const ipmatFaculty = getFacultyByCategory("ipmat");
+  const ipmatResults = getResultsByCategory("ipmat");
+  const faqLeft = IPMAT_FAQS.filter((_, i) => i % 2 === 0);
+  const faqRight = IPMAT_FAQS.filter((_, i) => i % 2 === 1);
+
   return (
     <>
-      <HeroSection
-        title={<>Ace <span className="text-gradient-orange">IPMAT</span> on Your First Attempt</>}
-        subtitle="Targeted preparation for IIM Indore & Rohtak's Integrated Programme in Management. Start your MBA journey early."
-      >
-        <a href="#courses" className="btn-primary text-body-lg px-8 py-3">
-          View IPMAT Courses
-        </a>
-        <a href="/contact" className="btn-secondary text-body-lg px-8 py-3">
-          Book Free Demo
-        </a>
-      </HeroSection>
+      <Container>
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "IPMAT" },
+          ]}
+        />
+      </Container>
+
+      <CategoryHeroSection
+        categoryName="IPMAT"
+        headline={
+          <>
+            Ace{" "}
+            <span className="text-orange-500 glow-text-orange">IPMAT</span> on
+            Your First Attempt
+          </>
+        }
+        subtitle="Targeted preparation for IIM Indore & Rohtak's Integrated Programme in Management — with expert mentorship, pattern-matched mocks, and a clear path to your early MBA journey."
+        heroImageSrc="/assets/images/hero/cat-hero.jpg"
+        heroImageAlt="IPMAT aspirant preparing for IIM Indore and Rohtak"
+        features={IPMAT_HERO_FEATURES}
+        quickStats={IPMAT_QUICK_STATS}
+        primaryCta={{ label: "Explore Courses", href: "#courses" }}
+        secondaryCta={{
+          label: "Explore Test Series",
+          href: EXTERNAL_URLS.thinkExam,
+          external: true,
+        }}
+      />
 
       <section id="courses" className="section-spacing">
         <Container>
-          <SectionHeader title="IPMAT Courses" subtitle="Programs designed for the unique IPMAT pattern." />
-          <p className="text-center text-text-dimmed">Course cards coming soon...</p>
+          <SectionHeader
+            title="Our IPMAT Courses"
+            viewAllHref="/ipmat#courses"
+            viewAllLabel="View All Courses"
+            align="left"
+          />
+          <Carousel>
+            {ipmatCourses.map((course) => (
+              <div
+                key={course.id}
+                className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
+              >
+                <CourseCard course={course} className="h-full" />
+              </div>
+            ))}
+          </Carousel>
         </Container>
       </section>
+
+      <section id="faculty" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Star Faculty for IPMAT"
+            viewAllHref="/faculty"
+            viewAllLabel="View All Faculty"
+            align="left"
+          />
+          <Carousel>
+            {ipmatFaculty.map((member) => (
+              <div key={member.id} className="snap-start shrink-0">
+                <FacultyCard faculty={member} className="h-full" />
+              </div>
+            ))}
+          </Carousel>
+        </Container>
+      </section>
+
+      <section id="test-series" className="section-spacing">
+        <Container>
+          <SectionHeader
+            title="IPMAT Test Series"
+            viewAllHref={EXTERNAL_URLS.thinkExam}
+            viewAllLabel="View All Test Series"
+            align="left"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {IPMAT_TEST_SERIES.map((item) => (
+              <TestSeriesCard key={item.id} item={item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="results" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Results That Inspire"
+            viewAllHref="/ipmat#results"
+            viewAllLabel="View All Results"
+            align="left"
+          />
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
+            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center bg-linear-to-br from-bg-secondary to-bg-tertiary border-orange-500/20">
+              {IPMAT_RESULT_STATS.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
+                    {stat.value}
+                    {stat.suffix}
+                  </div>
+                  <p className="mt-2 text-body text-text-muted">{stat.label}</p>
+                  {stat.description && (
+                    <p className="mt-0.5 text-caption text-text-dimmed">
+                      {stat.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <Carousel>
+                {ipmatResults.map((topper) => (
+                  <div key={topper.id} className="snap-start shrink-0">
+                    <TopperCard topper={topper} />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section id="resources" className="section-spacing">
+        <Container>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {IPMAT_RESOURCES.map((item) => (
+              <ResourceCard key={item.id} item={item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="faqs" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="IPMAT FAQs"
+            viewAllHref="/faq"
+            viewAllLabel="View All FAQs"
+            align="left"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 items-start">
+            <Accordion items={faqLeft} iconVariant="plus" />
+            <Accordion items={faqRight} iconVariant="plus" />
+          </div>
+        </Container>
+      </section>
+
+      <CTABand
+        title="Ready to Crack IPMAT 2026?"
+        subtitle="Join thousands of serious aspirants and start your IIM journey early."
+        primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
+        secondaryAction={{ label: "Explore Courses", href: "/ipmat#courses" }}
+      />
     </>
   );
 }

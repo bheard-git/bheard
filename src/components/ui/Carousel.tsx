@@ -85,7 +85,7 @@ export function Carousel({
       <div
         ref={scrollRef}
         className={cn(
-          "flex gap-5 overflow-x-auto scroll-smooth scrollbar-hide pb-2",
+          "flex gap-5 overflow-x-auto scroll-smooth scrollbar-hide py-1.5",
           "snap-x snap-mandatory touch-pan-x",
           itemClassName
         )}

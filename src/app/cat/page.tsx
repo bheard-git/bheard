@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { CATHeroSection } from "@/components/sections/CATHeroSection";
+import { CategoryHeroSection } from "@/components/sections/CategoryHeroSection";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABand } from "@/components/sections/CTABand";
 import { CourseCard } from "@/components/cards/CourseCard";
@@ -16,6 +17,8 @@ import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
 import {
   CAT_FAQS,
+  CAT_HERO_FEATURES,
+  CAT_QUICK_STATS,
   CAT_RESOURCES,
   CAT_RESULT_STATS,
   CAT_TEST_SERIES,
@@ -46,9 +49,27 @@ export default function CATPage() {
         />
       </Container>
 
-      <CATHeroSection />
+      <CategoryHeroSection
+        categoryName="CAT"
+        headline={
+          <>
+            CAT Preparation That Transforms Aspirants into{" "}
+            <span className="text-orange-500 glow-text-orange">Top 1%</span>
+          </>
+        }
+        subtitle="Expert mentorship, proven strategies, and a high-intensity learning system built to help serious aspirants crack CAT and convert top IIMs."
+        heroImageSrc="/assets/images/hero/cat-hero.jpg"
+        heroImageAlt="CAT aspirant preparing for top B-school admissions"
+        features={CAT_HERO_FEATURES}
+        quickStats={CAT_QUICK_STATS}
+        primaryCta={{ label: "Explore Courses", href: "#courses" }}
+        secondaryCta={{
+          label: "Explore Test Series",
+          href: EXTERNAL_URLS.thinkExam,
+          external: true,
+        }}
+      />
 
-      {/* Our CAT Courses */}
       <section id="courses" className="section-spacing">
         <Container>
           <SectionHeader
@@ -70,7 +91,6 @@ export default function CATPage() {
         </Container>
       </section>
 
-      {/* Star Faculty for CAT */}
       <section id="faculty" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader
@@ -89,7 +109,6 @@ export default function CATPage() {
         </Container>
       </section>
 
-      {/* CAT Test Series */}
       <section id="test-series" className="section-spacing">
         <Container>
           <SectionHeader
@@ -106,7 +125,6 @@ export default function CATPage() {
         </Container>
       </section>
 
-      {/* Results That Inspire */}
       <section id="results" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader
@@ -116,21 +134,32 @@ export default function CATPage() {
             align="left"
           />
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
-            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center bg-linear-to-br from-bg-secondary to-bg-tertiary border-orange-500/20">
-              {CAT_RESULT_STATS.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
-                    {stat.value}
-                    {stat.suffix}
+            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center rounded-[6px] bg-linear-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35">
+              {CAT_RESULT_STATS.map((stat) => {
+                const iconSrc =
+                  stat.label === "Selections"
+                    ? "/assets/images/icons/selection.png"
+                    : "/assets/images/icons/rank.png";
+
+                return (
+                  <div key={stat.label} className="flex items-start gap-3">
+                    <Image
+                      src={iconSrc}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 object-contain shrink-0 mt-0.5"
+                    />
+                    <div>
+                      <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
+                        {stat.value}
+                        {stat.suffix}
+                      </div>
+                      <p className="mt-2 text-body text-text-muted">{stat.label}</p>
+                    </div>
                   </div>
-                  <p className="mt-2 text-body text-text-muted">{stat.label}</p>
-                  {stat.description && (
-                    <p className="mt-0.5 text-caption text-text-dimmed">
-                      {stat.description}
-                    </p>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="flex-1 min-w-0">
@@ -146,7 +175,6 @@ export default function CATPage() {
         </Container>
       </section>
 
-      {/* Resource Cards */}
       <section id="resources" className="section-spacing">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -157,7 +185,6 @@ export default function CATPage() {
         </Container>
       </section>
 
-      {/* CAT FAQs */}
       <section id="faqs" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader

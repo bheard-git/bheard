@@ -14,6 +14,38 @@ Format:
 
 ---
 
+### 2026-07-14 — FAQ listing + shared LegalPageLayout
+- **Decision:** Build global FAQ as a client island (`FAQClient`) with search, category pills, Accordion, and Pagination over `src/data/faq.ts`. Implement all four legal routes via one Server Component `LegalPageLayout` fed by structured `src/data/legal.ts`.
+- **Rationale:** Scope requires categorized searchable FAQs plus title/date/structured legal content and grievance contact; shared legal shell avoids four near-duplicate layouts and keeps content CMS-ready.
+- **Alternatives considered:** Inline FAQ filters in the page file; hardcode legal JSX per route.
+- **Consequences:** `/faq` and legal routes match homepage dark/orange tokens; CTABand secondary supports external HTTP links (Rodha Buddy) in a new tab.
+
+---
+
+### 2026-07-14 — Section header spacing + CAT premium PNG icons
+- **Decision:** Add shared `.section-header` utility (24px / 30px mb, +50% vs original `mb-4`/`md:mb-5`); restore stock JPG hero trust avatars; flat solid badges with white text; switch CAT hero trust, quick-stats, and test-series to premium PNG icons; trim CAT results to 2 stats with left-aligned selection/rank images.
+- **Rationale:** User corrected title spacing direction and required non-SVG orange/white premium icons on the CAT landing plus contrast-safe course badges.
+- **Alternatives considered:** Keep reduced header gap; leave SVG Icon chips on category hero.
+- **Consequences:** Spacing is consistent site-wide via one class; CAT landing visual language matches homepage results icons; other category landings still use SVG until their assets arrive.
+
+---
+
+### 2026-07-14 — Generalized CategoryHeroSection for all exam landings
+- **Decision:** Replace `CATHeroSection` with reusable `CategoryHeroSection` (props for headline, image, features, stats, CTAs). Move shared landing types (`CategoryHeroFeature`, `CategoryQuickStat`, `TestSeriesItem`, `ResourceItem`, `FaqItem`) to `src/lib/types.ts`. Add `clat-landing.ts`, `gdpi-landing.ts`, `ipmat-landing.ts` mirroring `cat-landing.ts`.
+- **Rationale:** All four category landings share the same section structure; only copy/stats/FAQs differ. One hero component avoids three near-duplicates.
+- **Alternatives considered:** Clone `CATHeroSection` per category; keep types in `cat-landing.ts` and re-export.
+- **Consequences:** `/cat`, `/ipmat`, `/gdpi`, `/clat` stay in sync structurally; non-CAT pages temporarily reuse `cat-hero.jpg` with category overlay text until dedicated hero assets arrive.
+
+---
+
+### 2026-07-14 — Homepage UI: profile cutouts + exam/course/footer polish
+- **Decision:** Ship transparent profile PNGs under `public/assets/images/profiles/`; verticalize ExamCard stats; category-tinted CourseCard backgrounds with white text; solid orange AIR badge; results selection/rank icons; brand-left/links-right footer; CAT-icon CTA band with white secondary button.
+- **Rationale:** User requested these homepage refinements against reference assets; cutouts unblock Course/Faculty/Results fidelity.
+- **Alternatives considered:** Keep JPG placeholders; leave CourseCards border-only.
+- **Consequences:** Homepage photography gap closed for mock profiles; reusable cards now expect cutout-friendly `object-contain`.
+
+---
+
 ### 2026-07-14 — Homepage visual QA: 6px radius + denser spacing + logo webp
 - **Decision:** Standardize interactive surfaces to ~6px radius; cut `.section-spacing` by ~50%; ship official `rodha-logo.webp`; keep using existing faculty/student JPGs until transparent PNG cutouts are delivered.
 - **Rationale:** Approved homepage mock uses subtle corners and compact vertical rhythm; prior pass left 8–14px radii and excess padding.

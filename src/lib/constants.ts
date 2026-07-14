@@ -153,9 +153,24 @@ export const NAV_ITEMS = {
 } as const;
 
 export const TRUST_METRICS: TrustMetric[] = [
-  { id: "students", value: "2,50,000+", label: "Students Enrolled", icon: "users" },
-  { id: "rating", value: "4.8/5", label: "Google Rating", icon: "star" },
-  { id: "selections", value: "10,000+", label: "Selections", icon: "check" },
+  {
+    id: "students",
+    value: "2,50,000+",
+    label: "Students Enrolled",
+    icon: "/assets/images/icons/selection.png",
+  },
+  {
+    id: "rating",
+    value: "4.8/5",
+    label: "Google Rating",
+    icon: "/assets/images/icons/rank.png",
+  },
+  {
+    id: "selections",
+    value: "10,000+",
+    label: "Selections",
+    icon: "/assets/images/icons/selection.png",
+  },
 ];
 
 export const HERO_FEATURES: HeroFeature[] = [
@@ -163,25 +178,25 @@ export const HERO_FEATURES: HeroFeature[] = [
     id: "faculty",
     title: "Top Faculty",
     subtitle: "Learn from Experts",
-    icon: "/assets/icons/faculty.svg",
+    icon: "/assets/images/icons/rank.png",
   },
   {
     id: "ai-buddy",
     title: "AI Buddy",
     subtitle: "24/7 Doubt Support",
-    icon: "/assets/icons/ai-buddy.svg",
+    icon: "/assets/images/icons/ts-mocks.png",
   },
   {
     id: "practice",
     title: "Real Exam Practice",
     subtitle: "High Quality Mocks",
-    icon: "/assets/icons/practice.svg",
+    icon: "/assets/images/icons/ts-sectional.png",
   },
   {
     id: "guidance",
     title: "Personalized Guidance",
     subtitle: "For Your Success",
-    icon: "/assets/icons/guidance.svg",
+    icon: "/assets/images/icons/selection.png",
   },
 ];
 

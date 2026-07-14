@@ -1,97 +1,66 @@
-import type { ResultStat } from "@/lib/types";
+import type {
+  CategoryHeroFeature,
+  CategoryQuickStat,
+  FaqItem,
+  ResourceItem,
+  ResultStat,
+  TestSeriesItem,
+} from "@/lib/types";
 import { EXTERNAL_URLS } from "@/lib/constants";
 
-export interface CatHeroFeature {
-  id: string;
-  label: string;
-  icon: string;
-}
-
-export interface CatStat {
-  id: string;
-  value: string;
-  label: string;
-  icon: string;
-}
-
-export interface TestSeriesItem {
-  id: string;
-  title: string;
-  description: string;
-  features: string[];
-  href: string;
-  icon: string;
-}
-
-export interface ResourceItem {
-  id: string;
-  title: string;
-  description: string;
-  ctaLabel: string;
-  href: string;
-  icon: string;
-  highlighted?: boolean;
-}
-
-export interface FaqItem {
-  id: string;
-  question: string;
-  answer: string;
-}
-
-export const CAT_HERO_FEATURES: CatHeroFeature[] = [
+export const CAT_HERO_FEATURES: CategoryHeroFeature[] = [
   {
     id: "live-classes",
     label: "150+ Hours Live Classes",
-    icon: "/assets/icons/video.svg",
+    icon: "/assets/images/icons/ts-mini-mocks.png",
   },
   {
     id: "practice",
     label: "5000+ Practice Questions",
-    icon: "/assets/icons/book.svg",
+    icon: "/assets/images/icons/ts-topic.png",
   },
   {
     id: "mocks",
     label: "50+ Full Length Mock Tests",
-    icon: "/assets/icons/practice.svg",
+    icon: "/assets/images/icons/ts-mocks.png",
   },
   {
     id: "mentorship",
     label: "Personalised Mentorship",
-    icon: "/assets/icons/mentorship.svg",
+    icon: "/assets/images/icons/selection.png",
   },
 ];
 
-export const CAT_QUICK_STATS: CatStat[] = [
+export const CAT_QUICK_STATS: CategoryQuickStat[] = [
   {
     id: "selections",
     value: "10,000+",
     label: "Selections",
-    icon: "/assets/icons/result-oriented.svg",
+    icon: "/assets/images/icons/selection.png",
   },
   {
     id: "iim-calls",
     value: "250+",
     label: "IIM Calls in 2024",
-    icon: "/assets/icons/check.svg",
+    icon: "/assets/images/icons/CAT-icon.png",
   },
   {
     id: "satisfaction",
     value: "98.7%",
     label: "Student Satisfaction",
-    icon: "/assets/icons/heart.svg",
+    icon: "/assets/images/icons/ts-mocks.png",
   },
   {
     id: "excellence",
     value: "15+",
     label: "Years Of Excellence",
-    icon: "/assets/icons/star.svg",
+    icon: "/assets/images/icons/rank.png",
   },
   {
     id: "rating",
     value: "4.8/5",
     label: "Google Rating",
-    icon: "/assets/icons/star.svg",
+    icon: "/assets/images/icons/cat-icon-3d.png",
   },
 ];
 
@@ -100,19 +69,11 @@ export const CAT_RESULT_STATS: ResultStat[] = [
     label: "Selections",
     value: "10,000",
     suffix: "+",
-    description: "across all CAT batches",
   },
   {
     label: "Top 100 Ranks",
     value: "250",
     suffix: "+",
-    description: "in the last 3 years",
-  },
-  {
-    label: "IIM Calls in 2024",
-    value: "1,200",
-    suffix: "+",
-    description: "from Rodha aspirants",
   },
 ];
 
@@ -123,7 +84,7 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
     description: "Full-length mocks designed to mirror the real CAT exam experience.",
     features: ["20+ Full Length Mocks", "Detailed Analytics", "All-India Percentile"],
     href: EXTERNAL_URLS.thinkExam,
-    icon: "/assets/icons/test-series.svg",
+    icon: "/assets/images/icons/ts-mocks.png",
   },
   {
     id: "sectional-tests",
@@ -131,7 +92,7 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
     description: "Sharpen QA, VARC & DILR with focused sectional practice.",
     features: ["60+ Sectional Tests", "Timed Practice", "Topic Weightage Maps"],
     href: EXTERNAL_URLS.thinkExam,
-    icon: "/assets/icons/practice.svg",
+    icon: "/assets/images/icons/ts-sectional.png",
   },
   {
     id: "topic-tests",
@@ -139,7 +100,7 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
     description: "Build depth with micro-tests after every concept class.",
     features: ["200+ Topic Tests", "Instant Solutions", "Weak Area Tracking"],
     href: EXTERNAL_URLS.thinkExam,
-    icon: "/assets/icons/book.svg",
+    icon: "/assets/images/icons/ts-topic.png",
   },
   {
     id: "mini-mocks",
@@ -147,7 +108,7 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
     description: "Quick 30–45 min simulations for daily exam stamina.",
     features: ["40+ Mini Mocks", "Speed Drills", "Smart Revision Sets"],
     href: EXTERNAL_URLS.thinkExam,
-    icon: "/assets/icons/clock.svg",
+    icon: "/assets/images/icons/ts-mini-mocks.png",
   },
 ];
 

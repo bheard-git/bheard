@@ -391,9 +391,21 @@
   .badge-base {
     display: inline-flex;
     align-items: center;
-    font-weight: 500;
-    border-radius: 9999px;
+    justify-content: center;
+    height: 1.375rem;
+    padding: 0 0.5rem;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 4px;
     white-space: nowrap;
+  }
+
+  /* 25px gap below every section title */
+  .section-header {
+    margin-bottom: 25px;
   }
 
   .animate-shimmer {

@@ -1,16 +1,17 @@
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-orange-500/15 text-orange-400 border-orange-500/20",
-  success: "bg-accent-green/15 text-accent-green border-accent-green/20",
-  danger: "bg-accent-red/15 text-accent-red border-accent-red/20",
-  info: "bg-accent-blue/15 text-accent-blue border-accent-blue/20",
-  default: "bg-bg-surface text-text-muted border-border-default",
+  primary: "bg-orange-500 text-white border border-orange-500",
+  success: "bg-accent-green text-white border border-accent-green",
+  danger: "bg-accent-red text-white border border-accent-red",
+  info: "bg-accent-blue text-white border border-accent-blue",
+  default: "bg-bg-primary/80 text-orange-400 border border-orange-500/30",
+  outline: "bg-bg-primary/80 text-orange-400 border border-orange-500/30",
 } as const;
 
 const sizes = {
-  sm: "px-2 py-0.5 text-[10px]",
-  md: "px-2.5 py-1 text-caption",
+  sm: "",
+  md: "h-6 px-2.5 text-[11px]",
 } as const;
 
 interface BadgeProps {
@@ -20,16 +21,14 @@ interface BadgeProps {
   className?: string;
 }
 
-export function Badge({ children, variant = "default", size = "md", className }: BadgeProps) {
+export function Badge({
+  children,
+  variant = "default",
+  size = "sm",
+  className,
+}: BadgeProps) {
   return (
-    <span
-      className={cn(
-        "badge-base border",
-        variants[variant],
-        sizes[size],
-        className
-      )}
-    >
+    <span className={cn("badge-base", variants[variant], sizes[size], className)}>
       {children}
     </span>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Icon } from "@/components/ui/Icon";
-import type { TestSeriesItem } from "@/data/cat-landing";
+import type { TestSeriesItem } from "@/lib/types";
 
 interface TestSeriesCardProps {
   item: TestSeriesItem;
@@ -21,8 +21,14 @@ export function TestSeriesCard({ item, className }: TestSeriesCardProps) {
         className
       )}
     >
-      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-orange-400">
-        <Icon src={item.icon} size={26} />
+      <div className="relative w-12 h-12 md:w-14 md:h-14 shrink-0">
+        <Image
+          src={item.icon}
+          alt=""
+          fill
+          className="object-contain"
+          sizes="56px"
+        />
       </div>
 
       <h3 className="mt-5 text-h4 font-semibold text-text-primary">{item.title}</h3>

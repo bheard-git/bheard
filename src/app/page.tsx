@@ -9,6 +9,7 @@ import { FacultyCard } from "@/components/cards/FacultyCard";
 import { TopperCard } from "@/components/cards/TopperCard";
 import { BlogCard } from "@/components/cards/BlogCard";
 import { Carousel } from "@/components/ui/Carousel";
+import Image from "next/image";
 import { CATEGORIES, VALUE_PROPS, RESULT_STATS } from "@/lib/constants";
 import { getFeaturedCourses } from "@/data/courses";
 import { faculty } from "@/data/faculty";
@@ -120,21 +121,32 @@ export default function HomePage() {
             align="left"
           />
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
-            <div className="card-base shrink-0 lg:w-[210px] xl:w-[230px] p-5 md:p-6 flex flex-row lg:flex-col gap-5 lg:gap-7 justify-center rounded-[6px] bg-gradient-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35">
-              {RESULT_STATS.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-[30px] md:text-[34px] font-bold text-orange-500 leading-none glow-text-orange">
-                    {stat.value}
-                    {stat.suffix}
+          <div className="card-base shrink-0 lg:w-[210px] xl:w-[230px] p-5 md:p-6 flex flex-row lg:flex-col gap-5 lg:gap-7 justify-center rounded-[6px] bg-gradient-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35">
+              {RESULT_STATS.map((stat) => {
+                const iconSrc =
+                  stat.label === "Selections"
+                    ? "/assets/images/icons/selection.png"
+                    : "/assets/images/icons/rank.png";
+
+                return (
+                  <div key={stat.label} className="flex items-start gap-3">
+                    <Image
+                      src={iconSrc}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 object-contain shrink-0 mt-0.5"
+                    />
+                    <div>
+                      <div className="text-[30px] md:text-[34px] font-bold text-orange-500 leading-none glow-text-orange">
+                        {stat.value}
+                        {stat.suffix}
+                      </div>
+                      <p className="mt-1.5 text-body text-text-muted">{stat.label}</p>
+                    </div>
                   </div>
-                  <p className="mt-1.5 text-body text-text-muted">{stat.label}</p>
-                  {stat.description && (
-                    <p className="mt-0.5 text-caption text-text-dimmed">
-                      {stat.description}
-                    </p>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="flex-1 min-w-0">

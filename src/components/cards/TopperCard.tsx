@@ -19,13 +19,13 @@ export function TopperCard({ topper, className }: TopperCardProps) {
         src={topper.image || "/assets/images/placeholders/topper-photo.svg"}
         alt={topper.name}
         fill
-        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        className="object-contain object-bottom group-hover:scale-105 transition-transform duration-500"
         sizes="180px"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-transparent" />
 
       <div className="absolute top-3 left-3 z-10 text-left">
-        <span className="inline-flex items-center px-1.5 py-0.5 rounded-[4px] text-[10px] font-bold uppercase tracking-wide bg-bg-primary/90 border border-orange-500/40 text-orange-400">
+        <span className="inline-flex items-center px-2 py-0.5 rounded-[4px] text-[10px] font-bold uppercase tracking-wide bg-orange-500 text-white shadow-orange">
           AIR
         </span>
         <div className="mt-1.5 text-[34px] font-bold text-orange-500 leading-none tabular-nums">

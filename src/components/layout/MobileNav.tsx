@@ -4,9 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { CATEGORIES, EXTERNAL_URLS, HEADER_NAV } from "@/lib/constants";
+import type { CategoryId } from "@/lib/types";
 
-export function MobileNav() {
+interface MobileNavProps {
+  activeCategoryId?: CategoryId | null;
+}
+
+export function MobileNav({ activeCategoryId = null }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const activeCategory = CATEGORIES.find((cat) => cat.id === activeCategoryId);
 
   return (
     <div className="lg:hidden">
@@ -34,18 +40,24 @@ export function MobileNav() {
       >
         <nav className="flex flex-col p-6 space-y-1">
           <p className="text-caption text-text-dimmed uppercase tracking-wider mb-2">
-            Choose your exam
+            {activeCategory ? `Exam: ${activeCategory.name}` : "Choose your exam"}
           </p>
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/${cat.slug}`}
-              onClick={() => setIsOpen(false)}
-              className="block py-2.5 text-body font-medium text-text-primary hover:text-orange-400 transition-colors"
-            >
-              {cat.name}
-            </Link>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const isActive = cat.id === activeCategoryId;
+            return (
+              <Link
+                key={cat.id}
+                href={`/${cat.slug}`}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "block py-2.5 text-body font-medium transition-colors",
+                  isActive ? "text-orange-400" : "text-text-primary hover:text-orange-400"
+                )}
+              >
+                {cat.name}
+              </Link>
+            );
+          })}
 
           <div className="border-t border-border-default my-4" />
 

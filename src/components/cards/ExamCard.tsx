@@ -65,7 +65,7 @@ export function ExamCard({ category, className }: ExamCardProps) {
           {category.description}
         </p>
 
-        <div className="mt-auto pt-5 flex items-center gap-4">
+        <div className="mt-auto pt-5 flex flex-col gap-2">
           <div className="flex items-center gap-1.5 text-caption text-text-primary/90">
             <span style={{ color: accent }}>
               <Icon src="/assets/icons/book.svg" size={14} />

@@ -1,34 +1,199 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { CategoryHeroSection } from "@/components/sections/CategoryHeroSection";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { CTABand } from "@/components/sections/CTABand";
+import { CourseCard } from "@/components/cards/CourseCard";
+import { FacultyCard } from "@/components/cards/FacultyCard";
+import { TopperCard } from "@/components/cards/TopperCard";
+import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
+import { ResourceCard } from "@/components/cards/ResourceCard";
+import { Carousel } from "@/components/ui/Carousel";
+import { Accordion } from "@/components/ui/Accordion";
+import { getCoursesByCategory } from "@/data/courses";
+import { getFacultyByCategory } from "@/data/faculty";
+import { getResultsByCategory } from "@/data/results";
+import {
+  GDPI_FAQS,
+  GDPI_HERO_FEATURES,
+  GDPI_QUICK_STATS,
+  GDPI_RESOURCES,
+  GDPI_RESULT_STATS,
+  GDPI_TEST_SERIES,
+} from "@/data/gdpi-landing";
+import { EXTERNAL_URLS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "GDPI Preparation — Rodha",
-  description: "GDPI preparation to ace your B-school selection process. Mock GDs, interview practice, and expert feedback.",
+  description:
+    "GDPI preparation to ace your B-school selection process. Mock GDs, interview practice, and expert feedback.",
 };
 
 export default function GDPIPage() {
+  const gdpiCourses = getCoursesByCategory("gdpi");
+  const gdpiFaculty = getFacultyByCategory("gdpi");
+  const gdpiResults = getResultsByCategory("gdpi");
+  const faqLeft = GDPI_FAQS.filter((_, i) => i % 2 === 0);
+  const faqRight = GDPI_FAQS.filter((_, i) => i % 2 === 1);
+
   return (
     <>
-      <HeroSection
-        title={<>Convert Your <span className="text-gradient-orange">GDPI</span> Calls</>}
-        subtitle="Master Group Discussions and Personal Interviews with mock sessions, expert feedback, and proven frameworks."
-      >
-        <a href="#courses" className="btn-primary text-body-lg px-8 py-3">
-          View GDPI Courses
-        </a>
-        <a href="/contact" className="btn-secondary text-body-lg px-8 py-3">
-          Book Free Demo
-        </a>
-      </HeroSection>
+      <Container>
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "GDPI" },
+          ]}
+        />
+      </Container>
+
+      <CategoryHeroSection
+        categoryName="GDPI"
+        headline={
+          <>
+            Convert Your Interview Calls into{" "}
+            <span className="text-orange-500 glow-text-orange">Dream Offers</span>
+          </>
+        }
+        subtitle="Master Group Discussions, Personal Interviews, and WAT with mock sessions, expert panel feedback, and proven frameworks for top B-school conversions."
+        heroImageSrc="/assets/images/hero/cat-hero.jpg"
+        heroImageAlt="GDPI aspirant preparing for B-school interviews"
+        features={GDPI_HERO_FEATURES}
+        quickStats={GDPI_QUICK_STATS}
+        primaryCta={{ label: "Explore Courses", href: "#courses" }}
+        secondaryCta={{
+          label: "Explore Test Series",
+          href: EXTERNAL_URLS.thinkExam,
+          external: true,
+        }}
+      />
 
       <section id="courses" className="section-spacing">
         <Container>
-          <SectionHeader title="GDPI Courses" subtitle="Prepare for the final step of your B-school admission." />
-          <p className="text-center text-text-dimmed">Course cards coming soon...</p>
+          <SectionHeader
+            title="Our GDPI Courses"
+            viewAllHref="/gdpi#courses"
+            viewAllLabel="View All Courses"
+            align="left"
+          />
+          <Carousel>
+            {gdpiCourses.map((course) => (
+              <div
+                key={course.id}
+                className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
+              >
+                <CourseCard course={course} className="h-full" />
+              </div>
+            ))}
+          </Carousel>
         </Container>
       </section>
+
+      <section id="faculty" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Star Faculty for GDPI"
+            viewAllHref="/faculty"
+            viewAllLabel="View All Faculty"
+            align="left"
+          />
+          <Carousel>
+            {gdpiFaculty.map((member) => (
+              <div key={member.id} className="snap-start shrink-0">
+                <FacultyCard faculty={member} className="h-full" />
+              </div>
+            ))}
+          </Carousel>
+        </Container>
+      </section>
+
+      <section id="test-series" className="section-spacing">
+        <Container>
+          <SectionHeader
+            title="GDPI Practice Series"
+            viewAllHref={EXTERNAL_URLS.thinkExam}
+            viewAllLabel="View All Test Series"
+            align="left"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {GDPI_TEST_SERIES.map((item) => (
+              <TestSeriesCard key={item.id} item={item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="results" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Results That Inspire"
+            viewAllHref="/gdpi#results"
+            viewAllLabel="View All Results"
+            align="left"
+          />
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
+            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center bg-linear-to-br from-bg-secondary to-bg-tertiary border-orange-500/20">
+              {GDPI_RESULT_STATS.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
+                    {stat.value}
+                    {stat.suffix}
+                  </div>
+                  <p className="mt-2 text-body text-text-muted">{stat.label}</p>
+                  {stat.description && (
+                    <p className="mt-0.5 text-caption text-text-dimmed">
+                      {stat.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <Carousel>
+                {gdpiResults.map((topper) => (
+                  <div key={topper.id} className="snap-start shrink-0">
+                    <TopperCard topper={topper} />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section id="resources" className="section-spacing">
+        <Container>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {GDPI_RESOURCES.map((item) => (
+              <ResourceCard key={item.id} item={item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="faqs" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="GDPI FAQs"
+            viewAllHref="/faq"
+            viewAllLabel="View All FAQs"
+            align="left"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 items-start">
+            <Accordion items={faqLeft} iconVariant="plus" />
+            <Accordion items={faqRight} iconVariant="plus" />
+          </div>
+        </Container>
+      </section>
+
+      <CTABand
+        title="Ready to Ace Your GDPI 2026?"
+        subtitle="Join thousands of serious aspirants and convert your calls into dream B-school offers."
+        primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
+        secondaryAction={{ label: "Explore Courses", href: "/gdpi#courses" }}
+      />
     </>
   );
 }

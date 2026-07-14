@@ -3,19 +3,36 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { CATEGORIES, EXTERNAL_URLS, HEADER_NAV } from "@/lib/constants";
+import type { CategoryId } from "@/lib/types";
 import { MobileNav } from "./MobileNav";
 
 interface HeaderProps {
   className?: string;
 }
 
+function getActiveCategoryId(pathname: string): CategoryId | null {
+  const segment = pathname.split("/").filter(Boolean)[0];
+  if (!segment) return null;
+  const match = CATEGORIES.find((cat) => cat.slug === segment);
+  return match?.id ?? null;
+}
+
 export function Header({ className }: HeaderProps) {
+  const pathname = usePathname();
+  const activeCategoryId = getActiveCategoryId(pathname);
+  const activeCategory = CATEGORIES.find((cat) => cat.id === activeCategoryId);
+
   const [examOpen, setExamOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const examRef = useRef<HTMLDivElement>(null);
   const resourcesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setExamOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -29,6 +46,8 @@ export function Header({ className }: HeaderProps) {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  const examTriggerLabel = activeCategory?.name ?? "Choose your exam";
 
   return (
     <header
@@ -53,11 +72,21 @@ export function Header({ className }: HeaderProps) {
           <div ref={examRef} className="relative hidden lg:block">
             <button
               onClick={() => setExamOpen(!examOpen)}
-              className="flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium text-text-primary border border-white/30 rounded-[6px] bg-bg-tertiary hover:border-orange-500/60 hover:text-orange-400 transition-colors whitespace-nowrap"
+              aria-expanded={examOpen}
+              aria-haspopup="listbox"
+              className={cn(
+                "flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
+                activeCategory
+                  ? "text-orange-400 border-orange-500/60"
+                  : "text-text-primary border-white/30 hover:border-orange-500/60 hover:text-orange-400"
+              )}
             >
-              Choose your exam
+              {examTriggerLabel}
               <svg
-                className={cn("h-3.5 w-3.5 text-text-secondary transition-transform", examOpen && "rotate-180")}
+                className={cn(
+                  "h-3.5 w-3.5 text-text-secondary transition-transform",
+                  examOpen && "rotate-180"
+                )}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -67,20 +96,33 @@ export function Header({ className }: HeaderProps) {
               </svg>
             </button>
             {examOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50">
-                {CATEGORIES.map((cat) => (
-                  <Link
-                    key={cat.id}
-                    href={`/${cat.slug}`}
-                    onClick={() => setExamOpen(false)}
-                    className="block px-4 py-2.5 text-body-sm text-text-secondary hover:bg-bg-hover hover:text-orange-400 transition-colors"
-                  >
-                    <span className="font-semibold">{cat.name}</span>
-                    <span className="block text-caption text-text-dimmed mt-0.5">
-                      {cat.fullName}
-                    </span>
-                  </Link>
-                ))}
+              <div
+                role="listbox"
+                className="absolute top-full left-0 mt-2 w-56 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50"
+              >
+                {CATEGORIES.map((cat) => {
+                  const isActive = cat.id === activeCategoryId;
+                  return (
+                    <Link
+                      key={cat.id}
+                      href={`/${cat.slug}`}
+                      role="option"
+                      aria-selected={isActive}
+                      onClick={() => setExamOpen(false)}
+                      className={cn(
+                        "block px-4 py-2.5 text-body-sm transition-colors",
+                        isActive
+                          ? "bg-orange-500/10 text-orange-400"
+                          : "text-text-secondary hover:bg-bg-hover hover:text-orange-400"
+                      )}
+                    >
+                      <span className="font-semibold">{cat.name}</span>
+                      <span className="block text-caption text-text-dimmed mt-0.5">
+                        {cat.fullName}
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -97,7 +139,10 @@ export function Header({ className }: HeaderProps) {
                   >
                     {item.label}
                     <svg
-                      className={cn("h-3 w-3 transition-transform", resourcesOpen && "rotate-180")}
+                      className={cn(
+                        "h-3 w-3 transition-transform",
+                        resourcesOpen && "rotate-180"
+                      )}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -169,7 +214,7 @@ export function Header({ className }: HeaderProps) {
           </a>
         </div>
 
-        <MobileNav />
+        <MobileNav activeCategoryId={activeCategoryId} />
       </div>
     </header>
   );

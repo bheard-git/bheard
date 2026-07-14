@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { HERO_FEATURES, TRUST_METRICS } from "@/lib/constants";
-import { Icon } from "@/components/ui/Icon";
 
 interface HeroSectionProps {
   title?: React.ReactNode;
@@ -114,9 +113,15 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
                       ))}
                     </div>
                   ) : (
-                    <span className="shrink-0 text-orange-500">
-                      <HeroIcon name={metric.icon} />
-                    </span>
+                    <div className="relative w-8 h-8 shrink-0">
+                      <Image
+                        src={metric.icon}
+                        alt=""
+                        fill
+                        className="object-contain"
+                        sizes="32px"
+                      />
+                    </div>
                   )}
                   <div>
                     <div className="text-body-sm font-bold text-text-primary leading-none">
@@ -138,8 +143,14 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
                   key={feature.id}
                   className="flex items-center gap-3 px-3 py-2.5 rounded-[6px] bg-bg-tertiary/75 backdrop-blur-md border border-white/10 shadow-md hover:border-orange-500/40 transition-all"
                 >
-                  <div className="shrink-0 text-orange-400">
-                    <Icon src={feature.icon} size={22} />
+                  <div className="relative w-9 h-9 shrink-0">
+                    <Image
+                      src={feature.icon}
+                      alt=""
+                      fill
+                      className="object-contain"
+                      sizes="36px"
+                    />
                   </div>
                   <div>
                     <div className="text-body-sm font-semibold text-text-primary leading-tight">
@@ -159,9 +170,15 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
                   key={feature.id}
                   className="flex items-center gap-2 px-2.5 py-2.5 rounded-[6px] bg-bg-tertiary/80 backdrop-blur-md border border-white/10"
                 >
-                  <span className="shrink-0 text-orange-400">
-                    <Icon src={feature.icon} size={18} />
-                  </span>
+                  <div className="relative w-7 h-7 shrink-0">
+                    <Image
+                      src={feature.icon}
+                      alt=""
+                      fill
+                      className="object-contain"
+                      sizes="28px"
+                    />
+                  </div>
                   <div>
                     <div className="text-caption font-semibold text-text-primary leading-tight">
                       {feature.title}
@@ -175,29 +192,5 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroIcon({ name }: { name: string }) {
-  if (name === "star") {
-    return (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    );
-  }
-  if (name === "check") {
-    return (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    );
-  }
-  return (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
-    </svg>
   );
 }

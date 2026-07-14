@@ -157,3 +157,41 @@ export interface TrustMetric {
   label: string;
   icon: string;
 }
+
+export interface CategoryHeroFeature {
+  id: string;
+  label: string;
+  icon: string;
+}
+
+export interface CategoryQuickStat {
+  id: string;
+  value: string;
+  label: string;
+  icon: string;
+}
+
+export interface TestSeriesItem {
+  id: string;
+  title: string;
+  description: string;
+  features: string[];
+  href: string;
+  icon: string;
+}
+
+export interface ResourceItem {
+  id: string;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  href: string;
+  icon: string;
+  highlighted?: boolean;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}

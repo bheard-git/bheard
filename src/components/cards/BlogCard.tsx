@@ -29,21 +29,11 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10" />
 
-      {featured && (
-        <div className="absolute top-3 left-3 z-10">
-          <Badge variant="danger" size="sm">
-            Featured
-          </Badge>
-        </div>
-      )}
-
-      {!featured && (
-        <div className="absolute top-3 left-3 z-10">
-          <span className="inline-flex px-2 py-0.5 rounded-[4px] text-[10px] font-semibold uppercase tracking-wide bg-bg-primary/80 text-orange-400 border border-orange-500/30">
-            {post.category}
-          </span>
-        </div>
-      )}
+      <div className="absolute top-3 left-3 z-10">
+        <Badge variant={featured ? "primary" : "outline"} size="sm">
+          {featured ? "Featured" : post.category}
+        </Badge>
+      </div>
 
       <div className="absolute bottom-0 left-0 right-0 p-3.5 md:p-4 z-10 text-left">
         <div className="flex items-center gap-2 text-caption text-text-secondary">

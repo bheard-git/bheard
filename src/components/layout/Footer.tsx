@@ -55,7 +55,7 @@ function FooterColumn({
   links: { label: string; href: string }[];
 }) {
   return (
-    <div>
+    <div className="text-left lg:text-right">
       <h4 className="text-body font-semibold text-text-primary mb-4">{title}</h4>
       <ul className="space-y-2.5">
         {links.map((item) => (
@@ -79,8 +79,8 @@ export function Footer() {
   return (
     <footer className="bg-bg-secondary border-t border-border-default relative">
       <div className="container-rodha py-8 md:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 lg:gap-6">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-2 text-left">
             <Link href="/" className="inline-block">
               <Image
                 src="/assets/images/rodha-logo.webp"
@@ -100,7 +100,7 @@ export function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
+                  className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
                   aria-label={link.platform}
                 >
                   <Icon
@@ -130,15 +130,10 @@ export function Footer() {
           <p className="text-caption text-text-dimmed">
             &copy; {currentYear} {SITE_NAME}. All rights reserved.
           </p>
-          <p className="text-caption text-text-dimmed flex items-center gap-1">
-            Made with{" "}
-            <Icon src="/assets/icons/heart.svg" size={12} className="text-accent-red" />{" "}
-            for aspirants
-          </p>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="absolute right-4 md:static md:ml-2 w-9 h-9 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
+            className="absolute right-4 md:static md:ml-2 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
             aria-label="Scroll to top"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

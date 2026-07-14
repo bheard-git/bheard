@@ -23,7 +23,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "mb-4 md:mb-5",
+        "section-header",
         align === "center" && "text-center",
         viewAllHref && align === "left" && "flex items-end justify-between gap-4",
         className

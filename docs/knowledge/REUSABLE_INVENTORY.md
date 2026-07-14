@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-14
+**Last updated:** 2026-07-14 (FAQ listing + LegalPageLayout)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -42,9 +42,10 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 
 | Component | File |
 |-----------|------|
-| CATHeroSection | `CATHeroSection.tsx` |
+| CategoryHeroSection | `CategoryHeroSection.tsx` |
 | CTABand | `CTABand.tsx` |
 | HeroSection | `HeroSection.tsx` |
+| LegalPageLayout | `LegalPageLayout.tsx` |
 | SectionHeader | `SectionHeader.tsx` |
 | TrustBar | `TrustBar.tsx` |
 
@@ -91,8 +92,13 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 |--------|------|
 | blog | `blog.ts` |
 | cat-landing | `cat-landing.ts` |
+| clat-landing | `clat-landing.ts` |
 | courses | `courses.ts` |
 | faculty | `faculty.ts` |
+| faq | `faq.ts` |
+| gdpi-landing | `gdpi-landing.ts` |
+| ipmat-landing | `ipmat-landing.ts` |
+| legal | `legal.ts` |
 | navigation | `navigation.ts` |
 | results | `results.ts` |
 | testimonials | `testimonials.ts` |
@@ -108,7 +114,10 @@ menu, close, chevron-down/left/right, search, user, faculty, ai-buddy, practice,
 rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-logo-orange.svg, rodha-icon.svg  
 **Hero:** hero/hero-home.png (homepage), hero/hero-main.jpg, hero/cat-hero.jpg  
 **Exam 3D icons:** images/icons/cat-icon-3d.png, ipmat-icon-3d.png, gdpi-icon-3d.png, clat-icon-3d.png  
-**Courses / faculty / results / blog:** JPG assets under `images/courses`, `images/faculty`, `images/results`, `images/blog`  
+**Result stat icons:** images/icons/selection.png, images/icons/rank.png, images/icons/CAT-icon.png  
+**Test series / CAT hero icons:** images/icons/ts-mocks.png, ts-sectional.png, ts-topic.png, ts-mini-mocks.png  
+**Profiles (cutouts):** images/profiles/male-1..6.png, female-1..4.png (faculty, course, topper)  
+**Courses / faculty / results / blog:** JPG assets under `images/courses`, `images/faculty`, `images/results`, `images/blog` (legacy)  
 **Placeholders:** hero-illustration, course-thumbnail, faculty-avatar, blog-thumbnail, topper-photo
 
 ### Backgrounds
@@ -124,4 +133,4 @@ blob-orange.svg, circle-gradient.svg, curved-divider.svg, ring-decoration.svg
 
 ## Design System Utilities (CSS)
 
-Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.card-base`, `.card-hover`, `.btn-primary`, `.btn-secondary`, `.btn-ghost`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`
+Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.btn-primary`, `.btn-secondary`, `.btn-ghost`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`

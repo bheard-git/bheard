@@ -25,7 +25,7 @@ export const courses: Course[] = [
     highlights: ["IIM-A/B/C focused strategy", "Personalized study plan", "Performance analytics"],
     enrollmentUrl: "https://rodha.graphy.com/courses/cat-2026-complete",
     thumbnail: "/assets/images/courses/cat-2026.jpg",
-    facultyImage: "/assets/images/faculty/anand-mishra.jpg",
+    facultyImage: "/assets/images/profiles/male-1.png",
     isPopular: true,
     badge: "Bestseller",
   },
@@ -53,7 +53,7 @@ export const courses: Course[] = [
     highlights: ["99+ percentile focus", "High-intensity practice", "Mentor feedback loops"],
     enrollmentUrl: "https://rodha.graphy.com/courses/cat-2026-pro",
     thumbnail: "/assets/images/courses/cat-2026-pro.jpg",
-    facultyImage: "/assets/images/faculty/vishal-gupta.jpg",
+    facultyImage: "/assets/images/profiles/male-2.png",
     badge: "Trending",
   },
   {
@@ -80,7 +80,7 @@ export const courses: Course[] = [
     highlights: ["Last-mile strategy", "Mock-heavy schedule", "Quick concept refreshers"],
     enrollmentUrl: "https://rodha.graphy.com/courses/cat-2026-crash",
     thumbnail: "/assets/images/courses/cat-2026-crash.jpg",
-    facultyImage: "/assets/images/faculty/neha-agarwal.jpg",
+    facultyImage: "/assets/images/profiles/female-1.png",
     badge: "Popular",
   },
   {
@@ -107,7 +107,7 @@ export const courses: Course[] = [
     highlights: ["Zero-to-hero path", "Concept first approach", "Long runway to CAT"],
     enrollmentUrl: "https://rodha.graphy.com/courses/cat-2026-foundation",
     thumbnail: "/assets/images/courses/cat-2026-foundation.jpg",
-    facultyImage: "/assets/images/faculty/rahul-sharma.jpg",
+    facultyImage: "/assets/images/profiles/male-3.png",
     badge: "Starter",
   },
   {
@@ -133,7 +133,7 @@ export const courses: Course[] = [
     highlights: ["IIM Indore focused", "Previous year paper analysis"],
     enrollmentUrl: "https://rodha.graphy.com/courses/ipmat-2026",
     thumbnail: "/assets/images/courses/ipmat-2026.jpg",
-    facultyImage: "/assets/images/faculty/rahul-sharma.jpg",
+    facultyImage: "/assets/images/profiles/male-3.png",
     badge: "Trending",
   },
   {
@@ -159,7 +159,7 @@ export const courses: Course[] = [
     highlights: ["85% conversion rate", "IIM-specific preparation"],
     enrollmentUrl: "https://rodha.graphy.com/courses/gdpi-masterclass-2026",
     thumbnail: "/assets/images/courses/gdpi-2026.jpg",
-    facultyImage: "/assets/images/faculty/vishal-gupta.jpg",
+    facultyImage: "/assets/images/profiles/male-2.png",
     badge: "Popular",
   },
   {
@@ -185,7 +185,7 @@ export const courses: Course[] = [
     highlights: ["NLU-focused strategy", "Comprehensive test series"],
     enrollmentUrl: "https://rodha.graphy.com/courses/clat-foundation-2026",
     thumbnail: "/assets/images/courses/clat-2026.jpg",
-    facultyImage: "/assets/images/faculty/megha-jivedi.jpg",
+    facultyImage: "/assets/images/profiles/female-2.png",
     badge: "New",
   },
 ];
