@@ -69,19 +69,11 @@ export const IPMAT_RESULT_STATS: ResultStat[] = [
     label: "Selections",
     value: "2,000",
     suffix: "+",
-    description: "across all IPMAT batches",
   },
   {
     label: "Top 50 Ranks",
     value: "80",
     suffix: "+",
-    description: "in the last 3 years",
-  },
-  {
-    label: "IIM Indore Selections in 2024",
-    value: "40",
-    suffix: "+",
-    description: "from Rodha aspirants",
   },
 ];
 

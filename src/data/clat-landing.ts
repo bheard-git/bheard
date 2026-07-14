@@ -69,19 +69,11 @@ export const CLAT_RESULT_STATS: ResultStat[] = [
     label: "Selections",
     value: "3,000",
     suffix: "+",
-    description: "across all CLAT batches",
   },
   {
     label: "Top 100 Ranks",
     value: "100",
     suffix: "+",
-    description: "in the last 3 years",
-  },
-  {
-    label: "NLU Selections in 2024",
-    value: "60",
-    suffix: "+",
-    description: "from Rodha aspirants",
   },
 ];
 

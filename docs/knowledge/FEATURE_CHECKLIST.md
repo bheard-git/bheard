@@ -45,9 +45,9 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Courses overview | Complete (all four) |
 | Star faculty | Complete (all four; GDPI faculty added) |
 | Test series promo | Complete (CAT: PNG card icons; others still SVG pending assets) |
-| Results & toppers | Complete (CAT: 2 stats + left icons; all four have toppers) |
+| Results & toppers | Complete (all four via `ResultsStatsPanel` + toppers carousel) |
 | Demo / webinar CTA | Complete (resource cards on all four) |
-| Testimonials | Not Started |
+| Testimonials | Complete (all four; category-filtered via `getTestimonialsByCategory`) |
 | Resources teaser | Complete (all four) |
 | Category FAQ | Complete (all four; category-specific FAQs) |
 | SEO intro copy | Partial (per-page metadata; longer SEO blocks TBD) |

@@ -69,19 +69,11 @@ export const GDPI_RESULT_STATS: ResultStat[] = [
     label: "B-school Converts",
     value: "800",
     suffix: "+",
-    description: "across all GDPI batches",
   },
   {
     label: "Conversion Rate",
     value: "85",
     suffix: "%",
-    description: "call-to-admit success",
-  },
-  {
-    label: "IIM Converts in 2024",
-    value: "200",
-    suffix: "+",
-    description: "from Rodha aspirants",
   },
 ];
 

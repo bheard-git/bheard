@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-14 (FAQ listing + LegalPageLayout)
+**Last updated:** 2026-07-14 (ResultsStatsPanel + category testimonials)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -46,6 +46,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | CTABand | `CTABand.tsx` |
 | HeroSection | `HeroSection.tsx` |
 | LegalPageLayout | `LegalPageLayout.tsx` |
+| ResultsStatsPanel | `ResultsStatsPanel.tsx` |
 | SectionHeader | `SectionHeader.tsx` |
 | TrustBar | `TrustBar.tsx` |
 
@@ -60,9 +61,10 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | FeatureCard | `FeatureCard.tsx` |
 | ResourceCard | `ResourceCard.tsx` |
 | ResultStatCard | `ResultStatCard.tsx` |
+| TestimonialCard | `TestimonialCard.tsx` |
 | TestSeriesCard | `TestSeriesCard.tsx` |
 | TopperCard | `TopperCard.tsx` |
-| ValuePropCard | `ValuePropCard.tsx` |
+| ValuePropCard | `ValuePropCard.tsx`
 
 ## Forms — `src/components/forms/`
 

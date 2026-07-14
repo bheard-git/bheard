@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CategoryHeroSection } from "@/components/sections/CategoryHeroSection";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { ResultsStatsPanel } from "@/components/sections/ResultsStatsPanel";
 import { CTABand } from "@/components/sections/CTABand";
 import { CourseCard } from "@/components/cards/CourseCard";
 import { FacultyCard } from "@/components/cards/FacultyCard";
 import { TopperCard } from "@/components/cards/TopperCard";
 import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
+import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accordion } from "@/components/ui/Accordion";
 import { getCoursesByCategory } from "@/data/courses";
 import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
+import { getTestimonialsByCategory } from "@/data/testimonials";
 import {
   CAT_FAQS,
   CAT_HERO_FEATURES,
@@ -35,6 +37,7 @@ export default function CATPage() {
   const catCourses = getCoursesByCategory("cat");
   const catFaculty = getFacultyByCategory("cat");
   const catResults = getResultsByCategory("cat");
+  const catTestimonials = getTestimonialsByCategory("cat");
   const faqLeft = CAT_FAQS.filter((_, i) => i % 2 === 0);
   const faqRight = CAT_FAQS.filter((_, i) => i % 2 === 1);
 
@@ -133,35 +136,8 @@ export default function CATPage() {
             viewAllLabel="View All Results"
             align="left"
           />
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
-            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center rounded-[6px] bg-linear-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35">
-              {CAT_RESULT_STATS.map((stat) => {
-                const iconSrc =
-                  stat.label === "Selections"
-                    ? "/assets/images/icons/selection.png"
-                    : "/assets/images/icons/rank.png";
-
-                return (
-                  <div key={stat.label} className="flex items-start gap-3">
-                    <Image
-                      src={iconSrc}
-                      alt=""
-                      width={40}
-                      height={40}
-                      className="w-10 h-10 object-contain shrink-0 mt-0.5"
-                    />
-                    <div>
-                      <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
-                        {stat.value}
-                        {stat.suffix}
-                      </div>
-                      <p className="mt-2 text-body text-text-muted">{stat.label}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+            <ResultsStatsPanel stats={CAT_RESULT_STATS} />
             <div className="flex-1 min-w-0">
               <Carousel>
                 {catResults.map((topper) => (
@@ -175,7 +151,24 @@ export default function CATPage() {
         </Container>
       </section>
 
-      <section id="resources" className="section-spacing">
+      <section id="testimonials" className="section-spacing">
+        <Container>
+          <SectionHeader
+            title="What Our Students Say"
+            subtitle="Real stories from Rodha CAT aspirants"
+            align="left"
+          />
+          <Carousel>
+            {catTestimonials.map((item) => (
+              <div key={item.id} className="snap-start shrink-0">
+                <TestimonialCard testimonial={item} />
+              </div>
+            ))}
+          </Carousel>
+        </Container>
+      </section>
+
+      <section id="resources" className="section-spacing bg-bg-secondary/40">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {CAT_RESOURCES.map((item) => (
@@ -185,7 +178,7 @@ export default function CATPage() {
         </Container>
       </section>
 
-      <section id="faqs" className="section-spacing bg-bg-secondary/40">
+      <section id="faqs" className="section-spacing">
         <Container>
           <SectionHeader
             title="CAT FAQs"

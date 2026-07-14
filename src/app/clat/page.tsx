@@ -3,17 +3,20 @@ import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CategoryHeroSection } from "@/components/sections/CategoryHeroSection";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { ResultsStatsPanel } from "@/components/sections/ResultsStatsPanel";
 import { CTABand } from "@/components/sections/CTABand";
 import { CourseCard } from "@/components/cards/CourseCard";
 import { FacultyCard } from "@/components/cards/FacultyCard";
 import { TopperCard } from "@/components/cards/TopperCard";
 import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
+import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accordion } from "@/components/ui/Accordion";
 import { getCoursesByCategory } from "@/data/courses";
 import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
+import { getTestimonialsByCategory } from "@/data/testimonials";
 import {
   CLAT_FAQS,
   CLAT_HERO_FEATURES,
@@ -34,6 +37,7 @@ export default function CLATPage() {
   const clatCourses = getCoursesByCategory("clat");
   const clatFaculty = getFacultyByCategory("clat");
   const clatResults = getResultsByCategory("clat");
+  const clatTestimonials = getTestimonialsByCategory("clat");
   const faqLeft = CLAT_FAQS.filter((_, i) => i % 2 === 0);
   const faqRight = CLAT_FAQS.filter((_, i) => i % 2 === 1);
 
@@ -132,24 +136,8 @@ export default function CLATPage() {
             viewAllLabel="View All Results"
             align="left"
           />
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
-            <div className="card-base shrink-0 lg:w-[220px] xl:w-[240px] p-6 md:p-7 flex flex-row lg:flex-col gap-6 lg:gap-8 justify-center bg-linear-to-br from-bg-secondary to-bg-tertiary border-orange-500/20">
-              {CLAT_RESULT_STATS.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-[28px] md:text-[32px] font-bold text-orange-500 leading-none glow-text-orange">
-                    {stat.value}
-                    {stat.suffix}
-                  </div>
-                  <p className="mt-2 text-body text-text-muted">{stat.label}</p>
-                  {stat.description && (
-                    <p className="mt-0.5 text-caption text-text-dimmed">
-                      {stat.description}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+            <ResultsStatsPanel stats={CLAT_RESULT_STATS} />
             <div className="flex-1 min-w-0">
               <Carousel>
                 {clatResults.map((topper) => (
@@ -163,7 +151,24 @@ export default function CLATPage() {
         </Container>
       </section>
 
-      <section id="resources" className="section-spacing">
+      <section id="testimonials" className="section-spacing">
+        <Container>
+          <SectionHeader
+            title="What Our Students Say"
+            subtitle="Real stories from Rodha CLAT aspirants"
+            align="left"
+          />
+          <Carousel>
+            {clatTestimonials.map((item) => (
+              <div key={item.id} className="snap-start shrink-0">
+                <TestimonialCard testimonial={item} />
+              </div>
+            ))}
+          </Carousel>
+        </Container>
+      </section>
+
+      <section id="resources" className="section-spacing bg-bg-secondary/40">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {CLAT_RESOURCES.map((item) => (
@@ -173,7 +178,7 @@ export default function CLATPage() {
         </Container>
       </section>
 
-      <section id="faqs" className="section-spacing bg-bg-secondary/40">
+      <section id="faqs" className="section-spacing">
         <Container>
           <SectionHeader
             title="CLAT FAQs"

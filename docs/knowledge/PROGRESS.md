@@ -20,6 +20,11 @@ Update this file after every meaningful implementation task.
   - Header exam switcher syncs to current category URL
   - Hero trust metrics + floating feature cards use premium PNG icons
   - Category Test Series cards use approved `ts-mocks` / `ts-sectional` / `ts-topic` / `ts-mini-mocks` assets
+- **Category landings parity with CAT (2026-07-14):** CLAT / GDPI / IPMAT + homepage use shared `ResultsStatsPanel`; testimonials sections added after results; alternating `bg-bg-secondary/40` matches CAT
+- **Category landings content polish (2026-07-14):**
+  - Expanded IPMAT/GDPI/CLAT courses (4 each), faculty, and toppers
+  - Shared `ResultsStatsPanel` (2 key stats, homepage visual) on home + all category pages
+  - New `TestimonialCard` + testimonials carousel on every category landing
 - Project knowledge base + Cursor rules
 - **FAQ listing (`/faq`) (2026-07-14):** search, category filter pills, accordion (plus icon), pagination (10/page), footer CTA → Contact / Rodha Buddy; data in `src/data/faq.ts`
 - **Legal pages (2026-07-14):** Privacy, Terms, Refund, Disclaimer via shared `LegalPageLayout` + `src/data/legal.ts` (TOC sidebar, structured sections, grievance contact)
