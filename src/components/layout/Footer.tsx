@@ -39,12 +39,7 @@ const FOOTER_COLS = {
     { label: "Webinars", href: "/blog" },
     { label: "Success Stories", href: "/#results" },
   ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms & Conditions", href: "/terms-and-conditions" },
-    { label: "Refund Policy", href: "/refund-policy" },
-    { label: "Disclaimer", href: "/disclaimer" },
-  ],
+  legal: [] as { label: string; href: string }[],
 };
 
 function FooterColumn({
@@ -79,7 +74,7 @@ export function Footer() {
   return (
     <footer className="bg-bg-secondary border-t border-border-default relative">
       <div className="container-rodha py-8 md:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-6">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2 text-left">
             <Link href="/" className="inline-block">
               <Image
@@ -121,7 +116,6 @@ export function Footer() {
           <FooterColumn title="Courses" links={FOOTER_COLS.courses} />
           <FooterColumn title="Company" links={FOOTER_COLS.company} />
           <FooterColumn title="Resources" links={FOOTER_COLS.resources} />
-          <FooterColumn title="Legal" links={FOOTER_COLS.legal} />
         </div>
       </div>
 
