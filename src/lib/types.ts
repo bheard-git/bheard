@@ -195,3 +195,36 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
+
+export interface LeadershipMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  linkedIn?: string;
+}
+
+export interface Advisor {
+  id: string;
+  name: string;
+  /** Current designation — shown in orange */
+  role: string;
+  formerRole: string;
+  formerOrganization: string;
+  image: string;
+}
+
+export interface CultureValue {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface TeamHeroStat {
+  id: string;
+  value: string;
+  label: string;
+  icon: string;
+}

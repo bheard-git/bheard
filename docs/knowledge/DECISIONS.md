@@ -14,6 +14,14 @@ Format:
 
 ---
 
+### 2026-07-16 — Meet the Team page composition
+- **Decision:** Build `/team` with dedicated `TeamHeroSection`, `LeadershipCard`, `FacultyExpertCard`, `AdvisorCard`, and `CultureSection`; extend `SectionHeader` (label + split description) and `CTABand` (`decorativeImage`). Reuse homepage `profiles/` cutouts and existing `Carousel` / `faculty.ts`.
+- **Rationale:** Mockup card layouts differ from homepage `FacultyCard` (tall portrait experts; horizontal leadership). Page-specific themed PNG icons match Rodha visual language without generic SVGs.
+- **Alternatives considered:** Overload homepage `HeroSection` / `FacultyCard`; invent new button styles.
+- **Consequences:** `/team` matches mock section order; interim profile photos until dedicated leadership/advisor assets arrive; Header highlights About Us on `/team`, Footer highlights Meet the Team.
+
+---
+
 ### 2026-07-14 — FAQ listing + shared LegalPageLayout
 - **Decision:** Build global FAQ as a client island (`FAQClient`) with search, category pills, Accordion, and Pagination over `src/data/faq.ts`. Implement all four legal routes via one Server Component `LegalPageLayout` fed by structured `src/data/legal.ts`.
 - **Rationale:** Scope requires categorized searchable FAQs plus title/date/structured legal content and grievance contact; shared legal shell avoids four near-duplicate layouts and keeps content CMS-ready.

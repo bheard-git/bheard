@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-14 (ResultsStatsPanel + category testimonials)
+**Last updated:** 2026-07-16 (Meet the Team page)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -12,6 +12,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Component | File |
 |-----------|------|
 | Accordion | `Accordion.tsx` |
+| AccentUnderline | `AccentUnderline.tsx` |
 | Badge | `Badge.tsx` |
 | Breadcrumb | `Breadcrumb.tsx` |
 | Button | `Button.tsx` |
@@ -44,21 +45,27 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 |-----------|------|
 | CategoryHeroSection | `CategoryHeroSection.tsx` |
 | CTABand | `CTABand.tsx` |
+| CultureSection | `CultureSection.tsx` |
+| AdvisorsSection | `AdvisorsSection.tsx` |
 | HeroSection | `HeroSection.tsx` |
 | LegalPageLayout | `LegalPageLayout.tsx` |
 | ResultsStatsPanel | `ResultsStatsPanel.tsx` |
 | SectionHeader | `SectionHeader.tsx` |
+| TeamHeroSection | `TeamHeroSection.tsx` |
 | TrustBar | `TrustBar.tsx` |
 
 ## Cards — `src/components/cards/`
 
 | Component | File |
 |-----------|------|
+| AdvisorCard | `AdvisorCard.tsx` |
 | BlogCard | `BlogCard.tsx` |
 | CourseCard | `CourseCard.tsx` |
 | ExamCard | `ExamCard.tsx` |
 | FacultyCard | `FacultyCard.tsx` |
+| FacultyExpertCard | `FacultyExpertCard.tsx` |
 | FeatureCard | `FeatureCard.tsx` |
+| LeadershipCard | `LeadershipCard.tsx` |
 | ResourceCard | `ResourceCard.tsx` |
 | ResultStatCard | `ResultStatCard.tsx` |
 | TestimonialCard | `TestimonialCard.tsx` |
@@ -103,6 +110,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | legal | `legal.ts` |
 | navigation | `navigation.ts` |
 | results | `results.ts` |
+| team | `team.ts` |
 | testimonials | `testimonials.ts` |
 
 ---
@@ -120,7 +128,14 @@ rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-lo
 **Test series / CAT hero icons:** images/icons/ts-mocks.png, ts-sectional.png, ts-topic.png, ts-mini-mocks.png  
 **Profiles (cutouts):** images/profiles/male-1..6.png, female-1..4.png (faculty, course, topper)  
 **Courses / faculty / results / blog:** JPG assets under `images/courses`, `images/faculty`, `images/results`, `images/blog` (legacy)  
-**Placeholders:** hero-illustration, course-thumbnail, faculty-avatar, blog-thumbnail, topper-photo
+**Placeholders:** hero-illustration, course-thumbnail, faculty-avatar, blog-thumbnail, topper-photo  
+**Meet the Team (`images/meet the team/`):**  
+- Hero: `team hero.png`  
+- CTA: `Cta-left.png`  
+- Icons (`icons/`): `hero-faculty.png`, `hero-experience-star.png`, `hero-student.png`, `culture-student-first.png`, `culture-integrity.png`, `culture-exelence.png`, `culture-collaborate.png`, `advisor-quote.svg`  
+- Legacy SVG variants also present under `icons/`  
+- Profiles: reuse `images/profiles/male-*.png`, `female-*.png` for leadership / faculty / advisors  
+- Reuse global: `/assets/icons/linkedin.svg` (leadership cards)
 
 ### Backgrounds
 hero-glow.svg, section-glow.svg, footer-gradient.svg

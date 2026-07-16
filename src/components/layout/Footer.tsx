@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   CATEGORIES,
   CONTACT_INFO,
@@ -10,6 +11,7 @@ import {
   SITE_TAGLINE,
 } from "@/lib/constants";
 import { Icon } from "@/components/ui/Icon";
+import { cn } from "@/lib/utils";
 
 const SOCIAL_ICON_PATHS: Record<string, string> = {
   instagram: "/assets/icons/instagram.svg",
@@ -39,42 +41,58 @@ const FOOTER_COLS = {
     { label: "Webinars", href: "/blog" },
     { label: "Success Stories", href: "/#results" },
   ],
-  legal: [] as { label: string; href: string }[],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Refund Policy", href: "/refund-policy" },
+    { label: "Disclaimer", href: "/disclaimer" },
+  ],
 };
 
 function FooterColumn({
   title,
   links,
+  activeHref,
 }: {
   title: string;
   links: { label: string; href: string }[];
+  activeHref?: string;
 }) {
   return (
     <div className="text-left lg:text-right">
       <h4 className="text-body font-semibold text-text-primary mb-4">{title}</h4>
       <ul className="space-y-2.5">
-        {links.map((item) => (
-          <li key={item.label}>
-            <Link
-              href={item.href}
-              className="text-body-sm text-text-muted hover:text-orange-400 transition-colors"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((item) => {
+          const isActive = activeHref === item.href;
+          return (
+            <li key={item.label}>
+              <Link
+                href={item.href}
+                className={cn(
+                  "text-body-sm transition-colors",
+                  isActive
+                    ? "text-orange-400 font-medium"
+                    : "text-text-muted hover:text-orange-400"
+                )}
+              >
+                {item.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 }
 
 export function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-bg-secondary border-t border-border-default relative">
       <div className="container-rodha py-8 md:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 lg:gap-6">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2 text-left">
             <Link href="/" className="inline-block">
               <Image
@@ -112,10 +130,11 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterColumn title="Exams" links={FOOTER_COLS.exams} />
-          <FooterColumn title="Courses" links={FOOTER_COLS.courses} />
-          <FooterColumn title="Company" links={FOOTER_COLS.company} />
-          <FooterColumn title="Resources" links={FOOTER_COLS.resources} />
+          <FooterColumn title="Exams" links={FOOTER_COLS.exams} activeHref={pathname} />
+          <FooterColumn title="Courses" links={FOOTER_COLS.courses} activeHref={pathname} />
+          <FooterColumn title="Company" links={FOOTER_COLS.company} activeHref={pathname} />
+          <FooterColumn title="Resources" links={FOOTER_COLS.resources} activeHref={pathname} />
+          <FooterColumn title="Legal" links={FOOTER_COLS.legal} activeHref={pathname} />
         </div>
       </div>
 

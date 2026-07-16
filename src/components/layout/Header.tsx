@@ -183,11 +183,18 @@ export function Header({ className }: HeaderProps) {
               );
             }
 
+            const isActive = pathname === item.href;
+
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="px-2 xl:px-2.5 py-1.5 text-body-sm text-text-secondary hover:text-text-primary transition-colors whitespace-nowrap"
+                className={cn(
+                  "relative px-2 xl:px-2.5 py-1.5 text-body-sm transition-colors whitespace-nowrap",
+                  isActive
+                    ? "text-orange-400 after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange-500"
+                    : "text-text-secondary hover:text-text-primary"
+                )}
               >
                 {item.label}
               </Link>

@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-14  
+**Last updated:** 2026-07-16  
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -28,6 +28,10 @@ Update this file after every meaningful implementation task.
 - Project knowledge base + Cursor rules
 - **FAQ listing (`/faq`) (2026-07-14):** search, category filter pills, accordion (plus icon), pagination (10/page), footer CTA → Contact / Rodha Buddy; data in `src/data/faq.ts`
 - **Legal pages (2026-07-14):** Privacy, Terms, Refund, Disclaimer via shared `LegalPageLayout` + `src/data/legal.ts` (TOC sidebar, structured sections, grievance contact)
+- **Meet the Team assets (2026-07-16):** Hero photo, themed PNG icons (hero stats + culture), `Cta-left.png`, advisor quote SVG — under `public/assets/images/meet the team/`
+- **Meet the Team page `/team` (2026-07-16):** Full page — hero, leadership carousel, faculty experts carousel, advisors grid, culture values, CTA band; reuses homepage profile cutouts for cards; Header About Us + Footer Meet the Team active states
+- **Meet the Team UI QA (2026-07-16):** Edge-bleed hero, section bg/labels, leadership divider + LinkedIn, faculty overlay cards, advisor flush layout, culture 4-col dividers, CTA decorative bg + orange arrow secondary
+- **Meet the Team QA pass 2 (2026-07-16):** Fixed faculty carousel overlap (`block` + slide width); advisors left/right split + 4-field cards; culture split layout; CTA `object-cover` fill; LinkedIn transparent white border + filled icon
 
 ---
 
@@ -46,9 +50,11 @@ Update this file after every meaningful implementation task.
 ### Assets still needed
 - [ ] Transparent faculty / student PNGs
 - [ ] Dedicated IPMAT / GDPI / CLAT hero images
+- [ ] Dedicated leadership / advisor headshots (interim: homepage `profiles/`)
 
 ### Screens
-- [ ] About / Team / Faculty / Blog / Contact / Course detail
+- [ ] About / Faculty / Blog / Contact / Course detail
+- [x] Meet the Team `/team`
 - [x] FAQ listing (`/faq`)
 - [x] Legal pages (Privacy / Terms / Refund / Disclaimer)
 - [ ] Promo popup

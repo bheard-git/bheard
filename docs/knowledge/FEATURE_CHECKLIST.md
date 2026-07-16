@@ -75,7 +75,7 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Page | Status | Notes |
 |------|--------|-------|
 | About `/about` | Not Started | Placeholder |
-| Team `/team` | Not Started | Placeholder |
+| Team `/team` | Complete | Hero + leadership/faculty carousels + advisors + culture + CTA; mockup-aligned |
 | Faculty listing `/faculty` | Not Started | Placeholder (data + FacultyCard exist) |
 | Faculty detail `/faculty/[slug]` | Not Started | Placeholder |
 | Blog listing `/blog` | Not Started | Placeholder (data + BlogCard exist) |
