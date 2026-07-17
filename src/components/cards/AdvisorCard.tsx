@@ -12,7 +12,7 @@ export function AdvisorCard({ advisor, className }: AdvisorCardProps) {
   return (
     <article
       className={cn(
-        "card-base advisor-card-base card-hover relative overflow-hidden flex flex-row items-stretch rounded-[6px] h-full min-h-[148px] min-w-[260px] w-full",
+        "card-base advisor-card-base card-premium-hover shine-sweep-hover relative overflow-hidden flex flex-row items-stretch rounded-[6px] h-full min-h-[148px] min-w-[260px] w-full",
         className
       )}
     >

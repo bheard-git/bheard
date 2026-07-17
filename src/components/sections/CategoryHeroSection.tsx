@@ -32,8 +32,8 @@ function HeroCtaLink({
 }) {
   const className =
     variant === "primary"
-      ? "btn-primary text-body px-7 py-3.5"
-      : "btn-secondary text-body px-7 py-3.5";
+      ? "btn-primary btn-primary-premium text-body px-7 py-3.5"
+      : "btn-secondary btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline text-body px-7 py-3.5";
 
   if (cta.external) {
     return (
@@ -68,7 +68,7 @@ export function CategoryHeroSection({
   className,
 }: CategoryHeroSectionProps) {
   return (
-    <section className={cn("relative overflow-hidden", className)}>
+    <section id="site-hero" className={cn("relative overflow-hidden", className)}>
       <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
@@ -120,7 +120,7 @@ export function CategoryHeroSection({
                 src={heroImageSrc}
                 alt={heroImageAlt}
                 fill
-                priority
+                preload
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />

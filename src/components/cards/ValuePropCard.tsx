@@ -12,11 +12,11 @@ export function ValuePropCard({ icon, title, description, className }: ValueProp
   return (
     <div
       className={cn(
-        "flex flex-col items-center text-center px-3 py-5 md:px-4 md:py-6 h-full rounded-[6px] bg-bg-tertiary border border-border-hover shadow-sm card-hover",
+        "group flex flex-col items-center text-center px-3 py-5 md:px-4 md:py-6 h-full rounded-[6px] bg-bg-tertiary border border-border-hover shadow-sm card-premium-hover shine-sweep-hover",
         className
       )}
     >
-      <div className="text-orange-500">
+      <div className="text-orange-500 transition-[transform,filter] duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">
         <Icon src={icon} size={30} />
       </div>
       <h3 className="mt-3 text-body font-semibold text-text-primary leading-snug">

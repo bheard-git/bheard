@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-16 (Meet the Team page)
+**Last updated:** 2026-07-17 (premium motion system)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -13,6 +13,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 |-----------|------|
 | Accordion | `Accordion.tsx` |
 | AccentUnderline | `AccentUnderline.tsx` |
+| AmbientBackground | `AmbientBackground.tsx` |
 | Badge | `Badge.tsx` |
 | Breadcrumb | `Breadcrumb.tsx` |
 | Button | `Button.tsx` |
@@ -23,6 +24,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Modal | `Modal.tsx` |
 | Pagination | `Pagination.tsx` |
 | Rating | `Rating.tsx` |
+| RevealGroup | `RevealGroup.tsx` |
 | SearchInput | `SearchInput.tsx` |
 | Select | `Select.tsx` |
 | Skeleton | `Skeleton.tsx` |
@@ -35,6 +37,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 |-----------|------|
 | Container | `Container.tsx` |
 | Footer | `Footer.tsx` |
+| FloatingCounsellingCta | `FloatingCounsellingCta.tsx` |
 | Header | `Header.tsx` |
 | MobileNav | `MobileNav.tsx` |
 | PromotionalBanner | `PromotionalBanner.tsx` |
@@ -86,12 +89,14 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Hook | File |
 |------|------|
 | useCountdown | `useCountdown.ts` |
+| useInView | `useInView.ts` |
 
 ## Lib — `src/lib/`
 
 | Module | File | Role |
 |--------|------|------|
 | constants | `constants.ts` | Site config, categories, trust metrics, value props |
+| structured-data | `structured-data.ts` | Server-rendered JSON-LD helpers |
 | types | `types.ts` | Shared domain types |
 | utils | `utils.ts` | `cn()` helper |
 
@@ -151,4 +156,4 @@ blob-orange.svg, circle-gradient.svg, curved-divider.svg, ring-decoration.svg
 
 ## Design System Utilities (CSS)
 
-Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.btn-primary`, `.btn-secondary`, `.btn-ghost`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`
+Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.card-premium-hover`, `.premium-border-glow`, `.glow-accent-silver`, `.shine-sweep`, `.shine-sweep-hover`, `.shine-sweep-outline`, `.shine-delay-1..4`, `.ambient-layer`, `.ambient-drift`, `.hero-atmosphere`, `.quote-glow`, `.btn-primary`, `.btn-primary-premium`, `.btn-outlined-premium`, `.btn-secondary`, `.btn-ghost`, `.btn-view-all`, `.floating-cta-pulse`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`

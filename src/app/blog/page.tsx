@@ -4,7 +4,7 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Blog — Rodha",
-  description: "Insights, tips, and strategies for MBA, Integrated Programs, Law, Banking & Government, and SkillHouse from Rodha's expert faculty.",
+  description: "Insights, tips, and strategies for MBA, Integrated Programs, Law, Banking & Government, and Skill House from Rodha's expert faculty.",
 };
 
 export default function BlogPage() {

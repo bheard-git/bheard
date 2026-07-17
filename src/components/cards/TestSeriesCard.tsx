@@ -17,7 +17,7 @@ export function TestSeriesCard({ item, className }: TestSeriesCardProps) {
   return (
     <div
       className={cn(
-        "card-base card-hover flex flex-col p-5 md:p-6 h-full",
+        "card-base card-premium-hover premium-border-glow glow-accent-silver shine-sweep flex flex-col p-5 md:p-6 h-full",
         className
       )}
     >

@@ -67,12 +67,12 @@ export function SectionHeader({
             href={viewAllHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-view-all hidden md:inline-flex"
+            className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline hidden md:inline-flex"
           >
             {viewAllLabel}
           </a>
         ) : (
-          <Link href={viewAllHref} className="btn-view-all hidden md:inline-flex">
+          <Link href={viewAllHref} className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline hidden md:inline-flex">
             {viewAllLabel}
           </Link>
         ))}

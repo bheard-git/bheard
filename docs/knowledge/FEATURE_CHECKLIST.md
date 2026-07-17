@@ -14,6 +14,7 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Header — global nav state | Partial | Exam switcher beside logo; verify PRD links |
 | Header — category nav state | Partial | Needs verification vs PRD |
 | Mobile nav | Partial | Exists; test against all breakpoints |
+| Floating counselling CTA | Complete | Observes `[data-counselling-cta]` only; hidden when any counselling CTA is in view; fade/slide + idle pulse; no scroll listener |
 | Footer | Partial | Social `shrink-0` rounded; brand left / links right; "Made with love" removed; social URLs TBD |
 | Rodha Buddy CTA (external) | Partial | Outline orange in header; final URL TBD |
 | Login / Sign Up → Graphy | Partial | Outline button; redirect target TBD |
@@ -25,14 +26,14 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Section | Status |
 |---------|--------|
-| Hero | Complete (hero-home.png + floating features; stock JPG trust avatars) |
-| Choose Your Exam | Complete (vertical Courses/Selections list) |
-| Why Thousands Choose Rodha | Complete (icon-without-circle) |
-| Featured Courses carousel | Complete (category-colored bg + flat white-text badges + cutouts) |
-| Faculty carousel | Complete (transparent profile cutouts) |
-| Results / toppers | Complete (selection/rank icons; solid AIR badge; cutouts) |
-| Blog / insights | Complete (featured + 2-col side grid) |
-| CTA Band | Complete (CAT icon + dividers + white secondary CTA) |
+| Hero | Complete (hero-home.png + floating features; atmospheric lighting/patterns; trust icon micro-interactions) |
+| Choose Your Exam | Complete (vertical Courses/Selections list + stagger reveal) |
+| Why Thousands Choose Rodha | Complete (icon-without-circle + SSR-safe stagger reveal + premium hover) |
+| Featured Courses carousel | Complete (category-colored bg + cutouts + selective glow/shine) |
+| Faculty carousel | Complete (transparent profile cutouts + reveal + subtle image/rating hover) |
+| Results / toppers | Complete (selection/rank icons; ambient stats panel + topper hover) |
+| Blog / insights | Complete (featured + 2-col side grid + image/title/arrow hover) |
+| CTA Band | Complete (CAT icon + dividers + premium border/shine/ambient lighting) |
 | Pixel-perfect pass vs PNG | Near complete — `.section-header` spacing + badge/contrast polish |
 
 ---
@@ -44,16 +45,17 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Category hero | Complete (all five via `CategoryHeroSection`; MBA reuses CAT premium PNG trust icons) |
 | Courses overview | Complete (all five) |
 | Star faculty | Complete (all five) |
-| Test series promo | Complete (MBA/Banking/SkillHouse reuse CAT PNG card icons) |
+| Test series promo | Complete (MBA/Banking/Skill House reuse CAT PNG card icons) |
 | Results & toppers | Complete (all five via `ResultsStatsPanel` + toppers carousel) |
 | Demo / webinar CTA | Complete (resource cards on all five) |
-| Testimonials | Complete (all five; category-filtered via `getTestimonialsByCategory`) |
+| Testimonials | Complete (all five; category-filtered via `getTestimonialsByCategory`; autoplay carousel with reduced-motion pause) |
 | Resources teaser | Complete (all five) |
 | Category FAQ | Complete (all five; category-specific FAQs) |
 | SEO intro copy | Partial (per-page metadata; longer SEO blocks TBD) |
 | Match `cat landing page Ui.png` | Complete (structure); dedicated hero photos pending for non-MBA |
 | MBA section order | Complete — Hero → Results → Courses → Faculty → Test Series → Testimonials → Resources → FAQs → CTA |
 | Taxonomy / switcher | Complete — short trigger + full menu labels; `/cat` & `/gdpi` redirect to `/mba` |
+| SEO structured data | Complete — Organization, category BreadcrumbList, FAQPage JSON-LD |
 
 ---
 

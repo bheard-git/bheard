@@ -530,7 +530,7 @@ export const courses: Course[] = [
   },
   {
     id: "skillhouse-foundation-2026",
-    title: "SkillHouse Foundation Program",
+    title: "Skill House Foundation Program",
     slug: "skillhouse-foundation-2026",
     category: "skillhouse",
     description:
@@ -556,11 +556,11 @@ export const courses: Course[] = [
   },
   {
     id: "skillhouse-pro-2026",
-    title: "SkillHouse Pro Program",
+    title: "Skill House Pro Program",
     slug: "skillhouse-pro-program-2026",
     category: "skillhouse",
     description:
-      "Advanced SkillHouse track with industry capstones, mentorship, and role-aligned assessments.",
+      "Advanced Skill House track with industry capstones, mentorship, and role-aligned assessments.",
     shortDescription: "Advanced skills with capstones and mentor reviews.",
     price: 17999,
     originalPrice: 24999,

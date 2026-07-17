@@ -112,7 +112,7 @@ export function FAQClient() {
               handleSearchChange("");
               handleCategoryChange("all");
             }}
-            className="btn-secondary mt-5 text-body-sm px-5 py-2.5"
+            className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline mt-5 text-body-sm px-5 py-2.5"
           >
             Clear filters
           </button>

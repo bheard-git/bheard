@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { CTABand } from "@/components/sections/CTABand";
 import { EXTERNAL_URLS } from "@/lib/constants";
+import { faqPageJsonLd } from "@/lib/structured-data";
+import { FAQ_DATA } from "@/data/faq";
 import { FAQClient } from "./FAQClient";
 
 export const metadata: Metadata = {
@@ -13,6 +15,10 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(FAQ_DATA)) }}
+      />
       <section className="bg-hero-gradient section-spacing pt-8 md:pt-10">
         <Container>
           <div className="mx-auto max-w-3xl text-center">

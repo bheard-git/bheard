@@ -12,6 +12,8 @@ import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Carousel } from "@/components/ui/Carousel";
+import { RevealGroup } from "@/components/ui/RevealGroup";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { Accordion } from "@/components/ui/Accordion";
 import { getCoursesByCategory } from "@/data/courses";
 import { getFacultyByCategory } from "@/data/faculty";
@@ -26,11 +28,24 @@ import {
   SKILLHOUSE_TEST_SERIES,
 } from "@/data/skillhouse-landing";
 import { EXTERNAL_URLS } from "@/lib/constants";
+import { categoryBreadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Skill House — Rodha",
   description:
     "Skill House career-skills programs with expert mentorship, project-based learning, and industry-aligned practice.",
+  openGraph: {
+    title: "Skill House — Rodha",
+    description:
+      "Skill House career-skills programs with expert mentorship, project-based learning, and industry-aligned practice.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Skill House — Rodha",
+    description:
+      "Skill House career-skills programs with expert mentorship, project-based learning, and industry-aligned practice.",
+  },
 };
 
 export default function SkillHousePage() {
@@ -43,6 +58,12 @@ export default function SkillHousePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(categoryBreadcrumbJsonLd("skillhouse")),
+        }}
+      />
       <Container>
         <Breadcrumb
           items={[
@@ -73,7 +94,8 @@ export default function SkillHousePage() {
         }}
       />
 
-      <section id="results" className="section-spacing">
+      <section id="results" className="section-spacing relative overflow-hidden">
+        <AmbientBackground variant="grid" />
         <Container>
           <SectionHeader
             title="Results That Inspire"
@@ -81,18 +103,26 @@ export default function SkillHousePage() {
             viewAllLabel="View All Results"
             align="left"
           />
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
-            <ResultsStatsPanel stats={SKILLHOUSE_RESULT_STATS} />
-            <div className="flex-1 min-w-0">
-              <Carousel>
-                {skillhouseResults.map((topper) => (
-                  <div key={topper.id} className="snap-start shrink-0">
-                    <TopperCard topper={topper} />
-                  </div>
-                ))}
-              </Carousel>
+          <RevealGroup>
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+              <ResultsStatsPanel
+                stats={SKILLHOUSE_RESULT_STATS}
+                className="reveal-child reveal-delay-1"
+              />
+              <div className="flex-1 min-w-0">
+                <Carousel>
+                  {skillhouseResults.map((topper, index) => (
+                    <div
+                      key={topper.id}
+                      className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                    >
+                      <TopperCard topper={topper} />
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
             </div>
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -104,16 +134,21 @@ export default function SkillHousePage() {
             viewAllLabel="View All Courses"
             align="left"
           />
-          <Carousel>
-            {skillhouseCourses.map((course) => (
-              <div
-                key={course.id}
-                className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
-              >
-                <CourseCard course={course} className="h-full" />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel>
+              {skillhouseCourses.map((course, index) => (
+                <div
+                  key={course.id}
+                  className={`snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px] reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <CourseCard
+                    course={course}
+                    className={`h-full shine-delay-${(index % 4) + 1}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -125,13 +160,21 @@ export default function SkillHousePage() {
             viewAllLabel="View All Faculty"
             align="left"
           />
-          <Carousel>
-            {skillhouseFaculty.map((member) => (
-              <div key={member.id} className="snap-start shrink-0">
-                <FacultyCard faculty={member} className="h-full" />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel>
+              {skillhouseFaculty.map((member, index) => (
+                <div
+                  key={member.id}
+                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <FacultyCard
+                    faculty={member}
+                    className={`h-full shine-delay-${(index % 4) + 1}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -143,11 +186,17 @@ export default function SkillHousePage() {
             viewAllLabel="View All Assessments"
             align="left"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {SKILLHOUSE_TEST_SERIES.map((item) => (
-              <TestSeriesCard key={item.id} item={item} />
-            ))}
-          </div>
+          <RevealGroup>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {SKILLHOUSE_TEST_SERIES.map((item, index) => (
+                <TestSeriesCard
+                  key={item.id}
+                  item={item}
+                  className={`reveal-child reveal-delay-${(index % 4) + 1} shine-delay-${(index % 4) + 1}`}
+                />
+              ))}
+            </div>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -158,13 +207,18 @@ export default function SkillHousePage() {
             subtitle="Real stories from Rodha Skill House learners"
             align="left"
           />
-          <Carousel>
-            {skillhouseTestimonials.map((item) => (
-              <div key={item.id} className="snap-start shrink-0">
-                <TestimonialCard testimonial={item} />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel autoPlay>
+              {skillhouseTestimonials.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <TestimonialCard testimonial={item} />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 

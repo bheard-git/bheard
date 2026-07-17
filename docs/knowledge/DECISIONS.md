@@ -14,9 +14,33 @@ Format:
 
 ---
 
+### 2026-07-17 — Accent-aware glow + counselling CTA IO
+- **Decision:** Drive `.premium-border-glow` from `--glow-base` / `--glow-peak` CSS variables (category accent hex or silver presets). Stagger shine via `.shine-delay-N`. Observe only `[data-counselling-cta]` elements for the floating counselling button instead of entire hero/footer sections. Add `.btn-outlined-premium` for View All and secondary outlined CTAs.
+- **Rationale:** Orange-only glow clashed with purple/emerald/amber cards; section-level IO hid the floating CTA on category heroes that lack a counselling button; outlined buttons still felt static.
+- **Alternatives considered:** Keep orange-only glow; continue observing `#site-hero`; per-button custom keyframes.
+- **Consequences:** Course/Exam cards inherit category color glow; floating CTA shows whenever no counselling control is in view; outlined buttons share one reusable premium utility.
+
+---
+
+### 2026-07-17 — CSS-first premium motion system
+- **Decision:** Centralize premium motion in `globals.css` with opt-in reveal, card-hover, border-glow, shine, button-highlight, ambient, and pulse utilities. Add a server-rendered `AmbientBackground` SVG primitive and keep Intersection Observer limited to the existing reveal and floating CTA client islands.
+- **Rationale:** The finalized layout needed more perceived responsiveness and depth without adding animation-library weight, hiding SSR content, changing hierarchy, or introducing continuous scroll work.
+- **Alternatives considered:** Framer Motion or GSAP; page-wide client components; canvas/WebGL particles; custom cursor effects.
+- **Consequences:** Shared cards and key homepage surfaces gain consistent subtle motion; animated decoration remains low-opacity and reduced-motion safe; new effects should reuse these utilities instead of adding one-off keyframes.
+
+---
+
+### 2026-07-17 — SSR-first UI motion and SEO polish
+- **Decision:** Add premium polish with CSS-first reveal utilities, a tiny `RevealGroup` client wrapper around card groups, `Carousel` autoplay for testimonials, observer-based `FloatingCounsellingCta`, and server-rendered JSON-LD helpers. Keep hero and section content as Server Components and rename display copy to Skill House while retaining `/skillhouse`.
+- **Rationale:** Client requested more interactive polish, but SEO and Core Web Vitals require minimal hydration, static above-the-fold hero content, rendered testimonial HTML, and no scroll listeners.
+- **Alternatives considered:** Use framer-motion; wrap full sections in client reveal components; animate hero content; scroll-position math for the floating CTA.
+- **Consequences:** Motion is progressive enhancement only; reduced-motion disables reveal/autoplay/hover movement; Organization/Breadcrumb/FAQ JSON-LD improves SEO without client JS.
+
+---
+
 ### 2026-07-17 — Five-vertical category taxonomy
-- **Decision:** Replace CAT / IPMAT / GDPI / CLAT with MBA, Integrated Programs, Law, Banking & Government Exams, and SkillHouse. Routes: `/mba`, `/ipmat`, `/clat`, `/banking`, `/skillhouse`. Fold GDPI into MBA (retag data). Permanent redirects `/cat` and `/gdpi` (and nested paths) → `/mba`. Switcher trigger uses short `name`; dropdown uses full `menuLabel`.
-- **Rationale:** Client feedback: GDPI is part of the MBA vertical; add Banking (incl. SSC) and SkillHouse; keep header compact with short selected labels.
+- **Decision:** Replace CAT / IPMAT / GDPI / CLAT with MBA, Integrated Programs, Law, Banking & Government Exams, and Skill House. Routes: `/mba`, `/ipmat`, `/clat`, `/banking`, `/skillhouse`. Fold GDPI into MBA (retag data). Permanent redirects `/cat` and `/gdpi` (and nested paths) → `/mba`. Switcher trigger uses short `name`; dropdown uses full `menuLabel`.
+- **Rationale:** Client feedback: GDPI is part of the MBA vertical; add Banking (incl. SSC) and Skill House; keep header compact with short selected labels.
 - **Alternatives considered:** Keep `/cat` as MBA URL; rename IPMAT/CLAT slugs to `/integrated` and `/law`.
 - **Consequences:** Homepage exam grid shows five cards; forms/footer/nav consume `CATEGORIES`; new landings clone MBA/CAT section stack and reuse existing hero/icon assets until dedicated creatives arrive.
 

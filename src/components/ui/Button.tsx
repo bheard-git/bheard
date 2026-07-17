@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "bg-orange-500 text-white hover:bg-orange-600 hover:shadow-orange active:bg-orange-700 disabled:hover:bg-orange-500",
+    "btn-primary-premium bg-orange-500 text-white hover:bg-orange-600 hover:shadow-orange hover:-translate-y-px active:translate-y-0 active:bg-orange-700 disabled:hover:bg-orange-500",
   secondary:
     "bg-transparent text-orange-500 border border-orange-500 hover:bg-orange-500/10 hover:shadow-orange active:bg-orange-500/20 disabled:hover:bg-transparent",
   outline:

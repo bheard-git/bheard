@@ -4,6 +4,8 @@ import "./globals.css";
 import { PromotionalBanner } from "@/components/layout/PromotionalBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingCounsellingCta } from "@/components/layout/FloatingCounsellingCta";
+import { organizationJsonLd } from "@/lib/structured-data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Rodha — Expert Mentorship. Proven Strategies. Real Results.",
   description:
-    "India's trusted platform for MBA (CAT + GDPI), Integrated Programs, Law, Banking & Government Exams, and SkillHouse. Expert mentorship, proven strategies, and real results.",
+    "India's trusted platform for MBA (CAT + GDPI), Integrated Programs, Law, Banking & Government Exams, and Skill House. Expert mentorship, proven strategies, and real results.",
   keywords: [
     "MBA preparation",
     "CAT preparation",
@@ -23,14 +25,20 @@ export const metadata: Metadata = {
     "CLAT preparation",
     "Banking exam coaching",
     "SSC preparation",
-    "SkillHouse",
+    "Skill House",
     "competitive exam coaching",
   ],
   openGraph: {
     title: "Rodha — Expert Mentorship. Proven Strategies. Real Results.",
     description:
-      "India's trusted platform for MBA, Integrated Programs, Law, Banking & Government, and SkillHouse.",
+      "India's trusted platform for MBA, Integrated Programs, Law, Banking & Government, and Skill House.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rodha — Expert Mentorship. Proven Strategies. Real Results.",
+    description:
+      "India's trusted platform for MBA, Integrated Programs, Law, Banking & Government, and Skill House.",
   },
 };
 
@@ -42,9 +50,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
         <PromotionalBanner />
         <Header />
         <main>{children}</main>
+        <FloatingCounsellingCta />
         <Footer />
       </body>
     </html>

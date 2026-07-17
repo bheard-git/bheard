@@ -15,7 +15,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "relative overflow-hidden rounded-[6px] border border-border-default group block card-hover h-full min-h-[160px]",
+        "relative overflow-hidden rounded-[6px] border border-border-default group block card-premium-hover h-full min-h-[160px]",
         featured ? "min-h-[360px] md:min-h-full" : "min-h-[180px] md:min-h-[200px]",
         className
       )}
@@ -24,10 +24,10 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
         src={post.image || "/assets/images/placeholders/blog-thumbnail.svg"}
         alt={post.title}
         fill
-        className="object-cover group-hover:scale-105 transition-transform duration-500"
+        className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
         sizes={featured ? "(max-width: 768px) 100vw, 30vw" : "(max-width: 768px) 100vw, 25vw"}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10 transition-opacity duration-300 group-hover:opacity-90" />
 
       <div className="absolute top-3 left-3 z-10">
         <Badge variant={featured ? "primary" : "outline"} size="sm">
@@ -49,7 +49,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
         </div>
         <h3
           className={cn(
-            "mt-1.5 font-semibold text-text-primary group-hover:text-orange-400 transition-colors",
+            "mt-1.5 font-semibold text-text-primary group-hover:text-orange-400 transition-colors after:content-['→'] after:inline-block after:ml-1.5 after:text-orange-400 after:transition-transform after:duration-300 group-hover:after:translate-x-1",
             featured ? "text-h3 md:text-h2 line-clamp-3" : "text-body line-clamp-2"
           )}
         >

@@ -12,6 +12,8 @@ import { TestSeriesCard } from "@/components/cards/TestSeriesCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Carousel } from "@/components/ui/Carousel";
+import { RevealGroup } from "@/components/ui/RevealGroup";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { Accordion } from "@/components/ui/Accordion";
 import { getCoursesByCategory } from "@/data/courses";
 import { getFacultyByCategory } from "@/data/faculty";
@@ -26,6 +28,7 @@ import {
   IPMAT_TEST_SERIES,
 } from "@/data/ipmat-landing";
 import { EXTERNAL_URLS } from "@/lib/constants";
+import { categoryBreadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Integrated Programs (IPMAT) — Rodha",
@@ -43,6 +46,12 @@ export default function IPMATPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(categoryBreadcrumbJsonLd("ipmat")),
+        }}
+      />
       <Container>
         <Breadcrumb
           items={[
@@ -53,7 +62,7 @@ export default function IPMATPage() {
       </Container>
 
       <CategoryHeroSection
-        categoryName="Integrated"
+        categoryName="IPMAT"
         headline={
           <>
             Ace{" "}
@@ -82,16 +91,21 @@ export default function IPMATPage() {
             viewAllLabel="View All Courses"
             align="left"
           />
-          <Carousel>
-            {ipmatCourses.map((course) => (
-              <div
-                key={course.id}
-                className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
-              >
-                <CourseCard course={course} className="h-full" />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel>
+              {ipmatCourses.map((course, index) => (
+                <div
+                  key={course.id}
+                  className={`snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px] reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <CourseCard
+                    course={course}
+                    className={`h-full shine-delay-${(index % 4) + 1}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -103,13 +117,21 @@ export default function IPMATPage() {
             viewAllLabel="View All Faculty"
             align="left"
           />
-          <Carousel>
-            {ipmatFaculty.map((member) => (
-              <div key={member.id} className="snap-start shrink-0">
-                <FacultyCard faculty={member} className="h-full" />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel>
+              {ipmatFaculty.map((member, index) => (
+                <div
+                  key={member.id}
+                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <FacultyCard
+                    faculty={member}
+                    className={`h-full shine-delay-${(index % 4) + 1}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -121,15 +143,22 @@ export default function IPMATPage() {
             viewAllLabel="View All Test Series"
             align="left"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {IPMAT_TEST_SERIES.map((item) => (
-              <TestSeriesCard key={item.id} item={item} />
-            ))}
-          </div>
+          <RevealGroup>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {IPMAT_TEST_SERIES.map((item, index) => (
+                <TestSeriesCard
+                  key={item.id}
+                  item={item}
+                  className={`reveal-child reveal-delay-${(index % 4) + 1} shine-delay-${(index % 4) + 1}`}
+                />
+              ))}
+            </div>
+          </RevealGroup>
         </Container>
       </section>
 
-      <section id="results" className="section-spacing bg-bg-secondary/40">
+      <section id="results" className="section-spacing bg-bg-secondary/40 relative overflow-hidden">
+        <AmbientBackground variant="grid" />
         <Container>
           <SectionHeader
             title="Results That Inspire"
@@ -137,18 +166,26 @@ export default function IPMATPage() {
             viewAllLabel="View All Results"
             align="left"
           />
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
-            <ResultsStatsPanel stats={IPMAT_RESULT_STATS} />
-            <div className="flex-1 min-w-0">
-              <Carousel>
-                {ipmatResults.map((topper) => (
-                  <div key={topper.id} className="snap-start shrink-0">
-                    <TopperCard topper={topper} />
-                  </div>
-                ))}
-              </Carousel>
+          <RevealGroup>
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+              <ResultsStatsPanel
+                stats={IPMAT_RESULT_STATS}
+                className="reveal-child reveal-delay-1"
+              />
+              <div className="flex-1 min-w-0">
+                <Carousel>
+                  {ipmatResults.map((topper, index) => (
+                    <div
+                      key={topper.id}
+                      className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                    >
+                      <TopperCard topper={topper} />
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
             </div>
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
@@ -159,13 +196,18 @@ export default function IPMATPage() {
             subtitle="Real stories from Rodha Integrated Programs aspirants"
             align="left"
           />
-          <Carousel>
-            {ipmatTestimonials.map((item) => (
-              <div key={item.id} className="snap-start shrink-0">
-                <TestimonialCard testimonial={item} />
-              </div>
-            ))}
-          </Carousel>
+          <RevealGroup>
+            <Carousel autoPlay>
+              {ipmatTestimonials.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                >
+                  <TestimonialCard testimonial={item} />
+                </div>
+              ))}
+            </Carousel>
+          </RevealGroup>
         </Container>
       </section>
 

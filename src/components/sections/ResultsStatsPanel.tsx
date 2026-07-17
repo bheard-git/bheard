@@ -24,7 +24,7 @@ export function ResultsStatsPanel({ stats, className }: ResultsStatsPanelProps) 
   return (
     <div
       className={cn(
-        "card-base shrink-0 lg:w-[210px] xl:w-[230px] p-5 md:p-6 flex flex-row lg:flex-col gap-5 lg:gap-7 justify-center rounded-[6px] bg-linear-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35",
+        "card-base premium-border-glow shine-sweep shine-sweep-hover ambient-results shrink-0 lg:w-[210px] xl:w-[230px] p-5 md:p-6 flex flex-row lg:flex-col gap-5 lg:gap-7 justify-center rounded-[6px] bg-linear-to-br from-orange-500/25 via-bg-secondary to-bg-tertiary border-orange-500/35",
         className
       )}
     >

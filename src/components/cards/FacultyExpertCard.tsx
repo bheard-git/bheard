@@ -35,7 +35,7 @@ export function FacultyExpertCard({ faculty, className }: FacultyExpertCardProps
       className={cn(
         // `block` is required — Link is inline by default; without it width/height
         // collapse in the carousel and absolute images stack/overlap.
-        "card-base card-hover relative block shrink-0 overflow-hidden group",
+        "card-base card-premium-hover relative block shrink-0 overflow-hidden group",
         "w-[210px] sm:w-[220px] md:w-[230px] h-[320px] rounded-[6px] bg-bg-tertiary",
         className
       )}

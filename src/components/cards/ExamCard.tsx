@@ -16,11 +16,13 @@ export function ExamCard({ category, className }: ExamCardProps) {
     <Link
       href={`/${category.slug}`}
       className={cn(
-        "card-base card-hover relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px]",
+        "card-base !bg-[#0d0b0a] card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px]",
         className
       )}
       style={{
         boxShadow: `inset 0 0 0 1px ${accent}28`,
+        ["--glow-base" as string]: `${accent}24`,
+        ["--glow-peak" as string]: `${accent}B3`,
       }}
     >
       <div
@@ -54,7 +56,7 @@ export function ExamCard({ category, className }: ExamCardProps) {
         </div>
       )}
 
-      <div className="relative z-10 flex flex-col flex-1 pr-20">
+      <div className="relative z-10 flex flex-col flex-1 pr-10">
         <h3
           className="text-[26px] md:text-[30px] font-bold leading-none tracking-tight"
           style={{ color: accent }}

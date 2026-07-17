@@ -29,10 +29,6 @@ export function Header({ className }: HeaderProps) {
   const examRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setExamOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (examRef.current && !examRef.current.contains(e.target as Node)) {
         setExamOpen(false);
@@ -60,7 +56,6 @@ export function Header({ className }: HeaderProps) {
               width={120}
               height={32}
               className="h-7 md:h-8 w-auto"
-              priority
             />
           </Link>
 
@@ -93,7 +88,7 @@ export function Header({ className }: HeaderProps) {
             {examOpen && (
               <div
                 role="listbox"
-                className="absolute top-full left-0 mt-2 w-72 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50"
+                className="absolute top-full left-0 mt-2 w-72 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50 animate-[dropdown-in_180ms_var(--ease-premium)]"
               >
                 {CATEGORIES.map((cat) => {
                   const isActive = cat.id === activeCategoryId;
@@ -132,10 +127,10 @@ export function Header({ className }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "relative px-2 xl:px-2.5 py-1.5 text-body-sm transition-colors whitespace-nowrap",
+                  "relative px-2 xl:px-2.5 py-1.5 text-body-sm transition-colors whitespace-nowrap after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:origin-left after:rounded-full after:bg-orange-500 after:transition-transform after:duration-300",
                   isActive
-                    ? "text-orange-400 after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange-500"
-                    : "text-text-secondary hover:text-text-primary"
+                    ? "text-orange-400 [text-shadow:0_0_14px_rgba(249,115,22,0.18)] after:scale-x-100"
+                    : "text-text-secondary hover:text-text-primary after:scale-x-0 hover:after:scale-x-100"
                 )}
               >
                 {item.label}

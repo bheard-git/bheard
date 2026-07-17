@@ -274,7 +274,7 @@ export const topResults: TopperResult[] = [
   {
     id: "r27",
     name: "Sara Ali",
-    exam: "SkillHouse 2024",
+    exam: "Skill House 2024",
     rank: 1,
     score: "Placed",
     college: "Product Associate",
@@ -285,7 +285,7 @@ export const topResults: TopperResult[] = [
   {
     id: "r28",
     name: "Nikhil Bose",
-    exam: "SkillHouse 2024",
+    exam: "Skill House 2024",
     rank: 2,
     score: "Placed",
     college: "Business Analyst",
@@ -296,7 +296,7 @@ export const topResults: TopperResult[] = [
   {
     id: "r29",
     name: "Tanya Gill",
-    exam: "SkillHouse 2024",
+    exam: "Skill House 2024",
     rank: 3,
     score: "Placed",
     college: "Marketing Associate",
@@ -307,7 +307,7 @@ export const topResults: TopperResult[] = [
   {
     id: "r30",
     name: "Omar Sheikh",
-    exam: "SkillHouse 2024",
+    exam: "Skill House 2024",
     rank: 4,
     score: "Placed",
     college: "Operations Lead",

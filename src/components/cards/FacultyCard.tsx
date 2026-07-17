@@ -14,7 +14,7 @@ export function FacultyCard({ faculty, className }: FacultyCardProps) {
     <Link
       href={`/faculty/${faculty.slug}`}
       className={cn(
-        "card-base card-hover relative overflow-hidden flex flex-row items-stretch group min-w-[260px] w-[280px] md:w-[300px] min-h-[150px] rounded-[6px]",
+        "card-base card-premium-hover premium-border-glow shine-sweep shine-sweep-hover relative overflow-hidden flex flex-row items-stretch group min-w-[260px] w-[280px] md:w-[300px] min-h-[150px] rounded-[6px]",
         className
       )}
     >
@@ -23,7 +23,7 @@ export function FacultyCard({ faculty, className }: FacultyCardProps) {
           src={faculty.image || "/assets/images/placeholders/faculty-avatar.svg"}
           alt={faculty.name}
           fill
-          className="object-contain object-bottom"
+          className="object-contain object-bottom transition-transform duration-300 ease-out group-hover:scale-[1.02]"
           sizes="130px"
         />
       </div>
@@ -37,7 +37,11 @@ export function FacultyCard({ faculty, className }: FacultyCardProps) {
 
         {faculty.rating !== undefined && (
           <div className="mt-2 flex items-center gap-1.5">
-            <Rating value={Math.round(faculty.rating)} size="sm" />
+            <Rating
+              value={Math.round(faculty.rating)}
+              size="sm"
+              className="transition-[filter] duration-300 group-hover:brightness-125"
+            />
             <span className="text-caption text-text-muted font-medium">
               {faculty.rating}/5
             </span>

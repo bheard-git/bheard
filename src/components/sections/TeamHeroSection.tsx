@@ -23,7 +23,7 @@ export function TeamHeroSection({ className }: TeamHeroSectionProps) {
           fill
           className="object-cover object-center"
           sizes="54vw"
-          priority
+          fetchPriority="high"
         />
         {/* Left blend only — no top/bottom fade so image covers the full height */}
         <div
@@ -83,7 +83,7 @@ export function TeamHeroSection({ className }: TeamHeroSectionProps) {
               fill
               className="object-cover object-center"
               sizes="100vw"
-              priority
+              fetchPriority="high"
             />
           </div>
         </div>

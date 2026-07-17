@@ -63,7 +63,7 @@ export function ResourceCard({ item, className }: ResourceCardProps) {
     "flex flex-col p-5 md:p-6 h-full rounded-[14px] transition-all duration-300",
     highlighted
       ? "bg-orange-500 border border-orange-400/40 shadow-orange hover:bg-orange-600 hover:-translate-y-[3px]"
-      : "card-base card-hover",
+      : "card-base card-premium-hover",
     className
   );
 

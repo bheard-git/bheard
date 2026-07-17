@@ -34,7 +34,11 @@ Update this file after every meaningful implementation task.
 - **Meet the Team UI QA (2026-07-16):** Edge-bleed hero, section bg/labels, leadership divider + LinkedIn, faculty overlay cards, advisor flush layout, culture 4-col dividers, CTA decorative bg + orange arrow secondary
 - **Meet the Team QA pass 2 (2026-07-16):** Fixed faculty carousel overlap (`block` + slide width); advisors left/right split + 4-field cards; culture split layout; CTA `object-cover` fill; LinkedIn transparent white border + filled icon
 - **CAT landing section order (2026-07-17):** Hero → Results → Courses → Faculty → Test Series → Testimonials → Resources → FAQs → CTA
-- **Category taxonomy refresh (2026-07-17):** Five primary verticals — MBA (`/mba`, CAT+GDPI merged), Integrated (`/ipmat`), Law (`/clat`), Banking (`/banking`), SkillHouse (`/skillhouse`). Switcher shows short trigger + full `menuLabel`. Redirects `/cat` & `/gdpi` → `/mba`. Same section layout/assets reused for new pages.
+- **Category taxonomy refresh (2026-07-17):** Five primary verticals — MBA (`/mba`, CAT+GDPI merged), Integrated (`/ipmat`), Law (`/clat`), Banking (`/banking`), Skill House (`/skillhouse`). Switcher shows short trigger + full `menuLabel`. Redirects `/cat` & `/gdpi` → `/mba`. Same section layout/assets reused for new pages.
+- **SSR-first UI polish (2026-07-17):** Added lightweight `RevealGroup`, testimonial carousel autoplay, observer-based floating counselling CTA, Skill House display rename, JSON-LD helpers (Organization / Breadcrumb / FAQ), and Next 16 image preload cleanup while keeping sections server-rendered.
+- **Premium motion system (2026-07-17):** Added CSS-first section reveals, shared 4px card lift/glow interactions, selective animated borders and shine sweeps, hero/CTA atmospheric lighting, reusable `AmbientBackground` SVG patterns, refined navigation/floating CTA motion, and slower testimonial autoplay. All motion respects `prefers-reduced-motion`; no animation library or scroll listener added.
+- **Premium motion refinements (2026-07-17):** Stronger accent-aware border glow (16s), slower/softer staggered shine (11s + 1.5s delays), outlined CTA silver glow/shine (`.btn-outlined-premium`), Faculty/Test Series/View All coverage, floating counselling CTA observes `[data-counselling-cta]` only, and category landing parity with homepage ambient/reveal/shine patterns.
+- **Hover shine sweep utility (2026-07-17):** Added `.shine-sweep-hover` — one-shot diagonal light sweep on card hover (0.72s, no loop). Applied to results/topper cards, stats panel, course/faculty/testimonial/advisor/value-prop cards; coexists with existing `.shine-sweep` ambient animation and `.card-premium-hover` lift/glow.
 
 ---
 
@@ -52,7 +56,7 @@ Update this file after every meaningful implementation task.
 
 ### Assets still needed
 - [ ] Transparent faculty / student PNGs
-- [ ] Dedicated IPMAT / Law / Banking / SkillHouse hero images
+- [ ] Dedicated IPMAT / Law / Banking / Skill House hero images
 - [ ] Dedicated leadership / advisor headshots (interim: homepage `profiles/`)
 
 ### Screens
@@ -63,7 +67,7 @@ Update this file after every meaningful implementation task.
 - [ ] Promo popup
 
 ### Integrations
-- [ ] Final external URLs, forms, sitemap, JSON-LD
+- [ ] Final external URLs, forms, sitemap
 
 ---
 

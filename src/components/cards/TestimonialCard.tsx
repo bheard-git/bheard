@@ -14,11 +14,11 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
   return (
     <article
       className={cn(
-        "card-base card-hover flex flex-col p-5 md:p-6 h-full w-[300px] sm:w-[320px] min-h-[220px]",
+        "card-base card-premium-hover shine-sweep-hover group flex flex-col p-5 md:p-6 h-full w-[300px] sm:w-[320px] min-h-[220px]",
         className
       )}
     >
-      <div className="w-9 h-9 rounded-[6px] bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
+      <div className="quote-glow w-9 h-9 rounded-[6px] bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0 transition-[filter,border-color] duration-300 group-hover:brightness-125 group-hover:border-orange-500/40">
         <Icon src="/assets/icons/quote.svg" size={18} />
       </div>
 

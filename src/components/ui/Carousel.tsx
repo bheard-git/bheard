@@ -8,6 +8,8 @@ interface CarouselProps {
   className?: string;
   showArrows?: boolean;
   itemClassName?: string;
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
 }
 
 export function Carousel({
@@ -15,10 +17,16 @@ export function Carousel({
   className,
   showArrows = true,
   itemClassName,
+  autoPlay = false,
+  autoPlayInterval = 5000,
 }: CarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDocumentHidden, setIsDocumentHidden] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const updateArrows = useCallback(() => {
     const el = scrollRef.current;
@@ -31,15 +39,42 @@ export function Carousel({
     const el = scrollRef.current;
     if (!el) return;
     updateArrows();
-    el.addEventListener("scroll", updateArrows, { passive: true });
+    const handleScroll = () => {
+      updateArrows();
+      if (!autoPlay) return;
+      setIsPaused(true);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = setTimeout(() => setIsPaused(false), 1200);
+    };
+    el.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", updateArrows);
     return () => {
-      el.removeEventListener("scroll", updateArrows);
+      el.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateArrows);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [updateArrows]);
+  }, [autoPlay, updateArrows]);
 
-  const scroll = (dir: "left" | "right") => {
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    const timeout = window.setTimeout(updatePreference, 0);
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => {
+      window.clearTimeout(timeout);
+      mediaQuery.removeEventListener("change", updatePreference);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsDocumentHidden(document.hidden);
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+
+  const scroll = useCallback((dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
     const firstChild = el.firstElementChild as HTMLElement | null;
@@ -47,10 +82,43 @@ export function Carousel({
       ? firstChild.offsetWidth + 20
       : el.clientWidth * 0.8;
     el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!autoPlay || prefersReducedMotion || isPaused || isDocumentHidden) return;
+
+    const interval = window.setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+
+      const isAtEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+      if (isAtEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scroll("right");
+      }
+    }, autoPlayInterval);
+
+    return () => window.clearInterval(interval);
+  }, [
+    autoPlay,
+    autoPlayInterval,
+    isDocumentHidden,
+    isPaused,
+    prefersReducedMotion,
+    scroll,
+  ]);
 
   return (
-    <div className={cn("relative group/carousel", className)}>
+    <div
+      className={cn("relative group/carousel", className)}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
       {showArrows && (
         <>
           <button

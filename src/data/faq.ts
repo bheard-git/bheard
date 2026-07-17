@@ -29,21 +29,21 @@ export const FAQ_DATA: FAQItem[] = [
     category: "general",
     question: "What is Rodha?",
     answer:
-      "Rodha is India's trusted platform for MBA (CAT + GDPI), Integrated Programs (IPMAT), Law (CLAT), Banking & Government Exams, and SkillHouse. We combine expert mentorship, structured courses, rigorous test series, and personalised guidance to help students crack competitive exams and build careers.",
+      "Rodha is India's trusted platform for MBA (CAT + GDPI), Integrated Programs (IPMAT), Law (CLAT), Banking & Government Exams, and Skill House. We combine expert mentorship, structured courses, rigorous test series, and personalised guidance to help students crack competitive exams and build careers.",
   },
   {
     id: "gen-2",
     category: "general",
     question: "Which exams does Rodha prepare students for?",
     answer:
-      "We currently offer programs for CAT (MBA entrance), IPMAT (IIM Indore/Rohtak and similar IPM exams), GDPI (Group Discussion & Personal Interview for B-schools), and CLAT (law entrance for NLUs).",
+      "We currently offer programs across MBA (CAT + GDPI), Integrated Programs (IPMAT), Law (CLAT), Banking & Government Exams including SSC, and Skill House career-skills programs.",
   },
   {
     id: "gen-3",
     category: "general",
     question: "Who can join Rodha programs?",
     answer:
-      "Anyone preparing for MBA (CAT/GDPI), Integrated Programs, Law, Banking & Government Exams, or SkillHouse can join — college students, working professionals, and career switchers. Each category has tracks for different timelines and experience levels.",
+      "Anyone preparing for MBA (CAT/GDPI), Integrated Programs, Law, Banking & Government Exams, or Skill House can join — college students, working professionals, and career switchers. Each category has tracks for different timelines and experience levels.",
   },
   {
     id: "gen-4",
@@ -57,7 +57,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "general",
     question: "How do I get started with Rodha?",
     answer:
-      "Browse the exam category that matches your goal (MBA, Integrated Programs, Law, Banking & Government, or SkillHouse), pick a course that fits your timeline, and enroll. You can also book a free counselling call or ask Rodha Buddy for personalised advice.",
+      "Browse the exam category that matches your goal (MBA, Integrated Programs, Law, Banking & Government, or Skill House), pick a course that fits your timeline, and enroll. You can also book a free counselling call or ask Rodha Buddy for personalised advice.",
   },
   {
     id: "gen-6",
@@ -205,7 +205,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "tests",
     question: "Are mocks based on the latest exam pattern?",
     answer:
-      "Our test series is updated to reflect the latest known patterns across MBA (CAT), Integrated Programs, Law, Banking & Government, and SkillHouse assessments. When exam authorities announce changes, we revise content accordingly.",
+      "Our test series is updated to reflect the latest known patterns across MBA (CAT), Integrated Programs, Law, Banking & Government, and Skill House assessments. When exam authorities announce changes, we revise content accordingly.",
   },
   {
     id: "tst-3",

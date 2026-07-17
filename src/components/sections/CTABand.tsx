@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 
 interface CTABandProps {
   title: string;
@@ -21,10 +22,11 @@ function SecondaryCta({
   /** decorated = white border + orange arrow (team page); default = white border only */
   variant: "default" | "decorated";
 }) {
+  const isCounselling = /counselling/i.test(action.label);
   const className =
     variant === "decorated"
-      ? "inline-flex items-center justify-center gap-2 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold"
-      : "inline-flex items-center justify-center gap-1.5 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold";
+      ? "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-2 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold"
+      : "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-1.5 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold";
 
   const content = (
     <>
@@ -42,6 +44,7 @@ function SecondaryCta({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        {...(isCounselling ? { "data-counselling-cta": true } : {})}
       >
         {content}
       </a>
@@ -49,7 +52,11 @@ function SecondaryCta({
   }
 
   return (
-    <Link href={action.href} className={className}>
+    <Link
+      href={action.href}
+      className={className}
+      {...(isCounselling ? { "data-counselling-cta": true } : {})}
+    >
       {content}
     </Link>
   );
@@ -64,13 +71,14 @@ export function CTABand({
   className,
 }: CTABandProps) {
   const isDecorated = Boolean(decorativeImage);
+  const primaryIsCounselling = /counselling/i.test(primaryAction.label);
 
   return (
-    <section className={cn("section-spacing pt-6 md:pt-8", className)}>
+    <section id="site-footer-cta" className={cn("section-spacing pt-6 md:pt-8", className)}>
       <div className="container-rodha">
         <div
           className={cn(
-            "relative overflow-hidden rounded-[6px] border border-orange-500/30 bg-bg-secondary",
+            "relative overflow-hidden rounded-[6px] border border-orange-500/30 bg-bg-secondary surface-gradient-cta premium-border-glow shine-sweep",
             isDecorated
               ? "min-h-[160px] md:min-h-[180px] px-5 py-7 md:px-8 md:py-8"
               : "px-5 py-6 md:px-8 md:py-7"
@@ -84,6 +92,13 @@ export function CTABand({
                 : "radial-gradient(ellipse 55% 70% at 18% 50%, rgba(249,115,22,0.12) 0%, transparent 70%)",
             }}
           />
+          <div
+            className="pointer-events-none absolute -right-16 top-1/2 h-36 w-72 -translate-y-1/2"
+            aria-hidden
+          >
+            <div className="ambient-drift h-full w-full rounded-full bg-orange-500/10 blur-3xl" />
+          </div>
+          <AmbientBackground variant="skyline" />
 
           {decorativeImage && (
             <div className="pointer-events-none absolute inset-y-0 left-0 w-[42%] sm:w-[36%] md:w-[30%] lg:w-[28%]">
@@ -137,7 +152,8 @@ export function CTABand({
             <div className="flex flex-col sm:flex-row gap-4 md:flex-col lg:flex-row items-center md:gap-2.5 shrink-0">
               <Link
                 href={primaryAction.href}
-                className="btn-primary text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap"
+                className="btn-primary btn-primary-premium text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap"
+                {...(primaryIsCounselling ? { "data-counselling-cta": true } : {})}
               >
                 {primaryAction.label}
               </Link>

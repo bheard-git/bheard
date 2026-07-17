@@ -244,7 +244,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t21",
     name: "Sara Ali",
-    exam: "SkillHouse Learner",
+    exam: "Skill House Learner",
     score: "Placed",
     college: "Product Associate",
     quote:
@@ -256,7 +256,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t22",
     name: "Nikhil Bose",
-    exam: "SkillHouse Learner",
+    exam: "Skill House Learner",
     score: "Placed",
     college: "Business Analyst",
     quote:
@@ -268,11 +268,11 @@ export const testimonials: Testimonial[] = [
   {
     id: "t23",
     name: "Tanya Gill",
-    exam: "SkillHouse Learner",
+    exam: "Skill House Learner",
     score: "Placed",
     college: "Marketing Associate",
     quote:
-      "SkillHouse balanced structure with creativity. Mentors helped me ship projects on deadlines.",
+      "Skill House balanced structure with creativity. Mentors helped me ship projects on deadlines.",
     image: "/assets/images/profiles/female-4.png",
     year: 2024,
     category: "skillhouse",
@@ -280,7 +280,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t24",
     name: "Omar Sheikh",
-    exam: "SkillHouse Learner",
+    exam: "Skill House Learner",
     score: "Placed",
     college: "Operations Lead",
     quote:

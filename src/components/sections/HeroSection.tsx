@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { HERO_FEATURES, TRUST_METRICS } from "@/lib/constants";
 
 interface HeroSectionProps {
@@ -20,7 +21,7 @@ const STUDENT_AVATARS = [
 export function HeroSection({ title, subtitle, children, className }: HeroSectionProps) {
   if (title) {
     return (
-      <section className={cn("bg-hero-gradient section-spacing", className)}>
+      <section id="site-hero" className={cn("bg-hero-gradient section-spacing", className)}>
         <div className="container-rodha text-center">
           <h1 className="text-h1 md:text-hero font-bold leading-tight max-w-4xl mx-auto">
             {title}
@@ -42,8 +43,9 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
 
   return (
     <section
+      id="site-hero"
       className={cn(
-        "relative overflow-hidden pt-6 pb-8 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12",
+        "relative overflow-hidden pt-6 pb-8 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12 section-gradient-hero",
         className
       )}
     >
@@ -54,7 +56,7 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
           fill
           className="object-cover object-[center_40%]"
           sizes="100vw"
-          priority
+          preload
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg-primary via-bg-primary/80 to-bg-primary/35" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/50" />
@@ -65,6 +67,14 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
               "radial-gradient(ellipse 45% 55% at 72% 48%, rgba(249,115,22,0.14) 0%, transparent 70%)",
           }}
         />
+        <div className="hero-atmosphere" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden>
+          <span className="ambient-drift absolute left-[64%] top-[22%] h-1 w-1 rounded-full bg-orange-300/50 shadow-[0_0_10px_rgba(249,115,22,0.45)]" />
+          <span className="ambient-drift absolute left-[78%] top-[34%] h-1.5 w-1.5 rounded-full bg-orange-400/40 shadow-[0_0_12px_rgba(249,115,22,0.4)] [animation-delay:-8s]" />
+          <span className="ambient-drift absolute left-[70%] top-[68%] h-1 w-1 rounded-full bg-orange-300/40 shadow-[0_0_9px_rgba(249,115,22,0.35)] [animation-delay:-16s]" />
+          <span className="ambient-drift absolute left-[87%] top-[58%] h-1 w-1 rounded-full bg-orange-400/35 shadow-[0_0_10px_rgba(249,115,22,0.35)] [animation-delay:-22s]" />
+        </div>
+        <AmbientBackground variant="mesh" />
       </div>
 
       <div className="container-rodha relative z-10">
@@ -80,23 +90,30 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
 
             <p className="mt-4 text-body-lg text-text-secondary max-w-lg leading-relaxed">
               Join India&apos;s most trusted platform for MBA, Integrated Programs,
-              Law, Banking &amp; Government, and SkillHouse
+              Law, Banking &amp; Government, and Skill House
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row items-start gap-3">
-              <Link href="/mba" className="btn-primary text-body px-6 py-2.5 rounded-[6px]">
+              <Link
+                href="/mba"
+                className="btn-primary btn-primary-premium text-body px-6 py-2.5 rounded-[6px]"
+              >
                 Explore Courses
               </Link>
-              <Link href="/contact" className="btn-secondary text-body px-6 py-2.5 rounded-[6px]">
+              <Link
+                href="/contact"
+                data-counselling-cta
+                className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline text-body px-6 py-2.5 rounded-[6px]"
+              >
                 Book Free Counselling
               </Link>
             </div>
 
             <div className="mt-7 flex flex-wrap items-center gap-5 md:gap-6">
               {TRUST_METRICS.map((metric) => (
-                <div key={metric.id} className="flex items-center gap-2.5">
+                <div key={metric.id} className="group/metric flex items-center gap-2.5">
                   {metric.id === "students" ? (
-                    <div className="flex -space-x-2.5 shrink-0">
+                    <div className="flex -space-x-2.5 shrink-0 transition-[transform,filter] duration-300 group-hover/metric:scale-105 group-hover/metric:drop-shadow-[0_0_8px_rgba(249,115,22,0.24)]">
                       {STUDENT_AVATARS.map((src, i) => (
                         <div
                           key={i}
@@ -113,7 +130,7 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
                       ))}
                     </div>
                   ) : (
-                    <div className="relative w-8 h-8 shrink-0">
+                    <div className="relative w-8 h-8 shrink-0 transition-[transform,filter] duration-300 group-hover/metric:scale-105 group-hover/metric:drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">
                       <Image
                         src={metric.icon}
                         alt=""
@@ -141,9 +158,9 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
               {HERO_FEATURES.map((feature) => (
                 <div
                   key={feature.id}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-[6px] bg-bg-tertiary/75 backdrop-blur-md border border-white/10 shadow-md hover:border-orange-500/40 transition-all"
+                  className="group/feature premium-border-glow card-premium-hover flex items-center gap-3 px-3 py-2.5 rounded-[6px] bg-bg-tertiary/75 backdrop-blur-md border border-white/10 shadow-md"
                 >
-                  <div className="relative w-9 h-9 shrink-0">
+                  <div className="relative w-9 h-9 shrink-0 transition-[transform,filter] duration-300 group-hover/feature:scale-105 group-hover/feature:drop-shadow-[0_0_8px_rgba(249,115,22,0.28)]">
                     <Image
                       src={feature.icon}
                       alt=""
@@ -168,9 +185,9 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
               {HERO_FEATURES.map((feature) => (
                 <div
                   key={feature.id}
-                  className="flex items-center gap-2 px-2.5 py-2.5 rounded-[6px] bg-bg-tertiary/80 backdrop-blur-md border border-white/10"
+                  className="group/feature premium-border-glow flex items-center gap-2 px-2.5 py-2.5 rounded-[6px] bg-bg-tertiary/80 backdrop-blur-md border border-white/10"
                 >
-                  <div className="relative w-7 h-7 shrink-0">
+                  <div className="relative w-7 h-7 shrink-0 transition-[filter] duration-300 group-hover/feature:brightness-110">
                     <Image
                       src={feature.icon}
                       alt=""
