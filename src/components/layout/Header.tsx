@@ -26,9 +26,7 @@ export function Header({ className }: HeaderProps) {
   const activeCategory = CATEGORIES.find((cat) => cat.id === activeCategoryId);
 
   const [examOpen, setExamOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
   const examRef = useRef<HTMLDivElement>(null);
-  const resourcesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setExamOpen(false);
@@ -38,9 +36,6 @@ export function Header({ className }: HeaderProps) {
     function handleClick(e: MouseEvent) {
       if (examRef.current && !examRef.current.contains(e.target as Node)) {
         setExamOpen(false);
-      }
-      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
-        setResourcesOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClick);
@@ -130,59 +125,6 @@ export function Header({ className }: HeaderProps) {
 
         <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0">
           {HEADER_NAV.map((item) => {
-            if ("children" in item && item.children) {
-              return (
-                <div key={item.label} ref={resourcesRef} className="relative">
-                  <button
-                    onClick={() => setResourcesOpen(!resourcesOpen)}
-                    className="flex items-center gap-1 px-2 xl:px-2.5 py-1.5 text-body-sm text-text-secondary hover:text-text-primary transition-colors whitespace-nowrap"
-                  >
-                    {item.label}
-                    <svg
-                      className={cn(
-                        "h-3 w-3 transition-transform",
-                        resourcesOpen && "rotate-180"
-                      )}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {resourcesOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-44 rounded-[6px] bg-bg-surface border border-border-default shadow-md py-2 z-50">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setResourcesOpen(false)}
-                          className="block px-4 py-2 text-body-sm text-text-secondary hover:bg-bg-hover hover:text-orange-400 transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            if ("external" in item && item.external) {
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2 xl:px-2.5 py-1.5 text-body-sm text-text-secondary hover:text-text-primary transition-colors whitespace-nowrap"
-                >
-                  {item.label}
-                </a>
-              );
-            }
-
             const isActive = pathname === item.href;
 
             return (

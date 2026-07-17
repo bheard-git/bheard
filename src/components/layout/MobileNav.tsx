@@ -61,55 +61,16 @@ export function MobileNav({ activeCategoryId = null }: MobileNavProps) {
 
           <div className="border-t border-border-default my-4" />
 
-          {HEADER_NAV.map((item) => {
-            if ("children" in item && item.children) {
-              return (
-                <div key={item.label} className="py-2">
-                  <span className="text-caption text-text-dimmed uppercase tracking-wider">
-                    {item.label}
-                  </span>
-                  <div className="mt-1 ml-3 space-y-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block py-2 text-body text-text-secondary hover:text-orange-400 transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if ("external" in item && item.external) {
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className="block py-2.5 text-body font-medium text-text-primary hover:text-orange-400 transition-colors"
-                >
-                  {item.label}
-                </a>
-              );
-            }
-
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block py-2.5 text-body font-medium text-text-primary hover:text-orange-400 transition-colors"
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+          {HEADER_NAV.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="block py-2.5 text-body font-medium text-text-primary hover:text-orange-400 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
 
           <div className="border-t border-border-default my-4" />
 
