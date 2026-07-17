@@ -89,21 +89,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const HEADER_NAV = [
-  { label: "Courses", href: "/cat" },
-  { label: "Faculty", href: "/faculty" },
-  { label: "Test Series", href: EXTERNAL_URLS.thinkExam, external: true },
-  { label: "Results", href: "/#results" },
-  {
-    label: "Resources",
-    href: "#",
-    children: [
-      { label: "Blog", href: "/blog" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Free Resources", href: "/blog" },
-    ],
-  },
-  { label: "Blogs", href: "/blog" },
   { label: "About Us", href: "/about" },
+  { label: "Faculty", href: "/faculty" },
+  { label: "Blogs", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
 

@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-16  
+**Last updated:** 2026-07-17  
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -11,6 +11,7 @@ Update this file after every meaningful implementation task.
 
 - Design system in `src/app/globals.css` (tokens, utilities, buttons, cards, inputs)
 - Layout shell: `PromotionalBanner`, `Header`, `Footer`, `MobileNav`, `Container`
+- **Header nav trim (2026-07-17):** `HEADER_NAV` limited to About Us, Faculty, Blogs, Contact Us (desktop + mobile)
 - Homepage (`src/app/page.tsx`) — all major sections wired
 - **Homepage visual QA pass (2026-07-14, second polish)**
 - CAT / IPMAT / GDPI / CLAT category landings via `CategoryHeroSection`
