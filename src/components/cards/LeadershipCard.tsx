@@ -25,7 +25,7 @@ export function LeadershipCard({ member, className }: LeadershipCardProps) {
   return (
     <article
       className={cn(
-        "card-base card-premium-hover relative overflow-hidden flex flex-row items-stretch min-w-[280px] w-[300px] md:w-[340px] min-h-[190px] rounded-[6px]",
+        "card-base card-premium-hover hover-shine relative overflow-hidden flex flex-row items-stretch min-w-[280px] w-[300px] md:w-[340px] min-h-[190px] rounded-[6px]",
         className
       )}
     >

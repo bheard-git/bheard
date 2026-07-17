@@ -14,7 +14,7 @@ export function FacultyCard({ faculty, className }: FacultyCardProps) {
     <Link
       href={`/faculty/${faculty.slug}`}
       className={cn(
-        "card-base card-premium-hover premium-border-glow shine-sweep shine-sweep-hover relative overflow-hidden flex flex-row items-stretch group min-w-[260px] w-[280px] md:w-[300px] min-h-[150px] rounded-[6px]",
+        "card-base card-premium-hover premium-border-glow hover-shine relative overflow-hidden flex flex-row items-stretch group min-w-[260px] w-[280px] md:w-[300px] min-h-[150px] rounded-[6px]",
         className
       )}
     >

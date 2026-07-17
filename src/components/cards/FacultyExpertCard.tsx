@@ -10,11 +10,11 @@ interface FacultyExpertCardProps {
 }
 
 const BADGE_VARIANTS = [
-  "bg-bg-primary/95 text-purple-300 border-purple-500/50",
-  "bg-bg-primary/95 text-emerald-300 border-emerald-500/50",
-  "bg-bg-primary/95 text-sky-300 border-sky-500/50",
-  "bg-bg-primary/95 text-orange-300 border-orange-500/50",
-  "bg-bg-primary/95 text-rose-300 border-rose-500/50",
+  "bg-purple-500 text-white border-purple-500",
+  "bg-emerald-500 text-white border-emerald-500",
+  "bg-sky-500 text-white border-sky-500",
+  "bg-orange-500 text-white border-orange-500",
+  "bg-rose-500 text-white border-rose-500",
 ] as const;
 
 export function FacultyExpertCard({ faculty, className }: FacultyExpertCardProps) {
@@ -35,7 +35,7 @@ export function FacultyExpertCard({ faculty, className }: FacultyExpertCardProps
       className={cn(
         // `block` is required — Link is inline by default; without it width/height
         // collapse in the carousel and absolute images stack/overlap.
-        "card-base card-premium-hover relative block shrink-0 overflow-hidden group",
+        "card-base card-premium-hover hover-shine relative block shrink-0 overflow-hidden group",
         "w-[210px] sm:w-[220px] md:w-[230px] h-[320px] rounded-[6px] bg-bg-tertiary",
         className
       )}

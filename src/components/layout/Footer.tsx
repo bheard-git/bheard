@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   CATEGORIES,
@@ -49,21 +50,66 @@ const FOOTER_COLS = {
   ],
 };
 
+/** When multiple footer links share a path, only this label is marked active. */
+const PREFERRED_ACTIVE_LABEL: Record<string, string> = {
+  "/mba": "MBA (CAT + GDPI)",
+  "/blog": "Blog",
+  "/contact": "Contact Us",
+};
+
+function normalizePath(path: string): string {
+  const base = path.split("#")[0] || "/";
+  return base.length > 1 && base.endsWith("/") ? base.slice(0, -1) : base;
+}
+
+function parseFooterHref(href: string): { path: string; hash: string } {
+  const [pathPart, hashPart] = href.split("#");
+  return {
+    path: normalizePath(pathPart || "/"),
+    hash: hashPart ? `#${hashPart}` : "",
+  };
+}
+
+function getActiveFooterLabel(pathname: string, currentHash: string): string | null {
+  const currentPath = normalizePath(pathname);
+  const hash = currentHash || "";
+
+  const matches = Object.values(FOOTER_COLS)
+    .flat()
+    .filter((item) => {
+      const { path, hash: itemHash } = parseFooterHref(item.href);
+      if (path !== currentPath) return false;
+      // Hash links (e.g. /#results) only match when the hash is present
+      if (itemHash) return itemHash === hash;
+      // Plain path links only match when there is no hash in the URL
+      return hash === "";
+    });
+
+  if (matches.length === 0) return null;
+
+  const preferred = PREFERRED_ACTIVE_LABEL[currentPath];
+  if (preferred && matches.some((m) => m.label === preferred)) {
+    return preferred;
+  }
+
+  return matches[0].label;
+}
+
 function FooterColumn({
   title,
   links,
-  activeHref,
+  activeLabel,
 }: {
   title: string;
   links: { label: string; href: string }[];
-  activeHref?: string;
+  activeLabel: string | null;
 }) {
   return (
     <div className="text-left lg:text-right">
       <h4 className="text-body font-semibold text-text-primary mb-4">{title}</h4>
       <ul className="space-y-2.5">
         {links.map((item) => {
-          const isActive = activeHref === item.href;
+          const isActive = activeLabel === item.label;
           return (
             <li key={item.label}>
               <Link
@@ -87,7 +133,17 @@ function FooterColumn({
 
 export function Footer() {
   const pathname = usePathname();
+  const [hash, setHash] = useState("");
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const syncHash = () => setHash(window.location.hash);
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [pathname]);
+
+  const activeLabel = getActiveFooterLabel(pathname, hash);
 
   return (
     <footer className="bg-bg-secondary border-t border-border-default relative">
@@ -130,11 +186,11 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterColumn title="Exams" links={FOOTER_COLS.exams} activeHref={pathname} />
-          <FooterColumn title="Courses" links={FOOTER_COLS.courses} activeHref={pathname} />
-          <FooterColumn title="Company" links={FOOTER_COLS.company} activeHref={pathname} />
-          <FooterColumn title="Resources" links={FOOTER_COLS.resources} activeHref={pathname} />
-          <FooterColumn title="Legal" links={FOOTER_COLS.legal} activeHref={pathname} />
+          <FooterColumn title="Exams" links={FOOTER_COLS.exams} activeLabel={activeLabel} />
+          <FooterColumn title="Courses" links={FOOTER_COLS.courses} activeLabel={activeLabel} />
+          <FooterColumn title="Company" links={FOOTER_COLS.company} activeLabel={activeLabel} />
+          <FooterColumn title="Resources" links={FOOTER_COLS.resources} activeLabel={activeLabel} />
+          <FooterColumn title="Legal" links={FOOTER_COLS.legal} activeLabel={activeLabel} />
         </div>
       </div>
 
@@ -158,3 +214,5 @@ export function Footer() {
     </footer>
   );
 }
+
+

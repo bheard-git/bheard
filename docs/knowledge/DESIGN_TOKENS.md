@@ -90,6 +90,7 @@ Font: Inter (`--font-inter` via `next/font`).
 | `.card-base` | Dark card + border + radius |
 | `.card-hover` | Orange border + lift on hover |
 | `.shine-sweep-hover` | One-shot diagonal light sweep on hover (pair with `.card-premium-hover`; stacks with `.shine-sweep`) |
+| `.hover-shine` | Skewed horizontal shine-splash on hover/focus-within (1s; do not stack with `.shine-sweep*`) |
 | `.btn-primary` / `.btn-secondary` / `.btn-ghost` | Button styles |
 | `.input-base` | Form input |
 | `.badge-base` | Pill badge base |

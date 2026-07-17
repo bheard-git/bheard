@@ -5,8 +5,10 @@ const variants = {
   success: "bg-accent-green text-white border border-accent-green",
   danger: "bg-accent-red text-white border border-accent-red",
   info: "bg-accent-blue text-white border border-accent-blue",
-  default: "bg-bg-primary/80 text-orange-400 border border-orange-500/30",
-  outline: "bg-bg-primary/80 text-orange-400 border border-orange-500/30",
+  purple: "bg-purple-500 text-white border border-purple-500",
+  amber: "bg-amber-500 text-white border border-amber-500",
+  default: "bg-orange-500 text-white border border-orange-500",
+  outline: "bg-sky-500 text-white border border-sky-500",
 } as const;
 
 const sizes = {

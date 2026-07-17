@@ -100,10 +100,7 @@ export default function HomePage() {
                   key={course.id}
                   className={`snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-12px)] min-w-[260px] reveal-child reveal-delay-${(index % 4) + 1}`}
                 >
-                  <CourseCard
-                    course={course}
-                    className={`h-full shine-delay-${(index % 4) + 1}`}
-                  />
+                  <CourseCard course={course} className="h-full" />
                 </div>
               ))}
             </Carousel>
@@ -127,10 +124,7 @@ export default function HomePage() {
                   key={member.id}
                   className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
                 >
-                  <FacultyCard
-                    faculty={member}
-                    className={`h-full shine-delay-${(index % 4) + 1}`}
-                  />
+                  <FacultyCard faculty={member} className="h-full" />
                 </div>
               ))}
             </Carousel>

@@ -10,12 +10,28 @@ interface BlogCardProps {
   className?: string;
 }
 
+const CATEGORY_BADGE: Record<
+  string,
+  "primary" | "info" | "purple" | "amber" | "success" | "danger"
+> = {
+  CAT: "primary",
+  IPMAT: "purple",
+  GDPI: "info",
+  CLAT: "amber",
+  Banking: "success",
+  "Skill House": "danger",
+};
+
 export function BlogCard({ post, featured = false, className }: BlogCardProps) {
+  const badgeVariant = featured
+    ? "primary"
+    : CATEGORY_BADGE[post.category] ?? "info";
+
   return (
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "relative overflow-hidden rounded-[6px] border border-border-default group block card-premium-hover h-full min-h-[160px]",
+        "relative overflow-hidden rounded-[6px] border border-border-default group block card-premium-hover hover-shine h-full min-h-[160px]",
         featured ? "min-h-[360px] md:min-h-full" : "min-h-[180px] md:min-h-[200px]",
         className
       )}
@@ -30,7 +46,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10 transition-opacity duration-300 group-hover:opacity-90" />
 
       <div className="absolute top-3 left-3 z-10">
-        <Badge variant={featured ? "primary" : "outline"} size="sm">
+        <Badge variant={badgeVariant} size="sm">
           {featured ? "Featured" : post.category}
         </Badge>
       </div>

@@ -495,6 +495,33 @@
     }
   }
 
+  /* Reference shine-splash — skewed light band on hover/focus-within */
+  .hover-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hover-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    background-image: linear-gradient(to right, transparent 0%, #fff6 100%);
+    transform: skewX(-0.08turn) translateX(-180%);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover-shine:is(:hover, :focus-within)::after {
+      transform: skewX(-0.08turn) translateX(275%);
+      transition: transform 1000ms ease;
+    }
+  }
+
   .btn-outlined-premium {
     position: relative;
     overflow: hidden;
@@ -786,6 +813,7 @@
     .shine-sweep-hover:not(.shine-sweep)::after,
     .shine-sweep.shine-sweep-hover:hover::after,
     .shine-sweep-outline::after,
+    .hover-shine::after,
     .btn-primary-premium::after,
     .ambient-drift,
     .hero-atmosphere,
@@ -793,6 +821,7 @@
     .quote-glow,
     .floating-cta-pulse {
       animation: none;
+      transition: none;
     }
   }
 }

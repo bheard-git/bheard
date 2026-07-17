@@ -11,7 +11,7 @@ export function TopperCard({ topper, className }: TopperCardProps) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[6px] border border-border-default bg-bg-secondary min-w-[170px] w-[180px] h-[250px] group card-premium-hover shine-sweep-hover",
+        "relative overflow-hidden rounded-[6px] border border-border-default bg-bg-secondary min-w-[170px] w-[180px] h-[250px] group card-premium-hover hover-shine",
         className
       )}
     >

@@ -39,13 +39,13 @@ export function CourseCard({ course, className }: CourseCardProps) {
         : course.badge === "Trending"
           ? "info"
           : course.badge === "Starter"
-            ? "default"
-            : "success";
+            ? "success"
+            : "purple";
 
   return (
     <div
       className={cn(
-        "relative overflow-hidden group rounded-[6px] min-h-[260px] border-0 card-premium-hover premium-border-glow shine-sweep shine-sweep-hover",
+        "relative overflow-hidden group rounded-[6px] min-h-[260px] border-0 card-premium-hover premium-border-glow hover-shine",
         className
       )}
       style={{

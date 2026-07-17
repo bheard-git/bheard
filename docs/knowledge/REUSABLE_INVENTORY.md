@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-17 (premium motion system)
+**Last updated:** 2026-07-17 (hover-shine splash)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -156,4 +156,4 @@ blob-orange.svg, circle-gradient.svg, curved-divider.svg, ring-decoration.svg
 
 ## Design System Utilities (CSS)
 
-Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.card-premium-hover`, `.premium-border-glow`, `.glow-accent-silver`, `.shine-sweep`, `.shine-sweep-hover`, `.shine-sweep-outline`, `.shine-delay-1..4`, `.ambient-layer`, `.ambient-drift`, `.hero-atmosphere`, `.quote-glow`, `.btn-primary`, `.btn-primary-premium`, `.btn-outlined-premium`, `.btn-secondary`, `.btn-ghost`, `.btn-view-all`, `.floating-cta-pulse`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`
+Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.card-premium-hover`, `.premium-border-glow`, `.glow-accent-silver`, `.shine-sweep`, `.shine-sweep-hover`, `.shine-sweep-outline`, `.shine-delay-1..4`, `.hover-shine`, `.ambient-layer`, `.ambient-drift`, `.hero-atmosphere`, `.quote-glow`, `.btn-primary`, `.btn-primary-premium`, `.btn-outlined-premium`, `.btn-secondary`, `.btn-ghost`, `.btn-view-all`, `.floating-cta-pulse`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`

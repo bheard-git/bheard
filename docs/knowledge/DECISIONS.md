@@ -14,6 +14,22 @@ Format:
 
 ---
 
+### 2026-07-17 — Footer single active link + solid badges
+- **Decision:** Footer highlights at most one link via preferred labels for shared paths (`/mba`, `/blog`, `/contact`). Badge `default`/`outline` are solid colorful with white text; course Starter → success; blog categories map to colored variants.
+- **Rationale:** Duplicate footer hrefs caused multiple orange actives; dark badges with orange text looked broken on course/blog cards.
+- **Alternatives considered:** Exact href match only; keep dark outline badges.
+- **Consequences:** One footer active at a time; badges are always colored fill + white text.
+
+---
+
+### 2026-07-17 — Shine-splash hover utility for key cards
+- **Decision:** Add `.hover-shine` matching the reference skewed light-band effect; apply it to TopperCard, CourseCard, FacultyCard, ValuePropCard, and AdvisorCard in place of `.shine-sweep` / `.shine-sweep-hover`.
+- **Rationale:** Those cards share a single `::after` pseudo-element; stacking ambient and hover shine broke the splash. The reference effect is a clearer one-shot hover interaction.
+- **Alternatives considered:** Keep `.shine-sweep-hover`; use a nested overlay element; rename to `hover:shine` (conflicts with Tailwind `hover:` variant).
+- **Consequences:** Named cards get the splash only; buttons/CTAs/ResultsStatsPanel keep ambient `.shine-sweep`. Do not combine `.hover-shine` with `.shine-sweep*`.
+
+---
+
 ### 2026-07-17 — Accent-aware glow + counselling CTA IO
 - **Decision:** Drive `.premium-border-glow` from `--glow-base` / `--glow-peak` CSS variables (category accent hex or silver presets). Stagger shine via `.shine-delay-N`. Observe only `[data-counselling-cta]` elements for the floating counselling button instead of entire hero/footer sections. Add `.btn-outlined-premium` for View All and secondary outlined CTAs.
 - **Rationale:** Orange-only glow clashed with purple/emerald/amber cards; section-level IO hid the floating CTA on category heroes that lack a counselling button; outlined buttons still felt static.
