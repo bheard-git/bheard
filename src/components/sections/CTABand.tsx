@@ -152,7 +152,7 @@ export function CTABand({
             <div className="flex flex-col sm:flex-row gap-4 md:flex-col lg:flex-row items-center md:gap-2.5 shrink-0">
               <Link
                 href={primaryAction.href}
-                className="btn-primary btn-primary-premium text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap"
+                className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap"
                 {...(primaryIsCounselling ? { "data-counselling-cta": true } : {})}
               >
                 {primaryAction.label}

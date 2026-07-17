@@ -72,7 +72,7 @@ export function FloatingCounsellingCta() {
       <Link
         href="/contact"
         aria-label="Book free counselling"
-        className="btn-primary btn-primary-premium inline-flex min-h-11 items-center justify-center rounded-[6px] px-4 py-3 text-body-sm shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+        className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange inline-flex min-h-11 items-center justify-center rounded-[6px] px-4 py-3 text-body-sm shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
       >
         Book Free Counselling
       </Link>

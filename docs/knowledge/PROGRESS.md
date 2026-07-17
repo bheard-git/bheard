@@ -40,6 +40,7 @@ Update this file after every meaningful implementation task.
 - **Premium motion refinements (2026-07-17):** Stronger accent-aware border glow (16s), slower/softer staggered shine (11s + 1.5s delays), outlined CTA silver glow/shine (`.btn-outlined-premium`), Faculty/Test Series/View All coverage, floating counselling CTA observes `[data-counselling-cta]` only, and category landing parity with homepage ambient/reveal/shine patterns.
 - **Hover shine sweep utility (2026-07-17):** Added `.shine-sweep-hover` — one-shot diagonal light sweep on card hover (0.72s, no loop). Applied to results/topper cards, stats panel, course/faculty/testimonial/advisor/value-prop cards; coexists with existing `.shine-sweep` ambient animation and `.card-premium-hover` lift/glow.
 - **Shine-splash hover (2026-07-17):** Added `.hover-shine` (reference skewed light band, 1s). Replaced `.shine-sweep*` on TopperCard, CourseCard, FacultyCard, ValuePropCard, and AdvisorCard so `::after` effects do not conflict. Extended to LeadershipCard, FacultyExpertCard, and BlogCard.
+- **CTA border glow (2026-07-17):** Border glow sped to 6s with stronger focused peak. Orange CTAs use `.glow-accent-orange`; white outline CTAs keep `.glow-accent-silver` (intensified).
 
 ---
 

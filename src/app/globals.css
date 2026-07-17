@@ -377,8 +377,8 @@
   }
 
   .premium-border-glow {
-    --glow-base: rgba(249, 115, 22, 0.14);
-    --glow-peak: rgba(251, 146, 60, 0.72);
+    --glow-base: rgba(249, 115, 22, 0.28);
+    --glow-peak: rgba(251, 146, 60, 1);
     position: relative;
     isolation: isolate;
   }
@@ -388,28 +388,33 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    padding: 1px;
+    padding: 1.5px;
     border-radius: inherit;
     pointer-events: none;
     background: conic-gradient(
       from var(--border-glow-angle),
       transparent 0deg,
-      var(--glow-base) 55deg,
-      var(--glow-peak) 100deg,
-      var(--glow-base) 145deg,
-      transparent 200deg
+      var(--glow-base) 70deg,
+      var(--glow-peak) 95deg,
+      var(--glow-base) 120deg,
+      transparent 160deg
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: border-glow-rotate 16s linear infinite;
+    animation: border-glow-rotate 6s linear infinite;
+  }
+
+  .glow-accent-orange {
+    --glow-base: rgba(249, 115, 22, 0.28);
+    --glow-peak: rgba(251, 146, 60, 1);
   }
 
   .glow-accent-silver {
-    --glow-base: rgba(255, 255, 255, 0.1);
-    --glow-peak: rgba(220, 220, 230, 0.6);
+    --glow-base: rgba(255, 255, 255, 0.22);
+    --glow-peak: rgba(255, 255, 255, 0.95);
   }
 
   .shine-sweep {

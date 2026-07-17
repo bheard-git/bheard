@@ -71,7 +71,7 @@ export default function TeamPage() {
             ))}
           </Carousel>
           <div className="mt-5 flex justify-center md:hidden">
-            <Link href="/faculty" className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline">
+            <Link href="/faculty" className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline">
               View All Faculty
             </Link>
           </div>

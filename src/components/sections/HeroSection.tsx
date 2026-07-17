@@ -96,14 +96,14 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
             <div className="mt-6 flex flex-col sm:flex-row items-start gap-3">
               <Link
                 href="/mba"
-                className="btn-primary btn-primary-premium text-body px-6 py-2.5 rounded-[6px]"
+                className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body px-6 py-2.5 rounded-[6px]"
               >
                 Explore Courses
               </Link>
               <Link
                 href="/contact"
                 data-counselling-cta
-                className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline text-body px-6 py-2.5 rounded-[6px]"
+                className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline text-body px-6 py-2.5 rounded-[6px]"
               >
                 Book Free Counselling
               </Link>

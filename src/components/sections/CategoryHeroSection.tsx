@@ -32,8 +32,8 @@ function HeroCtaLink({
 }) {
   const className =
     variant === "primary"
-      ? "btn-primary btn-primary-premium text-body px-7 py-3.5"
-      : "btn-secondary btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline text-body px-7 py-3.5";
+      ? "btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body px-7 py-3.5"
+      : "btn-secondary btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline text-body px-7 py-3.5";
 
   if (cta.external) {
     return (

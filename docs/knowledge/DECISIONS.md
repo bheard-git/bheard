@@ -14,6 +14,14 @@ Format:
 
 ---
 
+### 2026-07-17 — CTA glow color-matched and sped up
+- **Decision:** Rotate `.premium-border-glow` at 6s with a tighter, brighter peak. Orange CTAs use `.glow-accent-orange`; white outline CTAs use intensified `.glow-accent-silver`.
+- **Rationale:** 16s sweep felt slow and faint; orange outline buttons incorrectly used silver glow so CTAs read as white.
+- **Alternatives considered:** Keep shared orange-only glow; animate box-shadow instead of conic border.
+- **Consequences:** Primary/orange outline CTAs glow orange; CTABand white secondaries and View All stay white-glow; cards inherit the faster stronger default.
+
+---
+
 ### 2026-07-17 — Footer single active link + solid badges
 - **Decision:** Footer highlights at most one link via preferred labels for shared paths (`/mba`, `/blog`, `/contact`). Badge `default`/`outline` are solid colorful with white text; course Starter → success; blog categories map to colored variants.
 - **Rationale:** Duplicate footer hrefs caused multiple orange actives; dark badges with orange text looked broken on course/blog cards.
