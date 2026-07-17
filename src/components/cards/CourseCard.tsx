@@ -12,11 +12,14 @@ interface CourseCardProps {
 }
 
 const CATEGORY_BG: Record<string, string> = {
-  cat: "linear-gradient(145deg, rgba(249,115,22,0.55) 0%, rgba(194,65,12,0.35) 55%, rgba(17,17,17,0.95) 100%)",
+  mba: "linear-gradient(145deg, rgba(249,115,22,0.55) 0%, rgba(194,65,12,0.35) 55%, rgba(17,17,17,0.95) 100%)",
   ipmat:
     "linear-gradient(145deg, rgba(168,85,247,0.55) 0%, rgba(126,34,206,0.35) 55%, rgba(17,17,17,0.95) 100%)",
-  gdpi: "linear-gradient(145deg, rgba(20,184,166,0.55) 0%, rgba(15,118,110,0.35) 55%, rgba(17,17,17,0.95) 100%)",
   clat: "linear-gradient(145deg, rgba(217,119,6,0.55) 0%, rgba(146,64,14,0.35) 55%, rgba(17,17,17,0.95) 100%)",
+  banking:
+    "linear-gradient(145deg, rgba(249,115,22,0.55) 0%, rgba(194,65,12,0.35) 55%, rgba(17,17,17,0.95) 100%)",
+  skillhouse:
+    "linear-gradient(145deg, rgba(249,115,22,0.55) 0%, rgba(194,65,12,0.35) 55%, rgba(17,17,17,0.95) 100%)",
 };
 
 export function CourseCard({ course, className }: CourseCardProps) {
@@ -46,7 +49,7 @@ export function CourseCard({ course, className }: CourseCardProps) {
         className
       )}
       style={{
-        background: CATEGORY_BG[course.category] || CATEGORY_BG.cat,
+        background: CATEGORY_BG[course.category] || CATEGORY_BG.mba,
         boxShadow: `inset 0 0 0 1px ${accent}40`,
       }}
     >

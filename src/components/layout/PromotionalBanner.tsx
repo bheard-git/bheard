@@ -39,7 +39,7 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
           <span className="hidden sm:inline"> on all CAT 2026 Batches. </span>
           <span className="sm:hidden"> on CAT Batches. </span>
           <Link
-            href="/cat"
+            href="/mba"
             className="font-semibold text-orange-500 hover:text-orange-400 underline underline-offset-2 transition-colors"
           >
             Enroll Now

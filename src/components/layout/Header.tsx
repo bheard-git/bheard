@@ -93,7 +93,7 @@ export function Header({ className }: HeaderProps) {
             {examOpen && (
               <div
                 role="listbox"
-                className="absolute top-full left-0 mt-2 w-56 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50"
+                className="absolute top-full left-0 mt-2 w-72 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50"
               >
                 {CATEGORIES.map((cat) => {
                   const isActive = cat.id === activeCategoryId;
@@ -111,9 +111,9 @@ export function Header({ className }: HeaderProps) {
                           : "text-text-secondary hover:bg-bg-hover hover:text-orange-400"
                       )}
                     >
-                      <span className="font-semibold">{cat.name}</span>
+                      <span className="font-semibold">{cat.menuLabel}</span>
                       <span className="block text-caption text-text-dimmed mt-0.5">
-                        {cat.fullName}
+                        {cat.description}
                       </span>
                     </Link>
                   );

@@ -2,7 +2,7 @@
 
 ## Product Vision
 
-**Rodha** is India’s trusted platform for competitive exam preparation covering **CAT, IPMAT, GDPI, and CLAT**.
+**Rodha** is India’s trusted platform for competitive exam and career preparation covering **MBA (CAT + GDPI), Integrated Programs (IPMAT), Law (CLAT), Banking & Government Exams, and SkillHouse**.
 
 Core messaging: **“Expert Mentorship. Proven Strategies. Real Results.”**
 

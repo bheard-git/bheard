@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
       "Rodha's structured approach and personal mentorship transformed my preparation. The mock analysis sessions were invaluable.",
     image: "/assets/images/profiles/male-4.png",
     year: 2024,
-    category: "cat",
+    category: "mba",
   },
   {
     id: "t2",
@@ -23,7 +23,7 @@ export const testimonials: Testimonial[] = [
       "VARC finally clicked after Rodha's reading drills. Mentors reviewed every mock and kept me accountable till exam day.",
     image: "/assets/images/profiles/female-4.png",
     year: 2024,
-    category: "cat",
+    category: "mba",
   },
   {
     id: "t3",
@@ -35,7 +35,7 @@ export const testimonials: Testimonial[] = [
       "DILR used to scare me. The step-by-step set frameworks and weekly mentor reviews changed that completely.",
     image: "/assets/images/profiles/male-6.png",
     year: 2024,
-    category: "cat",
+    category: "mba",
   },
   {
     id: "t4",
@@ -47,7 +47,7 @@ export const testimonials: Testimonial[] = [
       "Evening batches fit my job schedule perfectly. Recordings plus mentorship meant I never fell behind.",
     image: "/assets/images/profiles/female-2.png",
     year: 2024,
-    category: "cat",
+    category: "mba",
   },
   {
     id: "t5",
@@ -107,7 +107,7 @@ export const testimonials: Testimonial[] = [
       "From CAT prep to GDPI conversion, Rodha was with me at every step. Their mock sessions gave me the edge.",
     image: "/assets/images/profiles/male-5.png",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
   },
   {
     id: "t10",
@@ -119,7 +119,7 @@ export const testimonials: Testimonial[] = [
       "The WAT frameworks and PI story workshops helped me sound authentic instead of rehearsed.",
     image: "/assets/images/profiles/female-4.png",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
   },
   {
     id: "t11",
@@ -131,7 +131,7 @@ export const testimonials: Testimonial[] = [
       "Alumni mentors who had sat on the other side of the table coached me into a confident convert.",
     image: "/assets/images/profiles/male-4.png",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
   },
   {
     id: "t12",
@@ -143,7 +143,7 @@ export const testimonials: Testimonial[] = [
       "Daily GD panels rebuilt my confidence. Feedback was specific, actionable, and kind.",
     image: "/assets/images/profiles/female-2.png",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
   },
   {
     id: "t13",
@@ -192,6 +192,102 @@ export const testimonials: Testimonial[] = [
     image: "/assets/images/profiles/female-3.png",
     year: 2024,
     category: "clat",
+  },
+  {
+    id: "t17",
+    name: "Kavya Nair",
+    exam: "Banking Student",
+    score: "IBPS PO",
+    college: "SBI PO",
+    quote:
+      "Sectional mocks and mentor reviews made banking Quant feel manageable. Cleared IBPS on my first serious attempt.",
+    image: "/assets/images/profiles/female-1.png",
+    year: 2024,
+    category: "banking",
+  },
+  {
+    id: "t18",
+    name: "Harsh Malhotra",
+    exam: "SSC Student",
+    score: "AIR 42",
+    college: "SSC CGL",
+    quote:
+      "The SSC track respected my job hours while still pushing speed and accuracy every week.",
+    image: "/assets/images/profiles/male-2.png",
+    year: 2024,
+    category: "banking",
+  },
+  {
+    id: "t19",
+    name: "Ritu Desai",
+    exam: "Banking Student",
+    score: "SBI Clerk",
+    college: "SBI",
+    quote:
+      "Reasoning drills and mini mocks were exactly what I needed before the real paper.",
+    image: "/assets/images/profiles/female-3.png",
+    year: 2024,
+    category: "banking",
+  },
+  {
+    id: "t20",
+    name: "Aman Joshi",
+    exam: "Banking Student",
+    score: "IBPS Clerk",
+    college: "IBPS",
+    quote:
+      "Foundation to crash track progression kept me consistent from basics to exam day.",
+    image: "/assets/images/profiles/male-4.png",
+    year: 2024,
+    category: "banking",
+  },
+  {
+    id: "t21",
+    name: "Sara Ali",
+    exam: "SkillHouse Learner",
+    score: "Placed",
+    college: "Product Associate",
+    quote:
+      "Capstone projects and mentor feedback gave me a portfolio I could actually talk about in interviews.",
+    image: "/assets/images/profiles/female-2.png",
+    year: 2024,
+    category: "skillhouse",
+  },
+  {
+    id: "t22",
+    name: "Nikhil Bose",
+    exam: "SkillHouse Learner",
+    score: "Placed",
+    college: "Business Analyst",
+    quote:
+      "Communication lab sessions transformed how I present ideas. Interviews felt natural after weeks of practice.",
+    image: "/assets/images/profiles/male-5.png",
+    year: 2024,
+    category: "skillhouse",
+  },
+  {
+    id: "t23",
+    name: "Tanya Gill",
+    exam: "SkillHouse Learner",
+    score: "Placed",
+    college: "Marketing Associate",
+    quote:
+      "SkillHouse balanced structure with creativity. Mentors helped me ship projects on deadlines.",
+    image: "/assets/images/profiles/female-4.png",
+    year: 2024,
+    category: "skillhouse",
+  },
+  {
+    id: "t24",
+    name: "Omar Sheikh",
+    exam: "SkillHouse Learner",
+    score: "Placed",
+    college: "Operations Lead",
+    quote:
+      "Leadership essentials taught me frameworks I still use weekly at work.",
+    image: "/assets/images/profiles/male-1.png",
+    year: 2024,
+    category: "skillhouse",
   },
 ];
 

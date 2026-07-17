@@ -1,8 +1,16 @@
-export type CategoryId = "cat" | "ipmat" | "gdpi" | "clat";
+export type CategoryId =
+  | "mba"
+  | "ipmat"
+  | "clat"
+  | "banking"
+  | "skillhouse";
 
 export interface Category {
   id: CategoryId;
+  /** Short label for the header switcher trigger */
   name: string;
+  /** Full label shown in the switcher dropdown menu */
+  menuLabel: string;
   fullName: string;
   slug: string;
   description: string;

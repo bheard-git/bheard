@@ -14,6 +14,14 @@ Format:
 
 ---
 
+### 2026-07-17 — Five-vertical category taxonomy
+- **Decision:** Replace CAT / IPMAT / GDPI / CLAT with MBA, Integrated Programs, Law, Banking & Government Exams, and SkillHouse. Routes: `/mba`, `/ipmat`, `/clat`, `/banking`, `/skillhouse`. Fold GDPI into MBA (retag data). Permanent redirects `/cat` and `/gdpi` (and nested paths) → `/mba`. Switcher trigger uses short `name`; dropdown uses full `menuLabel`.
+- **Rationale:** Client feedback: GDPI is part of the MBA vertical; add Banking (incl. SSC) and SkillHouse; keep header compact with short selected labels.
+- **Alternatives considered:** Keep `/cat` as MBA URL; rename IPMAT/CLAT slugs to `/integrated` and `/law`.
+- **Consequences:** Homepage exam grid shows five cards; forms/footer/nav consume `CATEGORIES`; new landings clone MBA/CAT section stack and reuse existing hero/icon assets until dedicated creatives arrive.
+
+---
+
 ### 2026-07-16 — Meet the Team page composition
 - **Decision:** Build `/team` with dedicated `TeamHeroSection`, `LeadershipCard`, `FacultyExpertCard`, `AdvisorCard`, and `CultureSection`; extend `SectionHeader` (label + split description) and `CTABand` (`decorativeImage`). Reuse homepage `profiles/` cutouts and existing `Carousel` / `faculty.ts`.
 - **Rationale:** Mockup card layouts differ from homepage `FacultyCard` (tall portrait experts; horizontal leadership). Page-specific themed PNG icons match Rodha visual language without generic SVGs.

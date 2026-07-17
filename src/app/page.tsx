@@ -38,7 +38,7 @@ export default function HomePage() {
             }
             align="center"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {CATEGORIES.map((cat) => (
               <ExamCard key={cat.id} category={cat} />
             ))}
@@ -75,7 +75,7 @@ export default function HomePage() {
           <SectionHeader
             title="Featured Courses"
             subtitle="Handpicked for your success"
-            viewAllHref="/cat"
+            viewAllHref="/mba"
             viewAllLabel="View All Courses"
             align="left"
           />
@@ -116,7 +116,7 @@ export default function HomePage() {
           <SectionHeader
             title="Our Results Speak for Themselves"
             subtitle="Real students. Real success."
-            viewAllHref="/cat#results"
+            viewAllHref="/mba#results"
             viewAllLabel="View All Results"
             align="left"
           />
@@ -166,7 +166,7 @@ export default function HomePage() {
         title="Ready to Achieve Your Dream?"
         subtitle="Join thousands of successful students on their journey to top colleges."
         primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
-        secondaryAction={{ label: "Explore Courses", href: "/cat" }}
+        secondaryAction={{ label: "Explore Courses", href: "/mba" }}
       />
     </>
   );

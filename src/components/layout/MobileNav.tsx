@@ -54,7 +54,10 @@ export function MobileNav({ activeCategoryId = null }: MobileNavProps) {
                   isActive ? "text-orange-400" : "text-text-primary hover:text-orange-400"
                 )}
               >
-                {cat.name}
+                <span className="block">{cat.menuLabel}</span>
+                <span className="block text-caption text-text-dimmed mt-0.5 font-normal">
+                  {cat.description}
+                </span>
               </Link>
             );
           })}

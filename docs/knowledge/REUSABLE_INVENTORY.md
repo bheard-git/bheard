@@ -100,16 +100,17 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Module | File |
 |--------|------|
 | blog | `blog.ts` |
-| cat-landing | `cat-landing.ts` |
+| banking-landing | `banking-landing.ts` |
 | clat-landing | `clat-landing.ts` |
 | courses | `courses.ts` |
 | faculty | `faculty.ts` |
 | faq | `faq.ts` |
-| gdpi-landing | `gdpi-landing.ts` |
 | ipmat-landing | `ipmat-landing.ts` |
 | legal | `legal.ts` |
+| mba-landing | `mba-landing.ts` |
 | navigation | `navigation.ts` |
 | results | `results.ts` |
+| skillhouse-landing | `skillhouse-landing.ts` |
 | team | `team.ts` |
 | testimonials | `testimonials.ts` |
 

@@ -28,9 +28,9 @@ import {
 import { EXTERNAL_URLS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "IPMAT Preparation — Rodha",
+  title: "Integrated Programs (IPMAT) — Rodha",
   description:
-    "Targeted IPMAT coaching for IIM Indore, Rohtak and other top B-schools. Structured preparation with expert faculty.",
+    "Integrated Programs coaching for IPMAT — IIM Indore, Rohtak and other top B-schools. Structured preparation with expert faculty.",
 };
 
 export default function IPMATPage() {
@@ -47,13 +47,13 @@ export default function IPMATPage() {
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
-            { label: "IPMAT" },
+            { label: "Integrated Programs" },
           ]}
         />
       </Container>
 
       <CategoryHeroSection
-        categoryName="IPMAT"
+        categoryName="Integrated"
         headline={
           <>
             Ace{" "}
@@ -61,9 +61,9 @@ export default function IPMATPage() {
             Your First Attempt
           </>
         }
-        subtitle="Targeted preparation for IIM Indore & Rohtak's Integrated Programme in Management — with expert mentorship, pattern-matched mocks, and a clear path to your early MBA journey."
+        subtitle="Integrated Programs preparation for IIM Indore & Rohtak — with expert mentorship, pattern-matched mocks, and a clear path to your early MBA journey."
         heroImageSrc="/assets/images/hero/cat-hero.jpg"
-        heroImageAlt="IPMAT aspirant preparing for IIM Indore and Rohtak"
+        heroImageAlt="Integrated Programs aspirant preparing for IIM Indore and Rohtak"
         features={IPMAT_HERO_FEATURES}
         quickStats={IPMAT_QUICK_STATS}
         primaryCta={{ label: "Explore Courses", href: "#courses" }}
@@ -77,7 +77,7 @@ export default function IPMATPage() {
       <section id="courses" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Our IPMAT Courses"
+            title="Our Integrated Programs Courses"
             viewAllHref="/ipmat#courses"
             viewAllLabel="View All Courses"
             align="left"
@@ -98,7 +98,7 @@ export default function IPMATPage() {
       <section id="faculty" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader
-            title="Star Faculty for IPMAT"
+            title="Star Faculty for Integrated Programs"
             viewAllHref="/faculty"
             viewAllLabel="View All Faculty"
             align="left"
@@ -156,7 +156,7 @@ export default function IPMATPage() {
         <Container>
           <SectionHeader
             title="What Our Students Say"
-            subtitle="Real stories from Rodha IPMAT aspirants"
+            subtitle="Real stories from Rodha Integrated Programs aspirants"
             align="left"
           />
           <Carousel>
@@ -182,7 +182,7 @@ export default function IPMATPage() {
       <section id="faqs" className="section-spacing">
         <Container>
           <SectionHeader
-            title="IPMAT FAQs"
+            title="Integrated Programs FAQs"
             viewAllHref="/faq"
             viewAllLabel="View All FAQs"
             align="left"
@@ -195,7 +195,7 @@ export default function IPMATPage() {
       </section>
 
       <CTABand
-        title="Ready to Crack IPMAT 2026?"
+        title="Ready for Integrated Programs?"
         subtitle="Join thousands of serious aspirants and start your IIM journey early."
         primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
         secondaryAction={{ label: "Explore Courses", href: "/ipmat#courses" }}

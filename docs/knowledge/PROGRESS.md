@@ -33,6 +33,8 @@ Update this file after every meaningful implementation task.
 - **Meet the Team page `/team` (2026-07-16):** Full page — hero, leadership carousel, faculty experts carousel, advisors grid, culture values, CTA band; reuses homepage profile cutouts for cards; Header About Us + Footer Meet the Team active states
 - **Meet the Team UI QA (2026-07-16):** Edge-bleed hero, section bg/labels, leadership divider + LinkedIn, faculty overlay cards, advisor flush layout, culture 4-col dividers, CTA decorative bg + orange arrow secondary
 - **Meet the Team QA pass 2 (2026-07-16):** Fixed faculty carousel overlap (`block` + slide width); advisors left/right split + 4-field cards; culture split layout; CTA `object-cover` fill; LinkedIn transparent white border + filled icon
+- **CAT landing section order (2026-07-17):** Hero → Results → Courses → Faculty → Test Series → Testimonials → Resources → FAQs → CTA
+- **Category taxonomy refresh (2026-07-17):** Five primary verticals — MBA (`/mba`, CAT+GDPI merged), Integrated (`/ipmat`), Law (`/clat`), Banking (`/banking`), SkillHouse (`/skillhouse`). Switcher shows short trigger + full `menuLabel`. Redirects `/cat` & `/gdpi` → `/mba`. Same section layout/assets reused for new pages.
 
 ---
 
@@ -42,7 +44,7 @@ Update this file after every meaningful implementation task.
 |------|--------|-------|
 | Homepage vs approved PNG | Partial | Layout/tokens aligned; transparent faculty/student PNG cutouts still pending |
 | Header category-state nav | Partial | Exam switcher URL-sync done; full category-state nav links still TBD |
-| Category hero photography | Partial | Non-CAT landings reuse `cat-hero.jpg` with category overlay text |
+| Category hero photography | Partial | Non-MBA landings reuse `cat-hero.jpg` with category overlay text |
 
 ---
 
@@ -50,7 +52,7 @@ Update this file after every meaningful implementation task.
 
 ### Assets still needed
 - [ ] Transparent faculty / student PNGs
-- [ ] Dedicated IPMAT / GDPI / CLAT hero images
+- [ ] Dedicated IPMAT / Law / Banking / SkillHouse hero images
 - [ ] Dedicated leadership / advisor headshots (interim: homepage `profiles/`)
 
 ### Screens
@@ -79,4 +81,4 @@ Update this file after every meaningful implementation task.
 
 - Form stubs still TODO
 - Some toppers reuse portrait files
-- Non-CAT landings share CAT hero photo until dedicated assets arrive
+- Non-MBA landings share CAT hero photo until dedicated assets arrive

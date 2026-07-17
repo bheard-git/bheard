@@ -7,18 +7,20 @@ interface CourseDetailPageProps {
 export async function generateMetadata({ params }: CourseDetailPageProps) {
   const { slug } = await params;
   return {
-    title: `${slug} — GDPI Course — Rodha`,
-    description: `Detailed information about our GDPI preparation course.`,
+    title: `${slug} — SkillHouse Course — Rodha`,
+    description: `Detailed information about our SkillHouse course.`,
   };
 }
 
-export default async function GDPICourseDetailPage({ params }: CourseDetailPageProps) {
+export default async function SkillHouseCourseDetailPage({
+  params,
+}: CourseDetailPageProps) {
   const { slug } = await params;
 
   return (
     <section className="section-spacing">
       <Container>
-        <h1 className="text-h1 font-bold">GDPI Course Details</h1>
+        <h1 className="text-h1 font-bold">SkillHouse Course Details</h1>
         <p className="mt-4 text-body-lg text-text-muted">Course: {slug}</p>
         <p className="mt-8 text-text-dimmed">Full course details coming soon...</p>
       </Container>

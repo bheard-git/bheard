@@ -64,7 +64,7 @@ export function LeadCaptureForm({
           placeholder="Select Exam"
           value={formData.exam}
           onChange={(e) => setFormData((prev) => ({ ...prev, exam: e.target.value as LeadFormData["exam"] }))}
-          options={CATEGORIES.map((c) => ({ value: c.id, label: c.name }))}
+          options={CATEGORIES.map((c) => ({ value: c.id, label: c.menuLabel }))}
         />
         <Button type="submit" loading={loading} fullWidth>
           Book Free Session

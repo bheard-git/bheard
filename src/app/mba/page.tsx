@@ -18,28 +18,28 @@ import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
 import { getTestimonialsByCategory } from "@/data/testimonials";
 import {
-  CLAT_FAQS,
-  CLAT_HERO_FEATURES,
-  CLAT_QUICK_STATS,
-  CLAT_RESOURCES,
-  CLAT_RESULT_STATS,
-  CLAT_TEST_SERIES,
-} from "@/data/clat-landing";
+  MBA_FAQS,
+  MBA_HERO_FEATURES,
+  MBA_QUICK_STATS,
+  MBA_RESOURCES,
+  MBA_RESULT_STATS,
+  MBA_TEST_SERIES,
+} from "@/data/mba-landing";
 import { EXTERNAL_URLS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Law (CLAT) Preparation — Rodha",
+  title: "MBA Preparation (CAT + GDPI) — Rodha",
   description:
-    "Law preparation for CLAT and top National Law Universities. Legal reasoning, English, current affairs, and more.",
+    "Comprehensive MBA preparation covering CAT and GDPI. Live classes, mock tests, and personalized study plans for IIM admissions.",
 };
 
-export default function CLATPage() {
-  const clatCourses = getCoursesByCategory("clat");
-  const clatFaculty = getFacultyByCategory("clat");
-  const clatResults = getResultsByCategory("clat");
-  const clatTestimonials = getTestimonialsByCategory("clat");
-  const faqLeft = CLAT_FAQS.filter((_, i) => i % 2 === 0);
-  const faqRight = CLAT_FAQS.filter((_, i) => i % 2 === 1);
+export default function MBAPage() {
+  const mbaCourses = getCoursesByCategory("mba");
+  const mbaFaculty = getFacultyByCategory("mba");
+  const mbaResults = getResultsByCategory("mba");
+  const mbaTestimonials = getTestimonialsByCategory("mba");
+  const faqLeft = MBA_FAQS.filter((_, i) => i % 2 === 0);
+  const faqRight = MBA_FAQS.filter((_, i) => i % 2 === 1);
 
   return (
     <>
@@ -47,24 +47,24 @@ export default function CLATPage() {
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
-            { label: "Law" },
+            { label: "MBA" },
           ]}
         />
       </Container>
 
       <CategoryHeroSection
-        categoryName="Law"
+        categoryName="MBA"
         headline={
           <>
-            Law Prep That Opens Doors to Top{" "}
-            <span className="text-orange-500 glow-text-orange">NLUs</span>
+            MBA Prep That Transforms Aspirants into{" "}
+            <span className="text-orange-500 glow-text-orange">Top 1%</span>
           </>
         }
-        subtitle="Strategic legal reasoning workshops, mock tests, and daily current affairs built to help serious aspirants crack CLAT and secure seats at leading National Law Universities."
+        subtitle="Expert mentorship for CAT and GDPI — a high-intensity learning system built to help serious aspirants crack the exam and convert top IIMs."
         heroImageSrc="/assets/images/hero/cat-hero.jpg"
-        heroImageAlt="Law aspirant preparing for top National Law Universities"
-        features={CLAT_HERO_FEATURES}
-        quickStats={CLAT_QUICK_STATS}
+        heroImageAlt="MBA aspirant preparing for CAT and top B-school admissions"
+        features={MBA_HERO_FEATURES}
+        quickStats={MBA_QUICK_STATS}
         primaryCta={{ label: "Explore Courses", href: "#courses" }}
         secondaryCta={{
           label: "Explore Test Series",
@@ -73,16 +73,39 @@ export default function CLATPage() {
         }}
       />
 
-      <section id="courses" className="section-spacing">
+      <section id="results" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Our Law Courses"
-            viewAllHref="/clat#courses"
+            title="Results That Inspire"
+            viewAllHref="/mba#results"
+            viewAllLabel="View All Results"
+            align="left"
+          />
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+            <ResultsStatsPanel stats={MBA_RESULT_STATS} />
+            <div className="flex-1 min-w-0">
+              <Carousel>
+                {mbaResults.map((topper) => (
+                  <div key={topper.id} className="snap-start shrink-0">
+                    <TopperCard topper={topper} />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section id="courses" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Our MBA Courses"
+            viewAllHref="/mba#courses"
             viewAllLabel="View All Courses"
             align="left"
           />
           <Carousel>
-            {clatCourses.map((course) => (
+            {mbaCourses.map((course) => (
               <div
                 key={course.id}
                 className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
@@ -94,16 +117,16 @@ export default function CLATPage() {
         </Container>
       </section>
 
-      <section id="faculty" className="section-spacing bg-bg-secondary/40">
+      <section id="faculty" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Star Faculty for Law"
+            title="Star Faculty for MBA"
             viewAllHref="/faculty"
             viewAllLabel="View All Faculty"
             align="left"
           />
           <Carousel>
-            {clatFaculty.map((member) => (
+            {mbaFaculty.map((member) => (
               <div key={member.id} className="snap-start shrink-0">
                 <FacultyCard faculty={member} className="h-full" />
               </div>
@@ -112,41 +135,18 @@ export default function CLATPage() {
         </Container>
       </section>
 
-      <section id="test-series" className="section-spacing">
+      <section id="test-series" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader
-            title="CLAT Test Series"
+            title="MBA Test Series"
             viewAllHref={EXTERNAL_URLS.thinkExam}
             viewAllLabel="View All Test Series"
             align="left"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CLAT_TEST_SERIES.map((item) => (
+            {MBA_TEST_SERIES.map((item) => (
               <TestSeriesCard key={item.id} item={item} />
             ))}
-          </div>
-        </Container>
-      </section>
-
-      <section id="results" className="section-spacing bg-bg-secondary/40">
-        <Container>
-          <SectionHeader
-            title="Results That Inspire"
-            viewAllHref="/clat#results"
-            viewAllLabel="View All Results"
-            align="left"
-          />
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
-            <ResultsStatsPanel stats={CLAT_RESULT_STATS} />
-            <div className="flex-1 min-w-0">
-              <Carousel>
-                {clatResults.map((topper) => (
-                  <div key={topper.id} className="snap-start shrink-0">
-                    <TopperCard topper={topper} />
-                  </div>
-                ))}
-              </Carousel>
-            </div>
           </div>
         </Container>
       </section>
@@ -155,11 +155,11 @@ export default function CLATPage() {
         <Container>
           <SectionHeader
             title="What Our Students Say"
-            subtitle="Real stories from Rodha Law aspirants"
+            subtitle="Real stories from Rodha MBA aspirants"
             align="left"
           />
           <Carousel>
-            {clatTestimonials.map((item) => (
+            {mbaTestimonials.map((item) => (
               <div key={item.id} className="snap-start shrink-0">
                 <TestimonialCard testimonial={item} />
               </div>
@@ -171,7 +171,7 @@ export default function CLATPage() {
       <section id="resources" className="section-spacing bg-bg-secondary/40">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CLAT_RESOURCES.map((item) => (
+            {MBA_RESOURCES.map((item) => (
               <ResourceCard key={item.id} item={item} />
             ))}
           </div>
@@ -181,7 +181,7 @@ export default function CLATPage() {
       <section id="faqs" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Law FAQs"
+            title="MBA FAQs"
             viewAllHref="/faq"
             viewAllLabel="View All FAQs"
             align="left"
@@ -194,10 +194,10 @@ export default function CLATPage() {
       </section>
 
       <CTABand
-        title="Ready to Crack CLAT 2026?"
-        subtitle="Join thousands of serious Law aspirants and start your journey to top NLUs today."
+        title="Ready to Crack CAT & Convert GDPI?"
+        subtitle="Join thousands of serious aspirants and start your MBA journey today."
         primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
-        secondaryAction={{ label: "Explore Courses", href: "/clat#courses" }}
+        secondaryAction={{ label: "Explore Courses", href: "/mba#courses" }}
       />
     </>
   );

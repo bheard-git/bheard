@@ -22,11 +22,11 @@ const SOCIAL_ICON_PATHS: Record<string, string> = {
 };
 
 const FOOTER_COLS = {
-  exams: CATEGORIES.map((c) => ({ label: c.name, href: `/${c.slug}` })),
+  exams: CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` })),
   courses: [
-    { label: "All Courses", href: "/cat" },
-    { label: "Live Classes", href: "/cat" },
-    { label: "Test Series", href: "/cat" },
+    { label: "All Courses", href: "/mba" },
+    { label: "Live Classes", href: "/mba" },
+    { label: "Test Series", href: "/mba" },
     { label: "Study Material", href: "/blog" },
   ],
   company: [

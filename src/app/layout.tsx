@@ -14,19 +14,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Rodha — Expert Mentorship. Proven Strategies. Real Results.",
   description:
-    "India's trusted platform for CAT, IPMAT, GDPI & CLAT preparation. Expert mentorship, proven strategies, and real results to help you crack competitive exams.",
+    "India's trusted platform for MBA (CAT + GDPI), Integrated Programs, Law, Banking & Government Exams, and SkillHouse. Expert mentorship, proven strategies, and real results.",
   keywords: [
+    "MBA preparation",
     "CAT preparation",
-    "IPMAT coaching",
     "GDPI training",
+    "IPMAT coaching",
     "CLAT preparation",
-    "MBA entrance exams",
+    "Banking exam coaching",
+    "SSC preparation",
+    "SkillHouse",
     "competitive exam coaching",
   ],
   openGraph: {
     title: "Rodha — Expert Mentorship. Proven Strategies. Real Results.",
     description:
-      "India's trusted platform for CAT, IPMAT, GDPI & CLAT preparation.",
+      "India's trusted platform for MBA, Integrated Programs, Law, Banking & Government, and SkillHouse.",
     type: "website",
   },
 };

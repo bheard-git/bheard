@@ -18,28 +18,28 @@ import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
 import { getTestimonialsByCategory } from "@/data/testimonials";
 import {
-  CAT_FAQS,
-  CAT_HERO_FEATURES,
-  CAT_QUICK_STATS,
-  CAT_RESOURCES,
-  CAT_RESULT_STATS,
-  CAT_TEST_SERIES,
-} from "@/data/cat-landing";
+  SKILLHOUSE_FAQS,
+  SKILLHOUSE_HERO_FEATURES,
+  SKILLHOUSE_QUICK_STATS,
+  SKILLHOUSE_RESOURCES,
+  SKILLHOUSE_RESULT_STATS,
+  SKILLHOUSE_TEST_SERIES,
+} from "@/data/skillhouse-landing";
 import { EXTERNAL_URLS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "CAT Preparation — Rodha",
+  title: "Skill House — Rodha",
   description:
-    "Comprehensive CAT preparation with expert mentorship. Live classes, mock tests, and personalized study plans for IIM admissions.",
+    "Skill House career-skills programs with expert mentorship, project-based learning, and industry-aligned practice.",
 };
 
-export default function CATPage() {
-  const catCourses = getCoursesByCategory("cat");
-  const catFaculty = getFacultyByCategory("cat");
-  const catResults = getResultsByCategory("cat");
-  const catTestimonials = getTestimonialsByCategory("cat");
-  const faqLeft = CAT_FAQS.filter((_, i) => i % 2 === 0);
-  const faqRight = CAT_FAQS.filter((_, i) => i % 2 === 1);
+export default function SkillHousePage() {
+  const skillhouseCourses = getCoursesByCategory("skillhouse");
+  const skillhouseFaculty = getFacultyByCategory("skillhouse");
+  const skillhouseResults = getResultsByCategory("skillhouse");
+  const skillhouseTestimonials = getTestimonialsByCategory("skillhouse");
+  const faqLeft = SKILLHOUSE_FAQS.filter((_, i) => i % 2 === 0);
+  const faqRight = SKILLHOUSE_FAQS.filter((_, i) => i % 2 === 1);
 
   return (
     <>
@@ -47,42 +47,65 @@ export default function CATPage() {
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
-            { label: "CAT" },
+            { label: "Skill House" },
           ]}
         />
       </Container>
 
       <CategoryHeroSection
-        categoryName="CAT"
+        categoryName="Skill House"
         headline={
           <>
-            CAT Preparation That Transforms Aspirants into{" "}
-            <span className="text-orange-500 glow-text-orange">Top 1%</span>
+            Skills That Launch{" "}
+            <span className="text-orange-500 glow-text-orange">Careers</span>
           </>
         }
-        subtitle="Expert mentorship, proven strategies, and a high-intensity learning system built to help serious aspirants crack CAT and convert top IIMs."
+        subtitle="Skill House builds career-ready capabilities with mentorship, projects, and structured practice — so you grow beyond exams into professional impact."
         heroImageSrc="/assets/images/hero/cat-hero.jpg"
-        heroImageAlt="CAT aspirant preparing for top B-school admissions"
-        features={CAT_HERO_FEATURES}
-        quickStats={CAT_QUICK_STATS}
+        heroImageAlt="Skill House learner building career-ready skills with Rodha"
+        features={SKILLHOUSE_HERO_FEATURES}
+        quickStats={SKILLHOUSE_QUICK_STATS}
         primaryCta={{ label: "Explore Courses", href: "#courses" }}
         secondaryCta={{
-          label: "Explore Test Series",
+          label: "Explore Assessments",
           href: EXTERNAL_URLS.thinkExam,
           external: true,
         }}
       />
 
-      <section id="courses" className="section-spacing">
+      <section id="results" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Our CAT Courses"
-            viewAllHref="/cat#courses"
+            title="Results That Inspire"
+            viewAllHref="/skillhouse#results"
+            viewAllLabel="View All Results"
+            align="left"
+          />
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
+            <ResultsStatsPanel stats={SKILLHOUSE_RESULT_STATS} />
+            <div className="flex-1 min-w-0">
+              <Carousel>
+                {skillhouseResults.map((topper) => (
+                  <div key={topper.id} className="snap-start shrink-0">
+                    <TopperCard topper={topper} />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section id="courses" className="section-spacing bg-bg-secondary/40">
+        <Container>
+          <SectionHeader
+            title="Our Skill House Courses"
+            viewAllHref="/skillhouse#courses"
             viewAllLabel="View All Courses"
             align="left"
           />
           <Carousel>
-            {catCourses.map((course) => (
+            {skillhouseCourses.map((course) => (
               <div
                 key={course.id}
                 className="snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px]"
@@ -94,16 +117,16 @@ export default function CATPage() {
         </Container>
       </section>
 
-      <section id="faculty" className="section-spacing bg-bg-secondary/40">
+      <section id="faculty" className="section-spacing">
         <Container>
           <SectionHeader
-            title="Star Faculty for CAT"
+            title="Star Faculty for Skill House"
             viewAllHref="/faculty"
             viewAllLabel="View All Faculty"
             align="left"
           />
           <Carousel>
-            {catFaculty.map((member) => (
+            {skillhouseFaculty.map((member) => (
               <div key={member.id} className="snap-start shrink-0">
                 <FacultyCard faculty={member} className="h-full" />
               </div>
@@ -112,41 +135,18 @@ export default function CATPage() {
         </Container>
       </section>
 
-      <section id="test-series" className="section-spacing">
+      <section id="test-series" className="section-spacing bg-bg-secondary/40">
         <Container>
           <SectionHeader
-            title="CAT Test Series"
+            title="Skill House Practice Hub"
             viewAllHref={EXTERNAL_URLS.thinkExam}
-            viewAllLabel="View All Test Series"
+            viewAllLabel="View All Assessments"
             align="left"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CAT_TEST_SERIES.map((item) => (
+            {SKILLHOUSE_TEST_SERIES.map((item) => (
               <TestSeriesCard key={item.id} item={item} />
             ))}
-          </div>
-        </Container>
-      </section>
-
-      <section id="results" className="section-spacing bg-bg-secondary/40">
-        <Container>
-          <SectionHeader
-            title="Results That Inspire"
-            viewAllHref="/cat#results"
-            viewAllLabel="View All Results"
-            align="left"
-          />
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 items-stretch">
-            <ResultsStatsPanel stats={CAT_RESULT_STATS} />
-            <div className="flex-1 min-w-0">
-              <Carousel>
-                {catResults.map((topper) => (
-                  <div key={topper.id} className="snap-start shrink-0">
-                    <TopperCard topper={topper} />
-                  </div>
-                ))}
-              </Carousel>
-            </div>
           </div>
         </Container>
       </section>
@@ -155,11 +155,11 @@ export default function CATPage() {
         <Container>
           <SectionHeader
             title="What Our Students Say"
-            subtitle="Real stories from Rodha CAT aspirants"
+            subtitle="Real stories from Rodha Skill House learners"
             align="left"
           />
           <Carousel>
-            {catTestimonials.map((item) => (
+            {skillhouseTestimonials.map((item) => (
               <div key={item.id} className="snap-start shrink-0">
                 <TestimonialCard testimonial={item} />
               </div>
@@ -171,7 +171,7 @@ export default function CATPage() {
       <section id="resources" className="section-spacing bg-bg-secondary/40">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CAT_RESOURCES.map((item) => (
+            {SKILLHOUSE_RESOURCES.map((item) => (
               <ResourceCard key={item.id} item={item} />
             ))}
           </div>
@@ -181,7 +181,7 @@ export default function CATPage() {
       <section id="faqs" className="section-spacing">
         <Container>
           <SectionHeader
-            title="CAT FAQs"
+            title="Skill House FAQs"
             viewAllHref="/faq"
             viewAllLabel="View All FAQs"
             align="left"
@@ -194,10 +194,13 @@ export default function CATPage() {
       </section>
 
       <CTABand
-        title="Ready to Crack CAT 2026?"
-        subtitle="Join thousands of serious aspirants and start your journey today."
+        title="Ready to Build Career-Ready Skills?"
+        subtitle="Join Skill House and start your next chapter with Rodha."
         primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
-        secondaryAction={{ label: "Explore Courses", href: "/cat#courses" }}
+        secondaryAction={{
+          label: "Explore Courses",
+          href: "/skillhouse#courses",
+        }}
       />
     </>
   );

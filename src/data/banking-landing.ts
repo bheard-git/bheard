@@ -8,7 +8,7 @@ import type {
 } from "@/lib/types";
 import { EXTERNAL_URLS } from "@/lib/constants";
 
-export const CAT_HERO_FEATURES: CategoryHeroFeature[] = [
+export const BANKING_HERO_FEATURES: CategoryHeroFeature[] = [
   {
     id: "live-classes",
     label: "150+ Hours Live Classes",
@@ -31,22 +31,22 @@ export const CAT_HERO_FEATURES: CategoryHeroFeature[] = [
   },
 ];
 
-export const CAT_QUICK_STATS: CategoryQuickStat[] = [
+export const BANKING_QUICK_STATS: CategoryQuickStat[] = [
   {
     id: "selections",
-    value: "10,000+",
+    value: "5,000+",
     label: "Selections",
     icon: "/assets/images/icons/selection.png",
   },
   {
-    id: "iim-calls",
-    value: "250+",
-    label: "IIM Calls in 2024",
+    id: "banking-ssc",
+    value: "500+",
+    label: "Banking & SSC Selects",
     icon: "/assets/images/icons/CAT-icon.png",
   },
   {
     id: "satisfaction",
-    value: "98.7%",
+    value: "98%",
     label: "Student Satisfaction",
     icon: "/assets/images/icons/ts-mocks.png",
   },
@@ -64,24 +64,24 @@ export const CAT_QUICK_STATS: CategoryQuickStat[] = [
   },
 ];
 
-export const CAT_RESULT_STATS: ResultStat[] = [
+export const BANKING_RESULT_STATS: ResultStat[] = [
   {
     label: "Selections",
-    value: "10,000",
+    value: "5,000",
     suffix: "+",
   },
   {
-    label: "Top 100 Ranks",
-    value: "250",
+    label: "Top Ranks",
+    value: "200",
     suffix: "+",
   },
 ];
 
-export const CAT_TEST_SERIES: TestSeriesItem[] = [
+export const BANKING_TEST_SERIES: TestSeriesItem[] = [
   {
-    id: "cat-mocks",
-    title: "CAT Mocks",
-    description: "Full-length mocks designed to mirror the real CAT exam experience.",
+    id: "banking-mocks",
+    title: "Banking Mocks",
+    description: "Full-length mocks designed to mirror IBPS, SBI and RBI exam patterns.",
     features: ["20+ Full Length Mocks", "Detailed Analytics", "All-India Percentile"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
@@ -89,7 +89,7 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
   {
     id: "sectional-tests",
     title: "Sectional Tests",
-    description: "Sharpen QA, VARC & DILR with focused sectional practice.",
+    description: "Sharpen Quant, Reasoning & English with focused sectional practice.",
     features: ["60+ Sectional Tests", "Timed Practice", "Topic Weightage Maps"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
@@ -103,20 +103,21 @@ export const CAT_TEST_SERIES: TestSeriesItem[] = [
     icon: "/assets/images/icons/ts-topic.png",
   },
   {
-    id: "mini-mocks",
-    title: "Mini Mocks",
-    description: "Quick 30–45 min simulations for daily exam stamina.",
+    id: "ssc-mocks",
+    title: "SSC Mini Mocks",
+    description: "Quick simulations for SSC CGL, CHSL and related government exams.",
     features: ["40+ Mini Mocks", "Speed Drills", "Smart Revision Sets"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
   },
 ];
 
-export const CAT_RESOURCES: ResourceItem[] = [
+export const BANKING_RESOURCES: ResourceItem[] = [
   {
     id: "free-resources",
-    title: "Free CAT Resources",
-    description: "Access curated formulas, previous papers, and strategy guides — free for every aspirant.",
+    title: "Free Banking Resources",
+    description:
+      "Access curated formulas, previous papers, and strategy guides — free for every aspirant.",
     ctaLabel: "Access Now",
     href: "/blog",
     icon: "/assets/icons/download.svg",
@@ -124,7 +125,8 @@ export const CAT_RESOURCES: ResourceItem[] = [
   {
     id: "free-demo",
     title: "Attend a Free Demo",
-    description: "Experience a live CAT class with our star faculty before you enroll.",
+    description:
+      "Experience a live banking class with our star faculty before you enroll.",
     ctaLabel: "Book Your Demo",
     href: "/contact",
     icon: "/assets/icons/play.svg",
@@ -132,7 +134,8 @@ export const CAT_RESOURCES: ResourceItem[] = [
   {
     id: "webinars",
     title: "Upcoming Webinars",
-    description: "Join free webinars on exam strategy, percentile targeting, and IIM interview prep.",
+    description:
+      "Join free webinars on banking exam strategy, SSC patterns, and interview prep.",
     ctaLabel: "Register Now",
     href: "/blog",
     icon: "/assets/icons/calendar.svg",
@@ -140,7 +143,8 @@ export const CAT_RESOURCES: ResourceItem[] = [
   {
     id: "counsellor",
     title: "Talk to a Counsellor",
-    description: "Get a personalised preparation roadmap mapped to your profile and timeline.",
+    description:
+      "Get a personalised preparation roadmap mapped to your target exams and timeline.",
     ctaLabel: "Contact Now",
     href: "/contact",
     icon: "/assets/icons/phone.svg",
@@ -148,40 +152,40 @@ export const CAT_RESOURCES: ResourceItem[] = [
   },
 ];
 
-export const CAT_FAQS: FaqItem[] = [
+export const BANKING_FAQS: FaqItem[] = [
   {
     id: "faq-1",
-    question: "What is the best time to start CAT preparation?",
+    question: "Which exams does Banking & Government cover?",
     answer:
-      "Ideally 8–12 months before the exam. Early starters can build concepts deeply, while later batches focus on mocks and revision. Rodha offers Complete, Pro, Crash, and Foundation tracks for every timeline.",
+      "Rodha covers major banking exams (IBPS, SBI, RBI) and government exams including SSC CGL, CHSL and related competitive tests — with shared foundations and exam-specific mocks.",
   },
   {
     id: "faq-2",
-    question: "Are classes live or recorded?",
+    question: "What is the best time to start preparation?",
     answer:
-      "Most programs include live interactive classes plus full recordings. You can revise anytime, and miss a session without falling behind.",
+      "Ideally 6–12 months before your target exam. Early starters build concepts deeply; later batches focus on mocks and revision.",
   },
   {
     id: "faq-3",
-    question: "Does Rodha provide mock tests for CAT?",
+    question: "Are classes live or recorded?",
     answer:
-      "Yes. You get full-length mocks, sectional tests, topic tests, and mini mocks with detailed analytics and All-India percentiles via our test platform.",
+      "Most programs include live interactive classes plus full recordings so you can revise anytime.",
   },
   {
     id: "faq-4",
-    question: "Is personalised mentorship included?",
+    question: "Does Rodha provide mock tests?",
     answer:
-      "Yes. Mentors help you build a study plan, review mock performance, and stay accountable through one-on-one guidance sessions.",
+      "Yes. You get full-length mocks, sectional tests, topic tests, and SSC mini mocks with detailed analytics.",
   },
   {
     id: "faq-5",
-    question: "Can working professionals join CAT batches?",
+    question: "Can working professionals join?",
     answer:
       "Absolutely. Evening and weekend-friendly schedules, recordings, and flexible mentorship make preparation workable alongside a full-time job.",
   },
   {
     id: "faq-6",
-    question: "How do I enroll in a CAT course?",
+    question: "How do I enroll?",
     answer:
       "Choose a program on this page, click Enroll, and complete signup on our learning platform. For guidance, book a free counselling call first.",
   },

@@ -29,7 +29,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "general",
     question: "What is Rodha?",
     answer:
-      "Rodha is India's trusted platform for CAT, IPMAT, GDPI, and CLAT preparation. We combine expert mentorship, structured courses, rigorous test series, and personalised guidance to help students crack competitive exams and get into top colleges.",
+      "Rodha is India's trusted platform for MBA (CAT + GDPI), Integrated Programs (IPMAT), Law (CLAT), Banking & Government Exams, and SkillHouse. We combine expert mentorship, structured courses, rigorous test series, and personalised guidance to help students crack competitive exams and build careers.",
   },
   {
     id: "gen-2",
@@ -43,7 +43,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "general",
     question: "Who can join Rodha programs?",
     answer:
-      "Anyone preparing for CAT, IPMAT, GDPI, or CLAT can join — college students, working professionals, and career switchers. Each category has tracks for different timelines and experience levels.",
+      "Anyone preparing for MBA (CAT/GDPI), Integrated Programs, Law, Banking & Government Exams, or SkillHouse can join — college students, working professionals, and career switchers. Each category has tracks for different timelines and experience levels.",
   },
   {
     id: "gen-4",
@@ -57,7 +57,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "general",
     question: "How do I get started with Rodha?",
     answer:
-      "Browse the exam category that matches your goal (CAT, IPMAT, GDPI, or CLAT), pick a course that fits your timeline, and enroll. You can also book a free counselling call or ask Rodha Buddy for personalised advice.",
+      "Browse the exam category that matches your goal (MBA, Integrated Programs, Law, Banking & Government, or SkillHouse), pick a course that fits your timeline, and enroll. You can also book a free counselling call or ask Rodha Buddy for personalised advice.",
   },
   {
     id: "gen-6",
@@ -205,7 +205,7 @@ export const FAQ_DATA: FAQItem[] = [
     category: "tests",
     question: "Are mocks based on the latest exam pattern?",
     answer:
-      "Our test series is updated to reflect the latest known patterns for CAT, IPMAT, GDPI practice, and CLAT. When exam authorities announce changes, we revise content accordingly.",
+      "Our test series is updated to reflect the latest known patterns across MBA (CAT), Integrated Programs, Law, Banking & Government, and SkillHouse assessments. When exam authorities announce changes, we revise content accordingly.",
   },
   {
     id: "tst-3",

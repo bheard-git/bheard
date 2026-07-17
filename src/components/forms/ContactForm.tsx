@@ -63,7 +63,7 @@ export function ContactForm({ className }: ContactFormProps) {
           placeholder="Select an exam"
           value={formData.exam}
           onChange={(e) => setFormData((prev) => ({ ...prev, exam: e.target.value as ContactFormData["exam"] }))}
-          options={CATEGORIES.map((c) => ({ value: c.id, label: c.fullName }))}
+          options={CATEGORIES.map((c) => ({ value: c.id, label: c.menuLabel }))}
         />
         <Textarea
           label="Message"

@@ -79,12 +79,12 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
             </h1>
 
             <p className="mt-4 text-body-lg text-text-secondary max-w-lg leading-relaxed">
-              Join India&apos;s most trusted platform for CAT, IPMAT, GDPI &amp;
-              CLAT and achieve your dream career
+              Join India&apos;s most trusted platform for MBA, Integrated Programs,
+              Law, Banking &amp; Government, and SkillHouse
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row items-start gap-3">
-              <Link href="/cat" className="btn-primary text-body px-6 py-2.5 rounded-[6px]">
+              <Link href="/mba" className="btn-primary text-body px-6 py-2.5 rounded-[6px]">
                 Explore Courses
               </Link>
               <Link href="/contact" className="btn-secondary text-body px-6 py-2.5 rounded-[6px]">

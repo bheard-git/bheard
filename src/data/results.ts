@@ -8,7 +8,7 @@ export const topResults: TopperResult[] = [
     rank: 5,
     college: "IIM Ahmedabad",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/male-4.png",
   },
   {
@@ -28,7 +28,7 @@ export const topResults: TopperResult[] = [
     rank: 22,
     college: "IIM Bangalore",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/female-4.png",
   },
   {
@@ -58,7 +58,7 @@ export const topResults: TopperResult[] = [
     rank: 18,
     college: "IIM Calcutta",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/male-6.png",
   },
   {
@@ -68,7 +68,7 @@ export const topResults: TopperResult[] = [
     rank: 31,
     college: "FMS Delhi",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/female-2.png",
   },
   {
@@ -78,7 +78,7 @@ export const topResults: TopperResult[] = [
     rank: 44,
     college: "IIM Lucknow",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/male-1.png",
   },
   {
@@ -88,7 +88,7 @@ export const topResults: TopperResult[] = [
     rank: 9,
     college: "IIM Kozhikode",
     year: 2024,
-    category: "cat",
+    category: "mba",
     image: "/assets/images/profiles/female-3.png",
   },
   {
@@ -99,7 +99,7 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "IIM Ahmedabad",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/male-4.png",
   },
   {
@@ -110,7 +110,7 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "IIM Bangalore",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/female-4.png",
   },
   {
@@ -121,7 +121,7 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "IIM Calcutta",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/male-5.png",
   },
   {
@@ -202,7 +202,7 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "IIM Lucknow",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/male-3.png",
   },
   {
@@ -213,7 +213,7 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "XLRI Jamshedpur",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/female-2.png",
   },
   {
@@ -224,8 +224,96 @@ export const topResults: TopperResult[] = [
     score: "Converted",
     college: "FMS Delhi",
     year: 2024,
-    category: "gdpi",
+    category: "mba",
     image: "/assets/images/profiles/male-6.png",
+  },
+  {
+    id: "r23",
+    name: "Kavya Nair",
+    exam: "IBPS PO 2024",
+    rank: 18,
+    score: "Selected",
+    college: "SBI PO",
+    year: 2024,
+    category: "banking",
+    image: "/assets/images/profiles/female-1.png",
+  },
+  {
+    id: "r24",
+    name: "Harsh Malhotra",
+    exam: "SSC CGL 2024",
+    rank: 42,
+    score: "Selected",
+    college: "SSC CGL",
+    year: 2024,
+    category: "banking",
+    image: "/assets/images/profiles/male-2.png",
+  },
+  {
+    id: "r25",
+    name: "Ritu Desai",
+    exam: "SBI Clerk 2024",
+    rank: 9,
+    score: "Selected",
+    college: "SBI",
+    year: 2024,
+    category: "banking",
+    image: "/assets/images/profiles/female-3.png",
+  },
+  {
+    id: "r26",
+    name: "Aman Joshi",
+    exam: "IBPS Clerk 2024",
+    rank: 31,
+    score: "Selected",
+    college: "IBPS",
+    year: 2024,
+    category: "banking",
+    image: "/assets/images/profiles/male-4.png",
+  },
+  {
+    id: "r27",
+    name: "Sara Ali",
+    exam: "SkillHouse 2024",
+    rank: 1,
+    score: "Placed",
+    college: "Product Associate",
+    year: 2024,
+    category: "skillhouse",
+    image: "/assets/images/profiles/female-2.png",
+  },
+  {
+    id: "r28",
+    name: "Nikhil Bose",
+    exam: "SkillHouse 2024",
+    rank: 2,
+    score: "Placed",
+    college: "Business Analyst",
+    year: 2024,
+    category: "skillhouse",
+    image: "/assets/images/profiles/male-5.png",
+  },
+  {
+    id: "r29",
+    name: "Tanya Gill",
+    exam: "SkillHouse 2024",
+    rank: 3,
+    score: "Placed",
+    college: "Marketing Associate",
+    year: 2024,
+    category: "skillhouse",
+    image: "/assets/images/profiles/female-4.png",
+  },
+  {
+    id: "r30",
+    name: "Omar Sheikh",
+    exam: "SkillHouse 2024",
+    rank: 4,
+    score: "Placed",
+    college: "Operations Lead",
+    year: 2024,
+    category: "skillhouse",
+    image: "/assets/images/profiles/male-1.png",
   },
 ];
 
@@ -235,7 +323,7 @@ export const overallStats: ResultStat[] = [
 ];
 
 export const categoryStats: Record<string, ResultStat[]> = {
-  cat: [
+  mba: [
     { label: "99+ Percentilers", value: "150", suffix: "+" },
     { label: "IIM Calls", value: "800", suffix: "+" },
     { label: "Average Score", value: "95", suffix: "%ile" },
@@ -244,13 +332,17 @@ export const categoryStats: Record<string, ResultStat[]> = {
     { label: "Top 50 Ranks", value: "25", suffix: "+" },
     { label: "IIM Indore Selections", value: "40", suffix: "+" },
   ],
-  gdpi: [
-    { label: "Conversion Rate", value: "85", suffix: "%" },
-    { label: "IIM Converts", value: "200", suffix: "+" },
-  ],
   clat: [
     { label: "Top 100 Ranks", value: "30", suffix: "+" },
     { label: "NLU Selections", value: "60", suffix: "+" },
+  ],
+  banking: [
+    { label: "Banking Selects", value: "2,000", suffix: "+" },
+    { label: "SSC Selects", value: "1,500", suffix: "+" },
+  ],
+  skillhouse: [
+    { label: "Learners", value: "10,000", suffix: "+" },
+    { label: "Career Outcomes", value: "1,000", suffix: "+" },
   ],
 };
 

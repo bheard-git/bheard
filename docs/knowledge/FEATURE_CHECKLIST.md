@@ -37,21 +37,23 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 ---
 
-## Category Landings `/cat` `/ipmat` `/gdpi` `/clat`
+## Category Landings `/mba` `/ipmat` `/clat` `/banking` `/skillhouse`
 
 | Section | Status |
 |---------|--------|
-| Category hero | Complete (all four via `CategoryHeroSection`; CAT uses premium PNG trust icons) |
-| Courses overview | Complete (all four) |
-| Star faculty | Complete (all four; GDPI faculty added) |
-| Test series promo | Complete (CAT: PNG card icons; others still SVG pending assets) |
-| Results & toppers | Complete (all four via `ResultsStatsPanel` + toppers carousel) |
-| Demo / webinar CTA | Complete (resource cards on all four) |
-| Testimonials | Complete (all four; category-filtered via `getTestimonialsByCategory`) |
-| Resources teaser | Complete (all four) |
-| Category FAQ | Complete (all four; category-specific FAQs) |
+| Category hero | Complete (all five via `CategoryHeroSection`; MBA reuses CAT premium PNG trust icons) |
+| Courses overview | Complete (all five) |
+| Star faculty | Complete (all five) |
+| Test series promo | Complete (MBA/Banking/SkillHouse reuse CAT PNG card icons) |
+| Results & toppers | Complete (all five via `ResultsStatsPanel` + toppers carousel) |
+| Demo / webinar CTA | Complete (resource cards on all five) |
+| Testimonials | Complete (all five; category-filtered via `getTestimonialsByCategory`) |
+| Resources teaser | Complete (all five) |
+| Category FAQ | Complete (all five; category-specific FAQs) |
 | SEO intro copy | Partial (per-page metadata; longer SEO blocks TBD) |
-| Match `cat landing page Ui.png` | Complete (structure on all four); dedicated hero photos pending for non-CAT |
+| Match `cat landing page Ui.png` | Complete (structure); dedicated hero photos pending for non-MBA |
+| MBA section order | Complete — Hero → Results → Courses → Faculty → Test Series → Testimonials → Resources → FAQs → CTA |
+| Taxonomy / switcher | Complete — short trigger + full menu labels; `/cat` & `/gdpi` redirect to `/mba` |
 
 ---
 

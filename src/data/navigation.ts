@@ -6,10 +6,11 @@ export const mainNavigation: NavItem[] = [
     label: "Courses",
     href: "#",
     children: [
-      { label: "CAT Preparation", href: "/cat" },
-      { label: "IPMAT Preparation", href: "/ipmat" },
-      { label: "GDPI Preparation", href: "/gdpi" },
-      { label: "CLAT Preparation", href: "/clat" },
+      { label: "MBA (CAT + GDPI)", href: "/mba" },
+      { label: "Integrated Programs", href: "/ipmat" },
+      { label: "Law (CLAT)", href: "/clat" },
+      { label: "Banking & Government", href: "/banking" },
+      { label: "Skill House", href: "/skillhouse" },
     ],
   },
   { label: "Faculty", href: "/faculty" },
@@ -19,41 +20,50 @@ export const mainNavigation: NavItem[] = [
 ];
 
 export const categoryNavigation: Record<CategoryId, NavItem[]> = {
-  cat: [
-    { label: "Overview", href: "/cat" },
-    { label: "Courses", href: "/cat#courses" },
-    { label: "Faculty", href: "/cat#faculty" },
-    { label: "Results", href: "/cat#results" },
-    { label: "FAQ", href: "/cat#faq" },
+  mba: [
+    { label: "Overview", href: "/mba" },
+    { label: "Courses", href: "/mba#courses" },
+    { label: "Faculty", href: "/mba#faculty" },
+    { label: "Results", href: "/mba#results" },
+    { label: "FAQ", href: "/mba#faqs" },
   ],
   ipmat: [
     { label: "Overview", href: "/ipmat" },
     { label: "Courses", href: "/ipmat#courses" },
     { label: "Faculty", href: "/ipmat#faculty" },
     { label: "Results", href: "/ipmat#results" },
-    { label: "FAQ", href: "/ipmat#faq" },
-  ],
-  gdpi: [
-    { label: "Overview", href: "/gdpi" },
-    { label: "Courses", href: "/gdpi#courses" },
-    { label: "Faculty", href: "/gdpi#faculty" },
-    { label: "FAQ", href: "/gdpi#faq" },
+    { label: "FAQ", href: "/ipmat#faqs" },
   ],
   clat: [
     { label: "Overview", href: "/clat" },
     { label: "Courses", href: "/clat#courses" },
     { label: "Faculty", href: "/clat#faculty" },
     { label: "Results", href: "/clat#results" },
-    { label: "FAQ", href: "/clat#faq" },
+    { label: "FAQ", href: "/clat#faqs" },
+  ],
+  banking: [
+    { label: "Overview", href: "/banking" },
+    { label: "Courses", href: "/banking#courses" },
+    { label: "Faculty", href: "/banking#faculty" },
+    { label: "Results", href: "/banking#results" },
+    { label: "FAQ", href: "/banking#faqs" },
+  ],
+  skillhouse: [
+    { label: "Overview", href: "/skillhouse" },
+    { label: "Courses", href: "/skillhouse#courses" },
+    { label: "Faculty", href: "/skillhouse#faculty" },
+    { label: "Results", href: "/skillhouse#results" },
+    { label: "FAQ", href: "/skillhouse#faqs" },
   ],
 };
 
 export const footerNavigation = {
   courses: [
-    { label: "CAT Preparation", href: "/cat" },
-    { label: "IPMAT Preparation", href: "/ipmat" },
-    { label: "GDPI Preparation", href: "/gdpi" },
-    { label: "CLAT Preparation", href: "/clat" },
+    { label: "MBA (CAT + GDPI)", href: "/mba" },
+    { label: "Integrated Programs", href: "/ipmat" },
+    { label: "Law (CLAT)", href: "/clat" },
+    { label: "Banking & Government", href: "/banking" },
+    { label: "Skill House", href: "/skillhouse" },
   ],
   company: [
     { label: "About Us", href: "/about" },
