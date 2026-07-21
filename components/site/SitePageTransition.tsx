@@ -21,7 +21,13 @@ export default function SitePageTransition({ children }: { children: React.React
       }
 
       // Long pages (markdown + tall apply form): vertical clip wipes can hide content incorrectly.
-      if (pathname === "/careers" || pathname.startsWith("/careers/")) {
+      const skipClip =
+        pathname === "/careers" ||
+        pathname.startsWith("/careers/") ||
+        pathname === "/about" ||
+        pathname === "/contact";
+
+      if (skipClip) {
         gsap.set(el, { clipPath: "none", clearProps: "clipPath" });
         return;
       }

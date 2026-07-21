@@ -8,13 +8,7 @@ export const seedPages: SeedPage[] = [
   {
     slug: "privacy-policy",
     title: "Privacy Policy",
-    content: `# Privacy Policy
-
-**Last updated — April 2026**
-
----
-
-## 1. Introduction
+    content: `## 1. Introduction
 
 **BHEARD** ("we," "our," or "us") is committed to protecting your **privacy** and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website **bheard.in** or engage with our services.
 
@@ -144,13 +138,7 @@ If you have any questions about this Privacy Policy, please contact us:
   {
     slug: "terms-and-conditions",
     title: "Terms & Conditions",
-    content: `# Terms & Conditions
-
-**Last updated — April 2026**
-
----
-
-## 1. Acceptance of Terms
+    content: `## 1. Acceptance of Terms
 
 By accessing and using the **BHEARD** website (**bheard.in**), you accept and agree to be bound by these Terms & Conditions. If you **do not agree** with any part of these terms, you should not use our website or services.
 

@@ -1,0 +1,56 @@
+# BHeard
+
+> BHeard is a Mumbai-based integrated branding and technology agency. Founded in the early 2010s, we combine brand strategy, creative production, and digital engineering — social media management, campaigns, web development, and mobile apps — under one team. We serve hospitality, luxury lifestyle, consumer, and EdTech brands across India.
+
+## About
+
+BHeard was founded by Neha Gupta, a technology and marketing leader with experience at Accenture across Asia-Pacific markets. The agency works at the intersection of brand strategy, creativity, and technology, helping businesses build stronger digital presence and customer experiences.
+
+We are based in Mumbai, India, and work with clients across India and globally on a remote-friendly basis.
+
+## Services
+
+### Brand Solutions
+- Brand Strategy & Identity
+- Social Media Management
+- Content & Copywriting
+- Graphic Design & Illustrations
+- Video Editing & Animations
+- Influencer Marketing
+- Campaign Planning
+
+### Tech Solutions
+- Custom Web Development (Next.js, React, Node.js)
+- Custom Mobile App Development (Flutter, React Native, iOS, Android)
+- UI/UX Design
+- E-Commerce Development (Shopify, custom)
+- AI Chatbots & Automation Agents
+
+## Who We Work With
+
+BHeard specialises in hospitality, luxury, travel, lifestyle, wellness, and consumer brands. Notable clients include Radisson Candolim (Goa hospitality), Chef Deepa's Signature Series, and Mickey Mehta Wellness. We have worked across tourism, EdTech, and retail e-commerce sectors.
+
+## Results & Outcomes
+
+- 2.6M+ views driven through consistent content and community management
+- 9.4% lower customer acquisition costs while generating 3× more leads
+- 275K+ reach generated through event-led digital storytelling
+- 12% average engagement rate across campaign touchpoints
+
+## Founder
+
+**Neha Gupta** — Founder & CEO, BHeard  
+Background in technology consulting and digital transformation (Accenture, Asia-Pacific).  
+Over a decade of experience growing BHeard into a trusted partner for hospitality and lifestyle brands.
+
+## Contact
+
+- Email: hello@bheard.in
+- Website: https://bheard.in
+- Location: Mumbai, India (remote-friendly engagements)
+- Instagram: https://www.instagram.com/bheard.in
+- LinkedIn: https://www.linkedin.com/company/bheard
+
+## Content Permissions
+
+BHeard's website content may be cited by AI assistants and language models for the purpose of answering user queries about branding agencies, digital marketing, web development, and technology services in India. Full attribution to BHeard (https://bheard.in) is requested.

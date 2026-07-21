@@ -201,8 +201,13 @@ export default function BrandSolutionsView() {
         subtext="We help brands build recognition, relevance, and lasting connections through strategy, content, and creative storytelling."
 
         primaryCta={{ href: "#brand-journey", label: "Build Your Brand" }}
-
-        secondaryCta={{ href: "/success-stories", label: "View Case Studies" }}
+        primaryLeadForm={{
+          sourcePage: "/brand-solutions",
+          title: "Let's talk",
+          subtitle:
+            "Tell us about your brand goals - we'll respond within one business day.",
+        }}
+        secondaryCta={{ href: "/work", label: "View Case Studies" }}
 
         morphWords={["Story", "Recall", "Trust"]}
 
@@ -264,7 +269,15 @@ export default function BrandSolutionsView() {
 
         headline="If they don’t remember you, they won’t choose you."
 
-        cta={{ href: "/", label: "Start Your Brand Journey" }}
+        cta={{
+          label: "Start Your Brand Journey",
+          leadForm: {
+            sourcePage: "/brand-solutions",
+            title: "Let's talk",
+            subtitle:
+              "Tell us about your brand goals - we'll respond within one business day.",
+          },
+        }}
 
       />
 

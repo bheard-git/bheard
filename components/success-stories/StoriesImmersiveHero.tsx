@@ -30,7 +30,7 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
   }));
 
   const loopImages = [...sourceImages, ...sourceImages];
-  const firstStoryHref = cases.length ? `/success-stories/${cases[0].slug}` : "#stories-stack";
+  const firstStoryHref = cases.length ? `/work/${cases[0].slug}` : "#stories-stack";
 
   useGSAP(
     () => {
@@ -207,18 +207,17 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
       <div className="relative z-10 mx-auto flex w-full max-w-content-max flex-col items-center px-gutter-sm text-center md:px-gutter">
         <p className="font-label text-label-sm uppercase tracking-[0.24em] text-primary">Our Success Stories</p>
         <h1 className="mt-4 max-w-4xl font-headline text-[clamp(2.1rem,6vw,5rem)] font-black leading-[0.95] tracking-tight text-on-surface">
-          Stories That Built
-          <span className="block">Real Brand Momentum</span>
+          From Ideas to Impact
         </h1>
         <p className="mt-5 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant md:text-lg">
-          Strategic executions across branding, technology, and growth systems designed to create long-term market
-          advantage.
+          Explore how branding, marketing, and technology come together to solve challenges, create opportunities, and
+          drive meaningful business growth.
         </p>
         <a
           href={firstStoryHref}
           className="mt-8 inline-flex items-center justify-center rounded-full border border-primary/25 bg-primary px-6 py-3 font-label text-xs font-bold uppercase tracking-[0.16em] text-on-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/92"
         >
-          Explore Latest Story
+          Explore Success Stories
         </a>
       </div>
 

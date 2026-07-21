@@ -2,6 +2,7 @@
 
 import "@/lib/motion/config";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -32,12 +33,14 @@ function ProofImageCard({
   alt,
   category,
   title,
+  href,
   className = "",
 }: {
   src: string;
   alt: string;
   category: string;
   title: string;
+  href?: string;
   className?: string;
 }) {
   const figureRef = useRef<HTMLElement | null>(null);
@@ -80,12 +83,8 @@ function ProofImageCard({
     { scope: figureRef }
   );
 
-  return (
-    <figure
-      ref={figureRef}
-      data-g-step="true"
-      className={`group relative min-h-[280px] overflow-hidden border border-outline-variant/60 md:min-h-[400px] ${className}`}
-    >
+  const content = (
+    <>
       <div ref={imgWrapRef} className="absolute inset-[-8%] will-change-transform">
         <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 58vw" />
       </div>
@@ -96,6 +95,22 @@ function ProofImageCard({
           {title}
         </p>
       </figcaption>
+    </>
+  );
+
+  return (
+    <figure
+      ref={figureRef}
+      data-g-step="true"
+      className={`group relative min-h-[280px] overflow-hidden border border-outline-variant/60 md:min-h-[400px] ${className}`}
+    >
+      {href ? (
+        <Link href={href} className="absolute inset-0 block" aria-label={`${category}: ${title}`}>
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
     </figure>
   );
 }
@@ -109,7 +124,6 @@ export default function ServicesVariantOne() {
           layout="flow"
           scrubEnd="+=34%"
           className={sectionTitleMarginCompact}
-          eyebrow="Proof of craft"
           title="Outcomes in the wild"
         />
 
@@ -121,6 +135,7 @@ export default function ServicesVariantOne() {
               alt="Radisson Blu hotel facade"
               category="Hospitality & lifestyle"
               title="Luxury storytelling + performance media, moving as one system."
+              href="/industries"
             />
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-5 md:grid-cols-1 md:grid-rows-2">

@@ -1,424 +1,487 @@
 import type { CaseStudyContent } from "./types";
+import { publicAsset } from "@/lib/utils/publicAsset";
+
+const workImage = (filename: string) => publicAsset("assets", "work", filename);
 
 /**
- * Case studies: GP30 carries verified metrics from the client brief.
- * Additional stories use qualitative impact labels only — no fabricated numbers.
+ * Case studies from BHeard Final Content V4 — verified metrics only where documented.
  */
 export const CASE_STUDIES: CaseStudyContent[] = [
   {
-    slug: "gp30-goa-portuguesa",
-    listTitle: "#GP30 Campaign",
-    listTagline: "Goa Portuguesa — 30 years, one movement.",
+    slug: "radisson-blu-goa",
+    listTitle: "Radisson Blu Goa",
+    listTagline: "Building a digital growth engine for hospitality.",
     listDescription:
-      "Celebrating three decades of Goa Portuguesa with a culture-led digital campaign that turned a milestone into mass participation.",
-    listMeta: "Mumbai · Hospitality · Social",
-    listImage:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80",
-    listImageAlt: "Warm restaurant interior with tables set for service",
+      "A digital strategy that turned social media into a reliable channel for engagement, enquiries, and guest consideration.",
+    listMeta: "Social Media Strategy · Content Production · Performance Campaigns",
+    listImage: workImage("Hospitality case study.jpg"),
+    listImageAlt: "Radisson Blu Goa resort pool at dusk",
     listStats: [
-      { value: "400+", label: "Contest entries (FB & IG)" },
-      { value: "2M+", label: "Twitter impressions" },
+      { value: "1.4M+", label: "Reach" },
+      { value: "12%", label: "Engagement rate" },
+      { value: "9.4%", label: "Lower CAC" },
     ],
-
-    heroTitle: "#GP30 Campaign",
+    heroTitle: "Building a Digital Growth Engine",
+    heroTitleAccent: "for a Hospitality Brand",
     heroSubtitle:
-      "Celebrating 30 years of Goa Portuguesa with a campaign that blended culture, cuisine, and community engagement.",
-    heroMeta: "Mumbai · Hospitality · Social Media Campaign",
-    heroImage:
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=2200&q=80",
-    heroImageAlt: "Cinematic plated seafood and warm dining light",
-
+      "In an increasingly competitive hospitality market, hotels are no longer competing only on location, amenities, or pricing. They are competing for attention long before a guest makes a booking.\n\nWorking with Radisson Blu Goa, we helped build a digital presence designed to increase engagement, generate qualified leads, and create stronger connections with travellers throughout the guest journey.",
+    heroMeta: "Hospitality Marketing",
+    heroImage: workImage("Hospitality case study.jpg"),
+    heroImageAlt: "Radisson Blu Goa luxury resort exterior and pool",
+    trustedBy: { name: "Radisson Blu Goa", logo: "/assets/client-logos/radisson-blu.webp" },
     overview: {
       heading: "The brief",
-      body: "Goa Portuguesa, one of Mumbai’s most iconic seafood restobars, approached us to mark a significant milestone — their 30th anniversary. The objective was to celebrate their legacy while amplifying brand visibility across digital platforms.",
+      body: "Radisson Blu Goa needed a digital strategy that would differentiate the property beyond rooms and offers while driving measurable business outcomes.",
     },
     challenge: {
-      heading: "The challenge",
-      intro: "The brand needed more than just a celebratory campaign. It required a strong digital narrative that could:",
-      bullets: [
-        "Capture the essence of Goan-Portuguese heritage",
-        "Engage both loyal customers and new audiences",
-        "Drive meaningful interactions across platforms",
-      ],
+      heading: "The Challenge",
+      intro:
+        "With travellers discovering, researching, and comparing hotels online, Radisson Blu needed a digital strategy that would differentiate the property beyond rooms and offers while driving measurable business outcomes.\n\nThe challenge was to turn social media from a brand visibility channel into a reliable channel of engagement, enquiries, and guest consideration.",
     },
     strategy: {
-      heading: "Our approach",
-      intro: "We crafted a unified campaign identity — #GP30 — designed to live seamlessly across all digital touchpoints. The strategy focused on:",
-      bullets: [
-        "Building a recognizable hashtag-led movement",
-        "Creating culturally rich, visually engaging content",
-        "Encouraging audience participation through interactive formats",
-      ],
+      heading: "Our Approach",
+      intro:
+        "We built Radisson Blu's social media presence from the ground up, creating a strategy centred around audience-led content, seasonal campaign planning, and lead generation-focused performance marketing.\n\nRather than focusing solely on the property itself, we highlighted the experiences surrounding a stay, from dining and wellness to local culture, celebrations, and destination-led storytelling. This allowed the brand to connect with travellers at different stages of their decision-making journey while creating content that encouraged engagement and enquiry.\n\nAlongside marketing initiatives, we also explored technology-led guest experience enhancements through [Guest AI](/services/tech-solutions/ai-chatbots-agents), enabling the property to create more responsive and personalised interactions across key guest touchpoints.",
     },
-    execution: [
-      {
-        heading: "Content that captures culture",
-        body: "We curated a series of visually rich stories and videos that reflected the soul of Goan and Portuguese cuisine — vibrant, nostalgic, and immersive.",
-        image:
-          "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Grilled seafood and sides styled for editorial photography",
-        align: "left",
-      },
-      {
-        heading: "Social-first storytelling",
-        body: "Each piece of content was designed for platform-native engagement, ensuring it resonated across Instagram, Facebook, and Twitter while maintaining a consistent brand voice.",
-        image:
-          "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Phone showing social interface in lifestyle context",
-        align: "right",
-      },
-      {
-        heading: "Interactive campaign layer",
-        body: "To drive participation, we introduced the #GP30 contest, inviting users to engage directly with the brand and become part of the celebration.",
-        image:
-          "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "People celebrating together at a gathering",
-        align: "left",
-      },
-    ],
+    execution: [],
     results: {
-      heading: "The impact",
+      heading: "Impact",
       stats: [
-        { value: "400+", label: "Contest entries across Facebook & Instagram" },
-        { value: "2M+", label: "Impressions on Twitter" },
-        { value: "↑", label: "Strong lift in brand engagement during the campaign window" },
+        { value: "204%", label: "Engagement growth" },
+        { value: "2X", label: "Lead growth in two months" },
+        { value: "AI-led", label: "Guest engagement via Guest AI" },
       ],
       closing:
-        "The campaign successfully transformed a milestone celebration into a high-engagement digital experience, strengthening Goa Portuguesa’s connection with its audience.",
+        "Engagement increased from 108,433 to 329,673 during a high-performing seasonal campaign period, with 2X lead growth achieved within two months through campaign optimisation and performance marketing.",
     },
+    impactItems: [
+      {
+        icon: "chart",
+        value: "204%",
+        title: "Engagement Growth",
+        description:
+          "Increasing from 108,433 to 329,673 engagements during a high-performing seasonal campaign period.",
+      },
+      {
+        icon: "users",
+        value: "2X",
+        title: "Lead Growth",
+        description: "Achieved within two months through campaign optimisation and performance marketing.",
+      },
+      {
+        icon: "bot",
+        value: "AI-Led",
+        title: "Guest Engagement",
+        description: "Introduced AI-led guest engagement capabilities through Guest AI.",
+        href: "/services/tech-solutions/ai-chatbots-agents",
+        hrefLabel: "Guest AI",
+      },
+    ],
     closingStatement:
-      "#GP30 wasn’t just a campaign — it was a celebration of legacy, culture, and community, brought to life through thoughtful storytelling and strategic execution.",
+      "By combining audience-first content, performance marketing, and hospitality-focused technology, we helped Radisson Blu strengthen its digital presence while creating a more connected experience for today's traveller. [Learn more about our hospitality expertise](/industries/hospitality-luxury).",
     cta: {
-      title: "Let’s build your next story",
-      subtext: "From milestones to movements, we create campaigns that connect, engage, and deliver results.",
+      title: "Let's build what's next",
+      subtext: "If your brand operates in hospitality where experience and digital innovation drive growth, we'd love to talk.",
     },
   },
   {
-    slug: "dakshin-culture-curry",
-    listTitle: "Dakshin Culture Curry",
-    listTagline: "Heritage on the plate — sharp on the feed.",
+    slug: "zumba-wear",
+    listTitle: "Zumba Wear",
+    listTagline: "Building a global lifestyle brand's community in India.",
     listDescription:
-      "Re-centering a regional dining brand around culture-first storytelling, with a disciplined editorial rhythm across social and owned channels.",
-    listMeta: "Hospitality · Regional cuisine · Brand voice",
-    listImage:
-      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=2000&q=80",
-    listImageAlt: "South Indian thali with vibrant curries and accompaniments",
+      "Community-led content and Meta performance marketing that turned brand affinity into measurable e-commerce sales.",
+    listMeta: "India Market Entry Strategy · Brand Positioning · Digital Marketing",
+    listImage: workImage("zumba forever case study-compressed.jpg"),
+    listImageAlt: "Zumba Wear activewear lifestyle campaign",
     listStats: [
-      { value: "Culture", label: "Heritage-led content spine" },
-      { value: "One voice", label: "Unified narrative across touchpoints" },
+      { value: "23.3K", label: "Instagram followers" },
+      { value: "274+", label: "Facebook purchases" },
+      { value: "19%", label: "Peak FB engagement" },
     ],
-
-    heroTitle: "Dakshin Culture Curry",
-    heroSubtitle: "A sharper story for a brand built on regional depth — without diluting authenticity.",
-    heroMeta: "Hospitality · Editorial social · Brand platform",
-    heroImage:
-      "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=2200&q=80",
-    heroImageAlt: "Overhead view of colorful Indian dishes on a table",
-
+    heroTitle: "Building a Global Lifestyle Brand's Community",
+    heroTitleAccent: "in India",
+    heroSubtitle:
+      "When a global brand enters a new market, awareness alone isn't enough. It needs a community that identifies with the brand, engages with it, and buys from it.\n\nWorking with Zumba Wear, the global lifestyle and activewear e-commerce brand, we helped its India entity build a digital presence from the ground up — combining social media content creation, community management, website creatives, and [Meta performance marketing](/services/brand-solutions) into one connected growth engine.",
+    heroMeta: "Lifestyle & E-Commerce Marketing",
+    heroImage: workImage("zumba forever case study-compressed.jpg"),
+    heroImageAlt: "Zumba Wear India community and activewear",
+    trustedBy: { name: "Zumba Wear India" },
     overview: {
       heading: "The brief",
-      body: "Dakshin Culture Curry sits at the intersection of tradition and discovery: a menu rooted in South Indian culinary craft, with guests who increasingly discover brands through short-form story before they ever walk in. The brand needed its digital presence to feel as intentional as its kitchen.",
+      body: "Zumba had a passionate global following, but its India apparel business was starting from a small digital footprint.",
     },
     challenge: {
-      heading: "The challenge",
-      intro: "The work had to resolve three tensions at once:",
-      bullets: [
-        "Honor regional specificity without reading as niche or academic",
-        "Compete in a noisy social landscape without resorting to gimmicks",
-        "Connect storytelling to commercial intent — reservations, inquiries, and repeat visits",
-      ],
+      heading: "The Challenge",
+      intro:
+        "Zumba had a passionate global following, but its India apparel business was starting from a small digital footprint. The challenge was to turn brand affinity among India's Zumba community — instructors, fitness enthusiasts, and lifestyle buyers — into an engaged audience and, ultimately, into measurable e-commerce sales.",
     },
     strategy: {
-      heading: "Our approach",
-      intro: "We anchored the brand in an editorial system: recurring story formats, a consistent visual grammar, and copy that sounds like the restaurant — confident, warm, precise.",
-      bullets: [
-        "Culture-first series designed for saves and shares, not one-off posts",
-        "Channel-native cuts of the same narrative (not lazy cross-posting)",
-        "Owned-site messaging aligned with social so the story feels continuous",
-      ],
+      heading: "Our Approach",
+      intro:
+        "We built Zumba Shop India's social media presence around the community itself, not just the products.\n\nContent celebrated the instructors and events at the heart of the Zumba movement — from ZIN promotions across nine cities to live coverage of international events including Zincon Orlando and Gina Grant's Mumbai event — creating content people wanted to share, not just see.\n\nAlongside community-led content, we ran Meta ad campaigns designed for commerce: product launches, seasonal sales, and collection pre-bookings, each supported by website creatives built to convert the traffic those campaigns generated.",
     },
-    execution: [
-      {
-        heading: "Editorial calendar with teeth",
-        body: "We replaced ad-hoc posting with themed runs — ingredient deep-dives, chef POV, and guest moments — each designed to compound recognition over weeks, not hours.",
-        image:
-          "https://images.unsplash.com/photo-1504674900240-90374c9ef8d1?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Chef preparing ingredients in a professional kitchen",
-        align: "left",
-      },
-      {
-        heading: "Visual language that reads ‘premium’",
-        body: "Photography direction emphasized texture, color truth, and plate architecture — so the feed feels appetizing and elevated, never stock-generic.",
-        image:
-          "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Close-up of hands finishing a plated dish",
-        align: "right",
-      },
-    ],
+    execution: [],
     results: {
-      heading: "The impact",
+      heading: "Impact",
       stats: [
-        { value: "Aligned", label: "Social, web, and in-venue story finally match" },
-        { value: "Sustained", label: "Editorial rhythm kept after launch window" },
-        { value: "Sharper", label: "Creative that signals craft, not trends" },
+        { value: "23.3K", label: "Instagram followers (from 1.5K)" },
+        { value: "274+", label: "Facebook ad purchases in one year" },
+        { value: "15%+", label: "Website traffic from Facebook" },
       ],
       closing:
-        "Impact here is measured in narrative clarity and creative consistency — the quantitative readouts sit with the client’s internal analytics stack.",
+        "Peak monthly engagement rate of 19% on Facebook, with Instagram engagement reaching 5.38%. 5.5 lakh+ Facebook page reach and 6.7 lakh+ impressions in a single quarter.",
     },
+    impactItems: [
+      {
+        icon: "users",
+        value: "23.3K",
+        title: "Instagram Followers",
+        description: "Community grown from 1,500 to 23.3K followers over the course of the engagement.",
+      },
+      {
+        icon: "trending",
+        value: "274+",
+        title: "Purchases",
+        description: "Driven through Facebook ad campaigns in a single year.",
+      },
+      {
+        icon: "chart",
+        value: "19%",
+        title: "Peak Engagement",
+        description:
+          "Peak monthly engagement rate on Facebook, with Instagram engagement reaching 5.38%. Over 15% of all website traffic driven by Facebook alone.",
+      },
+    ],
     closingStatement:
-      "When the story matches the plate, guests don’t just scroll — they show up.",
+      "By combining community storytelling with performance marketing, we helped a global lifestyle brand find its voice in India — proving that when content builds belonging, commerce follows. [Explore consumer & FMCG work](/industries/consumer-fmcg).",
     cta: {
-      title: "Let’s build your next story",
-      subtext: "From milestones to movements, we create campaigns that connect, engage, and deliver results.",
+      title: "Let's build what's next",
+      subtext: "Ready to grow your lifestyle or e-commerce brand in India? Let's talk.",
     },
   },
   {
-    slug: "mickey-mehta-wellness-lab",
-    listTitle: "Mickey Mehta",
-    listTagline: "Wellness authority — distilled into daily motion.",
+    slug: "curly-tales-app",
+    listTitle: "Curly Tales",
+    listTagline: "From content platform to mobile-first experience.",
     listDescription:
-      "Turning decades of training philosophy into a modern content system: clear, motivating, and unmistakably Mickey.",
-    listMeta: "Wellness · Personality-led · Content system",
-    listImage:
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=2000&q=80",
-    listImageAlt: "Athlete training with focus and controlled movement",
+      "A mobile application that brought food, travel, lifestyle, and local experiences into a single discovery ecosystem.",
+    listMeta: "Mobile App Development · Content Experience Platform · Travel & Lifestyle Discovery",
+    listImage: workImage("Curly tales case study-compressed.jpg"),
+    listImageAlt: "Curly Tales mobile app experience",
     listStats: [
-      { value: "Voice", label: "Tone locked to coach, not influencer" },
-      { value: "Modular", label: "Repeatable formats for scale" },
+      { value: "2M+", label: "Readers reached" },
+      { value: "4.7★", label: "App rating" },
     ],
-
-    heroTitle: "Mickey Mehta",
-    heroSubtitle: "A wellness voice that had to stay human at scale — structured, never sterile.",
-    heroMeta: "Wellness · Personality brand · Content",
-    heroImage:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2200&q=80",
-    heroImageAlt: "Gym interior with equipment and dramatic lighting",
-
+    heroTitle: "Building Digital Products That Create",
+    heroTitleAccent: "Stronger Customer Relationships",
+    heroSubtitle:
+      "As brands evolve, websites and social media channels are no longer enough to own the customer experience. Mobile applications and digital products enable brands to build deeper engagement, create direct relationships with users, and unlock new opportunities for growth.\n\nOne such example is our work with Curly Tales, one of India's most recognisable food, travel, and lifestyle media brands.",
+    heroMeta: "Product & App Development",
+    heroImage: workImage("Curly tales case study-compressed.jpg"),
+    heroImageAlt: "Curly Tales app on mobile device",
+    trustedBy: { name: "Curly Tales" },
     overview: {
-      heading: "The brief",
-      body: "Mickey Mehta’s brand carries authority built over years of public trust. The digital challenge wasn’t ‘more content’ — it was content that could carry his cadence, discipline, and empathy without flattening into generic fitness tropes.",
+      heading: "Helping Curly Tales Move Beyond Content",
+      body: "As its audience grew, so did the opportunity to create a more direct relationship with users—one that extended beyond social platforms and transformed content consumption into experience discovery.",
     },
     challenge: {
-      heading: "The challenge",
-      intro: "We needed to:",
-      bullets: [
-        "Preserve a distinctive POV while increasing publishing velocity",
-        "Make complex wellness ideas legible in short-form environments",
-        "Keep motivation high without shouting clichés",
-      ],
+      heading: "The Challenge",
+      intro:
+        "Curly Tales had successfully built a loyal audience across digital channels, but social media alone limited how users could discover, save, and engage with recommendations.\n\nThe challenge was to create a dedicated platform that could bring together food, travel, lifestyle, and local experiences into a single mobile-first ecosystem while remaining true to the Curly Tales brand.",
     },
     strategy: {
-      heading: "Our approach",
-      intro: "We designed a modular story system: repeatable frameworks with swap-in proof, micro-lessons, and behind-the-scenes humanity.",
-      bullets: [
-        "A ‘coach-first’ copy ladder — every piece answers one reader question",
-        "Visual pacing that supports instruction, not decoration",
-        "Cross-format adaptation (short video, carousel, long caption) with one spine",
-      ],
+      heading: "Our Approach",
+      intro:
+        "We partnered with Curly Tales to design and develop a [mobile application](/services/tech-solutions) built around how people discover experiences today.\n\nRather than simply repurposing website content into an app, we focused on creating a product experience that made exploration more intuitive. Users could discover places, browse curated recommendations, save experiences, and access content through a platform designed specifically for mobile engagement.\n\nThe app brought together Curly Tales' content, community, and recommendations into a single destination, creating a stronger connection between inspiration and action.",
     },
-    execution: [
-      {
-        heading: "Lesson-led storytelling",
-        body: "Each series opened with a problem the audience already feels — energy, posture, consistency — and closed with a practice, not a pitch.",
-        image:
-          "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Group stretching in a bright studio",
-        align: "left",
-      },
-      {
-        heading: "Proof in motion",
-        body: "We prioritized demonstrations, progress language, and coachable prompts — so content earns attention instead of begging for it.",
-        image:
-          "https://images.unsplash.com/photo-1599058945522-28ba584bfa5f?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Yoga balance pose in natural light",
-        align: "right",
-      },
-    ],
+    execution: [],
     results: {
-      heading: "The impact",
+      heading: "Impact",
       stats: [
-        { value: "Clearer", label: "Brand reads as mentor, not motivator-meme" },
-        { value: "Faster", label: "Production cadence without creative drift" },
-        { value: "Owned", label: "Story stays on-brand across collaborators" },
+        { value: "Mobile-first", label: "Platform transformation" },
+        { value: "Unified", label: "Discovery ecosystem" },
+        { value: "Scalable", label: "Product foundation" },
       ],
       closing:
-        "For personality-led wellness, the win is coherence: when the voice is unmistakable, distribution gets easier — because the creative is already differentiated.",
+        "Successfully transformed Curly Tales from a content-first platform into a mobile-first experience, strengthening audience engagement beyond traditional social media channels.",
     },
+    impactItems: [
+      {
+        icon: "sparkles",
+        value: "Mobile-First",
+        title: "Transformation",
+        description: "Successfully transformed Curly Tales from a content-first platform into a mobile-first experience.",
+      },
+      {
+        icon: "globe",
+        value: "Unified",
+        title: "Discovery",
+        description:
+          "Created a dedicated destination for food, travel, lifestyle, and local experience discovery.",
+      },
+      {
+        icon: "trending",
+        value: "Scalable",
+        title: "Foundation",
+        description:
+          "Established a scalable digital product capable of supporting future platform expansion.",
+      },
+    ],
+    extraSections: [
+      {
+        heading: "Beyond One Product",
+        body: "Our work extends beyond content and marketing into [digital product development](/services/tech-solutions), helping brands create platforms, applications, and technology experiences that strengthen audience engagement and support long-term growth.",
+      },
+    ],
     closingStatement:
-      "Discipline in the work reflects discipline in the training — that’s the brand promise, expressed digitally.",
+      "By helping Curly Tales create a dedicated mobile experience, we enabled the brand to move closer to its audience—transforming inspiration into discovery through a platform designed for how people explore today.",
     cta: {
-      title: "Let’s build your next story",
-      subtext: "From milestones to movements, we create campaigns that connect, engage, and deliver results.",
+      title: "Let's build what's next",
+      subtext: "Need a mobile product that deepens customer relationships? Let's talk.",
     },
   },
   {
-    slug: "radisson-candolim-arrival",
-    listTitle: "Radisson Candolim",
-    listTagline: "A resort launch narrative that feels like arrival.",
+    slug: "goa-tourism",
+    listTitle: "Goa Tourism",
+    listTagline: "Reframing Goa beyond peak season.",
     listDescription:
-      "Building anticipation and clarity for a coastal hospitality property — story, visuals, and conversion language working as one system.",
-    listMeta: "Hospitality · Goa · Launch narrative",
-    listImage:
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=2000&q=80",
-    listImageAlt: "Resort pool at golden hour overlooking palms",
+      "Destination-led storytelling that shifted perception and showcased Goa as a year-round experience.",
+    listMeta: "Destination Marketing · Campaign Strategy · Digital Content",
+    listImage: workImage("goa tourism case study-compressed.jpg"),
+    listImageAlt: "Goa tourism destination campaign",
     listStats: [
-      { value: "Arrival", label: "Story arc from teaser to booking" },
-      { value: "Coastal", label: "Visual tone matched to place" },
+      { value: "261.6K", label: "Views" },
+      { value: "130K+", label: "Reach" },
+      { value: "12.5%", label: "Engagement rate" },
     ],
-
-    heroTitle: "Radisson Candolim",
-    heroSubtitle: "Launch storytelling for a coastal stay — calm confidence, not generic ‘luxury’ wallpaper.",
-    heroMeta: "Hospitality · Resort · Launch",
-    heroImage:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=80",
-    heroImageAlt: "Luxury hotel exterior and pool at dusk",
-
+    heroTitle: "Reframing Goa",
+    heroTitleAccent: "Beyond Peak Season",
+    heroSubtitle:
+      "The strongest destinations aren't promoted through attractions alone, they're built through stories that inspire people to visit, stay longer, and return. For many travellers, Goa is defined by a familiar set of images: beaches, nightlife, and year-end holidays.\n\nWorking alongside the Travel & Tourism Association of Goa and Goa Tourism, we helped build a destination-led platform created to showcase a different side of Goa through culture, food, wellness, festivals, and local experiences that exist throughout the year.",
+    heroMeta: "Destination Marketing",
+    heroImage: workImage("goa tourism case study-compressed.jpg"),
+    heroImageAlt: "Goa cultural and tourism experiences",
+    trustedBy: { name: "Goa Tourism" },
     overview: {
       heading: "The brief",
-      body: "A new resort chapter in Candolim needed more than awareness — it needed a believable promise: what it feels like to stay, what distinguishes the property, and why the guest should choose now.",
+      body: "Goa attracts millions of visitors every year, yet much of its tourism narrative remains concentrated around a few peak months and a handful of familiar experiences.",
     },
     challenge: {
-      heading: "The challenge",
-      intro: "Hospitality launches often collapse into interchangeable imagery and empty superlatives. The Radisson Candolim story had to:",
-      bullets: [
-        "Feel rooted in place (Goa, coastline, rhythm of stay)",
-        "Carry premium cues without alienating family and leisure segments",
-        "Translate story into inquiry behavior without feeling ‘salesy’",
-      ],
+      heading: "The Challenge",
+      intro:
+        "Goa attracts millions of visitors every year, yet much of its tourism narrative remains concentrated around a few peak months and a handful of familiar experiences.\n\nThe challenge was to shift perception, making travellers see Goa as a year-round destination rather than a seasonal getaway.",
     },
     strategy: {
-      heading: "Our approach",
-      intro: "We structured the narrative as a journey: teaser tension, proof-rich middle, and a booking-forward close — each phase with its own creative grammar.",
-      bullets: [
-        "Visual direction built around light, texture, and real spaces",
-        "Copy that sells moments (dawn swim, quiet lobby, kids at lunch) not adjectives",
-        "Channel packs for discovery vs consideration vs conversion",
-      ],
+      heading: "Our Approach",
+      intro:
+        "We built a storytelling-first destination brand, focusing on the experiences that make Goa unique beyond its beaches. Through seasonal narratives, cultural storytelling, creator collaborations, and [tourism-led campaigns](/industries/travel-tourism), we created content that showcased a richer and more authentic side of the destination.\n\nA defining example was the campaign \"There's Only One Goa\" — it took a bold strategic approach by repositioning Goa not as a competitor, but as a category of its own. Rather than relying on comparisons, it rendered them irrelevant by highlighting what only Goa could offer—its 450-year Indo-Portuguese cultural fusion, the susegad philosophy, and everyday experiences that couldn't be replicated elsewhere.\n\nWe also led the digital execution of a large-scale World Tourism Day campaign that brought together tourism businesses, creators, and government stakeholders, generating over 130,000 reach while amplifying visibility for Goa's tourism ecosystem.",
     },
-    execution: [
-      {
-        heading: "Tease with specificity",
-        body: "Early assets prioritized distinctive angles of the property — not every pool in the world, this pool, this light, this coastline context.",
-        image:
-          "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Guest walking toward pool deck with ocean view",
-        align: "left",
-      },
-      {
-        heading: "Proof-rich consideration",
-        body: "Mid-phase content layered amenities with human scale: dining as experience, rooms as rest, Goa as character — not a brochure checklist.",
-        image:
-          "https://images.unsplash.com/photo-1615460549969-ae36eb39b9a8?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Hotel room interior with crisp linens and warm light",
-        align: "right",
-      },
-    ],
+    execution: [],
     results: {
-      heading: "The impact",
+      heading: "Impact",
       stats: [
-        { value: "Coherent", label: "One story from first touch to booking" },
-        { value: "Distinct", label: "Creative that doesn’t read as stock-resort" },
-        { value: "Ready", label: "Launch assets built for iteration seasons" },
+        { value: "1.2M+", label: "Total reach" },
+        { value: "183K+", label: "Campaign views" },
+        { value: "12.5%", label: "Average engagement rate" },
       ],
       closing:
-        "Launch narratives win when guests can imagine the stay — when visuals and language are specific enough to feel true.",
+        "12K+ interactions driven through seasonal storytelling and stakeholder-led campaigns, outperforming typical destination marketing benchmarks.",
     },
+    impactItems: [
+      {
+        icon: "globe",
+        value: "1.2M+",
+        title: "Reach",
+        description: "Including 130K+ from the World Tourism Day campaign.",
+      },
+      {
+        icon: "chart",
+        value: "183K+",
+        title: "Campaign Views",
+        description: "Across tourism initiatives.",
+      },
+      {
+        icon: "users",
+        value: "12.5%",
+        title: "Engagement Rate",
+        description:
+          "12K+ interactions driven through seasonal storytelling, outperforming typical destination marketing benchmarks.",
+      },
+    ],
     closingStatement:
-      "Arrival isn’t a tagline — it’s a feeling you build, block by block, before the guest ever checks in.",
+      "By bringing together tourism stakeholders, local experiences, seasonal narratives, and community stories, we helped showcase Goa not as a destination people visit once a year, but as a destination worth discovering in every season. Our destination marketing experience also extends beyond Goa through our work with Caper Travel. [Explore travel & tourism](/industries/travel-tourism).",
     cta: {
-      title: "Let’s build your next story",
-      subtext: "From milestones to movements, we create campaigns that connect, engage, and deliver results.",
+      title: "Let's build what's next",
+      subtext: "Ready to reframe your destination's story? Let's talk.",
     },
   },
   {
-    slug: "chef-deepa-signature-series",
-    listTitle: "Chef Deepa",
-    listTagline: "Personal brand heat — without losing craft credibility.",
+    slug: "dr-mickey-mehta",
+    listTitle: "Dr. Mickey Mehta",
+    listTagline: "Building one of India's earliest wellness personal brands online.",
     listDescription:
-      "Elevating a chef-led brand with signature series storytelling: technique, culture, and personality in balanced doses.",
-    listMeta: "Culinary · Personal brand · Series content",
-    listImage:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=2000&q=80",
-    listImageAlt: "Chef plating a dish with precision",
+      "Long-term social media strategy that turned credibility into scalable digital influence and community participation.",
+    listMeta: "Social Media Strategy · Content Production · Community Building",
+    listImage: workImage("dr micky mehta case study-compressed.jpg"),
+    listImageAlt: "Dr. Mickey Mehta wellness brand",
     listStats: [
-      { value: "Series", label: "Signature repeatable formats" },
-      { value: "Craft", label: "Technique-forward, not trend-chasing" },
+      { value: "4M+", label: "Campaign impressions" },
+      { value: "10+", label: "Milestone campaigns" },
     ],
-
-    heroTitle: "Chef Deepa",
-    heroSubtitle: "A chef-led brand story built on craft proof — technique first, personality always.",
-    heroMeta: "Culinary · Personal brand · Content",
-    heroImage:
-      "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=2200&q=80",
-    heroImageAlt: "Hands garnishing a bowl in a kitchen",
-
+    heroTitle: "Building One of India's Earliest Wellness",
+    heroTitleAccent: "Personal Brands Online",
+    heroSubtitle:
+      "Before wellness creators became digital businesses and personal branding became a growth strategy, we were helping wellness experts build audiences online.\n\nOur work in the [health and wellness space](/industries/health-wellness) spans fitness leaders, yoga communities, healthcare professionals, and wellness programmes. One of these partnerships demonstrates our approach: helping wellness pioneer Dr. Mickey Mehta build and grow his digital presence over the long term.",
+    heroMeta: "Health & Wellness Marketing",
+    heroImage: workImage("dr micky mehta case study-compressed.jpg"),
+    heroImageAlt: "Dr. Mickey Mehta wellness content",
+    trustedBy: { name: "Dr. Mickey Mehta" },
     overview: {
       heading: "The brief",
-      body: "Chef Deepa’s audience comes for knowledge and stays for voice. The brand needed a digital system that showcases skill and point-of-view — without reducing a career into ‘content churn’.",
+      body: "Dr. Mickey Mehta was already a recognised name in the wellness industry, but his influence was largely driven through speaking engagements, workshops, and offline communities.",
     },
     challenge: {
-      heading: "The challenge",
-      intro: "Chef-led brands can slip into two traps: overly polished emptiness, or overly chaotic ‘authenticity’. The mandate was:",
-      bullets: [
-        "Show real technique in ways short-form can still read",
-        "Build recognition around signature ideas, not random viral swings",
-        "Keep the brand premium enough for partnerships and premium inquiries",
-      ],
+      heading: "The Challenge",
+      intro:
+        "Dr. Mickey Mehta was already a recognised name in the wellness industry, but like many thought leaders of the time, his influence was largely driven through speaking engagements, workshops, and offline communities.\n\nThe challenge was to translate that credibility into a scalable digital presence—one that could consistently engage audiences, amplify his message, and create meaningful participation around wellness.",
     },
     strategy: {
-      heading: "Our approach",
-      intro: "We built a signature series architecture: each run has a promise, a visual hook, and a takeaway — so the audience learns something every time.",
-      bullets: [
-        "Shot direction that privileges hands, process, and texture",
-        "Writing that teaches without sounding like a textbook",
-        "Cadence designed for compounding familiarity (not one-hit posts)",
-      ],
+      heading: "Our Approach",
+      intro:
+        "We built and managed Dr. Mickey Mehta's social media presence across Instagram, Facebook, and LinkedIn, creating a content ecosystem designed to educate, engage, and grow a community around holistic wellness.\n\nRather than relying on promotional content, we focused on turning key moments into high-engagement brand-building opportunities. Over the course of our engagement, we conceptualised and executed more than 10 birthday campaigns, transforming annual milestones into audience participation campaigns that reinforced Dr. Mehta's positioning while driving visibility and engagement.\n\nOne of the most successful initiatives was the \"Fittest at 55\" campaign. Built around Dr. Mehta's 55th birthday, the campaign combined storytelling, community engagement, and membership promotion into a single digital movement. The campaign generated over 4 million impressions and was featured by Social Samosa, earning recognition within the marketing and advertising industry.\n\nBeyond campaign execution, our role was to create consistency—building a digital presence that could sustain engagement year after year rather than relying on one-off viral moments.",
     },
-    execution: [
-      {
-        heading: "Technique as theatre",
-        body: "We choreographed short sequences around a single move — a cut, a temper, a finish — so craft becomes watchable in seconds.",
-        image:
-          "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Cooking in a pan with steam and motion",
-        align: "left",
-      },
-      {
-        heading: "Culture as context",
-        body: "When the story needed roots, we connected dishes to memory, region, and family narrative — always tied back to what the viewer can try.",
-        image:
-          "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=1800&q=80",
-        imageAlt: "Fresh ingredients laid out for cooking",
-        align: "right",
-      },
-    ],
+    execution: [],
     results: {
-      heading: "The impact",
+      heading: "Impact",
       stats: [
-        { value: "Proof-led", label: "Creative anchored in demonstrable skill" },
-        { value: "Repeatable", label: "Series structure scales production" },
-        { value: "Premium", label: "Tone stays chef-credible at higher velocity" },
+        { value: "4M+", label: "\"Fittest at 55\" impressions" },
+        { value: "10+", label: "Milestone campaigns executed" },
+        { value: "Multi-platform", label: "IG, Facebook & LinkedIn" },
       ],
       closing:
-        "The best chef brands don’t ‘go viral’ by accident — they earn attention by making craft legible.",
+        "Instagram, Facebook and LinkedIn presence built and managed from the ground up for one of India's most recognised wellness personalities.",
     },
+    impactItems: [
+      {
+        icon: "chart",
+        value: "4M+",
+        title: "Impressions",
+        description: "Generated through the \"Fittest at 55\" campaign.",
+      },
+      {
+        icon: "sparkles",
+        value: "10+",
+        title: "Milestone Campaigns",
+        description: "Conceptualised and executed over a long-term engagement.",
+      },
+      {
+        icon: "users",
+        value: "Multi-Platform",
+        title: "Presence",
+        description:
+          "Instagram, Facebook and LinkedIn presence built and managed from the ground up for one of India's most recognised wellness personalities.",
+      },
+    ],
+    extraSections: [
+      {
+        heading: "Beyond One Brand",
+        body: "Our experience in the wellness sector extends beyond a single engagement. We worked with wellness expert Dr. Sameera Gupta to strengthen her personal brand through content and video-led communication. For Shammi's Yogalaya, we helped transition wellness programmes online during the COVID-19 pandemic, promoting a 21-day digital wellness initiative. We also collaborated with creators such as thatquirkymamma and supported wellness-led experiences including Yoga by the Bay by Shaina NC.",
+      },
+    ],
     closingStatement:
-      "When the work respects the audience’s intelligence, the brand feels inevitable — not loud.",
+      "For wellness brands, credibility is earned over time. Our focus has always been on helping experts turn their knowledge into influence, and their influence into lasting communities.",
     cta: {
-      title: "Let’s build your next story",
-      subtext: "From milestones to movements, we create campaigns that connect, engage, and deliver results.",
+      title: "Let's build what's next",
+      subtext: "Ready to grow your wellness brand online? Let's talk.",
+    },
+  },
+  {
+    slug: "rodha-edtech",
+    listTitle: "Rodha",
+    listTagline: "Building a scalable academic support platform.",
+    listDescription:
+      "An enterprise-grade EdTech platform connecting students, mentors, and administrators in one ecosystem.",
+    listMeta: "EdTech Platform Development · Doubt Resolution System · Exam Preparation",
+    listImage: workImage("rodha case study-compressed.jpg"),
+    listImageAlt: "Rodha EdTech learning platform",
+    listStats: [
+      { value: "10,000+", label: "Concurrent users" },
+      { value: "500+", label: "Simultaneous DB connections" },
+    ],
+    heroTitle: "Building a Scalable",
+    heroTitleAccent: "Academic Support Platform",
+    heroSubtitle:
+      "As education moves beyond classrooms, students expect instant access to guidance while institutions need structured systems that can scale with growing learner communities.\n\nFor Rodha, we designed and developed a comprehensive [learning platform](/services/tech-solutions) that connected students, mentors, and administrators through a single digital ecosystem, making academic support faster, more organised, and easier to manage.",
+    heroMeta: "Education Technology",
+    heroImage: workImage("rodha case study-compressed.jpg"),
+    heroImageAlt: "Rodha academic support platform interface",
+    trustedBy: { name: "Rodha" },
+    overview: {
+      heading: "The brief",
+      body: "As Rodha's student community grew, managing academic queries through traditional communication channels became increasingly difficult.",
+    },
+    challenge: {
+      heading: "The Challenge",
+      intro:
+        "As Rodha's student community grew, managing academic queries through traditional communication channels became increasingly difficult.\n\nThe challenge was to create a platform capable of handling thousands of student interactions while ensuring faster mentor responses, structured workflows, and complete administrative visibility.",
+    },
+    strategy: {
+      heading: "Our Approach",
+      intro:
+        "We designed a mobile-first platform built around the complete academic support journey—from raising a doubt to receiving mentor guidance and tracking its resolution.\n\nStudents could submit multimedia doubts, search previously answered questions, follow conversation threads, and track every stage of the resolution process through a dedicated mobile and web experience.\n\nMentors received a dedicated workspace to manage assigned queries, respond using rich tools, monitor performance, and build a searchable repository of resolved questions. Administrators gained complete operational control through real-time dashboards, reporting, mentor management, taxonomy controls, and workflow automation.\n\nDesigned for enterprise-scale deployment, the platform supports 10,000+ concurrent users, 500+ simultaneous database connections, and real-time notifications across the entire ecosystem.",
+    },
+    execution: [],
+    results: {
+      heading: "Impact",
+      stats: [
+        { value: "10,000+", label: "Concurrent users supported" },
+        { value: "500+", label: "Simultaneous DB connections" },
+        { value: "Unified", label: "Student-mentor-admin workflow" },
+      ],
+      closing:
+        "Enabled real-time doubt management, automated workflows, and performance monitoring through dedicated role-based platforms.",
+    },
+    impactItems: [
+      {
+        icon: "users",
+        value: "10,000+",
+        title: "Concurrent Users",
+        description: "Enterprise-grade platform capable of supporting large-scale student communities.",
+      },
+      {
+        icon: "trending",
+        value: "Unified",
+        title: "Workflow",
+        description:
+          "Created a unified academic support workflow connecting students, mentors, and administrators within a single ecosystem.",
+      },
+      {
+        icon: "sparkles",
+        value: "Scalable",
+        title: "Foundation",
+        description:
+          "Established a scalable foundation for Rodha's future growth and expanding student community. [Explore EdTech](/industries/education-edtech).",
+        href: "/industries/education-edtech",
+        hrefLabel: "EdTech",
+      },
+    ],
+    closingStatement:
+      "By connecting students, mentors, and administrators in one ecosystem, Rodha now has a platform built to scale with its community.",
+    cta: {
+      title: "Let's build what's next",
+      subtext: "Need an EdTech platform built for scale? Let's talk.",
     },
   },
 ];
 
-export function getCaseStudySlugs(): string[] {
-  return CASE_STUDIES.map((c) => c.slug);
+export function getAllCaseStudies(): CaseStudyContent[] {
+  return CASE_STUDIES;
 }
 
 export function getCaseStudyBySlug(slug: string): CaseStudyContent | undefined {
-  return CASE_STUDIES.find((c) => c.slug === slug);
+  return CASE_STUDIES.find((s) => s.slug === slug);
 }
 
-export function getAllCaseStudies(): CaseStudyContent[] {
-  return CASE_STUDIES;
+export function getCaseStudySlugs(): string[] {
+  return CASE_STUDIES.map((s) => s.slug);
 }

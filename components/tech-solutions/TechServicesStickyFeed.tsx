@@ -106,9 +106,10 @@ export default function TechServicesStickyFeed({ eyebrow, heading, intro, items 
           {items.map((item, index) => (
             <article
               key={item.id}
+              id={item.id}
               ref={(el) => setCardRef(index, el)}
               data-service-id={item.id}
-              className="group sticky top-24 h-[calc(100dvh-7.5rem)] overflow-hidden rounded-[1.75rem] border border-inverse-surface/10 shadow-[0_30px_90px_-52px_rgba(17,24,39,0.42)]"
+              className="group sticky top-24 h-[calc(100dvh-7.5rem)] scroll-mt-28 overflow-hidden rounded-[1.75rem] border border-inverse-surface/10 shadow-[0_30px_90px_-52px_rgba(17,24,39,0.42)]"
               style={{ zIndex: 20 + index }}
             >
               {item.imageSrc ? (

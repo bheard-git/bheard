@@ -8,7 +8,21 @@ export type SeedCareer = {
   active: boolean;
 };
 
+export const GENERAL_APPLICATION_SLUG = "general-application";
+
 export const seedCareers: SeedCareer[] = [
+  {
+    slug: GENERAL_APPLICATION_SLUG,
+    title: "General Application",
+    department: "BHEARD",
+    type: "Open",
+    location: "India",
+    active: true,
+    description: `# General Application
+
+Use this listing for open applications when no specific role is posted on the careers page.
+`,
+  },
   {
     slug: "senior-frontend-engineer",
     title: "Senior Frontend Engineer",

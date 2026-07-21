@@ -55,10 +55,12 @@ export function successStoryToCaseStudy(row: SuccessStory): CaseStudyContent {
     listImageAlt: String(data.listImageAlt ?? listTitle).trim(),
     listStats: asStats((data as CaseData & { listStats?: unknown }).listStats),
     heroTitle,
+    heroTitleAccent: String(data.heroTitleAccent ?? "").trim() || undefined,
     heroSubtitle,
     heroMeta,
     heroImage,
     heroImageAlt: String(data.heroImageAlt ?? heroTitle).trim(),
+    trustedBy: data.trustedBy,
     overview: {
       heading: String((data as CaseData & { overview?: { heading?: string } }).overview?.heading ?? "The brief"),
       body: String((data as CaseData & { overview?: { body?: string } }).overview?.body ?? row.about),
@@ -96,6 +98,8 @@ export function successStoryToCaseStudy(row: SuccessStory): CaseStudyContent {
       ]),
       closing: String((data as CaseData & { results?: { closing?: string } }).results?.closing ?? row.results),
     },
+    impactItems: data.impactItems,
+    extraSections: data.extraSections,
     closingStatement: String(data.closingStatement ?? row.summary),
     cta: {
       title: String((data as CaseData & { cta?: { title?: string } }).cta?.title ?? row.contactCta),

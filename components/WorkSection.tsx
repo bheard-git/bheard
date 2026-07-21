@@ -2,6 +2,7 @@
 
 import "@/lib/motion/config";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -21,13 +22,22 @@ function publicAsset(...parts: string[]) {
   return `/${dirs.join("/")}/${encodeURIComponent(file)}`;
 }
 
-const projects = [
+const projects: Array<{
+  id: string;
+  category: string;
+  title: string;
+  image: string;
+  href: string;
+  gridClass: string;
+  unoptimized?: boolean;
+}> = [
   {
     id: "01",
     category: "PREMIUM HOSPITALITY + LIFESTYLE",
     title: "LUXURY EXPERIENCE MARKETING & REVENUE GROWTH ",
     image: publicAsset("assets", "home", "work", "hospitality-lifestyle.jpg"),
     unoptimized: true,
+    href: "/work/radisson-blu-goa",
     gridClass:
       "md:col-span-8 md:row-span-2 md:min-h-[min(52vw,420px)] lg:min-h-[440px]",
   },
@@ -36,6 +46,7 @@ const projects = [
     category: "TOURISM + COMMUNITY",
     title: "DESTINATION MARKETING & TOURISM STORYTELLING",
     image: publicAsset("assets", "home", "work", "T+C Option 1-compressed.jpg"),
+    href: "/work/goa-tourism",
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
@@ -43,6 +54,7 @@ const projects = [
     category: "HEALTH +  WELLNESS",
     title: "BRAND BUILDING & GROWTH STRATEGY",
     image: publicAsset("assets", "home", "work", "image-7-compressed.jpg"),
+    href: "/work/dr-mickey-mehta",
     gridClass: "md:col-span-4 md:min-h-[200px] lg:min-h-[212px]",
   },
   {
@@ -50,6 +62,7 @@ const projects = [
     category: "EDUCATION - TECH",
     title: "EDTECH PLATFORM DEVELOPMENT & CONTENT SYSTEMS ",
     image: publicAsset("assets", "home", "work", "image-5-compressed.jpg"),
+    href: "/work/rodha-edtech",
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
@@ -57,6 +70,7 @@ const projects = [
     category: "E-Commerce + LIFESTYLE",
     title: "APP DEVELOPMENT FOR TRAVEL & LIFESTYLE DISCOVERY ",
     image: publicAsset("assets", "home", "work", "image-4-compressed.jpg"),
+    href: "/work/curly-tales-app",
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
   {
@@ -64,6 +78,7 @@ const projects = [
     category: "AI FOR HOSPITALITY",
     title: "AI REVENUE AGENTS & GUEST EXPERIENCE AUTOMATION",
     image: publicAsset("assets", "home", "work", "image-3-compressed.jpg"),
+    href: "/services/tech-solutions/ai-chatbots-agents",
     gridClass: "md:col-span-4 md:min-h-[220px]",
   },
 ];
@@ -71,9 +86,9 @@ const projects = [
 function WorkBentoCard({
   id,
   title,
-  // metric,
   category,
   image,
+  href,
   unoptimized = false,
   gridClass,
 }: (typeof projects)[number]) {
@@ -121,9 +136,13 @@ function WorkBentoCard({
     <article
       ref={rootRef}
       data-motion-exclude
-      className={`group min-h-0 cursor-pointer ${gridClass}`}
+      className={`group min-h-0 ${gridClass}`}
     >
-      <div className="relative h-full min-h-[220px] w-full overflow-hidden md:min-h-0">
+      <Link
+        href={href}
+        className="relative block h-full min-h-[220px] w-full overflow-hidden md:min-h-0"
+        aria-label={`${category}: ${title.trim()}`}
+      >
         <div
           ref={imgWrapRef}
           className="absolute inset-[-8%] will-change-transform"
@@ -150,11 +169,8 @@ function WorkBentoCard({
           <h4 className="mt-2 font-headline text-xl font-black uppercase leading-tight text-surface md:text-2xl">
             {title}
           </h4>
-          {/* <p className="mt-1 translate-y-3 text-xs font-semibold uppercase tracking-wider text-surface/95 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:text-sm">
-            {metric}
-          </p> */}
         </div>
-      </div>
+      </Link>
     </article>
   );
 }
@@ -172,9 +188,7 @@ export default function WorkSection() {
         titleVariant="display"
         className={`mx-auto flex max-w-7xl flex-col items-end justify-between gap-8 md:flex-row ${sectionTitleMarginDisplay}`}
         title={"Selected\nworks"}
-        trailing={
-          ""
-        }
+        trailing=""
       />
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12 md:gap-4">
         {projects.map((project) => (

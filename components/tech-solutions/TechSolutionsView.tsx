@@ -175,7 +175,12 @@ export default function TechSolutionsView() {
         subtext="AI-powered tools, automation systems, and custom digital experiences designed to help modern businesses scale efficiently."
 
         primaryCta={{ href: "#tech-build", label: "Start a Project" }}
-
+        primaryLeadForm={{
+          sourcePage: "/tech-solutions",
+          title: "Let's talk",
+          subtitle:
+            "Tell us about your project - we'll respond within one business day.",
+        }}
         secondaryCta={{ href: "/", label: "See Our Work" }}
 
         morphWords={["Build", "Ship", "Scale"]}
@@ -232,7 +237,15 @@ export default function TechSolutionsView() {
 
         headline="Your idea deserves execution."
 
-        cta={{ href: "/", label: "Start Building" }}
+        cta={{
+          label: "Start Building",
+          leadForm: {
+            sourcePage: "/tech-solutions",
+            title: "Let's talk",
+            subtitle:
+              "Tell us about your project - we'll respond within one business day.",
+          },
+        }}
 
       />
 

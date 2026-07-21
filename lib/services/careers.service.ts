@@ -1,7 +1,10 @@
 import { Types } from "mongoose";
 import { withDbRetry } from "@/lib/db/withDbRetry";
 import { CareerModel } from "@/lib/db/models";
+import { GENERAL_APPLICATION_SLUG } from "@/lib/content/careersSeed";
 import type { CareerInput, CareerUpdateInput } from "@/lib/validators/careers.validator";
+
+export { GENERAL_APPLICATION_SLUG };
 
 function requireDb() {
   if (!process.env.DATABASE_URL) {
@@ -16,7 +19,10 @@ function runDb<T>(fn: () => Promise<T>): Promise<T> {
 
 export async function listActiveCareers() {
   return runDb(async () => {
-    const rows = await CareerModel.find({ active: true }).sort({ createdAt: -1 });
+    const rows = await CareerModel.find({
+      active: true,
+      slug: { $ne: GENERAL_APPLICATION_SLUG },
+    }).sort({ createdAt: -1 });
     return rows.map((row) => row.toJSON());
   });
 }

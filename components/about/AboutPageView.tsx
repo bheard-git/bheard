@@ -9,19 +9,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import {
   ArrowRight,
-  ClipboardCheck,
-  Flame,
-  Lightbulb,
-  ShieldCheck,
+  Handshake,
+  Target,
+  Eye,
+  Sparkles,
+  Trophy,
   type LucideIcon,
 } from "lucide-react";
 import AboutHeroSection from "@/components/about/AboutHeroSection";
 import ClientLogos from "@/components/ClientLogos";
 import { prefersReducedMotion } from "@/lib/motion/animations";
-import { sectionBandY, sectionPageX, sectionStackTop } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-const ABOUT_FOOTER_TEXT = "LET'S BUILD YOUR\nNEXT GROWTH CHAPTER";
+
+const NEHA_LINKEDIN = "https://www.linkedin.com/in/nehagupta";
+const BHEARD_STORY_IMAGE = "/assets/home/about/team%20work.jpg";
+const FOUNDER_IMAGE = "/assets/about/Neha-founder-profile-image.jpeg";
+const PROTECTED_IMAGE_CLASS =
+  "pointer-events-none select-none object-cover [-webkit-user-drag:none]";
 
 const VALUES: ReadonlyArray<{
   title: string;
@@ -29,26 +35,49 @@ const VALUES: ReadonlyArray<{
   icon: LucideIcon;
 }> = [
   {
-    title: "Accountability",
-    body: "We take ownership of our work, our commitments, and the outcomes we deliver.",
-    icon: ClipboardCheck,
+    title: "Ownership",
+    body: "We treat your goals like our own. We don't stop at deliverables; we focus on business outcomes.",
+    icon: Target,
   },
   {
-    title: "Integrity",
-    body: "We build trust through transparency, honesty, and ethical decision-making.",
-    icon: ShieldCheck,
+    title: "Transparency",
+    body: "Clear communication, honest recommendations, and no vanity metrics disguised as success.",
+    icon: Eye,
   },
   {
-    title: "Passion",
-    body: "We bring energy, curiosity, and dedication to every project and partnership.",
-    icon: Flame,
+    title: "Results First",
+    body: "Every decision begins with one question: will this move the business forward?",
+    icon: Trophy,
   },
   {
-    title: "Innovation",
-    body: "We continuously explore new ideas, technologies, and approaches to create meaningful impact.",
-    icon: Lightbulb,
+    title: "Deep Partnership",
+    body: "We work as an extension of your team, not an external vendor.",
+    icon: Handshake,
+  },
+  {
+    title: "Excellence",
+    body: "Every campaign, design, and strategy is refined until it meets the highest standard.",
+    icon: Sparkles,
   },
 ];
+
+const ENGAGEMENT_MODELS = [
+  {
+    title: "Retained partnerships",
+    body: "Ongoing brand, content, and social media management for brands that want a long-term growth partner.",
+    href: "/brand-solutions",
+  },
+  {
+    title: "Project engagements",
+    body: "Websites, mobile apps, campaigns, and platform builds with defined scope and outcomes.",
+    href: "/tech-solutions",
+  },
+  {
+    title: "AI Agent deployments",
+    body: "Conversational AI configured, integrated, and optimised for hotels, resorts, and consumer brands.",
+    href: "/services/tech-solutions/ai-chatbots-agents",
+  },
+] as const;
 
 export default function AboutPageView() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -98,23 +127,6 @@ export default function AboutPageView() {
           }
         );
       }
-
-      gsap.fromTo(
-        '[data-about-footer="headline-letter"]',
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          stagger: 0.024,
-          scrollTrigger: {
-            trigger: '[data-about-footer="section"]',
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
     },
     { scope: rootRef }
   );
@@ -131,20 +143,39 @@ export default function AboutPageView() {
             </h2>
             <div className="space-y-5 font-body text-body-lg text-on-surface-variant">
               <p>
-                BHeard emerged in the early 2010s, at a time when social media was beginning to reshape how brands
-                communicated, engaged, and built relationships with their audiences.
+                Founded in 2014 in Mumbai, BHeard began as a digital marketing consultancy during the
+                rise of social media and has since evolved into a Brand &amp; Technology Studio serving
+                lifestyle and consumer brands, wellness, travel, and{" "}
+                <Link
+                  href="/industries"
+                  className="font-semibold text-neutral-900 underline decoration-primary underline-offset-4 hover:text-primary"
+                >
+                  hospitality
+                </Link>
+                , across India, the US, and Southeast Asia.
               </p>
               <p>
-                What started as a digital marketing consultancy working with lifestyle and hospitality brands has
-                evolved into a brand and technology studio, helping businesses navigate an increasingly connected world.
+                Led by founder Neha Gupta, whose experience includes consulting and digital
+                transformation at Accenture, BHeard brings together strategists, designers, marketers,
+                and developers to solve modern business challenges through branding, marketing, and
+                technology.
               </p>
               <p>
-                Today, we work at the intersection of strategy, creativity, and technology to build stronger brands,
-                smarter digital experiences, and meaningful customer connections.
+                Over the last decade, we have partnered with brands including Accor, Radisson Blu, HUL,
+                ITC, BNP Paribas, and Goa Tourism, helping businesses strengthen their market presence,
+                improve customer engagement, and navigate an increasingly digital world.{" "}
+                <Link
+                  href="/work"
+                  className="font-semibold text-neutral-900 underline decoration-primary underline-offset-4 hover:text-primary"
+                >
+                  See our work
+                </Link>
+                .
               </p>
               <p>
-                From social media and content to websites, automation, and digital innovation, we help brands stay
-                relevant, grow with confidence, and create lasting impact in a digital-first era.
+                Today, we combine strategy, creativity, and technology to build brands, digital
+                experiences, and growth-focused solutions that help businesses stay relevant and
+                competitive.
               </p>
             </div>
           </div>
@@ -153,13 +184,14 @@ export default function AboutPageView() {
             className="relative aspect-[4/5] max-h-[400px] w-full overflow-hidden rounded-xl bg-surface-container-high md:aspect-square"
           >
             <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
-              alt="BHeard team collaborating on brand and technology strategy"
+              src={BHEARD_STORY_IMAGE}
+              alt="BHeard team collaborating on brand strategy"
               fill
-              className="object-cover grayscale transition duration-700 hover:grayscale-0"
+              draggable={false}
+              className={`${PROTECTED_IMAGE_CLASS} object-center grayscale`}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent" />
           </div>
         </div>
       </section>
@@ -181,35 +213,57 @@ export default function AboutPageView() {
           >
             <div className="relative aspect-[5/4] bg-surface-container-high md:col-span-5 md:aspect-auto md:min-h-[420px]">
               <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+                src={FOUNDER_IMAGE}
                 alt="Neha Gupta, founder of BHeard"
                 fill
-                className="object-cover object-top"
+                draggable={false}
+                className={`${PROTECTED_IMAGE_CLASS} object-top`}
                 sizes="(max-width: 768px) 100vw, 42vw"
               />
             </div>
             <div className="flex flex-col justify-center px-6 py-8 md:col-span-7 md:px-10 md:py-12 lg:px-14">
               <h3 className="font-headline text-2xl font-bold uppercase tracking-tight text-neutral-900 md:text-3xl">
-                Neha Gupta
+                <a
+                  href={NEHA_LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-primary"
+                >
+                  Neha Gupta
+                </a>
               </h3>
               <p className="mt-2 font-body text-sm font-semibold uppercase tracking-wide text-primary">
                 Founder · BHeard
               </p>
               <div className="mt-6 space-y-5 font-body text-base leading-relaxed text-on-surface-variant md:text-lg">
                 <p>
-                  BHeard was founded by Neha Gupta, a technology and marketing leader with experience across consulting,
-                  digital transformation, analytics, and business growth.
+                  Neha Gupta is an entrepreneur and growth strategist whose career spans technology,
+                  consulting, marketing, and brand building. Her diverse experience across industries
+                  enables her to combine strategic thinking, creativity, and consumer insight to help
+                  businesses build stronger brands and drive meaningful growth.
                 </p>
                 <p>
-                  Prior to launching BHeard, she worked with global organizations including Accenture, driving
-                  innovation and consulting initiatives across Asia-Pacific markets.
+                  She believes the most effective marketing goes beyond visibility — it creates
+                  authentic connections, compelling brand experiences, and measurable business impact.
+                  Having worked with organizations at various stages of growth, Neha brings a
+                  practical, outcome-driven approach to turning business challenges into opportunities.
                 </p>
                 <p>
-                  Over the last decade, she has helped build BHeard into a trusted partner for hospitality, travel,
-                  lifestyle, and consumer brands, combining strategic thinking, creativity, and technology to deliver
-                  meaningful business impact.
+                  Passionate about the evolving intersection of storytelling, technology, and consumer
+                  behavior, she is committed to helping brands stay relevant, differentiate themselves,
+                  and create lasting value in an increasingly competitive marketplace.
                 </p>
               </div>
+              <blockquote className="mt-8 border-l-2 border-primary pl-5">
+                <p className="font-body text-lg italic leading-relaxed text-neutral-800 md:text-xl">
+                  &ldquo;The best marketing has never been about being seen. It&apos;s about being
+                  chosen. Everything we build — a campaign, a platform, an AI agent — exists to move
+                  that decision.&rdquo;
+                </p>
+                <cite className="mt-3 block font-body text-sm not-italic text-on-surface-variant">
+                  — Neha Gupta, Founder
+                </cite>
+              </blockquote>
             </div>
           </article>
         </div>
@@ -223,15 +277,15 @@ export default function AboutPageView() {
         <div className="relative mx-auto max-w-7xl">
           <div className="mb-12 text-center md:mb-16" data-about-reveal>
             <h2 className="font-headline text-display-lg font-extrabold uppercase leading-none text-white">
-              Our Values
+              What We Believe
             </h2>
           </div>
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 pt-7">
+          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4 pt-7">
             {VALUES.map(({ title, body, icon: Icon }) => (
               <li
                 key={title}
                 data-about-value
-                className="flex flex-col items-center px-2 text-center sm:px-4"
+                className="flex flex-col items-center px-2 text-center sm:px-3"
               >
                 <div
                   className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20 text-primary-fixed"
@@ -251,6 +305,47 @@ export default function AboutPageView() {
         </div>
       </section>
 
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
+        <div className="mx-auto max-w-7xl">
+          <div data-about-reveal className="mb-10 md:mb-14">
+            <h2 className="max-w-[18ch] font-headline text-[clamp(2rem,5vw,3.5rem)] font-extrabold uppercase leading-[0.95] text-neutral-900">
+              How We Work With Brands
+            </h2>
+            <p className="mt-4 max-w-2xl font-body text-body-lg text-on-surface-variant">
+              We partner with brands in three ways. Whichever the model, we work as an extension of
+              your team — with clear communication, defined outcomes, and no vanity metrics.
+            </p>
+          </div>
+          <ul className="grid md:grid-cols-3 md:divide-x md:divide-primary/50">
+            {ENGAGEMENT_MODELS.map((model, index) => (
+              <li
+                key={model.title}
+                data-about-reveal
+                className={`flex flex-col py-6 md:px-8 md:py-0 ${
+                  index < ENGAGEMENT_MODELS.length - 1
+                    ? "border-b border-primary/50 pb-8 md:border-b-0 md:pb-0"
+                    : ""
+                } ${index === 0 ? "md:pl-0" : ""} ${index === ENGAGEMENT_MODELS.length - 1 ? "md:pr-0" : ""}`}
+              >
+                <h3 className="font-headline text-xl font-bold uppercase tracking-tight text-neutral-900">
+                  {model.title}
+                </h3>
+                <p className="mt-3 flex-1 font-body text-base leading-relaxed text-on-surface-variant">
+                  {model.body}
+                </p>
+                <Link
+                  href={model.href}
+                  className="mt-5 inline-flex items-center gap-2 font-headline text-sm font-bold uppercase tracking-wide text-neutral-900 transition-colors hover:text-primary"
+                >
+                  Learn more
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <ClientLogos />
 
       <section
@@ -259,58 +354,32 @@ export default function AboutPageView() {
       >
         <div className="mx-auto max-w-8xl">
           <div
-            data-about-footer="section"
             className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16"
             data-about-reveal
           >
             <div className="md:col-span-7">
               <h2 className="font-headline text-display-lg font-black uppercase leading-[0.95] text-on-primary-container">
-                {ABOUT_FOOTER_TEXT.split("").map((char, idx) => {
-                  if (char === "\n") return <br key={`about-footer-br-${idx}`} />;
-                  if (char === " ") {
-                    return (
-                      <span
-                        key={`about-footer-space-${idx}`}
-                        data-about-footer="headline-letter"
-                        className="inline-block opacity-0 motion-reduce:opacity-100"
-                      >
-                        &nbsp;
-                      </span>
-                    );
-                  }
-                  return (
-                    <span
-                      key={`about-footer-char-${idx}`}
-                      data-about-footer="headline-letter"
-                      className="inline-block opacity-0 motion-reduce:opacity-100"
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
+                Let&apos;s Build What&apos;s Next
               </h2>
               <p className="mt-5 max-w-xl font-body text-body-lg text-on-primary-container/90">
-                Tell us about your brand, product, or campaign goals. We&apos;ll reply with a clear point of view—and how
-                we can help you scale with confidence from Mumbai to global markets.
+                Whether you&apos;re launching, growing, or reimagining your brand, we&apos;d love to
+                hear what you&apos;re building.
               </p>
             </div>
             <div className="md:col-span-5 flex flex-col gap-5">
+              <Link
+                href="/contact"
+                className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-6 py-5 font-headline text-lg font-bold text-neutral-900 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                Let&apos;s Talk
+                <ArrowRight className="h-5 w-5" aria-hidden />
+              </Link>
               <a
                 href="mailto:hello@bheard.in"
-                className="block rounded-xl bg-white px-6 py-5 font-headline text-lg font-bold text-neutral-900 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                className="font-body text-sm font-medium text-on-primary-container/85 underline decoration-on-primary-container/40 underline-offset-4"
               >
                 hello@bheard.in
               </a>
-              <p className="font-body text-sm font-medium uppercase tracking-wider text-on-primary-container/85">
-                Mumbai, India · Remote-friendly engagements
-              </p>
-              <Link
-                href="/brand-solutions"
-                className="inline-flex w-fit items-center gap-2 border-b-2 border-on-primary-container pb-1 font-headline text-sm font-bold uppercase tracking-wide text-on-primary-container transition hover:border-white hover:text-white"
-              >
-                Explore brand solutions
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
             </div>
           </div>
         </div>

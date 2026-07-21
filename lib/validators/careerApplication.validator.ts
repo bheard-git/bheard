@@ -20,18 +20,39 @@ function checkOptionalUrl(
 
 export const careerApplicationFieldsSchema = z
   .object({
-    fullName: z.string().trim().min(2).max(120),
-    email: z.string().trim().email().max(200),
-    phone: z.string().trim().min(8).max(40),
-    city: z.string().trim().min(2).max(120),
-    yearsExperience: z.string().trim().min(1).max(40),
-    roleTitleApplied: z.string().trim().min(2).max(200),
+    fullName: z
+      .string()
+      .trim()
+      .min(2, "Enter your full name (at least 2 characters)")
+      .max(120, "Name is too long"),
+    email: z
+      .string()
+      .trim()
+      .min(1, "Email is required")
+      .email("Enter a valid email address")
+      .max(200, "Email is too long"),
+    phone: z
+      .string()
+      .trim()
+      .min(8, "Enter a valid phone number (at least 8 characters)")
+      .max(40, "Phone number is too long"),
+    city: z
+      .string()
+      .trim()
+      .min(2, "Enter your current city")
+      .max(120, "City name is too long"),
+    yearsExperience: z.string().trim().min(1, "Select your years of experience"),
+    roleTitleApplied: z
+      .string()
+      .trim()
+      .min(2, "Enter the role or area you are interested in")
+      .max(200, "Role title is too long"),
     currentCompany: z.string().trim().max(200).optional().or(z.literal("")),
     portfolioUrl: z.string().trim().max(800).optional().or(z.literal("")),
     linkedInUrl: z.string().trim().max(800).optional().or(z.literal("")),
     expectedSalary: z.string().trim().max(120).optional().or(z.literal("")),
-    noticePeriod: z.string().trim().min(1).max(120),
-    coverLetter: z.string().trim().min(40).max(20000),
+    noticePeriod: z.string().trim().max(120).optional().or(z.literal("")),
+    coverLetter: z.string().trim().max(20000).optional().or(z.literal("")),
     referralSource: z.string().trim().max(160).optional().or(z.literal("")),
     workAuthorization: z.string().trim().max(160).optional().or(z.literal("")),
   })
@@ -67,6 +88,8 @@ export function normalizeApplicationFields(input: CareerApplicationFields) {
   };
   return {
     ...input,
+    noticePeriod: (input.noticePeriod ?? "").trim(),
+    coverLetter: (input.coverLetter ?? "").trim(),
     currentCompany: trimOrUndef(input.currentCompany),
     portfolioUrl: trimOrUndef(input.portfolioUrl),
     linkedInUrl: trimOrUndef(input.linkedInUrl),

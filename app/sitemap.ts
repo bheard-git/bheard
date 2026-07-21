@@ -12,8 +12,10 @@ const STATIC_PATHS = [
   "/contact",
   "/brand-solutions",
   "/tech-solutions",
+  "/services/tech-solutions/ai-chatbots-agents",
+  "/industries",
   "/blog",
-  "/success-stories",
+  "/work",
   "/careers",
   "/privacy-policy",
   "/terms-and-conditions",
@@ -64,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const r = row as { slug?: string; updatedAt?: unknown };
       if (!r.slug) continue;
       const lastModified = asDate(r.updatedAt) ?? now;
-      setEntry(`/success-stories/${r.slug}`, {
+      setEntry(`/work/${r.slug}`, {
         lastModified,
         changeFrequency: "monthly",
         priority: 0.65,

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import ImageKit from "@imagekit/nodejs";
 import { ZodError } from "zod";
 import { apiError } from "@/lib/api/responses";
+import { verifyRecaptchaToken } from "@/lib/integrations/recaptcha";
 import { createCareerApplication } from "@/lib/services/careerApplications.service";
 import { getActiveCareerBySlug } from "@/lib/services/careers.service";
 import {
@@ -46,6 +47,15 @@ export async function POST(req: NextRequest, context: { params: Promise<Params> 
     return apiError(400, "Invalid form submission");
   }
 
+  const recaptchaToken = fd.get("recaptchaToken");
+  const recaptcha = await verifyRecaptchaToken(
+    typeof recaptchaToken === "string" ? recaptchaToken : null,
+    "career_application"
+  );
+  if (!recaptcha.ok) {
+    return apiError(400, recaptcha.message);
+  }
+
   const resume = fd.get("resume");
   if (!resume || typeof resume === "string") {
     return apiError(400, "Resume file is required");
@@ -70,13 +80,13 @@ export async function POST(req: NextRequest, context: { params: Promise<Params> 
     phone: fd.get("phone"),
     city: fd.get("city"),
     yearsExperience: fd.get("yearsExperience"),
-    roleTitleApplied: career.title,
+    roleTitleApplied: fd.get("roleTitleApplied") ?? career.title,
     currentCompany: fd.get("currentCompany"),
     portfolioUrl: fd.get("portfolioUrl"),
     linkedInUrl: fd.get("linkedInUrl"),
     expectedSalary: fd.get("expectedSalary"),
-    noticePeriod: fd.get("noticePeriod"),
-    coverLetter: fd.get("coverLetter"),
+    noticePeriod: fd.get("noticePeriod") ?? "",
+    coverLetter: fd.get("coverLetter") ?? "",
     referralSource: fd.get("referralSource"),
     workAuthorization: fd.get("workAuthorization"),
   };

@@ -20,7 +20,6 @@ export default function BrandServicesStickyFeed({
   items,
   asideVisual = <MockSocialScroller />,
 }: BrandServicesStickyFeedProps) {
-
   return (
     <section className="bg-surface py-section-y-sm md:py-section-y">
       <div className="mx-auto grid max-w-content-max grid-cols-1 gap-10 px-gutter-sm md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 md:px-gutter lg:gap-12">

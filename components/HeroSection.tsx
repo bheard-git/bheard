@@ -210,14 +210,14 @@ export default function HeroSection() {
             data-anim="hero-subtext"
             className="mb-8 translate-y-10 font-body text-lg leading-relaxed text-on-surface-variant opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 md:text-xl"
           >
-            One agency. Brand strategy and technology under one roof. 
+            One agency. Brand strategy, technology and AI under one roof.
           </p>
           <div
             data-anim="hero-cta"
             className="pointer-events-auto flex translate-y-[60px] flex-col items-start gap-4 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:flex-row sm:items-center"
           >
             <Link
-              href="#work"
+              href="/work"
               className="group inline-flex items-center gap-3 rounded-full bg-neutral-900 px-6 py-3.5 font-headline text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-primary hover:text-on-primary"
             >
               <span>See Our Work</span>

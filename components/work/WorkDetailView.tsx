@@ -1,0 +1,409 @@
+"use client";
+
+import "@/lib/motion/config";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import type { CaseStudyContent, CaseStudyImpactItem } from "@/lib/case-studies";
+import CaseStudyRichText from "@/components/work/CaseStudyRichText";
+import { fadeUpScrollOnce, prefersReducedMotion } from "@/lib/motion/animations";
+import { publicAsset } from "@/lib/utils/publicAsset";
+
+const band = "mx-auto w-full max-w-7xl px-8";
+const heroInset = "mx-auto w-full max-w-8xl pl-4 pr-6 md:pl-10 md:pr-8";
+
+/** Simulated primary border via shadow at ~30% opacity */
+const primaryIconShadow =
+  "rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,146,62,0.3),0_6px_20px_-4px_rgba(255,146,62,0.3)]";
+
+const primaryCardShadow =
+  "rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,146,62,0.3),0_8px_28px_-8px_rgba(255,146,62,0.22)]";
+
+const workIcon = (filename: string) => publicAsset("assets", "work", "icons", filename);
+
+const sectionIcons = {
+  challenge: workIcon("challege mark.png"),
+  approach: workIcon("approch horse.png"),
+  biggerPicture: workIcon("eye-icon.png"),
+} as const;
+
+const impactIconSrc = {
+  chart: workIcon("growth icon.png"),
+  users: workIcon("lead icon.png"),
+  bot: workIcon("ai-led.png"),
+  trending: workIcon("growth icon.png"),
+  globe: workIcon("growth icon.png"),
+  sparkles: workIcon("growth icon.png"),
+} as const;
+
+function normalizeImpactItems(study: CaseStudyContent): CaseStudyImpactItem[] {
+  const icons = ["chart", "users", "bot", "trending", "globe", "sparkles"] as const;
+  const fallback = study.results.stats.slice(0, 3).map((stat, i) => ({
+    icon: icons[i] ?? "chart",
+    value: stat.value,
+    title: stat.label,
+    description: "",
+  }));
+
+  const raw = study.impactItems ?? fallback;
+
+  return raw.map((item, index) => {
+    if (item.value?.trim()) {
+      return item;
+    }
+
+    const stat = study.results.stats[index];
+    if (stat) {
+      return {
+        ...item,
+        value: stat.value,
+        title: item.title || stat.label,
+        description: item.description ?? "",
+      };
+    }
+
+    return {
+      ...item,
+      value: item.title,
+      title: item.description?.split(".")[0] ?? "Impact",
+      description: item.description ?? "",
+    };
+  });
+}
+
+function cleanImpactDescription(value: string, title: string, description: string): string {
+  let text = description.trim();
+  if (!text) return text;
+
+  const valueEsc = value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  text = text.replace(new RegExp(`^${valueEsc}\\s*[-–—:]?\\s*`, "i"), "");
+  text = text.replace(new RegExp(`^${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*[-–—:]?\\s*`, "i"), "");
+  return text.trim();
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <div>
+      <span className="mb-2 block h-0.5 w-10 bg-primary" aria-hidden />
+      <h2 className="font-headline text-xl font-black uppercase tracking-tight text-on-surface md:text-2xl">
+        {children}
+      </h2>
+    </div>
+  );
+}
+
+function IconBox({ src, size = "section" }: { src: string; size?: "section" | "impact" }) {
+  const boxClass =
+    size === "section"
+      ? "flex h-28 w-28 shrink-0 items-center justify-center p-1.5 md:h-30 md:w-30 md:p-2"
+      : "flex h-12 w-12 shrink-0 items-center justify-center p-1 md:h-14 md:w-14 md:p-1.5";
+
+  const imgClass = size === "section" ? "h-full w-full object-contain" : "h-full w-full object-contain";
+
+  return (
+    <div className={`${boxClass} ${primaryIconShadow}`} aria-hidden>
+      <Image src={src} alt="" width={96} height={96} className={imgClass} />
+    </div>
+  );
+}
+
+function NarrativeSection({
+  heading,
+  iconSrc,
+  centerWithIcon = false,
+  children,
+}: {
+  heading: string;
+  iconSrc?: string;
+  centerWithIcon?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <SectionHeading>{heading}</SectionHeading>
+      <div
+        className={`mt-6 grid gap-6 md:mt-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-8 ${
+          centerWithIcon ? "md:items-center" : "md:items-start"
+        }`}
+      >
+        {iconSrc ? <IconBox src={iconSrc} size="section" /> : null}
+        <div className={iconSrc ? undefined : "md:col-span-2"}>{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function ImpactCard({ item }: { item: CaseStudyImpactItem }) {
+  const iconSrc = impactIconSrc[item.icon] ?? impactIconSrc.chart;
+  const description = cleanImpactDescription(item.value, item.title, item.description);
+
+  return (
+    <article className={`flex h-full flex-col p-5 md:p-6 ${primaryCardShadow}`}>
+      <div className="flex items-start gap-3">
+        <IconBox src={iconSrc} size="impact" />
+        <div className="min-w-0 pt-0.5">
+          <p className="font-headline text-2xl font-black leading-none text-primary md:text-3xl">{item.value}</p>
+          <h3 className="mt-1.5 font-headline text-sm font-black uppercase tracking-wide text-on-surface md:text-base">
+            {item.title}
+          </h3>
+        </div>
+      </div>
+      {description ? (
+        <p className="mt-4 flex-1 font-body text-sm leading-relaxed text-on-surface-variant">{description}</p>
+      ) : null}
+      {item.href && item.hrefLabel ? (
+        <Link
+          href={item.href}
+          className="mt-3 inline-flex items-center gap-1 font-label text-xs font-bold uppercase tracking-[0.14em] text-primary hover:underline"
+        >
+          {item.hrefLabel} <span aria-hidden>→</span>
+        </Link>
+      ) : null}
+    </article>
+  );
+}
+
+export default function WorkDetailView({
+  study,
+  relatedStudies,
+}: {
+  study: CaseStudyContent;
+  relatedStudies: CaseStudyContent[];
+}) {
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      const root = rootRef.current;
+      if (!root || prefersReducedMotion()) return;
+      root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        fadeUpScrollOnce(el, { start: "top 88%" });
+      });
+    },
+    { scope: rootRef, dependencies: [study.slug], revertOnUpdate: true }
+  );
+
+  const impactItems = normalizeImpactItems(study);
+
+  return (
+    <div ref={rootRef} className="bg-surface-container-lowest pb-12 text-on-background md:pb-16">
+
+      <header className="relative md:min-h-[480px]">
+        <div className={`${heroInset} relative z-10`}>
+          <div className="flex flex-col md:flex-row md:gap-6">
+            <div className="md:max-w-[40%] py-1 md:py-4 md:pr-4" data-reveal>
+              <nav aria-label="Breadcrumb" className="font-body text-sm text-on-surface-variant mt-4 mb-4 md:mb-6">
+                <Link href="/" className="font-semibold text-primary underline-offset-4 hover:underline">
+                  Home
+                </Link>
+                <span className="mx-2 text-neutral-400" aria-hidden>
+                  /
+                </span>
+                <Link href="/work" className="font-semibold text-primary underline-offset-4 hover:underline">
+                  Work
+                </Link>
+                <span className="mx-2 text-neutral-400" aria-hidden>
+                  /
+                </span>
+                <span className="text-on-background">{study.listTitle}</span>
+              </nav>
+              <p className="font-label text-sm font-bold uppercase tracking-[0.18em] text-primary md:text-base">
+                {study.heroMeta}
+              </p>
+              <h1 className="mt-2 font-headline text-[clamp(1.75rem,4.5vw,3.25rem)] font-black uppercase leading-[0.95] tracking-tight text-on-surface">
+                {study.heroTitle}
+                {study.heroTitleAccent ? (
+                  <span className="block text-primary">{study.heroTitleAccent}</span>
+                ) : null}
+              </h1>
+              <div className="mt-4 space-y-3">
+                {study.heroSubtitle.split("\n\n").map((para) => (
+                  <CaseStudyRichText key={para.slice(0, 40)} content={para} />
+                ))}
+              </div>
+              {study.trustedBy ? (
+                <div className="mt-6">
+                  <span className="mb-2 block h-0.5 w-10 bg-primary" aria-hidden />
+                  <p className="font-label text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
+                    Trusted by:
+                  </p>
+                  {study.trustedBy.logo ? (
+                    <Image
+                      src={study.trustedBy.logo}
+                      alt={study.trustedBy.name}
+                      width={180}
+                      height={48}
+                      className="mt-2 h-10 w-auto object-contain object-left md:h-12"
+                    />
+                  ) : (
+                    <p className="mt-2 font-headline text-lg font-bold uppercase tracking-tight text-on-surface">
+                      {study.trustedBy.name}
+                    </p>
+                  )}
+                </div>
+              ) : null}
+            </div>
+            <div className="hidden md:block" aria-hidden />
+          </div>
+        </div>
+
+        <figure
+          data-reveal
+          className="relative mt-5 min-h-[260px] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] md:rounded-none md:rounded-bl-[1.25rem]"
+        >
+          <Image
+            src={study.heroImage}
+            alt={study.heroImageAlt}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 55vw"
+          />
+        </figure>
+      </header>
+
+      <div className="mt-8 border-t border-black/10 md:mt-10" aria-hidden />
+
+      <section className="bg-surface-container-lowest py-10 md:py-14">
+        <div className={band} data-reveal>
+          <NarrativeSection heading={study.challenge.heading} iconSrc={sectionIcons.challenge}>
+            <div className="space-y-3">
+              {study.challenge.intro.split("\n\n").map((para) => (
+                <CaseStudyRichText key={para.slice(0, 40)} content={para} />
+              ))}
+              {study.challenge.bullets?.length ? (
+                <ul className="mt-1 space-y-2">
+                  {study.challenge.bullets.map((bullet) => (
+                    <li key={bullet} className="font-body text-base leading-relaxed text-on-surface-variant">
+                      • {bullet}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          </NarrativeSection>
+        </div>
+      </section>
+
+      <section className="bg-[#fbf8f6] py-10 md:py-14">
+        <div className={band} data-reveal>
+          <NarrativeSection heading={study.strategy.heading} iconSrc={sectionIcons.approach}>
+            <div className="space-y-3">
+              {study.strategy.intro.split("\n\n").map((para) => (
+                <CaseStudyRichText key={para.slice(0, 40)} content={para} />
+              ))}
+              {study.strategy.bullets?.length ? (
+                <ul className="mt-1 space-y-2">
+                  {study.strategy.bullets.map((bullet) => (
+                    <li key={bullet} className="font-body text-base leading-relaxed text-on-surface-variant">
+                      • {bullet}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          </NarrativeSection>
+        </div>
+      </section>
+
+      <section className="bg-surface-container-lowest py-10 md:py-14">
+        <div className={band} data-reveal>
+          <SectionHeading>Impact</SectionHeading>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-8">
+            {impactItems.map((item) => (
+              <ImpactCard key={`${item.value}-${item.title}`} item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {study.extraSections?.map((section) => (
+        <section key={section.heading} className="bg-surface-container-lowest py-10 md:py-14">
+          <div className={band} data-reveal>
+            <NarrativeSection heading={section.heading}>
+              <CaseStudyRichText content={section.body} />
+            </NarrativeSection>
+          </div>
+        </section>
+      ))}
+
+      <section className="bg-[#fbf8f6] py-10 md:py-14">
+        <div className={band} data-reveal>
+          <NarrativeSection heading="The Bigger Picture" iconSrc={sectionIcons.biggerPicture} centerWithIcon>
+            <CaseStudyRichText content={study.closingStatement} />
+          </NarrativeSection>
+        </div>
+      </section>
+
+      {relatedStudies.length > 0 ? (
+        <section className="mt-10 md:mt-12">
+          <div className={band}>
+            <div data-reveal className="mb-6 text-center md:mb-8">
+              <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
+                Related Case Studies
+              </h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+              {relatedStudies.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/work/${related.slug}`}
+                  data-reveal
+                  className="group block"
+                >
+                  <figure className="relative aspect-[16/10] overflow-hidden rounded-sm">
+                    <Image
+                      src={related.listImage}
+                      alt={related.listImageAlt}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </figure>
+                  <div className="pt-3">
+                    <h3 className="font-headline text-base font-bold leading-snug tracking-tight text-on-background md:text-lg">
+                      {related.listTagline}
+                    </h3>
+                    <p className="mt-1 font-body text-sm text-on-surface-variant">
+                      {related.listTitle}
+                      <span className="text-primary" aria-hidden>
+                        {" "}
+                        ·
+                      </span>
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mt-10 md:mt-12">
+        <div className={band}>
+          <div
+            data-reveal
+            className="rounded-xl bg-primary px-6 py-8 md:flex md:items-center md:justify-between md:gap-8 md:px-10 md:py-10"
+          >
+            <div>
+              <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-background md:text-3xl">
+                {study.cta.title}
+              </h2>
+              <p className="mt-2 max-w-xl font-body text-base leading-relaxed text-on-background/90 md:text-lg">
+                {study.cta.subtext}
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex shrink-0 items-center justify-center rounded-lg bg-white px-8 py-3.5 font-label text-xs font-bold uppercase tracking-[0.16em] text-on-background transition-transform hover:scale-[1.02] md:mt-0"
+            >
+              Let&apos;s Talk
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

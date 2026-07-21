@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import "@/lib/motion/config";
 import Image from "next/image";
@@ -15,6 +15,9 @@ const TEAM_IMAGES = [
   { src: "/assets/team/team-5.jpeg", alt: "BHEARD team in a creative session" },
   { src: "/assets/team/team-7.jpeg", alt: "BHEARD team member smiling" },
 ] as const;
+
+const PROTECTED_IMAGE_CLASS =
+  "pointer-events-none select-none object-cover object-center grayscale [-webkit-user-drag:none]";
 
 export default function AboutHeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -34,13 +37,15 @@ export default function AboutHeroSection() {
 
       gsap.set('[data-about-hero-intro="eyebrow"]', { opacity: 0, y: 16 });
       gsap.set('[data-about-hero-intro="headline"]', { opacity: 0, y: 28 });
+      gsap.set('[data-about-hero-intro="sub"]', { opacity: 0, y: 20 });
       gsap.set('[data-about-hero-intro="carousel"]', { opacity: 0, y: 20 });
 
       gsap
         .timeline({ defaults: { ease: "power3.out" } })
         .to('[data-about-hero-intro="eyebrow"]', { opacity: 1, y: 0, duration: 0.45 })
         .to('[data-about-hero-intro="headline"]', { opacity: 1, y: 0, duration: 0.65 }, "-=0.2")
-        .to('[data-about-hero-intro="carousel"]', { opacity: 1, y: 0, duration: 0.55 }, "-=0.35");
+        .to('[data-about-hero-intro="sub"]', { opacity: 1, y: 0, duration: 0.5 }, "-=0.35")
+        .to('[data-about-hero-intro="carousel"]', { opacity: 1, y: 0, duration: 0.55 }, "-=0.3");
     },
     { scope: sectionRef }
   );
@@ -70,9 +75,16 @@ export default function AboutHeroSection() {
           data-about-hero-intro="headline"
           className="max-w-[18ch] font-headline text-[clamp(1.75rem,4.8vw,3.35rem)] font-black leading-[1.12] tracking-tight text-neutral-900 opacity-0 motion-reduce:opacity-100 md:max-w-[22ch] md:leading-[1.1]"
         >
-          Glad you&apos;re taking the time to get to know us better.
+          Glad you&apos;re taking time to get to know us better
         </h1>
 
+        <p
+          data-about-hero-intro="sub"
+          className="mt-5 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant opacity-0 motion-reduce:opacity-100 md:text-lg"
+        >
+          Strategy. Creativity. Technology. Brought together to help brands grow, connect, and stay
+          ahead in a digital-first world.
+        </p>
       </div>
 
       <div
@@ -85,7 +97,7 @@ export default function AboutHeroSection() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-10 bg-gradient-to-l from-surface via-surface/90 to-transparent sm:w-16 md:w-24" />
 
         <div className="overflow-hidden">
-          <div className="about-team-marquee-track flex w-max items-stretch gap-4 py-2 sm:gap-5 md:gap-6">
+          <div className="about-team-marquee-track flex w-max select-none items-stretch gap-4 py-2 sm:gap-5 md:gap-6">
             {marqueeSegments.map((member, index) => (
               <figure
                 key={`${member.key}-${index}`}
@@ -95,8 +107,9 @@ export default function AboutHeroSection() {
                   src={member.src}
                   alt={member.alt}
                   fill
+                  draggable={false}
                   sizes="(max-width: 640px) 42vw, (max-width: 1024px) 28vw, 300px"
-                  className="object-cover object-center"
+                  className={PROTECTED_IMAGE_CLASS}
                   priority={index < 4}
                 />
               </figure>

@@ -1,3 +1,4 @@
+import { loadEnvFile } from "../scripts/load-env.mjs";
 import { seedBlogPosts } from "@/lib/content/blogSeed";
 import { seedCareers } from "@/lib/content/careersSeed";
 import { seedStories } from "@/lib/content/storiesSeed";
@@ -6,6 +7,7 @@ import { connectToDatabase } from "@/lib/db/mongoose";
 import { BlogPostModel, CareerModel, PageModel, SuccessStoryModel } from "@/lib/db/models";
 
 async function main() {
+  loadEnvFile();
   await connectToDatabase();
 
   for (const post of seedBlogPosts) {

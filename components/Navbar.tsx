@@ -24,24 +24,17 @@ const solutionsGroup: NavGroup = {
 };
 
 const navLinks: NavLink[] = [
-  { label: "Work", href: "/" },
+  { label: "Work", href: "/work" },
   { label: "Blogs", href: "/blog" },
-  { label: "Stories", href: "/success-stories" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
 ];
-
-function isSuccessStoryDetail(pathname: string) {
-  const parts = pathname.split("/").filter(Boolean);
-  return parts[0] === "success-stories" && parts.length >= 2;
-}
 
 export default function Navbar() {
   const pathname = usePathname() ?? "";
   const navRef = useRef<HTMLElement | null>(null);
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
-  const onStoryHero = isSuccessStoryDetail(pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [solutionsOpenDesktop, setSolutionsOpenDesktop] = useState(false);
   const [solutionsOpenMobile, setSolutionsOpenMobile] = useState(false);
@@ -166,11 +159,7 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 z-50 mx-auto flex w-full max-w-screen-2xl -translate-x-1/2 items-center justify-between px-6 py-5 left-1/2 backdrop-blur-xl transition-colors duration-300 md:px-8 md:py-6 ${
-          onStoryHero
-            ? "border-b border-white/15 bg-gradient-to-b from-black/55 via-black/25 to-transparent text-white"
-            : "border-b border-transparent bg-white/80 text-neutral-800"
-        }`}
+        className="fixed top-0 z-50 mx-auto flex w-full max-w-screen-2xl -translate-x-1/2 items-center justify-between border-b border-black/5 bg-white/85 px-6 py-5 left-1/2 text-neutral-800 backdrop-blur-xl transition-colors duration-300 md:px-8 md:py-6"
       >
         <Link href="/" data-anim="logo">
           <Image
@@ -179,7 +168,7 @@ export default function Navbar() {
             height={40}
             width={40}
             style={{ scale: 1.5 }}
-            className={`h-10 w-auto pl-3 ${onStoryHero ? "drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]" : ""}`}
+            className="h-10 w-auto pl-3"
             priority
           />
         </Link>
@@ -198,13 +187,7 @@ export default function Navbar() {
             <button
               type="button"
               className={`inline-flex items-center gap-1 font-headline font-bold uppercase tracking-tight transition-colors duration-300 ${
-                isSolutionsActive
-                  ? onStoryHero
-                    ? "text-primary-fixed"
-                    : "text-orange-500"
-                  : onStoryHero
-                    ? "text-white/85 hover:text-primary-fixed"
-                    : "text-neutral-700 hover:text-orange-400"
+                isSolutionsActive ? "text-orange-500" : "text-neutral-700 hover:text-orange-400"
               }`}
               aria-haspopup="menu"
               aria-expanded={solutionsOpenDesktop}
@@ -216,9 +199,7 @@ export default function Navbar() {
               <div
                 data-solutions-menu
                 role="menu"
-                className={`absolute left-0 top-full mt-2 min-w-[220px] border border-outline-variant/40 bg-white/95 p-1.5 backdrop-blur ${
-                  onStoryHero ? "shadow-[0_10px_30px_-20px_rgba(0,0,0,0.45)]" : "shadow-[0_10px_30px_-22px_rgba(0,0,0,0.22)]"
-                }`}
+                className="absolute left-0 top-full mt-2 min-w-[220px] border border-outline-variant/40 bg-white/95 p-1.5 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.22)] backdrop-blur"
               >
                 {solutionsGroup.children.map((item) => {
                   const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -244,8 +225,8 @@ export default function Navbar() {
               : link.href === "/"
                 ? pathname === "/"
                 : pathname === link.href || pathname.startsWith(`${link.href}/`);
-            const base = onStoryHero ? "text-white/85 hover:text-primary-fixed" : "text-neutral-700 hover:text-orange-400";
-            const activeCls = onStoryHero ? "text-primary-fixed hover:text-primary-fixed" : "text-orange-500 hover:text-orange-400";
+            const base = "text-neutral-700 hover:text-orange-400";
+            const activeCls = "text-orange-500 hover:text-orange-400";
             return (
               <Link
                 key={link.label}
@@ -261,17 +242,13 @@ export default function Navbar() {
           <Link
             href="/contact"
             data-anim="cta"
-            className={`hidden rounded-lg px-6 py-2 font-bold uppercase text-sm tracking-widest transition-transform duration-300 hover:scale-[1.02] md:inline-flex ${
-              onStoryHero ? "bg-primary text-on-primary ring-1 ring-white/15" : "bg-primary text-on-primary"
-            }`}
+            className="hidden rounded-lg bg-primary px-6 py-2 font-bold uppercase text-sm tracking-widest text-on-primary transition-transform duration-300 hover:scale-[1.02] md:inline-flex"
           >
             Let&apos;s Talk
           </Link>
           <button
             onClick={() => setDrawerOpen(true)}
-            className={`inline-flex items-center justify-center rounded-md p-2 transition-colors duration-200 md:hidden ${
-              onStoryHero ? "text-white hover:bg-white/10" : "text-neutral-800 hover:bg-neutral-100"
-            }`}
+            className="inline-flex items-center justify-center rounded-md p-2 text-neutral-800 transition-colors duration-200 hover:bg-neutral-100 md:hidden"
             aria-label="Open navigation menu"
           >
             <Menu className="h-6 w-6" />

@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
 import AboutPageView from "@/components/about/AboutPageView";
 
-const title = "About BHeard Consulting | Digital Marketing Agency Mumbai";
+const title = "About BHeard - Brand & Technology Studio, Mumbai";
 const description =
-  "BHeard Consulting is a Mumbai-based digital marketing agency fueling brand growth through design, social campaigns, growth strategy, and product development roadmaps. Meet our team and mission.";
+  "Founded in 2014, BHeard is a Mumbai brand and technology studio led by Neha Gupta, partnering with Accor, Radisson Blu, HUL, ITC, BNP Paribas and Goa Tourism.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
-    "digital marketing agency Mumbai",
-    "brand growth",
-    "product development",
-    "BHeard Consulting",
-    "digital design agency",
-    "social media campaigns",
-    "growth strategy",
+    "brand and technology studio Mumbai",
+    "BHeard about",
+    "Neha Gupta",
+    "digital agency Mumbai",
+    "hospitality marketing",
   ],
   openGraph: {
     title,
@@ -38,12 +36,13 @@ const jsonLd = {
       url: "https://bheard.in/about",
       name: title,
       description,
-      isPartOf: { "@type": "WebSite", name: "BHeard Consulting", url: "https://bheard.in/" },
+      isPartOf: { "@type": "WebSite", name: "BHeard", url: "https://bheard.in/" },
       about: {
         "@type": "Organization",
-        name: "BHeard Consulting",
+        name: "BHeard",
         description:
-          "Full-service digital agency in Mumbai specializing in brand growth, digital design, marketing strategy, and product development.",
+          "Brand and technology studio in Mumbai specializing in branding, marketing, and digital products.",
+        foundingDate: "2014",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Mumbai",
@@ -52,7 +51,9 @@ const jsonLd = {
         founder: {
           "@type": "Person",
           name: "Neha Gupta",
-          alumniOf: { "@type": "CollegeOrUniversity", name: "National University of Singapore" },
+          jobTitle: "Founder",
+          sameAs: ["https://www.linkedin.com/in/nehagupta"],
+          alumniOf: { "@type": "Organization", name: "Accenture" },
         },
       },
     },

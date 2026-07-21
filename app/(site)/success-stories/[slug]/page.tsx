@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import CaseStudyDetailView from "@/components/success-stories/CaseStudyDetailView";
-import { getStoryBySlug } from "@/lib/services/stories.service";
-import { successStoryToCaseStudy } from "@/lib/success-stories/mapper";
+import { WorkDetailView } from "@/components/work";
+import { loadCaseStudyBySlug, loadPublishedCaseStudies } from "@/lib/success-stories/loadCaseStudies";
 
 export const dynamic = "force-dynamic";
 
@@ -9,25 +8,27 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const row = await getStoryBySlug(slug);
-  const study = row && row.published ? successStoryToCaseStudy(row) : null;
+  const study = await loadCaseStudyBySlug(slug);
 
   if (!study) {
-    return { title: "Story | BHEARD" };
+    return { title: "Case Study | BHeard" };
   }
   return {
-    title: `${study.heroTitle} | BHEARD`,
+    title: `${study.heroMeta} Case Study | BHeard`,
     description: study.heroSubtitle.slice(0, 158),
   };
 }
 
 export default async function SuccessStoryDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const row = await getStoryBySlug(slug);
-  const study = row && row.published ? successStoryToCaseStudy(row) : null;
+  const study = await loadCaseStudyBySlug(slug);
 
   if (!study) {
     notFound();
   }
-  return <CaseStudyDetailView study={study} />;
+
+  const allStudies = await loadPublishedCaseStudies();
+  const relatedStudies = allStudies.filter((s) => s.slug !== study.slug).slice(0, 3);
+
+  return <WorkDetailView study={study} relatedStudies={relatedStudies} />;
 }

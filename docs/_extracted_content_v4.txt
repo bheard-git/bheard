@@ -1,0 +1,814 @@
+BHEARD.IN — FINAL WEBSITE CONTENT (V4)
+SEO-optimized final copy for development · Companion to: BHeard SEO Strategy & Developer Build Spec
+
+## How to read this document
+
+Blue markers like [→ /services/brand-solutions] are internal links for the developer — hyperlink the preceding word/phrase to that URL. They are not visible copy.
+Green text marks the only copy edits made in this version. Everything else is unchanged from V3.
+
+## Changes in this version
+
+Tech Solutions: dual headline resolved — kept “Custom Software, AI & Mobile App Development for Growing Businesses” (matches locked title tag).
+Brand Solutions FAQ: dual question resolved — kept “Why Choose BHeard as Your Brand & Digital Growth Partner?”
+Replaced the external Guest AI reference link with an internal link to /services/tech-solutions/ai-chatbots-agents.
+Added target-market mentions (India, the US, Southeast Asia) in five places: Brand Solutions intro, Tech Solutions intro, AI Guest Agents, Industries intro, About story.
+All bheard.vercel.app links replaced with relative production URLs.
+Internal links specified inline across every page per the interlinking rules in the SEO strategy doc.
+Homepage eyebrow line (“Integrated Branding & Tech Agency · Mumbai, India”) must render as real HTML text, not an image — it carries the homepage keywords since the H1 is brand-led.
+Hero subline updated to “Brand strategy, technology and AI under one roof” — adds AI above the fold with a three-word edit.
+New homepage section added: “What Our Clients Say” — real Google reviews displayed visually. No Review/AggregateRating schema (self-serving review markup violates Google guidelines).
+Careers page rewritten in full (locked H1/subline retained): Life at BHeard, values, roles, AI-fluency expectation, locations, and application CTA.
+About page additions: founder pull quote, “How We Work With Brands” engagement models block, and story brand list revised to Accor, Radisson Blu, HUL, ITC, BNP Paribas, Goa Tourism.
+New case study added: /work/zumba-wear (Lifestyle & E-Commerce Marketing) — fills the consumer/lifestyle vertical and removes the dead-end card on Brand Solutions. All metrics sourced from client reports.
+Homepage testimonials finalised: three named client quotes (Novotel, Treat Resorts, Dr. Mickey Mehta). Google review slots removed. No review schema markup.
+Privacy Policy page added (/privacy-policy) — template pending legal review. Terms & Conditions page removed; footer updated.
+DIGI 1 card corrected on Tech Solutions: BHeard built the DIGI 1 customer app, not the internal Stars platform; old platform metrics removed pending customer-app figures.
+Metadata appendix added: exact title tags and meta descriptions for all 21 URLs, including the new Zumba Wear and Privacy Policy pages.
+  PAGE: HOMEPAGE — /  
+Integrated Branding & Tech Agency  ·  Mumbai, India
+DEV NOTE: Eyebrow above must be HTML text (e.g. <p> or <span>), not baked into an image.
+
+# Capturing voice in the noise.
+
+One agency. Brand strategy, technology and AI under one roof.
+See Our Work [→ /work]
+10+ Years of Experience   ·   50+ Brands Partnered With   ·   200+ Campaigns & Digital Launches
+
+## Our services
+
+Strategy, content, design, and technology connected to create brands and digital experiences that move together.
+
+### Brand Solutions
+
+DEV NOTE: Card heading links to /services/brand-solutions.
+Creative systems, content and campaign strategy for brands that want to be remembered - not just seen.
+01 Social Media Management
+02 Content and Copywriting
+03 Video Editing and Animations
+04 Graphic Design and Illustrations
+05 Campaign Planning
+
+### Tech Solutions
+
+DEV NOTE: Card heading links to /services/tech-solutions.
+Digital products and intelligent tools, engineered for any industry. We build the platforms your brand operates on - and the systems that scale it.
+01 Custom Web Development
+02 Custom Mobile App Development
+03 UI/UX Design
+04 E-Commerce
+05 Chatbots and AI Agents [→ /services/tech-solutions/ai-chatbots-agents]
+
+## Outcomes in the wild
+
+Hospitality & lifestyle — Luxury storytelling + performance media, moving as one system. [→ /industries/hospitality-luxury]
+2.6M Views driven through consistent content and community.
+9.4% Lower acquisition costs while generating 3× more leads.
+275K+ Reach generated through event-led digital storytelling.
+12% Average engagement rate across all campaign touchpoints.
+Events & digital campaigns — Events, media & digital momentum — built in sync.
+
+## Selected works
+
+DEV NOTE: Each card links to its case study / page as marked.
+01 / PREMIUM HOSPITALITY + LIFESTYLE — Luxury Experience Marketing & Revenue Growth [→ /work/radisson-blu-goa]
+02 / TOURISM + COMMUNITY — Destination Marketing & Tourism Storytelling [→ /work/goa-tourism]
+03 / HEALTH + WELLNESS — Brand Building & Growth Strategy [→ /work/dr-mickey-mehta]
+04 / EDUCATION - TECH — EdTech Platform Development & Content Systems [→ /work/rodha-edtech]
+05 / E-COMMERCE + LIFESTYLE — App Development for Travel & Lifestyle Discovery [→ /work/curly-tales-app]
+06 / AI FOR HOSPITALITY — AI Revenue Agents & Guest Experience Automation [→ /services/tech-solutions/ai-chatbots-agents]
+
+## About Bheard.
+
+BHeard is a brand and technology studio helping businesses build stronger digital presence and customer experiences.
+We work across branding, content, campaigns, websites, and mobile applications - bringing strategy, creative, and technology together under one team.
+Our work is grounded in years of experience with hospitality, luxury, consumer, and lifestyle brands [→ /industries] - categories where trust, emotion, and experience are often as important as the product itself.
+We think about brands as experiences, not just identities. That's why our focus goes beyond visibility - creating communication and digital experiences people remember and return to.
+
+## What Our Clients Say
+
+DEV NOTE: NEW SECTION — place between About and Ready to BE-HEARD. Pull 3–4 real reviews verbatim from BHeard's Google Business Profile, each with reviewer name and “via Google” attribution, plus a “Read all reviews on Google” link to the GBP listing (external, opens in new tab).
+DEV NOTE: CRITICAL — do NOT add Review or AggregateRating schema markup for these testimonials. Self-serving review markup violates Google's structured data guidelines and risks a manual action. Visual display only.
+“We have been working with BHeard for over two years now. Neha and her team have been highly instrumental in strategizing and executing the social media footprint of our resort. Their focussed effort during our special events helps increase our sales. BHeard team is diligent and approachable at all times. We look forward to work together for years to come.”
+— Varun Albuquerque, Owner, Novotel Resort
+“When we started with BHeard we had a negligible presence on the social media platform. BHeard has contributed in a great way to our online presence. Their professionalism, dedication and timely services have been the highlight of our association with them. The best part about them is their out of the way suggestions have benefitted us greatly.”
+— Vivek Mundra, MD, Treat Resorts
+“BHeard is one of the finest agencies to work with. They are sincere and diligent. They have been instrumental in achieving many social media feats for me.”
+— Dr. Mickey Mehta, Global Leading Holistic Health Guru
+DEV NOTE: Three named client testimonials carried over from the current live site; Vivek Mundra's attribution updated to name Treat Resorts. The anonymous “MD of a chain of Hotels” testimonial is retired. Recommendation for post-launch: invite these and other clients to leave Google reviews so this section can later link to an auditable GBP listing.
+
+## READY TO BE-HEARD?
+
+Let's Talk [→ /contact]
+We work with a limited number of clients to ensure focused strategy and high-quality execution. Book a call to explore how we can build your brand and digital presence.
+
+## Let's talk (form)
+
+We work with a focused number of clients each quarter. Share your brief - we'll respond within one business day.
+Fields: Full name · Email address · Phone · Company · How can we help? · Send message
+
+## Footer
+
+BHEARD is an integrated branding and tech agency in Mumbai. We build brand identities, run campaigns, and engineer digital products - for businesses that refuse to be background noise.
+Network: Instagram · LinkedIn
+Contact: +91 9326602832 · hello@bheard.in
+Head Office – Mumbai: B1-604, Marathon Innova Corporate Centre, Marathon NextGen Compound, Lower Parel, Mumbai, Maharashtra – 400013
+Branch Office – Delhi: WH-75, Mayapuri Industrial Area, Phase-1, South West Delhi, Delhi – 110064
+© 2026 BHEARD. ALL RIGHTS RESERVED. · Privacy Policy [→ /privacy-policy] · Sitemap [→ /sitemap.xml]
+DEV NOTE: Footer service/industry links recommended sitewide: Brand Solutions, Tech Solutions, AI Guest Agents, Hospitality & Luxury, Work, About, Contact — all relative URLs, no vercel.app.
+DEV NOTE: OPEN ITEMS — (1) Privacy Policy content added in this doc (see /privacy-policy page); requires legal review before launch. Terms & Conditions page removed from footer and sitemap — do not build. (2) DIGI 1 card corrected to the customer app; metrics pending from BHeard. (3) Ensure no /terms-and-conditions URL ships; if it exists on the current live site, 301 it to /privacy-policy.
+  PAGE: BRAND SOLUTIONS — /services/brand-solutions  
+
+# Branding & Digital Marketing for Consumer, Lifestyle & Hospitality Brands
+
+Visibility gets you seen. Branding gets you chosen.
+We help consumer, lifestyle, hospitality, wellness, and travel brands across India, the US, and Southeast Asia create memorable experiences, stronger brand equity, and digital ecosystems designed for growth.
+Brands That Trust BHeard (logos): HUL · ITC · BNP Paribas · Zumba Wear · Accor · Radisson Blu · Radisson Mandrem · Radisson Candolim · Novotel · Treat Resorts · Dr. Mickey Mehta · German Osteo Care · Jaslok Hospital · Dr Tvacha · Shammi's Yogalaya · Dr. Sameera Gupta · Goa Tourism · Caper Travel · Broward College · Rodha
+
+## The Brand Toolkit
+
+The right mix of strategy, content, design, and execution to help your brand stay ahead of the conversation.
+
+### Social Media Management
+
+As a leading social media management agency for consumer, lifestyle and hospitality brands [→ /industries/hospitality-luxury], we create content ecosystems that build audience engagement, strengthen brand visibility, and support business objectives.
+
+### Content & Copywriting
+
+As a content marketing agency for lifestyle brands and consumer businesses, we develop strategic content, campaign messaging, and brand storytelling that improves audience engagement and strengthens brand recall.
+
+### Graphic Design & Illustrations
+
+We provide brand identity design for consumer, lifestyle, and hospitality brands, creating visual systems, campaign assets, and digital creatives that strengthen recognition and maintain consistency across every customer touchpoint.
+
+### Video Editing & Animations
+
+As a video production partner, we create reels, brand films, motion graphics, and short-form content designed to increase engagement, improve watch time, and support campaign performance.
+
+### Influencer Marketing
+
+As an influencer marketing agency for D2C and consumer brands in India, we identify creator partnerships that align with audience interests, increase brand credibility, and generate authentic engagement at scale.
+
+### Campaign Strategy & Performance Marketing
+
+We combine campaign strategy, creative execution, media planning, and performance marketing to create integrated campaigns that move seamlessly from insight to execution, with business goals leading every decision.
+
+### AI Content Creation & Meta Optimisation
+
+We combine human creativity with AI-powered workflows to accelerate content production, generate high-performing creative variations, and optimize Meta campaigns through continuous testing and audience insights.
+Tool logos: Instagram, Facebook, LinkedIn, WhatsApp, Meta Business, Google Ads, HubSpot, Premiere, Adobe Illustrator
+
+## Case Studies
+
+Radisson Blu Goa [→ /work/radisson-blu-goa] — Social Media Strategy · Content Production · Performance Campaigns — 1.4M+ Reach | 12% Engagement Rate | 9.4% Lower CAC
+Zumba Wear [→ /work/zumba-wear] — India Market Entry Strategy · Brand Positioning · Digital Marketing
+Goa Tourism [→ /work/goa-tourism] — Destination Marketing · Campaign Strategy · Digital Content — 261.6K Views | 130K+ Reach
+
+## FAQs
+
+
+### Why Choose BHeard as Your Brand & Digital Growth Partner?
+
+DEV NOTE: Dual-question placeholder resolved — this version kept.
+BHeard combines branding, content, social media marketing, campaigns, and technology solutions [→ /services/tech-solutions] under one team, helping brands move faster and maintain consistency across channels.
+
+### Do you work with brands across industries and markets?
+
+Yes. While we've built deep expertise across lifestyle, wellness, travel, consumer, hospitality, and education sectors [→ /industries], our approach is rooted in understanding customer behaviour, category dynamics, and business objectives, allowing us to work with brands across India and international markets.
+
+### Do you offer influencer marketing services?
+
+Yes. We manage influencer identification, outreach, collaborations, content planning, and campaign reporting for lifestyle, hospitality, and consumer brands.
+
+### Can you manage both content creation and social media management?
+
+Absolutely. We provide content creation, design, video editing, copywriting, community management, and reporting.
+
+### How do I get started?
+
+Schedule a discovery call [→ /contact] with our team and we'll recommend the right branding, content, and growth strategy based on your business objectives.
+
+## Final CTA
+
+Let's Build a Brand That Gets You Chosen. [→ /contact]
+  PAGE: TECH SOLUTIONS — /services/tech-solutions  
+
+# Custom Software, AI & Mobile App Development for Growing Businesses
+
+DEV NOTE: Dual-headline placeholder resolved — this version kept (matches locked title tag).
+Technology helps you operate. Innovation helps you grow.
+We help businesses across India, the US, and Southeast Asia build custom software, mobile apps, AI solutions, and digital platforms that improve efficiency, customer experiences, and long-term growth.
+Brands That Trust BHeard (logos): Curly Tales · Tata Consumer Products · Big Bazaar · Digi1 · Welspun · Radisson Blu · Rodha
+
+## Solutions We Deliver
+
+Custom software, AI, and digital solutions designed to solve complex business challenges, streamline operations, improve customer experiences, and help businesses scale with greater efficiency, flexibility, and long-term confidence.
+
+### Custom Software Development
+
+We design and develop custom software tailored to your business processes, helping improve operational efficiency, automate workflows, integrate systems, and create scalable technology built around your long-term business goals.
+
+### Mobile App Development
+
+We build custom iOS and Android applications that deliver seamless user experiences, strengthen customer engagement, simplify business operations, and create digital products designed for long-term growth and scalability.
+
+### AI Solutions & Business Automation
+
+We develop AI-powered solutions, intelligent chatbots, virtual assistants [→ /services/tech-solutions/ai-chatbots-agents], and automation systems that reduce manual effort, improve productivity, enhance customer interactions, and help businesses make faster, smarter decisions.
+
+### UI/UX Design
+
+Our UI/UX process combines user research, experience strategy, usability testing, and interface design to create intuitive digital products that improve engagement, increase conversions, and deliver exceptional customer experiences.
+
+### E-Commerce Development
+
+We design and develop scalable e-commerce platforms that simplify online selling, improve customer journeys, streamline operations, increase conversions, and create seamless digital shopping experiences across every touchpoint.
+
+### Custom Web Development
+
+We build high-performance websites, customer portals, booking platforms, and web applications that combine speed, security, scalability, and intuitive user experiences to support business growth and digital transformation.
+Tech stack strip + product banner (apps built — assets per Drive link in working files)
+
+## Case Studies
+
+Curly Tales [→ /work/curly-tales-app] — Mobile App Development · Content Experience Platform · Travel & Lifestyle Discovery — 2M+ Readers Reached | 4.7★ App Rating
+DIGI 1 — Customer App Development · Mobile Commerce & Engagement
+DEV NOTE: CORRECTED — the app BHeard built is the DIGI 1 customer app, not the internal “DIGI 1 Stars” sales enablement platform previously described. The old metrics (1,000+ employees connected, 100+ stores enabled) belong to the internal platform and have been removed. MO to supply customer-app metrics (downloads, ratings, active users) if available; otherwise the card runs without metrics. Card remains unlinked until a case study page is built (phase 2).
+Rodha [→ /work/rodha-edtech] — EdTech Platform Development · Doubt Resolution System · Exam Preparation — 10,000+ Concurrent Users Supported | 500+ Simultaneous DB Connections
+
+## FAQs
+
+
+### What technology services does BHeard provide?
+
+BHeard provides custom software development, mobile app development, web application development, UI/UX design, e-commerce development, AI-powered solutions [→ /services/tech-solutions/ai-chatbots-agents], business automation, customer portals, and digital transformation services. We help businesses build scalable technology products that improve efficiency, customer experience, and long-term growth.
+
+### Do you develop custom software for businesses?
+
+Yes. We design and develop custom software solutions tailored to specific business requirements, workflows, and operational goals. Our software development services help businesses streamline processes, improve productivity, and create technology platforms built for future growth.
+
+### Can BHeard build mobile apps for iOS and Android?
+
+Yes. We develop custom mobile applications for iOS, Android, and cross-platform environments. From customer-facing apps and booking platforms to enterprise mobility solutions, we create mobile experiences designed for performance, usability, and scalability.
+
+### Do you provide AI development and business automation solutions?
+
+Yes. We help businesses implement AI-powered solutions, intelligent automation, chatbots, AI agents [→ /services/tech-solutions/ai-chatbots-agents], and workflow automation systems. These solutions help reduce manual effort, improve decision-making, enhance customer experiences, and increase operational efficiency.
+
+### Why choose BHeard for software development and digital solutions?
+
+BHeard combines technology, user experience design, and business strategy under one team. From custom software and mobile app development to AI solutions and digital transformation initiatives, we build technology products designed to solve real business challenges and create measurable business impact.
+
+## Final CTA
+
+Let's Build Technology That Moves Your Business Forward. [→ /contact]
+  PAGE: AI GUEST AGENTS — /services/tech-solutions/ai-chatbots-agents  (PRIORITY BUILD)  
+
+# AI Guest Agents for Hotels & Resorts
+
+
+## AI Guest Agents That Never Miss a Guest
+
+
+### Every enquiry deserves an immediate response. Every conversation is a chance to increase revenue.
+
+Hotels that respond first are more likely to secure the booking. Those that don't often lose the guest before the conversation has even started.
+BHeard has built AI Guest Agents that answer questions, qualify leads, recommend rooms, upsell experiences, and support hotel teams—24 hours a day.
+Trusted by: Radisson [→ /work/radisson-blu-goa]
+Book a Demo [→ /contact]
+
+## Great Guest Experiences Start Before Check-in
+
+The guest journey begins with the very first conversation.
+Whether a guest reaches out through your website, WhatsApp, Instagram, Facebook, or Google, they expect immediate, accurate, and personalized responses. Delayed replies create friction, reduce confidence, and often send potential guests elsewhere.
+Our AI Guest Agents ensure every enquiry receives instant attention, every interaction feels consistent, and every opportunity is captured.
+
+## Built for Hospitality. Designed Around Every Guest Conversation.
+
+Unlike conventional chatbots, our AI Guest Agents are designed specifically for hospitality [→ /industries/hospitality-luxury].
+They understand room categories, packages, dining experiences, spa services, seasonal offers, FAQs, and guest intent—helping your team deliver faster, more consistent service while reducing manual effort.
+
+### What Your AI Guest Agent Does
+
+Responds instantly to booking and availability enquiries
+Recommends rooms, packages, and seasonal offers
+Promotes dining, spa, and hotel experiences
+Captures and qualifies leads automatically
+Upsells experiences throughout the guest journey
+Handles FAQs without manual effort
+Transfers complex conversations to your team
+Supports guests 24/7 across every channel — reducing workload, improving response times, and creating more direct booking opportunities
+
+## Wherever Guests Reach You, Your AI Is Ready.
+
+Guests move between platforms. Your communication should move with them.
+Our AI Guest Agent creates one connected experience across every digital touchpoint, ensuring your guests receive the same level of service wherever they choose to engage.
+Works Across: Website Chat · WhatsApp · Instagram · Facebook Messenger · Voice Assistants · Future Integrations
+
+## How It Works
+
+01. Discover — We understand your property, guest journey, services, operational workflows, and communication requirements.
+02. Configure — Your AI Guest Agent is trained using your property's information, brand voice, room inventory, offers, and guest policies.
+03. Integrate — We connect your AI Guest Agent with your website, WhatsApp, booking engine, CRM, and other business systems.
+04. Launch — Your AI Guest Agent begins responding to enquiries, supporting guests, and assisting your team across every connected channel.
+05. Optimise — As guest behaviour evolves, your AI Guest Agent continues learning, improving responses, and delivering smarter guest experiences over time.
+
+## Designed for Hotels. Adaptable Across Hospitality.
+
+Whether you manage a boutique hotel, luxury resort, wellness retreat, serviced apartment, or multi-property hotel group in India, the US, or Southeast Asia, our AI Guest Agents adapt to your guest journey, operational workflows, and brand experience.
+
+## Frequently Asked Questions
+
+
+### What are AI Guest Agents?
+
+AI Guest Agents are intelligent virtual assistants that manage guest communication across your website, WhatsApp, social media, and other digital channels. They answer enquiries, recommend rooms, capture leads, and support hotel teams 24/7.
+
+### Can AI Guest Agents integrate with our existing hotel systems?
+
+Yes. Our AI Guest Agents integrate with booking engines, websites, CRM platforms, customer portals, and hospitality technology to create a connected guest experience.
+
+### Can AI Guest Agents answer booking enquiries and recommend rooms?
+
+Yes. They provide room availability, recommend packages, explain hotel facilities, answer frequently asked questions, and guide guests through the booking journey.
+
+### Can AI Guest Agents be customized for our property?
+
+Absolutely. Every AI Guest Agent is trained using your property's services, brand guidelines, operational processes, FAQs, and communication style.
+
+### Are AI Guest Agents suitable for boutique hotels as well as hotel groups?
+
+Yes. Whether you manage a boutique hotel, luxury resort, wellness retreat, or multi-property hospitality group, AI Guest Agents scale to your operational requirements and guest communication needs.
+
+## Great Guest Experiences Begin With the First Conversation
+
+Every enquiry is an opportunity to build confidence, answer questions, and secure a booking. AI Guest Agents help your team respond faster, communicate consistently, and turn more guest conversations into confirmed reservations.
+Book a Demo [→ /contact]
+  PAGE: INDUSTRIES HUB — /industries  (each section below also builds as its own standalone page)  
+
+# Industries We Serve
+
+
+## Built for Industries Where Brand Drives Business
+
+Every industry earns growth differently. Understanding that difference is where strategy begins.
+We believe marketing is more than visibility, it's about influencing decisions, building credibility, and creating customer experiences that drive measurable business outcomes.
+From hospitality and travel to consumer, wellness, and education — across India, the US, and Southeast Asia — every strategy we build starts with understanding the people behind the purchase.
+
+## Consumer & FMCG   [standalone: /industries/consumer-fmcg]
+
+
+### Winning Attention in Competitive Categories
+
+We help consumer brands build stronger positioning, launch products with confidence, and create connected digital experiences that influence purchase decisions across every touchpoint.
+Expertise: Brand Strategy · D2C Websites · Product Launch Campaigns · Performance Marketing [→ /services/brand-solutions] · Content Systems
+Trusted by: HUL · ITC · BNP Paribas · Zumba Wear
+Work: Supporting HUL and ITC with brand strategy, product launch campaigns, digital content, and integrated marketing across multiple consumer categories. [→ /work/zumba-wear]
+
+## Hospitality & Luxury   [standalone: /industries/hospitality-luxury — PRIORITY BUILD]
+
+
+### Where Guest Experience Begins Before Check-in
+
+The guest journey starts long before someone walks through your doors. Every interaction - from social media and your website to the booking experience, shapes how your brand is perceived.
+For over a decade, we've helped hotels, resorts, and luxury brands strengthen digital presence, increase booking intent, and create guest experiences that extend beyond the stay.
+Expertise: AI Guest Assistants [→ /services/tech-solutions/ai-chatbots-agents] · Social Media · Performance Marketing · Influencer Campaigns [→ /services/brand-solutions]
+Trusted by: Accor · Radisson · Novotel · ITC · Treat Resorts
+Work: Delivering integrated brand, marketing, and technology solutions for Radisson Blu [→ /work/radisson-blu-goa], Accor, Novotel, and other hospitality brands, from social media and booking websites to AI Guest Agents [→ /services/tech-solutions/ai-chatbots-agents].
+
+## Health & Wellness   [standalone: /industries/health-wellness]
+
+
+### Trust Comes Before Conversion
+
+We help wellness brands build authority through founder-led storytelling, content strategy, and digital experiences that strengthen credibility before the customer is ready to buy.
+Expertise: Founder Branding · Content Strategy [→ /services/brand-solutions] · Social Media · Digital Campaigns · Wellness Platforms
+Trusted by: Dr. Mickey Mehta · German Osteo Care · Jaslok Hospital · Dr Tvacha · Shammi's Yogalaya · Dr. Sameera Gupta
+Work: Partnering with wellness brands and global healthcare companies, including German Osteocare, to build credibility through content strategy, digital campaigns, and strategic brand positioning. [→ /work/dr-mickey-mehta]
+
+## Travel & Tourism   [standalone: /industries/travel-tourism]
+
+
+### Inspiring Journeys Before They Begin
+
+We combine destination storytelling with digital strategy to help tourism brands spark curiosity, increase travel consideration, and influence travel decisions.
+Expertise: Destination Campaigns · Tourism Marketing · Influencer Collaborations · Travel Websites [→ /services/tech-solutions] · Paid Media
+Trusted by: Goa Tourism · Caper Travel
+Work: Creating destination marketing campaigns and digital experiences for Goa Tourism [→ /work/goa-tourism] and Caper Travel, inspiring domestic and NRI travellers across digital channels.
+
+## Education & EdTech   [standalone: /industries/education-edtech]
+
+
+### Building Trust That Leads to Enrolment
+
+Modern education extends far beyond the classroom. We design digital platforms, mobile applications [→ /services/tech-solutions], marketing campaigns, and student experiences that help institutions attract, engage, and retain learners.
+Expertise: Learning Platforms · Mobile Apps · Lead Generation · AI Automation · Brand Strategy
+Trusted by: Broward College · Rodha
+Work: Developed digital platforms, brand communication, and student experiences for Broward College, supporting its expansion and engagement in the Indian market. [→ /work/rodha-edtech]
+
+## Brands That Have Trusted BHeard
+
+[Logo strip — full client list as per V3]
+
+## Let's Build What's Next
+
+If your brand operates in a category where experience, trust, and digital innovation drive growth, we'd love to talk.
+Start a Conversation → [→ /contact]
+  PAGE: SUCCESS STORIES HUB — /work  
+OUR SUCCESS STORIES
+
+# From Ideas to Impact
+
+Explore how branding, marketing, and technology come together to solve challenges, create opportunities, and drive meaningful business growth.
+CTA: Explore Success Stories
+The Stories Behind the Success — Every decision, insight, and execution contributes to the bigger picture. Here's how we helped brands achieve promising outcomes.
+DEV NOTE: Hub lists all five case studies below as cards linking to their /work/* URLs.
+  PAGE: CASE STUDY — /work/radisson-blu-goa  
+
+# Hospitality Marketing
+
+
+## Building a Digital Growth Engine for a Hospitality Brand
+
+In an increasingly competitive hospitality market, hotels are no longer competing only on location, amenities, or pricing. They are competing for attention long before a guest makes a booking.
+Working with Radisson Blu Goa, we helped build a digital presence designed to increase engagement, generate qualified leads, and create stronger connections with travellers throughout the guest journey.
+
+### The Challenge
+
+With travellers discovering, researching, and comparing hotels online, Radisson Blu needed a digital strategy that would differentiate the property beyond rooms and offers while driving measurable business outcomes.
+The challenge was to turn social media from a brand visibility channel into a reliable channel of engagement, enquiries, and guest consideration.
+
+### Our Approach
+
+We built Radisson Blu's social media presence from the ground up, creating a strategy centred around audience-led content, seasonal campaign planning, and lead generation-focused performance marketing.
+Rather than focusing solely on the property itself, we highlighted the experiences surrounding a stay, from dining and wellness to local culture, celebrations, and destination-led storytelling. This allowed the brand to connect with travellers at different stages of their decision-making journey while creating content that encouraged engagement and enquiry.
+Alongside marketing initiatives, we also explored technology-led guest experience enhancements through Guest AI [→ /services/tech-solutions/ai-chatbots-agents], enabling the property to create more responsive and personalised interactions across key guest touchpoints.
+DEV NOTE: Guest AI link resolved — previously pointed to an external URL; must link internally only.
+
+### Impact
+
+204% engagement growth, increasing from 108,433 to 329,673 engagements during a high-performing seasonal campaign period.
+2X lead growth achieved within two months through campaign optimisation and performance marketing.
+Introduced AI-led guest engagement capabilities through Guest AI [→ /services/tech-solutions/ai-chatbots-agents].
+
+### The Bigger Picture
+
+By combining audience-first content, performance marketing, and hospitality-focused technology [→ /industries/hospitality-luxury], we helped Radisson Blu strengthen its digital presence while creating a more connected experience for today's traveller.
+  PAGE: CASE STUDY — /work/zumba-wear  (NEW PAGE)  
+
+# Lifestyle & E-Commerce Marketing
+
+
+## Building a Global Lifestyle Brand's Community in India
+
+When a global brand enters a new market, awareness alone isn't enough. It needs a community that identifies with the brand, engages with it, and buys from it.
+Working with Zumba Wear, the global lifestyle and activewear e-commerce brand, we helped its India entity build a digital presence from the ground up — combining social media content creation, community management, website creatives, and Meta performance marketing [→ /services/brand-solutions] into one connected growth engine.
+
+### The Challenge
+
+Zumba had a passionate global following, but its India apparel business was starting from a small digital footprint. The challenge was to turn brand affinity among India's Zumba community — instructors, fitness enthusiasts, and lifestyle buyers — into an engaged audience and, ultimately, into measurable e-commerce sales.
+
+### Our Approach
+
+We built Zumba Shop India's social media presence around the community itself, not just the products.
+Content celebrated the instructors and events at the heart of the Zumba movement — from ZIN promotions across nine cities to live coverage of international events including Zincon Orlando and Gina Grant's Mumbai event — creating content people wanted to share, not just see.
+Alongside community-led content, we ran Meta ad campaigns designed for commerce: product launches, seasonal sales, and collection pre-bookings, each supported by website creatives built to convert the traffic those campaigns generated.
+
+### Impact
+
+Instagram community grown from 1,500 to 23.3K followers over the course of the engagement
+274+ purchases driven through Facebook ad campaigns in a single year
+Peak monthly engagement rate of 19% on Facebook, with Instagram engagement reaching 5.38%
+5.5 lakh+ Facebook page reach and 6.7 lakh+ impressions in a single quarter
+Over 15% of all website traffic driven by Facebook alone
+
+### The Bigger Picture
+
+By combining community storytelling with performance marketing, we helped a global lifestyle brand find its voice in India — proving that when content builds belonging, commerce follows. [→ /industries/consumer-fmcg]
+DEV NOTE: New page — add /work/zumba-wear to the URL architecture (P1) and to the sitemap. Title: “Zumba Wear Case Study — Lifestyle & E-Commerce Marketing | BHeard”. Schema: Article, per case-study pattern. All impact figures sourced from client social media reports (auditable).
+  PAGE: CASE STUDY — /work/curly-tales-app  
+
+# Product & App Development
+
+
+## Building Digital Products That Create Stronger Customer Relationships
+
+As brands evolve, websites and social media channels are no longer enough to own the customer experience. Mobile applications and digital products enable brands to build deeper engagement, create direct relationships with users, and unlock new opportunities for growth.
+One such example is our work with Curly Tales, one of India's most recognisable food, travel, and lifestyle media brands.
+
+### Helping Curly Tales Move Beyond Content
+
+As its audience grew, so did the opportunity to create a more direct relationship with users—one that extended beyond social platforms and transformed content consumption into experience discovery.
+
+### The Challenge
+
+Curly Tales had successfully built a loyal audience across digital channels, but social media alone limited how users could discover, save, and engage with recommendations.
+The challenge was to create a dedicated platform that could bring together food, travel, lifestyle, and local experiences into a single mobile-first ecosystem while remaining true to the Curly Tales brand.
+
+### Our Approach
+
+We partnered with Curly Tales to design and develop a mobile application [→ /services/tech-solutions] built around how people discover experiences today.
+Rather than simply repurposing website content into an app, we focused on creating a product experience that made exploration more intuitive. Users could discover places, browse curated recommendations, save experiences, and access content through a platform designed specifically for mobile engagement.
+The app brought together Curly Tales' content, community, and recommendations into a single destination, creating a stronger connection between inspiration and action.
+
+### Impact
+
+Successfully transformed Curly Tales from a content-first platform into a mobile-first experience.
+Created a dedicated destination for food, travel, lifestyle, and local experience discovery.
+Established a scalable digital product capable of supporting future platform expansion.
+Strengthened Curly Tales' ability to engage audiences beyond traditional social media channels.
+
+### Beyond One Product
+
+Our work extends beyond content and marketing into digital product development [→ /services/tech-solutions], helping brands create platforms, applications, and technology experiences that strengthen audience engagement and support long-term growth.
+
+### The Bigger Picture
+
+By helping Curly Tales create a dedicated mobile experience, we enabled the brand to move closer to its audience—transforming inspiration into discovery through a platform designed for how people explore today.
+  PAGE: CASE STUDY — /work/goa-tourism  
+
+# Destination Marketing
+
+
+## Reframing Goa Beyond Peak Season
+
+The strongest destinations aren't promoted through attractions alone, they're built through stories that inspire people to visit, stay longer, and return. For many travellers, Goa is defined by a familiar set of images: beaches, nightlife, and year-end holidays.
+Working alongside the Travel & Tourism Association of Goa and Goa Tourism, we helped build a destination-led platform created to showcase a different side of Goa through culture, food, wellness, festivals, and local experiences that exist throughout the year.
+
+### The Challenge
+
+Goa attracts millions of visitors every year, yet much of its tourism narrative remains concentrated around a few peak months and a handful of familiar experiences.
+The challenge was to shift perception, making travellers see Goa as a year-round destination rather than a seasonal getaway.
+
+### Our Approach
+
+We built a storytelling-first destination brand, focusing on the experiences that make Goa unique beyond its beaches. Through seasonal narratives, cultural storytelling, creator collaborations, and tourism-led campaigns [→ /industries/travel-tourism], we created content that showcased a richer and more authentic side of the destination.
+A defining example was the campaign “There's Only One Goa”, it took a bold strategic approach by repositioning Goa not as a competitor, but as a category of its own. Rather than relying on comparisons, it rendered them irrelevant by highlighting what only Goa could offer—its 450-year Indo-Portuguese cultural fusion, the susegad philosophy, and everyday experiences that couldn't be replicated elsewhere. The campaign moved beyond promoting attractions to showcasing authentic experiences, transforming audiences from passive viewers into active participants in the destination's story.
+We also led the digital execution of a large-scale World Tourism Day campaign that brought together tourism businesses, creators, and government stakeholders, generating over 130,000 reach while amplifying visibility for Goa's tourism ecosystem.
+
+### Impact
+
+1.2M+ reach including 130K+ from the World Tourism Day campaign
+183K+ campaign views across tourism initiatives.
+12K+ interactions driven through seasonal storytelling and stakeholder-led campaigns.
+12.5% average engagement rate, outperforming typical destination marketing benchmarks.
+
+### The Bigger Picture
+
+By bringing together tourism stakeholders, local experiences, seasonal narratives, and community stories, we helped showcase Goa not as a destination people visit once a year, but as a destination worth discovering in every season.
+Our destination marketing experience also extends beyond Goa through our work with Caper Travel, promoting India and South Asia to international travellers through content-led storytelling and destination discovery campaigns. [→ /industries/travel-tourism]
+  PAGE: CASE STUDY — /work/dr-mickey-mehta  
+
+# Health & Wellness Marketing
+
+
+## Building One of India's Earliest Wellness Personal Brands Online
+
+Before wellness creators became digital businesses and personal branding became a growth strategy, we were helping wellness experts build audiences online.
+Our work in the health and wellness space [→ /industries/health-wellness] spans fitness leaders, yoga communities, healthcare professionals, and wellness programmes. One of these partnerships demonstrates our approach: helping wellness pioneer Dr. Mickey Mehta build and grow his digital presence over the long term.
+
+### The Challenge
+
+Dr. Mickey Mehta was already a recognised name in the wellness industry, but like many thought leaders of the time, his influence was largely driven through speaking engagements, workshops, and offline communities.
+The challenge was to translate that credibility into a scalable digital presence—one that could consistently engage audiences, amplify his message, and create meaningful participation around wellness.
+
+### Our Approach
+
+We built and managed Dr. Mickey Mehta's social media presence [→ /services/brand-solutions] across Instagram, Facebook, and LinkedIn, creating a content ecosystem designed to educate, engage, and grow a community around holistic wellness.
+Rather than relying on promotional content, we focused on turning key moments into high-engagement brand-building opportunities. Over the course of our engagement, we conceptualised and executed more than 10 birthday campaigns, transforming annual milestones into audience participation campaigns that reinforced Dr. Mehta's positioning while driving visibility and engagement.
+One of the most successful initiatives was the “Fittest at 55” campaign.
+Built around Dr. Mehta's 55th birthday, the campaign combined storytelling, community engagement, and membership promotion into a single digital movement. The campaign generated over 4 million impressions and was featured by Social Samosa, earning recognition within the marketing and advertising industry.
+Beyond campaign execution, our role was to create consistency—building a digital presence that could sustain engagement year after year rather than relying on one-off viral moments.
+
+### Beyond One Brand
+
+Our experience in the wellness sector extends beyond a single engagement.
+We worked with wellness expert Dr. Sameera Gupta to strengthen her personal brand through content and video-led communication, helping establish a stronger digital presence around her expertise.
+For Shammi's Yogalaya, we helped transition wellness programmes online during the COVID-19 pandemic, promoting a 21-day digital wellness initiative that enabled the brand to build and nurture an engaged WhatsApp community.
+We also collaborated with creators such as thatquirkymamma and supported wellness-led experiences including Yoga by the Bay by Shaina NC, helping brands and experts connect with audiences through relevant, community-first content.
+
+### Impact
+
+4M+ impressions generated through the “Fittest at 55” campaign.
+10+ milestone campaigns conceptualised and executed over a long-term engagement.
+Instagram, Facebook and LinkedIn presence built and managed from the ground up for one of India's most recognised wellness personalities.
+Industry recognition through coverage by Social Samosa (external link, opens in new tab).
+For wellness brands, credibility is earned over time. Our focus has always been on helping experts turn their knowledge into influence, and their influence into lasting communities.
+  PAGE: CASE STUDY — /work/rodha-edtech  
+
+# Education Technology
+
+
+## Building a Scalable Academic Support Platform
+
+As education moves beyond classrooms, students expect instant access to guidance while institutions need structured systems that can scale with growing learner communities.
+For Rodha, we designed and developed a comprehensive learning platform [→ /services/tech-solutions] that connected students, mentors, and administrators through a single digital ecosystem, making academic support faster, more organised, and easier to manage.
+
+### The Challenge
+
+As Rodha's student community grew, managing academic queries through traditional communication channels became increasingly difficult.
+The challenge was to create a platform capable of handling thousands of student interactions while ensuring faster mentor responses, structured workflows, and complete administrative visibility.
+
+### Our Approach
+
+We designed a mobile-first platform built around the complete academic support journey—from raising a doubt to receiving mentor guidance and tracking its resolution.
+Students could submit multimedia doubts, search previously answered questions, follow conversation threads, and track every stage of the resolution process through a dedicated mobile and web experience.
+Mentors received a dedicated workspace to manage assigned queries, respond using rich tools, monitor performance, and build a searchable repository of resolved questions. Administrators gained complete operational control through real-time dashboards, reporting, mentor management, taxonomy controls, and workflow automation.
+Designed for enterprise-scale deployment, the platform supports 10,000+ concurrent users, 500+ simultaneous database connections, and real-time notifications across the entire ecosystem.
+
+### Impact
+
+Built an enterprise-grade platform capable of supporting 10,000+ concurrent users and 500+ simultaneous database connections.
+Created a unified academic support workflow connecting students, mentors, and administrators within a single ecosystem.
+Enabled real-time doubt management, automated workflows, and performance monitoring through dedicated role-based platforms.
+Established a scalable foundation for Rodha's future growth and expanding student community. [→ /industries/education-edtech]
+
+### The Bigger Picture
+
+By connecting students, mentors, and administrators in one ecosystem, Rodha now has a platform built to scale with its community.
+  PAGE: PRIVACY POLICY — /privacy-policy  (NEW PAGE)  
+
+# Privacy Policy
+
+Last updated: [insert launch date]
+BHeard Consulting Pvt. Ltd. (“BHeard”, “we”, “our”) respects your privacy. This policy explains what information we collect through bheard.in, how we use it, and the choices you have.
+
+## Information We Collect
+
+Information you provide — name, email address, phone number, company name, and message details submitted through our contact and enquiry forms; and name, contact details, resume, and portfolio links submitted through our careers form.
+Information collected automatically — standard analytics data such as pages visited, time on site, device and browser type, approximate location, and referral source, collected through cookies and similar technologies.
+
+## How We Use Your Information
+
+To respond to your enquiries and provide the services you request
+To evaluate job applications submitted through our careers page
+To understand how our website is used and improve its content and performance
+To communicate with you about our services, where you have asked us to
+
+## Sharing of Information
+
+We do not sell your personal information. We share it only with service providers who help us operate this website and our business (such as hosting, analytics, and email providers), and where required by law.
+
+## Cookies & Analytics
+
+This website uses cookies and analytics tools to understand site usage and improve your experience. You can control or disable cookies through your browser settings; some features of the site may not function fully without them.
+
+## Data Retention & Security
+
+We retain personal information only as long as needed for the purposes described above, and we use reasonable technical and organisational measures to protect it.
+
+## Your Rights
+
+You may request access to, correction of, or deletion of your personal information at any time by writing to us at hello@bheard.in.
+
+## Contact
+
+For any questions about this policy, contact us at hello@bheard.in or at our head office: B1-604, Marathon Innova Corporate Centre, Marathon NextGen Compound, Lower Parel, Mumbai, Maharashtra – 400013.
+DEV NOTE: This is a standard template drafted for launch — have it reviewed by legal counsel, particularly for India's DPDP Act compliance, before going live. Page metadata: Title “Privacy Policy | BHeard”; noindex is NOT needed — leave indexable; exclude from main navigation, footer link only.
+  PAGE: CAREERS — /careers  
+CAREERS AT BHEARD
+
+# Grow Your Career With Us
+
+Join a team where creativity, technology, and innovation come together to create meaningful work and lasting impact.
+
+## Life at BHeard
+
+BHeard brings strategy, creative, and technology together under one team. Strategists, designers, writers, and developers work side by side — which means the work you do here moves across brand campaigns, digital platforms, and AI-led solutions [→ /services/tech-solutions/ai-chatbots-agents] rather than staying in one lane.
+We combine human creativity with AI-powered workflows to work smarter, move faster, and raise the quality of what we deliver.
+We are a focused team working with brands across hospitality, lifestyle, consumer, wellness, and education [→ /industries], in India, the US, and Southeast Asia. You'll work directly with clients and see how your work contributes to real business outcomes from the very beginning.
+
+## What We Believe
+
+Ownership — we treat our clients' goals like our own, and we trust our team with outcomes, not just tasks
+Transparency — clear communication, honest feedback, and no vanity metrics disguised as success
+Results First — every decision begins with one question: will this move the business forward?
+Excellence — every campaign, design, and strategy is refined until it meets the highest standard
+
+## Who We're Looking For
+
+We're always open to connecting with talented people across:
+Brand & Strategy — brand strategists, account managers, campaign planners
+Content & Creative — copywriters, graphic designers, video editors, social media managers
+Technology — web and mobile developers, UI/UX designers, AI and automation engineers
+Growth — performance marketers, SEO specialists
+Across every role, we value people who are agile, curious, and comfortable using AI tools to multiply their productivity — not replace their thinking.
+If your role isn't listed here but you believe your work speaks for itself, we'd still like to hear from you.
+
+## Where We Work
+
+Our head office is in Lower Parel, Mumbai, with a branch office in Delhi — working with brands across India and international markets.
+
+## Let's Talk
+
+Share your resume and a note about the work you want to do at hello@bheard.in, or apply through the form below.
+(Career form: Full name · Email · Phone · Role of interest · Portfolio/LinkedIn link · Resume upload · Message)
+DEV NOTE: Careers metadata — Title: “Careers at BHeard — Marketing, Design & Tech Jobs in Mumbai | BHeard”. Meta description: “Join BHeard's team of strategists, designers, and developers in Mumbai. Careers in brand strategy, content, technology, and growth marketing.”
+  PAGE: ABOUT — /about  
+
+# Glad you're taking time to get to know us better
+
+Strategy. Creativity. Technology. Brought together to help brands grow, connect, and stay ahead in a digital-first world.
+[Team images]
+
+## The BHeard Story
+
+Founded in 2014 in Mumbai, BHeard began as a digital marketing consultancy during the rise of social media and has since evolved into a Brand & Technology Studio serving lifestyle and consumer brands, wellness, travel, and hospitality [→ /industries], across India, the US, and Southeast Asia.
+Led by founder Neha Gupta, whose experience includes consulting and digital transformation at Accenture, BHeard brings together strategists, designers, marketers, and developers to solve modern business challenges through branding, marketing, and technology.
+Over the last decade, we have partnered with brands including Accor, Radisson Blu, HUL, ITC, BNP Paribas, and Goa Tourism, helping businesses strengthen their market presence, improve customer engagement, and navigate an increasingly digital world. [→ /work]
+Today, we combine strategy, creativity, and technology to build brands, digital experiences, and growth-focused solutions that help businesses stay relevant and competitive.
+
+## Founder Spotlight — Led by Experience. Driven by Innovation.
+
+Neha Gupta is an entrepreneur and growth strategist whose career spans technology, consulting, marketing, and brand building. Her diverse experience across industries enables her to combine strategic thinking, creativity, and consumer insight to help businesses build stronger brands and drive meaningful growth.
+She believes the most effective marketing goes beyond visibility—it creates authentic connections, compelling brand experiences, and measurable business impact. Having worked with organizations at various stages of growth, Neha brings a practical, outcome-driven approach to turning business challenges into opportunities.
+Passionate about the evolving intersection of storytelling, technology, and consumer behavior, she is committed to helping brands stay relevant, differentiate themselves, and create lasting value in an increasingly competitive marketplace.
+“The best marketing has never been about being seen. It's about being chosen. Everything we build — a campaign, a platform, an AI agent — exists to move that decision.”
+— Neha Gupta, Founder
+DEV NOTE: Pull-quote styling, placed beside founder photo.
+DEV NOTE: Add LinkedIn profile link on Neha Gupta's name (external, rel="noopener", opens in new tab) and mirror it in Person schema sameAs. Replace [Team images] placeholder with real team photography — first name + role captions.
+
+## What We Believe
+
+Ownership — we treat your goals like our own. We don't stop at deliverables; we focus on business outcomes.
+Transparency — clear communication, honest recommendations, and no vanity metrics disguised as success.
+Results First — every decision begins with one question: will this move the business forward?
+Deep Partnership — we work as an extension of your team, not an external vendor.
+Excellence — every campaign, design, and strategy is refined until it meets the highest standard.
+
+## How We Work With Brands
+
+We partner with brands in three ways:
+Retained partnerships — ongoing brand, content, and social media management for brands that want a long-term growth partner [→ /services/brand-solutions]
+Project engagements — websites, mobile apps, campaigns, and platform builds with defined scope and outcomes [→ /services/tech-solutions]
+AI Agent deployments — conversational AI configured, integrated, and optimised for hotels, resorts, and consumer brands [→ /services/tech-solutions/ai-chatbots-agents]
+Whichever the model, we work as an extension of your team — with clear communication, defined outcomes, and no vanity metrics.
+
+## Let's Talk — Let's Build What's Next
+
+Whether you're launching, growing, or reimagining your brand, we'd love to hear what you're building. [→ /contact]
+  PAGE: APPENDIX — PAGE METADATA (ALL URLS)  
+Implementation: exact <title> and <meta name="description"> per URL below. Also set og:title and og:description to mirror these values, plus a page-relevant og:image (1200×630). Titles ≤ 60 characters where possible; descriptions ≤ 155.
+/
+Title: Integrated Branding & Tech Agency in Mumbai | BHeard
+Description: BHeard is Mumbai's integrated branding and technology agency for hospitality, lifestyle and consumer brands — brand strategy, technology and AI under one roof.
+/services/brand-solutions
+Title: Branding & Digital Marketing for Lifestyle Brands | BHeard
+Description: Social media, content, design, influencer and campaign strategy for consumer, lifestyle, wellness and hospitality brands. Trusted by Accor, HUL, ITC, Radisson.
+/services/tech-solutions
+Title: Custom Software, AI & Mobile App Development | BHeard
+Description: Custom software, mobile apps, AI solutions, UI/UX and e-commerce platforms for growing businesses — built by BHeard's tech team in Mumbai.
+/services/tech-solutions/ai-chatbots-agents
+Title: AI Guest Agents for Hotels & Resorts | BHeard
+Description: AI Guest Agents that answer enquiries, recommend rooms, qualify leads and upsell 24/7 across website, WhatsApp, Instagram and more. Trusted by Radisson.
+/industries
+Title: Industries We Serve — Hospitality, Consumer, Wellness | BHeard
+Description: Brand, marketing and technology solutions for hospitality, consumer & FMCG, wellness, travel and education brands across India, the US, and Southeast Asia.
+/industries/hospitality-luxury
+Title: Hospitality & Luxury Marketing Agency | BHeard Mumbai
+Description: A decade of brand, marketing and technology work for hotels, resorts and luxury brands — Accor, Radisson, Novotel, ITC. Social, performance, AI Guest Agents.
+/industries/consumer-fmcg
+Title: Consumer & FMCG Marketing Agency | BHeard Mumbai
+Description: Brand strategy, product launch campaigns, D2C websites and performance marketing for consumer and FMCG brands. Trusted by HUL, ITC and BNP Paribas.
+/industries/health-wellness
+Title: Health & Wellness Marketing Agency | BHeard Mumbai
+Description: Founder branding, content strategy and digital campaigns for wellness brands and healthcare experts. Trusted by Dr. Mickey Mehta and Jaslok Hospital.
+/industries/travel-tourism
+Title: Travel & Tourism Marketing Agency | BHeard Mumbai
+Description: Destination campaigns, tourism storytelling, influencer collaborations and travel platforms. Trusted by Goa Tourism and Caper Travel.
+/industries/education-edtech
+Title: Education & EdTech Marketing Agency | BHeard Mumbai
+Description: Learning platforms, mobile apps, lead generation and brand strategy for education institutions and EdTech brands. Trusted by Broward College and Rodha.
+/work
+Title: Our Work — Case Studies | BHeard
+Description: Explore how BHeard combines branding, marketing and technology to drive growth — case studies across hospitality, tourism, wellness, e-commerce and education.
+/work/radisson-blu-goa
+Title: Radisson Blu Goa Case Study — Hospitality Marketing | BHeard
+Description: How BHeard built a digital growth engine for Radisson Blu Goa: 204% engagement growth, 2X lead growth and AI-led guest engagement through Guest AI.
+/work/curly-tales-app
+Title: Curly Tales App Case Study — App Development | BHeard
+Description: How BHeard helped Curly Tales move beyond content with a mobile-first discovery app for food, travel and lifestyle experiences.
+/work/goa-tourism
+Title: Goa Tourism Case Study — Destination Marketing | BHeard
+Description: How BHeard helped reframe Goa as a year-round destination: 1.2M+ reach, 183K+ campaign views and a 12.5% average engagement rate.
+/work/dr-mickey-mehta
+Title: Dr. Mickey Mehta Case Study — Wellness Marketing | BHeard
+Description: How BHeard built one of India's earliest wellness personal brands online — including the “Fittest at 55” campaign with 4M+ impressions.
+/work/rodha-edtech
+Title: Rodha Case Study — EdTech Platform Development | BHeard
+Description: How BHeard built a scalable academic support platform for Rodha, supporting 10,000+ concurrent users and 500+ simultaneous database connections.
+/work/zumba-wear
+Title: Zumba Wear Case Study — Lifestyle E-Commerce | BHeard
+Description: How BHeard grew Zumba Wear India from 1,500 to 23.3K Instagram followers and drove 274+ purchases through Meta performance marketing.
+/about
+Title: About BHeard — Brand & Technology Studio, Mumbai
+Description: Founded in 2014, BHeard is a Mumbai brand and technology studio led by Neha Gupta, partnering with Accor, Radisson Blu, HUL, ITC, BNP Paribas and Goa Tourism.
+/careers
+Title: Careers at BHeard — Marketing, Design & Tech Jobs in Mumbai
+Description: Join BHeard's team of strategists, designers, and developers in Mumbai. Careers in brand strategy, content, technology, and growth marketing.
+/contact
+Title: Contact BHeard — Branding & Tech Agency in Lower Parel, Mumbai
+Description: Book a call with BHeard. Head office in Lower Parel, Mumbai, with a branch office in Delhi. Write to hello@bheard.in or call +91 9326602832.
+/privacy-policy
+Title: Privacy Policy | BHeard
+Description: How BHeard collects, uses and protects your personal information on bheard.in.
+DEV NOTE: H1s are already defined in the page copy above — one H1 per page, exactly as written. Canonicals self-referencing on every URL per the SEO strategy spec.

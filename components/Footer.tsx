@@ -3,6 +3,7 @@
 import "@/lib/motion/config";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +22,16 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/letsbheard/",
   },
+] as const;
+
+const exploreLinks = [
+  { label: "Brand Solutions", href: "/brand-solutions" },
+  { label: "Tech Solutions", href: "/tech-solutions" },
+  { label: "AI Guest Agents", href: "/services/tech-solutions/ai-chatbots-agents" },
+  { label: "Industries", href: "/industries" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 const offices = [
@@ -43,41 +54,74 @@ const offices = [
   },
 ] as const;
 
+function footerAlreadyVisible(footer: HTMLElement) {
+  const rect = footer.getBoundingClientRect();
+  return rect.top < window.innerHeight * 0.92;
+}
+
 export default function Footer() {
+  const pathname = usePathname() ?? "";
   const footerRef = useRef<HTMLElement | null>(null);
 
   useGSAP(
     () => {
-      if (prefersReducedMotion() || !footerRef.current) {
+      const footer = footerRef.current;
+      if (!footer) {
         return;
       }
 
-      const blocks = footerRef.current.querySelectorAll<HTMLElement>(
-        "[data-footer-reveal]"
-      );
+      const blocks = footer.querySelectorAll<HTMLElement>("[data-footer-reveal]");
       if (!blocks.length) {
         return;
       }
 
-      gsap.fromTo(
-        blocks,
-        { opacity: 0, y: 32, willChange: "transform" },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.06,
-          duration: 0.5,
-          ease: "power3.out",
-          clearProps: "willChange",
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: "top 91%",
-            once: true,
-          },
-        }
-      );
+      if (prefersReducedMotion()) {
+        gsap.set(blocks, { opacity: 1, y: 0 });
+        return;
+      }
+
+      const reveal = () => {
+        gsap.fromTo(
+          blocks,
+          { y: 32, willChange: "transform" },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.06,
+            duration: 0.5,
+            ease: "power3.out",
+            clearProps: "willChange",
+          }
+        );
+      };
+
+      if (footerAlreadyVisible(footer)) {
+        reveal();
+        return;
+      }
+
+      gsap.set(blocks, { opacity: 1, y: 32 });
+      const tween = gsap.to(blocks, {
+        y: 0,
+        stagger: 0.06,
+        duration: 0.5,
+        ease: "power3.out",
+        clearProps: "willChange",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 91%",
+          once: true,
+        },
+      });
+
+      ScrollTrigger.refresh();
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
     },
-    { scope: footerRef }
+    { scope: footerRef, dependencies: [pathname] }
   );
 
   return (
@@ -87,7 +131,7 @@ export default function Footer() {
       className="mx-auto flex w-full max-w-screen-2xl flex-col justify-end bg-white px-8 py-16"
     >
       <div className="mb-14 grid grid-cols-1 items-start gap-16 md:grid-cols-12">
-        <div data-footer-reveal className="md:col-span-5">
+        <div data-footer-reveal className="opacity-100 md:col-span-4">
           <div className="mb-8">
             <Image
               src={logo}
@@ -103,7 +147,24 @@ export default function Footer() {
             products - for businesses that refuse to be background noise.
           </p>
         </div>
-        <div data-footer-reveal className="md:col-span-3">
+        <div data-footer-reveal className="opacity-100 md:col-span-2">
+          <h6 className="mb-6 text-sm font-bold uppercase text-orange-500">
+            Explore
+          </h6>
+          <ul className="flex flex-col gap-3">
+            {exploreLinks.map((link) => (
+              <li key={link.label}>
+                <Link
+                  className="font-body text-sm text-neutral-600 transition-colors duration-300 hover:text-neutral-900"
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div data-footer-reveal className="opacity-100 md:col-span-2">
           <h6 className="mb-6 text-sm font-bold uppercase text-orange-500">
             Network
           </h6>
@@ -122,14 +183,13 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div data-footer-reveal className="md:col-span-4">
+        <div data-footer-reveal className="opacity-100 md:col-span-4">
           <h6 className="mb-6 text-sm font-bold uppercase text-orange-500">
             Contact
           </h6>
           <div className="space-y-2">
             {offices.map((office) => (
               <address key={office.title} className="not-italic">
-                
                 {"phone" in office && (
                   <a
                     href={`tel:${office.phone.replace(/\s/g, "")}`}
@@ -173,13 +233,7 @@ export default function Footer() {
               className="text-sm font-bold uppercase tracking-widest text-neutral-600 transition-colors duration-400 ease-out hover:text-neutral-900"
               href="/privacy-policy"
             >
-              Privacy
-            </Link>
-            <Link
-              className="text-sm font-bold uppercase tracking-widest text-neutral-600 transition-colors duration-400 ease-out hover:text-neutral-900"
-              href="/terms-and-conditions"
-            >
-              Terms
+              Privacy Policy
             </Link>
             <Link
               className="text-sm font-bold uppercase tracking-widest text-neutral-600 transition-colors duration-400 ease-out hover:text-neutral-900"

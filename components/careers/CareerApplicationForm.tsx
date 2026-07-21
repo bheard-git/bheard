@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FileText, Loader2, Upload, X } from "lucide-react";
 import {
   Select,
@@ -10,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/admin/ui/select";
+import { RecaptchaNotice, useRecaptcha } from "@/components/site/RecaptchaProvider";
 import {
   careerApplicationFieldsSchema,
   MAX_RESUME_BYTES,
@@ -18,7 +20,6 @@ import {
 } from "@/lib/validators/careerApplication.validator";
 
 const YEARS_OPTIONS = ["0-1", "2-3", "4-5", "6-10", "10+"] as const;
-const NOTICE_OPTIONS = ["Immediate", "15 days", "1 month", "2 months", "3 months"] as const;
 const ACCEPT =
   ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
@@ -45,6 +46,8 @@ type Props = {
   slug: string;
   roleTitle: string;
   onlineApplicationsReady: boolean;
+  /** General careers page: editable role field and simplified copy. */
+  variant?: "role" | "general";
 };
 
 const labelCls =
@@ -62,7 +65,13 @@ function validateResumeFile(file: File): string | null {
   return null;
 }
 
-export default function CareerApplicationForm({ slug, roleTitle, onlineApplicationsReady }: Props) {
+export default function CareerApplicationForm({
+  slug,
+  roleTitle,
+  onlineApplicationsReady,
+  variant = "role",
+}: Props) {
+  const { enabled: recaptchaEnabled, ready: recaptchaReady, executeRecaptcha } = useRecaptcha();
   const formId = useId();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -75,16 +84,18 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
     control,
     register,
     handleSubmit,
-    setError,
     reset,
     formState: { errors },
   } = useForm<CareerApplicationFields>({
-    defaultValues: emptyForm(roleTitle),
+    resolver: zodResolver(careerApplicationFieldsSchema),
+    defaultValues: emptyForm(variant === "general" ? "" : roleTitle),
+    mode: "onSubmit",
+    reValidateMode: "onChange",
   });
 
   useEffect(() => {
-    reset(emptyForm(roleTitle));
-  }, [reset, roleTitle]);
+    reset(emptyForm(variant === "general" ? "" : roleTitle));
+  }, [reset, roleTitle, variant]);
 
   const setFile = useCallback((file: File | null) => {
     setResumeError(null);
@@ -109,23 +120,25 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
       return;
     }
 
-    const parsed = careerApplicationFieldsSchema.safeParse(values);
-    if (!parsed.success) {
-      for (const issue of parsed.error.issues) {
-        const field = issue.path[0];
-        if (typeof field === "string") {
-          setError(field as keyof CareerApplicationFields, { type: "manual", message: issue.message || "Invalid value" });
-        }
-      }
-      return;
-    }
-
     if (!resumeFile) {
       setResumeError("Please upload your resume");
       return;
     }
 
-    const normalized = normalizeApplicationFields(parsed.data);
+    const normalized = normalizeApplicationFields(values);
+
+    let recaptchaToken: string | null = null;
+    if (recaptchaEnabled) {
+      if (!recaptchaReady) {
+        setSubmitError("Security check is still loading. Please wait a moment and try again.");
+        return;
+      }
+      recaptchaToken = await executeRecaptcha("career_application");
+      if (!recaptchaToken) {
+        setSubmitError("Security verification failed. Please refresh and try again.");
+        return;
+      }
+    }
 
     setSubmitting(true);
     try {
@@ -135,9 +148,9 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
       fd.set("phone", normalized.phone);
       fd.set("city", normalized.city);
       fd.set("yearsExperience", normalized.yearsExperience);
-      fd.set("roleTitleApplied", roleTitle);
-      fd.set("noticePeriod", normalized.noticePeriod);
-      fd.set("coverLetter", normalized.coverLetter);
+      fd.set("roleTitleApplied", normalized.roleTitleApplied);
+      fd.set("noticePeriod", normalized.noticePeriod ?? "");
+      fd.set("coverLetter", normalized.coverLetter ?? "");
       fd.set("linkedInUrl", normalized.linkedInUrl ?? "");
       fd.set("portfolioUrl", "");
       fd.set("currentCompany", "");
@@ -145,6 +158,9 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
       fd.set("referralSource", "");
       fd.set("workAuthorization", "");
       fd.set("resume", resumeFile);
+      if (recaptchaToken) {
+        fd.set("recaptchaToken", recaptchaToken);
+      }
 
       const res = await fetch(`/api/careers/${encodeURIComponent(slug)}/applications`, {
         method: "POST",
@@ -184,38 +200,50 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
           Apply for this career
         </h2>
         <p className="mt-2 font-body text-sm leading-relaxed text-neutral-600">
-          Essential details only. Fields marked <span className="text-primary">*</span> are required.
+          Fields marked <span className="text-primary">*</span> are required.
         </p>
       </div>
 
-      <form id={formId} onSubmit={onFormSubmit} className="space-y-6">
+      <form id={formId} onSubmit={onFormSubmit} noValidate className="space-y-6">
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className={labelCls} htmlFor={`${formId}-fullName`}>Full name *</label>
+            <label className={labelCls} htmlFor={`${formId}-fullName`}>Full name <span className="text-primary">*</span></label>
             <input id={`${formId}-fullName`} className={inputCls} placeholder="As on your resume" {...register("fullName")} />
             {errors.fullName ? <p className="mt-1 text-xs text-red-600">{errors.fullName.message}</p> : null}
           </div>
           <div>
-            <label className={labelCls} htmlFor={`${formId}-email`}>Email address *</label>
+            <label className={labelCls} htmlFor={`${formId}-email`}>Email address <span className="text-primary">*</span></label>
             <input id={`${formId}-email`} type="email" className={inputCls} placeholder="you@email.com" autoComplete="email" {...register("email")} />
             {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email.message}</p> : null}
           </div>
           <div>
-            <label className={labelCls} htmlFor={`${formId}-phone`}>Phone number *</label>
+            <label className={labelCls} htmlFor={`${formId}-phone`}>Phone number <span className="text-primary">*</span></label>
             <input id={`${formId}-phone`} type="tel" className={inputCls} placeholder="+91..." {...register("phone")} />
             {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone.message}</p> : null}
           </div>
           <div>
-            <label className={labelCls} htmlFor={`${formId}-city`}>Current city *</label>
+            <label className={labelCls} htmlFor={`${formId}-city`}>Current city <span className="text-primary">*</span></label>
             <input id={`${formId}-city`} className={inputCls} placeholder="e.g. Mumbai" {...register("city")} />
             {errors.city ? <p className="mt-1 text-xs text-red-600">{errors.city.message}</p> : null}
           </div>
           <div>
-            <label className={labelCls} htmlFor={`${formId}-role`}>Applying for *</label>
-            <input id={`${formId}-role`} className={inputCls + " cursor-not-allowed bg-neutral-50"} readOnly aria-readonly {...register("roleTitleApplied")} />
+            <label className={labelCls} htmlFor={`${formId}-role`}>
+              {variant === "general" ? <>Role / area of interest <span className="text-primary">*</span></> : <>Applying for <span className="text-primary">*</span></>}
+            </label>
+            <input
+              id={`${formId}-role`}
+              className={inputCls + (variant === "role" ? " cursor-not-allowed bg-neutral-50" : "")}
+              readOnly={variant === "role"}
+              aria-readonly={variant === "role"}
+              placeholder={variant === "general" ? "e.g. Product Designer, Frontend Engineer" : undefined}
+              {...register("roleTitleApplied")}
+            />
+            {errors.roleTitleApplied ? (
+              <p className="mt-1 text-xs text-red-600">{errors.roleTitleApplied.message}</p>
+            ) : null}
           </div>
           <div>
-            <label className={labelCls}>Years of experience *</label>
+            <label className={labelCls}>Years of experience <span className="text-primary">*</span></label>
             <Controller
               control={control}
               name="yearsExperience"
@@ -235,26 +263,6 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
             {errors.yearsExperience ? <p className="mt-1 text-xs text-red-600">{errors.yearsExperience.message}</p> : null}
           </div>
           <div>
-            <label className={labelCls}>Notice period *</label>
-            <Controller
-              control={control}
-              name="noticePeriod"
-              render={({ field }) => (
-                <Select value={field.value || ""} onValueChange={field.onChange}>
-                  <SelectTrigger className="h-[46px] rounded-lg border-neutral-200 bg-white text-neutral-900">
-                    <SelectValue placeholder="Select notice period" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {NOTICE_OPTIONS.map((n) => (
-                      <SelectItem key={n} value={n}>{n}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              )}
-            />
-            {errors.noticePeriod ? <p className="mt-1 text-xs text-red-600">{errors.noticePeriod.message}</p> : null}
-          </div>
-          <div>
             <label className={labelCls} htmlFor={`${formId}-linkedin`}>LinkedIn URL (optional)</label>
             <input id={`${formId}-linkedin`} type="text" inputMode="url" autoComplete="url" className={inputCls} placeholder="https://linkedin.com/in/..." {...register("linkedInUrl")} />
             {errors.linkedInUrl ? <p className="mt-1 text-xs text-red-600">{errors.linkedInUrl.message}</p> : null}
@@ -262,7 +270,7 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
         </div>
 
         <div>
-          <span className={labelCls}>Resume *</span>
+          <span className={labelCls}>Resume <span className="text-primary">*</span></span>
           <div
             role="button"
             tabIndex={0}
@@ -315,26 +323,29 @@ export default function CareerApplicationForm({ slug, roleTitle, onlineApplicati
           {resumeError ? <p className="mt-2 text-xs text-red-600">{resumeError}</p> : null}
         </div>
 
-        <div>
-          <label className={labelCls} htmlFor={`${formId}-cover`}>Cover letter *</label>
-          <textarea id={`${formId}-cover`} rows={4} className={inputCls + " min-h-[120px] resize-y"} placeholder="Briefly tell us why you're a strong fit for this role." {...register("coverLetter")} />
-          {errors.coverLetter ? <p className="mt-1 text-xs text-red-600">{errors.coverLetter.message}</p> : null}
-        </div>
-
         {submitError ? (
           <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-800">{submitError}</div>
         ) : null}
 
-        <div className="flex flex-col gap-3 border-t border-neutral-100 pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-md font-body text-xs text-neutral-500">We use this data only for recruitment and role communication.</p>
-          <button
-            type="submit"
-            disabled={submitting || !onlineApplicationsReady}
-            className="inline-flex min-w-[190px] items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3 font-headline text-xs font-black uppercase tracking-[0.12em] text-on-primary shadow-sm transition hover:bg-primary-fixed-dim disabled:cursor-not-allowed disabled:opacity-55"
-          >
-            {submitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}
-            {submitting ? "Submitting..." : !onlineApplicationsReady ? "Submit unavailable" : "Submit application"}
-          </button>
+        <div className="flex flex-col gap-4 border-t border-neutral-100 pt-5">
+          <RecaptchaNotice className="text-neutral-500" />
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-md font-body text-xs text-neutral-500">
+              We use this data only for recruitment and role communication.
+            </p>
+            <button
+              type="submit"
+              disabled={
+                submitting ||
+                !onlineApplicationsReady ||
+                (recaptchaEnabled && !recaptchaReady)
+              }
+              className="inline-flex min-w-[190px] items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3 font-headline text-xs font-black uppercase tracking-[0.12em] text-on-primary shadow-sm transition hover:bg-primary-fixed-dim disabled:cursor-not-allowed disabled:opacity-55"
+            >
+              {submitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}
+              {submitting ? "Submitting..." : !onlineApplicationsReady ? "Submit unavailable" : "Submit application"}
+            </button>
+          </div>
         </div>
       </form>
     </div>

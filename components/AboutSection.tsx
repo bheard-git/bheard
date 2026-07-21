@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import SectionCharReveal from "@/components/motion/SectionCharReveal";
 import { sectionPageX, sectionStackTop } from "@/components/system/sectionTheme";
 
@@ -54,9 +55,15 @@ export default function AboutSection() {
             </p>
             <p className="font-body text-lg leading-relaxed text-on-surface-variant md:text-xl">
               Our work is grounded in years of experience with hospitality,
-              luxury, consumer, and lifestyle brands - categories where trust,
-              emotion, and experience are often as important as the product
-              itself.
+              luxury, consumer, and lifestyle{" "}
+              <Link
+                href="/industries"
+                className="font-semibold text-neutral-900 underline decoration-primary underline-offset-4 transition-colors hover:text-primary"
+              >
+                brands
+              </Link>{" "}
+              - categories where trust, emotion, and experience are often as
+              important as the product itself.
             </p>
             <p className="font-body text-lg leading-relaxed text-on-surface-variant md:text-xl">
               We think about brands as experiences, not just identities. That&apos;s

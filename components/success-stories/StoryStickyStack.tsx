@@ -60,7 +60,7 @@ function StoryStackCard({ study, index }: { study: CaseStudyContent; index: numb
 
   return (
     <Link
-      href={`/success-stories/${study.slug}`}
+      href={`/work/${study.slug}`}
       ref={rootRef}
       data-stack-card
       className="group absolute left-0 flex w-full flex-col overflow-hidden rounded-[2rem] border border-inverse-surface/10 bg-inverse-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.45)] will-change-transform md:shadow-[0_50px_140px_-42px_rgba(0,0,0,0.5)]"
@@ -186,14 +186,14 @@ export default function StoryStickyStack({ cases }: { cases: CaseStudyContent[] 
           Case Studies
         </p>
         <h2 className="font-headline text-[clamp(1.8rem,3.8vw,3.2rem)] font-black leading-[1.02] tracking-tight text-on-surface">
-          Built for Ambitious Brands
+          The Stories Behind the Success
         </h2>
         <p
           className="mt-4 max-w-2xl font-body text-body-lg leading-relaxed text-on-surface-variant md:text-xl"
           data-list-intro-body
         >
-          Scroll the stack — each panel is a full case world: big visuals, sharp positioning, and proof you can feel
-          before you read a single metric.
+          Every decision, insight, and execution contributes to the bigger picture. Here&apos;s how we helped brands
+          achieve promising outcomes.
         </p>
       </div>
 

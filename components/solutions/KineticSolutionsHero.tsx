@@ -4,6 +4,7 @@ import "@/lib/motion/config";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { useLeadForm } from "@/components/site/LeadFormProvider";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -12,6 +13,12 @@ import { prefersReducedMotion } from "@/lib/motion/animations";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export type KineticHeroCta = { href: string; label: string };
+
+export type KineticHeroLeadFormConfig = {
+  sourcePage: string;
+  title?: string;
+  subtitle?: string;
+};
 
 export type KineticHeroMedia = { src: string; alt: string };
 
@@ -23,6 +30,8 @@ export type KineticSolutionsHeroProps = {
   subtext: string;
   primaryCta: KineticHeroCta;
   secondaryCta: KineticHeroCta;
+  /** When set, primary CTA opens the lead form popup instead of navigating. */
+  primaryLeadForm?: KineticHeroLeadFormConfig;
   /** Rotating keyword chips (subtle crossfade) */
   morphWords?: string[];
   variant?: "brand" | "tech";
@@ -45,10 +54,12 @@ export default function KineticSolutionsHero({
   subtext,
   primaryCta,
   secondaryCta,
+  primaryLeadForm,
   morphWords = ["Story", "Recall", "Trust"],
   variant = "brand",
   media,
 }: KineticSolutionsHeroProps) {
+  const { openLeadForm } = useLeadForm();
   const rootRef = useRef<HTMLElement | null>(null);
   const morphRef = useRef<HTMLDivElement | null>(null);
   const morphParallaxRef = useRef<HTMLDivElement | null>(null);
@@ -282,13 +293,24 @@ export default function KineticSolutionsHero({
         </div>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-          <Link
-            data-hero-cta
-            href={primaryCta.href}
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-headline text-sm font-bold uppercase tracking-widest text-on-primary shadow-[0_12px_40px_-18px_rgba(255,146,62,0.75)] transition-transform hover:scale-[1.02] active:scale-[0.99]"
-          >
-            {primaryCta.label} <span aria-hidden>→</span>
-          </Link>
+          {primaryLeadForm ? (
+            <button
+              type="button"
+              data-hero-cta
+              onClick={() => openLeadForm(primaryLeadForm)}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-headline text-sm font-bold uppercase tracking-widest text-on-primary shadow-[0_12px_40px_-18px_rgba(255,146,62,0.75)] transition-transform hover:scale-[1.02] active:scale-[0.99]"
+            >
+              {primaryCta.label} <span aria-hidden>→</span>
+            </button>
+          ) : (
+            <Link
+              data-hero-cta
+              href={primaryCta.href}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-headline text-sm font-bold uppercase tracking-widest text-on-primary shadow-[0_12px_40px_-18px_rgba(255,146,62,0.75)] transition-transform hover:scale-[1.02] active:scale-[0.99]"
+            >
+              {primaryCta.label} <span aria-hidden>→</span>
+            </Link>
+          )}
           <Link
             data-hero-cta
             href={secondaryCta.href}

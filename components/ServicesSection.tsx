@@ -1,11 +1,11 @@
 "use client";
 
 import "@/lib/motion/config";
+import Link from "next/link";
 import { CSSProperties, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ArrowRight } from "lucide-react";
 import SectionCharReveal from "@/components/motion/SectionCharReveal";
 import {
   sectionPageX,
@@ -19,6 +19,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 type ServiceItem = {
   name: string;
   description: string;
+  href?: string;
 };
 
 const brandServices: ServiceItem[] = [
@@ -74,16 +75,19 @@ const techServices: ServiceItem[] = [
     name: "Chatbots and AI Agents",
     description:
       "Intelligent automations that qualify leads, handle queries and move customers through the funnel - 24/7, without adding headcount.",
+    href: "/services/tech-solutions/ai-chatbots-agents",
   },
 ];
 
 function PaneBlock({
   title,
+  titleHref,
   description,
   services,
   variant = "brand",
 }: {
   title: string;
+  titleHref: string;
   description: string;
   services: ServiceItem[];
   variant?: "brand" | "tech";
@@ -95,7 +99,14 @@ function PaneBlock({
         data-pane-reveal
         className={`font-headline text-4xl font-black uppercase ${isTech ? "text-white" : "text-neutral-900"}`}
       >
-        {title}
+        <Link
+          href={titleHref}
+          className={`transition-colors duration-300 ${
+            isTech ? "hover:text-white/80" : "hover:text-primary"
+          }`}
+        >
+          {title}
+        </Link>
       </h4>
       <p
         data-pane-reveal
@@ -124,12 +135,13 @@ function PaneBlock({
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="flex-1">{service.name}</span>
-              {/* <ArrowRight
-                className={`h-4 w-4 -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-within:translate-x-0 group-focus-within:opacity-100 ${
-                  isTech ? "text-white/60" : "text-primary"
-                }`}
-              /> */}
+              {service.href ? (
+                <Link href={service.href} className="flex-1 underline-offset-4 hover:underline">
+                  {service.name}
+                </Link>
+              ) : (
+                <span className="flex-1">{service.name}</span>
+              )}
             </div>
             <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr] motion-reduce:duration-0">
               <div className="overflow-hidden">
@@ -275,6 +287,7 @@ export default function ServicesSection() {
             <div className="border-b border-outline-variant/60 p-8">
               <PaneBlock
                 title="Brand Solutions"
+                titleHref="/brand-solutions"
                 description="Creative systems, content and campaign strategy for brands that want to be remembered - not just seen."
                 services={brandServices}
                 variant="brand"
@@ -283,6 +296,7 @@ export default function ServicesSection() {
             <div className="bg-gradient-to-br from-[#3d1e00] via-[#4a2508] to-[#2d1600] p-8">
               <PaneBlock
                 title="Tech Solutions"
+                titleHref="/tech-solutions"
                 description="Digital products and intelligent tools, engineered for any industry. We build the platforms your brand operates on - and the systems that scale it."
                 services={techServices}
                 variant="tech"
@@ -302,6 +316,7 @@ export default function ServicesSection() {
               <div ref={brandContentRef} className="min-w-[500px] max-w-[760px] p-10">
                 <PaneBlock
                   title="Brand Solutions"
+                  titleHref="/brand-solutions"
                   description="Creative systems, content and campaign strategy for brands that want to be remembered - not just seen."
                   services={brandServices}
                   variant="brand"
@@ -320,6 +335,7 @@ export default function ServicesSection() {
               <div ref={techContentRef} className="ml-auto min-w-[500px] max-w-[760px] p-10">
                 <PaneBlock
                   title="Tech Solutions"
+                  titleHref="/tech-solutions"
                   description="Digital products and intelligent tools, engineered for any industry. We build the platforms your brand operates on - and the systems that scale it."
                   services={techServices}
                   variant="tech"

@@ -4,8 +4,9 @@ import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
 import CareersListingContent from "./CareersListingContent";
 
 export const metadata: Metadata = {
-  title: "Careers | BHEARD",
-  description: "Join BHEARD to build meaningful brand and product systems with high ownership and quality standards.",
+  title: "Careers at BHeard - Marketing, Design & Tech Jobs in Mumbai | BHeard",
+  description:
+    "Join BHeard's team of strategists, designers, and developers in Mumbai. Careers in brand strategy, content, technology, and growth marketing.",
 };
 
 export const dynamic = "force-dynamic";

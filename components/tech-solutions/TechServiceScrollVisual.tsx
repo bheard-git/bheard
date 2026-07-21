@@ -15,6 +15,9 @@ type StackTool = {
   logoAlt?: string;
 };
 
+/** Color brand icons from public/assets/tech solutions/technologies */
+const TECH = "/assets/tech solutions/technologies";
+
 const PANELS: Record<
   TechServiceVisualId,
   {
@@ -34,19 +37,11 @@ const PANELS: Record<
     stackLabel: "Core stack",
     stackDetail: "Modern frontend and backend technologies selected for speed, scale, and maintainability.",
     tools: [
-      { id: "nextjs", name: "Next.js", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nextdotjs.svg" },
-      { id: "react", name: "React", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg" },
-      {
-        id: "typescript",
-        name: "TypeScript",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/typescript.svg",
-      },
-      { id: "nodejs", name: "Node.js", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nodedotjs.svg" },
-      {
-        id: "postgresql",
-        name: "PostgreSQL",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/postgresql.svg",
-      },
+      { id: "nextjs", name: "Next.js", logoSrc: `${TECH}/next-dot-js-svgrepo-com.svg` },
+      { id: "react", name: "React", logoSrc: `${TECH}/react-svgrepo-com.svg` },
+      { id: "typescript", name: "TypeScript", logoSrc: `${TECH}/typescript-svgrepo-com.svg` },
+      { id: "nodejs", name: "Node.js", logoSrc: `${TECH}/node-js-svgrepo-com.svg` },
+      { id: "postgresql", name: "PostgreSQL", logoSrc: `${TECH}/PostgresSQL.svg` },
     ],
   },
   mobile: {
@@ -57,20 +52,11 @@ const PANELS: Record<
     stackLabel: "Mobile ecosystem",
     stackDetail: "Cross-platform and native-first tools that deliver performant, production-ready apps.",
     tools: [
-      { id: "flutter", name: "Flutter", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/flutter.svg" },
-      {
-        id: "react-native",
-        name: "React Native",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg",
-        logoAlt: "React Native",
-      },
-      { id: "swift", name: "Swift", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/swift.svg" },
-      { id: "kotlin", name: "Kotlin", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/kotlin.svg" },
-      {
-        id: "firebase",
-        name: "Firebase",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/firebase.svg",
-      },
+      { id: "flutter", name: "Flutter", logoSrc: `${TECH}/flutter-svgrepo-com (1).svg` },
+      { id: "react-native", name: "React Native", logoSrc: `${TECH}/react-svgrepo-com.svg`, logoAlt: "React Native" },
+      { id: "ios", name: "iOS", logoSrc: `${TECH}/apple-ios-svgrepo-com.svg` },
+      { id: "android", name: "Android", logoSrc: `${TECH}/android-color-svgrepo-com.svg` },
+      { id: "apple", name: "Apple", logoSrc: `${TECH}/apple-svgrepo-com.svg` },
     ],
   },
   ux: {
@@ -81,23 +67,11 @@ const PANELS: Record<
     stackLabel: "Design toolkit",
     stackDetail: "Collaborative design and prototyping tools used to validate experience decisions early.",
     tools: [
-      { id: "figma", name: "Figma", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/figma.svg" },
-      {
-        id: "adobexd",
-        name: "Adobe XD",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/adobexd.svg",
-      },
-      {
-        id: "adobeillustrator",
-        name: "Illustrator",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/adobeillustrator.svg",
-      },
-      { id: "miro", name: "Miro", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/miro.svg" },
-      {
-        id: "hotjar",
-        name: "Hotjar",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/hotjar.svg",
-      },
+      { id: "html5", name: "HTML5", logoSrc: `${TECH}/html-5-svgrepo-com.svg` },
+      { id: "css3", name: "CSS3", logoSrc: `${TECH}/css3-svgrepo-com.svg` },
+      { id: "tailwind", name: "Tailwind", logoSrc: `${TECH}/tailwind-svgrepo-com.svg` },
+      { id: "javascript", name: "JavaScript", logoSrc: `${TECH}/javascript-svgrepo-com.svg` },
+      { id: "prototyping", name: "Prototyping", logoSrc: `${TECH}/features/browser-code-svgrepo-com.svg` },
     ],
   },
   commerce: {
@@ -108,23 +82,11 @@ const PANELS: Record<
     stackLabel: "Commerce stack",
     stackDetail: "Composable commerce tooling that improves checkout conversion and operational scale.",
     tools: [
-      { id: "shopify", name: "Shopify", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/shopify.svg" },
-      { id: "stripe", name: "Stripe", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/stripe.svg" },
-      {
-        id: "woocommerce",
-        name: "WooCommerce",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/woocommerce.svg",
-      },
-      {
-        id: "googleanalytics",
-        name: "Google Analytics",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleanalytics.svg",
-      },
-      {
-        id: "klaviyo",
-        name: "Klaviyo",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/klaviyo.svg",
-      },
+      { id: "shopify", name: "Shopify", logoSrc: `${TECH}/shopify-color-svgrepo-com.svg` },
+      { id: "analytics", name: "Google Analytics", logoSrc: `${TECH}/google_analytics-icon.svg` },
+      { id: "mysql", name: "MySQL", logoSrc: `${TECH}/MySQL.svg` },
+      { id: "meta", name: "Meta Ads", logoSrc: `${TECH}/meta-icon.svg` },
+      { id: "whatsapp", name: "WhatsApp Business", logoSrc: `${TECH}/whatsapp-business-icon.svg` },
     ],
   },
   ai: {
@@ -135,15 +97,11 @@ const PANELS: Record<
     stackLabel: "AI enablement",
     stackDetail: "Production-grade AI integrations for conversational UX, automation, and data-backed workflows.",
     tools: [
-      { id: "openai", name: "OpenAI", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/openai.svg" },
-      {
-        id: "langchain",
-        name: "LangChain",
-        logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/langchain.svg",
-      },
-      { id: "python", name: "Python", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/python.svg" },
-      { id: "pytorch", name: "PyTorch", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/pytorch.svg" },
-      { id: "docker", name: "Docker", logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/docker.svg" },
+      { id: "docker", name: "Docker", logoSrc: `${TECH}/Docker.svg` },
+      { id: "mongodb", name: "MongoDB", logoSrc: `${TECH}/MongoDB.svg` },
+      { id: "aws", name: "AWS", logoSrc: `${TECH}/AWS.svg` },
+      { id: "gcp", name: "Google Cloud", logoSrc: `${TECH}/Google Cloud.svg` },
+      { id: "automation", name: "Automation", logoSrc: `${TECH}/features/rocket-sharp-svgrepo-com.svg` },
     ],
   },
 };
@@ -174,7 +132,12 @@ export default function TechServiceScrollVisual({ activeId }: TechServiceScrollV
           {panel.tools.map((tool) => (
             <div key={tool.id} className="inline-flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={tool.logoSrc} alt={tool.logoAlt ?? tool.name} className="h-10 w-10 object-contain" loading="lazy" />
+              <img
+                src={tool.logoSrc}
+                alt={tool.logoAlt ?? tool.name}
+                className="h-10 w-10 object-contain"
+                loading="lazy"
+              />
               <span className="font-body text-sm text-on-background">{tool.name}</span>
             </div>
           ))}
@@ -182,7 +145,9 @@ export default function TechServiceScrollVisual({ activeId }: TechServiceScrollV
       </div>
 
       <div className="mt-5 space-y-2.5">
-        <h3 className="font-headline text-lg font-black uppercase tracking-tight text-on-background md:text-xl">{panel.headline}</h3>
+        <h3 className="font-headline text-lg font-black uppercase tracking-tight text-on-background md:text-xl">
+          {panel.headline}
+        </h3>
         <p className="font-body text-sm leading-relaxed text-on-surface-variant">{panel.detail}</p>
         <p className="font-body text-xs leading-relaxed text-on-surface-variant">{panel.stackDetail}</p>
       </div>

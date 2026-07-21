@@ -4,6 +4,7 @@ import { apiError } from "@/lib/api/responses";
 import { assertAdminApiAuth } from "@/lib/auth/adminSession";
 import { sendLeadNotificationMail } from "@/lib/integrations/formMail";
 import { createContactLead, listContactLeads } from "@/lib/services/contactLeads.service";
+import { verifyRecaptchaToken } from "@/lib/integrations/recaptcha";
 import { contactLeadSchema } from "@/lib/validators/contactLead.validator";
 
 export async function GET(req: NextRequest) {
@@ -22,7 +23,16 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-    const input = contactLeadSchema.parse(payload);
+    const recaptcha = await verifyRecaptchaToken(
+      typeof payload?.recaptchaToken === "string" ? payload.recaptchaToken : null,
+      "contact_lead"
+    );
+    if (!recaptcha.ok) {
+      return apiError(400, recaptcha.message);
+    }
+
+    const { recaptchaToken: _token, ...parsed } = contactLeadSchema.parse(payload);
+    const input = parsed;
 
     const ipAddress =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Space_Grotesk, Manrope } from "next/font/google";
 import MotionRoot from "@/components/motion/MotionRoot";
+import { LeadFormProvider } from "@/components/site/LeadFormProvider";
+import { RecaptchaProvider } from "@/components/site/RecaptchaProvider";
 import TopRouteLoader from "@/components/site/TopRouteLoader";
 import "./globals.css";
 
@@ -31,7 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body className="bg-surface text-on-surface font-body">
-        <MotionRoot>{children}</MotionRoot>
+        <MotionRoot>
+          <RecaptchaProvider>
+            <LeadFormProvider>{children}</LeadFormProvider>
+          </RecaptchaProvider>
+        </MotionRoot>
         <Suspense fallback={null}>
           <TopRouteLoader />
         </Suspense>
