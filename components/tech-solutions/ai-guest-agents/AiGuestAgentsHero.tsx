@@ -37,8 +37,8 @@ export default function AiGuestAgentsHero() {
     <header className="relative md:min-h-[420px]">
       <div className={`${heroInset} relative z-10`}>
         <div className="flex flex-col md:flex-row md:gap-6">
-          <div className="md:max-w-[40%] md:pr-4">
-            <nav aria-label="Breadcrumb" className="font-body text-sm text-on-surface-variant mb-3 md:mb-4">
+          <div className="md:max-w-[40%] py-1 md:py-4 md:pr-4">
+            <nav aria-label="Breadcrumb" className="font-body text-sm text-on-surface-variant mt-4 mb-4 md:mb-6">
               {breadcrumb.map((crumb, i) => (
                 <span key={crumb.label}>
                   {i > 0 ? (

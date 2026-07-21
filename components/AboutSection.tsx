@@ -11,7 +11,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className={`bg-surface-container-lowest ${sectionPageX} ${sectionStackTop} pb-32 md:pb-52`}
+      className={`bg-surface-container-lowest ${sectionPageX} ${sectionStackTop} pb-16`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.85fr)_minmax(0,1fr)] md:gap-x-14 lg:gap-x-16">

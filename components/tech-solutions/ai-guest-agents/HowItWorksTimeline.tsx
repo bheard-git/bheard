@@ -32,7 +32,7 @@ export default function HowItWorksTimeline() {
             return (
               <div key={step.number} className="relative flex flex-col">
                 <p className="font-headline text-lg font-bold leading-none text-primary">{step.number}.</p>
-                <div className="mt-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <div className="relative z-10 mt-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Icon className="h-7 w-7 text-primary md:h-8 md:w-8" strokeWidth={1.5} aria-hidden />
                 </div>
                 <h3 className="mt-3 font-headline text-sm font-bold uppercase tracking-tight text-on-background">
@@ -42,7 +42,7 @@ export default function HowItWorksTimeline() {
 
                 {!isLast ? (
                   <div
-                    className={`pointer-events-none absolute ${ICON_CENTER_TOP} left-6 right-[-0.75rem] flex -translate-y-1/2 items-center`}
+                    className={`pointer-events-none absolute ${ICON_CENTER_TOP} left-12 right-0 z-0 flex -translate-y-1/2 items-center`}
                     aria-hidden
                   >
                     <div className="h-px flex-1 border-t border-dashed border-outline-variant" />
