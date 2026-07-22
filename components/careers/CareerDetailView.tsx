@@ -2,6 +2,8 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
+import PageBreadcrumb from "@/components/system/PageBreadcrumb";
+import { splitHeroEyebrow, splitHeroTitle } from "@/components/system/splitHeroTheme";
 import { sectionPageX } from "@/components/system/sectionTheme";
 
 export type CareerDetailRole = {
@@ -25,21 +27,13 @@ export default function CareerDetailView({
   return (
     <div data-motion-exclude className="bg-surface pb-section-y-sm pt-8 md:pb-section-y md:pt-10">
       <div className={`${sectionPageX} mx-auto max-w-content-max`}>
-        <nav aria-label="Breadcrumb" className="font-body text-sm text-on-surface-variant">
-          <Link href="/careers" className="font-semibold text-primary underline-offset-4 hover:underline">
-            Careers
-          </Link>
-          <span className="mx-2 text-neutral-400" aria-hidden>
-            /
-          </span>
-          <span className="text-on-background">{role.title}</span>
-        </nav>
+        <PageBreadcrumb
+          items={[{ label: "Careers", href: "/careers" }, { label: role.title }]}
+        />
 
         <header className="mt-8 max-w-4xl">
-          <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{role.department}</p>
-          <h1 className="mt-3 font-headline text-[clamp(2rem,4.5vw,3.25rem)] font-black uppercase leading-tight tracking-tight text-on-background">
-            {role.title}
-          </h1>
+          <p className={splitHeroEyebrow}>{role.department}</p>
+          <h1 className={splitHeroTitle}>{role.title}</h1>
           <p className="mt-4 font-body text-sm uppercase tracking-[0.14em] text-on-surface-variant md:text-base">
             {role.location} · {role.type}
           </p>

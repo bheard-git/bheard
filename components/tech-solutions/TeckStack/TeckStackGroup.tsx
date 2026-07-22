@@ -17,7 +17,7 @@ export default function TeckStackGroup({ title, color, span, groupSpan, items }:
         rounded-[12px]
         border
         border-white/5 w-full
-        bg-[linear-gradient(180deg,rgba(13,22,73,.9),rgba(6,12,42,.95))]`}
+        bg-[linear-gradient(180deg,#fbf8f6,#f7f3f0,#fdf0e7)]`}
         >
 
         <div className={`${span} gap-[4px]`}>

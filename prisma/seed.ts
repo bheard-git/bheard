@@ -56,6 +56,8 @@ async function main() {
     );
   }
 
+  const seedStorySlugs = seedStories.map((story) => story.slug);
+
   for (const story of seedStories) {
     await SuccessStoryModel.findOneAndUpdate(
       { slug: story.slug },
@@ -80,6 +82,13 @@ async function main() {
       },
       { upsert: true, new: true }
     );
+  }
+
+  const removedStories = await SuccessStoryModel.deleteMany({
+    slug: { $nin: seedStorySlugs },
+  });
+  if (removedStories.deletedCount > 0) {
+    console.log(`[seed] removed ${removedStories.deletedCount} stale success stories`);
   }
 
   for (const page of seedPages) {

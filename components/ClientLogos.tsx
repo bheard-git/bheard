@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import LogoLoop, { type LogoItem } from "@/components/LogoLoop";
-import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
+import SectionTitle from "@/components/system/SectionTitle";
+import { sectionBandY, sectionPageX, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
 
 /** Slower base marquee + gentler hover crawl (px/s in LogoLoop RAF loop) */
 const STRIP_SPEED = 68;
@@ -64,17 +65,36 @@ function toLogoLoopItems(logos: ClientLogo[]): LogoItem[] {
   }));
 }
 
-export default function ClientLogos() {
+type ClientLogosProps = {
+  title?: string;
+  variant?: "default" | "bare";
+  className?: string;
+};
+
+export default function ClientLogos({ title, variant = "default", className }: ClientLogosProps) {
   const logosRowOne = useMemo(() => toLogoLoopItems(rowOneLogos), []);
   const logosRowTwo = useMemo(() => toLogoLoopItems(rowTwoLogos), []);
 
   const fadeTint = "#ffffff";
 
+  const sectionPadding =
+    variant === "bare"
+      ? "pt-10 pb-0 md:pt-12"
+      : title
+        ? "border-t border-neutral-200/80 pt-12 pb-16 md:pt-14 md:pb-20"
+        : sectionBandY;
+
   return (
     <section
-      aria-label="Clients we work with"
-      className={`relative overflow-hidden bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`}
+      aria-label={title ?? "Clients we work with"}
+      className={`relative overflow-hidden bg-surface-container-lowest ${sectionPageX} ${sectionPadding} ${className ?? ""}`}
     >
+      {title && variant !== "bare" ? (
+        <SectionTitle variant="compact" className={`text-center ${sectionTitleMarginCompact}`}>
+          {title}
+        </SectionTitle>
+      ) : null}
+
       <div className="relative space-y-5 md:space-y-6">
         <LogoLoop
           logos={logosRowOne}

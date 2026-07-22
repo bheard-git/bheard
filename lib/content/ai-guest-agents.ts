@@ -1,3 +1,5 @@
+import { publicAsset } from "@/lib/utils/publicAsset";
+
 export const AI_GUEST_AGENTS_PAGE_PATH = "/services/tech-solutions/ai-chatbots-agents";
 
 export const aiGuestAgentsContent = {
@@ -12,9 +14,6 @@ export const aiGuestAgentsContent = {
     headingLine1: "AI Guest Agents",
     headingLine2: "That Never",
     headingLine3: "Miss a Guest",
-    subhead:
-      "Every enquiry deserves an immediate response. Every conversation is a chance to increase revenue.",
-    body: "Hotels that respond first are more likely to secure the booking. Those that don't often lose the guest before the conversation has even started.\nBHeard has built AI Guest Agents that answer questions, qualify leads, recommend rooms, upsell experiences, and support hotel teams—24 hours a day.",
     trustedBy: {
       label: "Trusted by:",
       logoSrc: "/assets/client-logos/radisson-blu.webp",
@@ -22,21 +21,19 @@ export const aiGuestAgentsContent = {
       href: "/work/radisson-blu-goa",
     },
     ctaLabel: "Book a Demo",
-    imageSrc: "/assets/home/proof-of-craft/hospitality-lifestyle.webp",
-    imageAlt: "Luxury resort at dusk with palm trees and warm lighting",
+    imageSrc: publicAsset("assets", "guest ai", "hero.png"),
+    imageAlt: "AI Guest Agent at a luxury hotel reception desk with digital concierge interfaces",
   },
-  chatWidget: {
-    agentName: "AI Guest Agent",
-    status: "Online",
-    messages: [
-      { role: "agent" as const, text: "Hello! Welcome to our resort. How can I assist you today?" },
-      { role: "guest" as const, text: "Do you have any sea view rooms available for next weekend?" },
-      {
-        role: "agent" as const,
-        text: "Yes! We have Deluxe Sea View rooms available. Would you like me to check rates and send you a booking link?",
-      },
+  intro: {
+    subhead:
+      "Every enquiry deserves an immediate response. Every conversation is a chance to increase revenue.",
+    body: [
+      "Hotels that respond first are more likely to secure the booking. Those that don't often lose the guest before the conversation has even started.",
+      "BHeard has built AI Guest Agents that answer questions, qualify leads, recommend rooms, upsell experiences, and support hotel teams—24 hours a day.",
     ],
-    inputPlaceholder: "Type a message...",
+    chatInterfaceSrc: publicAsset("assets", "guest ai", "Ai agent chat interface.png"),
+    chatInterfaceAlt:
+      "Guest AI mobile chat interface showing room booking, dining recommendations, and spa appointments",
   },
   channels: {
     label: "Works across:",
@@ -160,8 +157,8 @@ export const aiGuestAgentsContent = {
     ],
   },
   industries: {
-    imageSrc: "/assets/home/work/hospitality-lifestyle.jpg",
-    imageAlt: "Luxury hotel pool area at night",
+    imageSrc: publicAsset("assets", "guest ai", "hospitality.png"),
+    imageAlt: "AI Guest Agent holographic interface at a luxury hotel reception desk",
     heading: "Designed for Hotels. Adaptable Across Hospitality.",
     paragraph:
       "Whether you manage a boutique hotel, luxury resort, wellness retreat, serviced apartment, or multi-property hotel group in India, the US, or Southeast Asia, our AI Guest Agents adapt to your guest journey, operational workflows, and brand experience.",

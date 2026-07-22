@@ -1,12 +1,16 @@
 /** Curated Unsplash assets for Brand / Tech solution pages (hostname allowed in next.config). */
 
+import { publicAsset } from "@/lib/utils/publicAsset";
+
 export const BRAND_HERO_MEDIA = {
-  src: "/assets/brand%20solutions/hero/hero%20image-2.png",
-  alt: "Creative team reviewing brand mood boards and strategy notes in a bright studio",
+  kind: "video" as const,
+  src: "/assets/brand%20solutions/hero/brand%20solutions%20hero%20banner.mp4",
+  alt: "Brand team collaborating on creative strategy in a modern studio",
 } as const;
 
 export const TECH_HERO_MEDIA = {
-  src: "/assets/tech%20solutions/hero/hero%20image.png",
+  kind: "video" as const,
+  src: publicAsset("assets", "tech solutions", "hero", "tech solutions hero banner.mp4"),
   alt: "Product team collaborating on digital platform design and development",
 } as const;
 
@@ -21,10 +25,6 @@ export const BRAND_STRUCTURE_MEDIA = {
 } as const;
 
 export const BRAND_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: string }> = {
-  toolkit: {
-    imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Brand strategy workshop with team planning at a whiteboard",
-  },
   social: {
     imageSrc: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1400&q=80",
     imageAlt: "Social media apps on a smartphone representing community and engagement",
@@ -46,12 +46,20 @@ export const BRAND_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: 
     imageAlt: "Analytics dashboard suggesting campaign performance",
   },
   influencer: {
-    imageSrc: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Creator filming content for an influencer marketing collaboration",
+    imageSrc: publicAsset("assets", "brand solutions", "influencermarketing.png"),
+    imageAlt: "Influencer recording content at a luxury resort",
+  },
+  aiContent: {
+    imageSrc: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "AI-powered content creation and Meta campaign optimization workflow",
   },
 };
 
 export const TECH_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: string }> = {
+  custom: {
+    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+    imageAlt: "Custom software development and business systems planning",
+  },
   web: {
     imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80",
     imageAlt: "Custom web development on a developer workstation",
@@ -65,12 +73,12 @@ export const TECH_SERVICE_IMAGES: Record<string, { imageSrc: string; imageAlt: s
     imageAlt: "UI/UX design wireframes and user experience planning",
   },
   commerce: {
-    imageSrc: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "E-commerce platform checkout and shopping experience",
+    imageSrc: publicAsset("assets", "tech solutions", "servcies", "Ecommerce.jpg"),
+    imageAlt: "E-commerce platform with shopping cart on a laptop",
   },
   ai: {
-    imageSrc: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "AI chatbots and intelligent virtual agents",
+    imageSrc: publicAsset("assets", "tech solutions", "servcies", "Chatbots & AI Agents .png"),
+    imageAlt: "Friendly AI chatbot emerging from a smartphone screen",
   },
 };
 

@@ -3,7 +3,7 @@
 import "@/lib/motion/config";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLeadForm } from "@/components/site/LeadFormProvider";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,7 +20,9 @@ export type KineticHeroLeadFormConfig = {
   subtitle?: string;
 };
 
-export type KineticHeroMedia = { src: string; alt: string };
+export type KineticHeroMedia =
+  | { kind: "image"; src: string; alt: string }
+  | { kind: "video"; src: string; alt: string };
 
 export type KineticSolutionsHeroProps = {
   eyebrow: string;
@@ -45,6 +47,59 @@ function splitWords(text: string, prefix: string) {
       {word}
     </span>
   ));
+}
+
+function HeroEditorialMedia({
+  media,
+  layout,
+  sizes,
+  priority = false,
+}: {
+  media: KineticHeroMedia;
+  layout: "desktop" | "mobile";
+  sizes: string;
+  priority?: boolean;
+}) {
+  const [reduceMotion, setReduceMotion] = useState(true);
+
+  useEffect(() => {
+    setReduceMotion(prefersReducedMotion());
+  }, []);
+
+  const fitClass =
+    media.kind === "video" ? "object-contain" : layout === "mobile" ? "object-cover" : "object-contain";
+
+  if (media.kind === "video") {
+    return (
+      <video
+        src={media.src}
+        autoPlay={!reduceMotion}
+        loop={!reduceMotion}
+        muted
+        playsInline
+        preload="auto"
+        controls={false}
+        disablePictureInPicture
+        disableRemotePlayback
+        tabIndex={-1}
+        draggable={false}
+        aria-hidden
+        onContextMenu={(e) => e.preventDefault()}
+        className={`pointer-events-none h-full w-full select-none ${fitClass}`}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={media.src}
+      alt={media.alt}
+      fill
+      priority={priority}
+      sizes={sizes}
+      className={fitClass}
+    />
+  );
 }
 
 export default function KineticSolutionsHero({
@@ -203,6 +258,13 @@ export default function KineticSolutionsHero({
 
   const isTech = variant === "tech";
   const editorialLayout = Boolean(media);
+  const isVideoMedia = media?.kind === "video";
+
+  const desktopMediaWidth = isVideoMedia ? "w-[min(54%,780px)]" : "w-[min(48%,680px)]";
+  const desktopMediaSizes = isVideoMedia ? "(max-width: 1024px) 0vw, 54vw" : "(max-width: 1024px) 0vw, 48vw";
+  const mobileMediaClass = isVideoMedia
+    ? "relative mt-2 aspect-[5/4] max-h-[min(72vw,420px)] w-full overflow-hidden lg:hidden"
+    : "relative mt-2 h-[min(56vw,360px)] w-full overflow-hidden lg:hidden";
 
   return (
     <header
@@ -213,17 +275,15 @@ export default function KineticSolutionsHero({
     >
       {media ? (
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[min(48%,680px)] lg:block"
+          className={`pointer-events-none absolute inset-y-0 right-0 z-[1] hidden ${desktopMediaWidth} lg:flex lg:items-center`}
           aria-hidden
         >
           <div ref={mediaRef} className="absolute inset-0 will-change-transform">
-            <Image
-              src={media.src}
-              alt={media.alt}
-              fill
+            <HeroEditorialMedia
+              media={media}
+              layout="desktop"
+              sizes={desktopMediaSizes}
               priority
-              sizes="(max-width: 1024px) 0vw, 48vw"
-              className="object-contain"
             />
           </div>
         </div>
@@ -321,13 +381,11 @@ export default function KineticSolutionsHero({
         </div>
 
         {media ? (
-          <div className="relative mt-2 h-[min(56vw,360px)] w-full overflow-hidden lg:hidden">
-            <Image
-              src={media.src}
-              alt={media.alt}
-              fill
+          <div className={mobileMediaClass}>
+            <HeroEditorialMedia
+              media={media}
+              layout="mobile"
               sizes="(max-width: 1024px) 100vw, 0vw"
-              className="object-cover"
             />
           </div>
         ) : null}

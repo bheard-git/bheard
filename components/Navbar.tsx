@@ -15,19 +15,23 @@ gsap.registerPlugin(useGSAP);
 type NavLink = { label: string; href: string };
 type NavGroup = { label: string; children: NavLink[] };
 
+const GUEST_AI_PATH = "/services/tech-solutions/ai-chatbots-agents";
+
 const solutionsGroup: NavGroup = {
   label: "Solutions",
   children: [
     { label: "Brand Solutions", href: "/brand-solutions" },
     { label: "Tech Solutions", href: "/tech-solutions" },
+    { label: "Guest AI", href: GUEST_AI_PATH },
   ],
 };
 
 const navLinks: NavLink[] = [
   { label: "Work", href: "/work" },
-  { label: "Blogs", href: "/blog" },
+  { label: "Industries", href: "/industries" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
+  { label: "Blogs", href: "/blog" },
 ];
 
 export default function Navbar() {
@@ -46,7 +50,9 @@ export default function Navbar() {
     pathname === "/brand-solutions" ||
     pathname.startsWith("/brand-solutions/") ||
     pathname === "/tech-solutions" ||
-    pathname.startsWith("/tech-solutions/");
+    pathname.startsWith("/tech-solutions/") ||
+    pathname === GUEST_AI_PATH ||
+    pathname.startsWith(`${GUEST_AI_PATH}/`);
 
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 

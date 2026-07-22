@@ -13,7 +13,7 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
         items-center
         justify-center
         rounded-2xl
-        bg-[linear-gradient(180deg,rgba(18,28,83,.95),rgba(10,18,55,.95))]
+        bg-white
         transition-all
         duration-300
         hover:-translate-y-1
@@ -54,7 +54,7 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
         </div>
         )}
 
-        <p className="mt-3 text-center text-xs text-[#deebff]">
+        <p className="mt-3 text-center text-xs text-[#3c3c3c]">
         {item.name}
         </p>
     </div>

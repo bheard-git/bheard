@@ -16,7 +16,11 @@ function FeatureIcon({ icon }: { icon: TechFeature["icon"] }) {
   return icon;
 }
 
-export default function TechShowcaseReplicaSection() {  
+export default function TechShowcaseReplicaSection({
+  sectionClassName = "py-10 md:py-14",
+}: {
+  sectionClassName?: string;
+}) {  
   const rootRef = useRef<HTMLElement | null>(null);
   const boardRef = useRef<HTMLDivElement | null>(null);
 
@@ -132,15 +136,22 @@ export default function TechShowcaseReplicaSection() {
   );
 
   return (
-    <section ref={rootRef} className="relative overflow-hidden bg-[#f6f7fb] py-section-y-sm md:py-section-y !pb-0">
-      <div className="mx-auto max-w-content-max px-5 md:px-8">
-        <div className="max-w-4xl">
+    <section ref={rootRef} className={`relative overflow-hidden bg-[#f6f7fb] ${sectionClassName}`}>
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="max-w-4xl relative z-1">
+            <div
+              data-float="blob"
+              className="pointer-events-none absolute -right-[16rem] top-[6rem] hidden h-[320px] w-[320px] opacity-90 rotate-180 md:block"
+              aria-hidden
+            >
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="" style={{width: "583.44px", height: "583.44px"}}><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" stroke="none" fill="#F3E2D2"></path><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" transform="translate(0.1 -2.98)" stroke="#F3E2D2" strokeWidth="0.25" fill="none"></path></svg>   
+            </div>
           <p data-reveal="intro" className="font-label text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
             Technology stack
           </p>
           <h2
             data-reveal="intro"
-            className="mt-3 font-headline text-[clamp(2.2rem,5.5vw,4.6rem)] font-black uppercase leading-[0.9] tracking-tight text-[#0a1330]"
+            className="mt-3 font-headline text-[clamp(2.2rem,5.5vw,4.6rem)] font-black relative z-1 uppercase leading-[0.9] tracking-tight text-[#0a1330]"
           >
             Built on modern tech.
             <br />
@@ -152,14 +163,8 @@ export default function TechShowcaseReplicaSection() {
           </p>
         </div>
 
-          <div className="relative mt-8 md:mt-10">
-            <div
-              data-float="blob"
-              className="pointer-events-none absolute right-[4rem] -top-[14rem] hidden h-[320px] w-[320px] opacity-90 rotate-180 md:block"
-              aria-hidden
-            >
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="" style={{width: "583.44px", height: "583.44px"}}><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" stroke="none" fill="#F3E2D2"></path><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" transform="translate(0.1 -2.98)" stroke="#F3E2D2" strokeWidth="0.25" fill="none"></path></svg>   
-            </div>
+          <div className="relative my-8 md:my-10">
+            
             <div
               data-float="blob"
               className="pointer-events-none absolute opacity-50 -left-24 bottom-8 hidden h-[220px] w-[220px] border border-[#f38458cf] rounded-[100%] bg-[radial-gradient(circle_at_40%_40%,#F3E2D2,#F3E2D2_50%,transparent_72%)] md:block"
@@ -199,7 +204,7 @@ export default function TechShowcaseReplicaSection() {
 
             <div
               ref={boardRef}
-              className="relative max-w-[1200px] mx-auto overflow-hidden rounded-[32px] border border-[#1f2d6d] bg-gradient-to-b from-[#0a0f4a] via-[#060d3d] to-[#050b30] p-4 shadow-[0_28px_70px_-34px_rgba(4,8,25,0.9)] md:p-5"
+              className="relative max-w-[1200px] mx-auto overflow-hidden rounded-[32px] border border-[#ffe0cb] bg-gradient-to-b from-[#fbf8f6] via-[#f7f3f0] to-[#fdf0e7] p-4 shadow-[0_28px_70px_-34px_rgba(4,8,25,0.9)] md:p-5"
             >
               <div className="pointer-events-none absolute inset-0 opacity-[0.24]" aria-hidden>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(60,102,255,0.22),transparent_42%),radial-gradient(circle_at_82%_84%,rgba(75,24,143,0.2),transparent_45%)]" />
@@ -219,7 +224,7 @@ export default function TechShowcaseReplicaSection() {
                 
               </div>
 
-              <div className="relative z-10 mt-4 grid grid-cols-1 gap-2.5 rounded-full border border-[#243376] bg-[linear-gradient(180deg,rgba(10,20,72,0.95),rgba(6,14,48,0.98))] p-3 md:grid-cols-4 md:gap-3 md:p-4 divide-x-[1px] divide-[#898989]">
+              <div className="relative z-10 mt-4 grid grid-cols-1 gap-2.5 rounded-full border border-[#ffe0cb] bg-[#fbf8f6] p-3 md:grid-cols-4 md:gap-3 md:p-4 divide-x-[1px] divide-[#ffd6ba]">
                 {TECH_SHOWCASE_FEATURES.map((feature) => (
                   <article
                     key={feature.id}
@@ -231,7 +236,7 @@ export default function TechShowcaseReplicaSection() {
                     </div>
                     <div>
                       <p className="font-label text-sm font-bold uppercase tracking-[0.14em] text-[#F38358]">{feature.title}</p>
-                      <p className="mt-0.5 font-body text-sm max-w-[130px] leading-snug text-[#d4dcff]">{feature.description}</p>
+                      <p className="mt-0.5 font-body text-sm max-w-[130px] leading-snug text-[#5c5c5c]">{feature.description}</p>
                     </div>
                   </article>
                 ))}

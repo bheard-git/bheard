@@ -1,42 +1,37 @@
 import TechSolutionsView from "@/components/tech-solutions/TechSolutionsView";
-import FaqSection, { type FaqItem } from "@/components/site/FaqSection";
+import type { FaqAccordionItem } from "@/components/solutions/TwoColumnFaqSection";
 
 export const metadata = {
-  title: "Tech Solutions | BHEARD",
+  title: "Custom Software, AI & Mobile App Development | BHeard",
   description:
-    "Scalable web and mobile products, UI/UX, e-commerce, and AI automation — engineered for performance, clarity, and measurable growth.",
+    "Custom software, mobile apps, AI solutions, UI/UX and e-commerce platforms for growing businesses — built by BHeard's tech team in Mumbai.",
 };
 
-const TECH_FAQS: FaqItem[] = [
+const TECH_FAQS: FaqAccordionItem[] = [
   {
-    question: "What technology does BHeard use to build websites?",
+    question: "Why choose BHeard for software development and digital solutions?",
     answer:
-      "BHeard builds websites on modern, production-grade technology stacks. For most projects we use Next.js (React) on the frontend for performance and SEO, Node.js or PHP on the backend, and databases including PostgreSQL and MySQL. For e-commerce we use Shopify or custom-built storefronts. All builds are optimised for Core Web Vitals, mobile responsiveness, and security best practices.",
+      "BHeard combines technology, user experience design, and business strategy under one team. From custom software and mobile app development to AI solutions and digital transformation initiatives, we build technology products designed to solve real business challenges and create measurable business impact.",
   },
   {
-    question: "Does BHeard build mobile apps for both iOS and Android?",
+    question: "What technology services does BHeard provide?",
     answer:
-      "Yes. We develop mobile applications for both iOS and Android. For most projects we use Flutter or React Native, which allow a single codebase to deliver native-quality experiences on both platforms. For performance-critical applications we also develop in native Swift (iOS) or Kotlin (Android). Every app is built for maintainability and scalability from day one.",
+      "BHeard provides custom software development, mobile app development, web application development, UI/UX design, e-commerce development, AI-powered solutions, business automation, customer portals, and digital transformation services. We help businesses build scalable technology products that improve efficiency, customer experience, and long-term growth.",
   },
   {
-    question: "What is included in a UI/UX design engagement?",
+    question: "Do you develop custom software for businesses?",
     answer:
-      "A UI/UX engagement at BHeard includes user research, information architecture, wireframing, interactive prototyping, and final high-fidelity UI design. We test with real users before handoff, and our designs are delivered as developer-ready Figma files with a documented design system. UX decisions are grounded in usability principles and conversion optimisation, not aesthetic preference alone.",
+      "Yes. We design and develop custom software solutions tailored to specific business requirements, workflows, and operational goals. Our software development services help businesses streamline processes, improve productivity, and create technology platforms built for future growth.",
   },
   {
-    question: "Can BHeard build AI chatbots and automation agents for my business?",
+    question: "Do you provide AI development and business automation solutions?",
     answer:
-      "Yes. BHeard builds AI-powered chatbots and intelligent automation agents that qualify leads, handle customer queries, and move users through conversion funnels — 24 hours a day without adding headcount. We integrate with WhatsApp, website chat, and internal tools. For hospitality clients, we have built AI revenue agents that handle guest queries and booking assistance.",
+      "Yes. We help businesses implement AI-powered solutions, intelligent automation, chatbots, AI agents, and workflow automation systems. These solutions help reduce manual effort, improve decision-making, enhance customer experiences, and increase operational efficiency.",
   },
   {
-    question: "How does BHeard approach e-commerce development?",
+    question: "Can BHeard build mobile apps for iOS and Android?",
     answer:
-      "We build end-to-end e-commerce platforms covering storefront design, product catalogue architecture, payment gateway integration, inventory management hooks, and conversion optimisation. We use Shopify for speed-to-market and custom React/Next.js builds for full control. Every e-commerce project is designed to be ready to sell from day one, with analytics instrumentation built in.",
-  },
-  {
-    question: "What is the typical timeline for a custom web development project?",
-    answer:
-      "A standard business website takes 6 to 10 weeks from kickoff to launch: 1 week for discovery and requirements, 2 to 3 weeks for design and prototype, 3 to 4 weeks for development and integration, and 1 week for testing and deployment. Complex web applications and e-commerce platforms take longer — typically 12 to 20 weeks. We provide a detailed project roadmap at the start of every engagement.",
+      "Yes. We develop custom mobile applications for iOS, Android, and cross-platform environments. From customer-facing apps and booking platforms to enterprise mobility solutions, we create mobile experiences designed for performance, usability, and scalability.",
   },
 ];
 
@@ -57,8 +52,7 @@ export default function TechSolutionsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <TechSolutionsView />
-      <FaqSection heading="Tech Solutions — Frequently Asked Questions" items={TECH_FAQS} />
+      <TechSolutionsView faqItems={TECH_FAQS} />
     </>
   );
 }

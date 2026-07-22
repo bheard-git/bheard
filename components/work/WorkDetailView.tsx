@@ -8,11 +8,20 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent, CaseStudyImpactItem } from "@/lib/case-studies";
 import CaseStudyRichText from "@/components/work/CaseStudyRichText";
+import RelatedCaseStudiesSection from "@/components/work/RelatedCaseStudiesSection";
+import { mapCaseStudyToSolutionsCard } from "@/lib/solutions/solutionsCaseStudies";
+import PageBreadcrumb from "@/components/system/PageBreadcrumb";
+import {
+  splitHeroBreadcrumbNav,
+  splitHeroEyebrow,
+  splitHeroInset,
+  splitHeroTextColumn,
+  splitHeroTitle,
+} from "@/components/system/splitHeroTheme";
 import { fadeUpScrollOnce, prefersReducedMotion } from "@/lib/motion/animations";
 import { publicAsset } from "@/lib/utils/publicAsset";
 
 const band = "mx-auto w-full max-w-7xl px-8";
-const heroInset = "mx-auto w-full max-w-8xl pl-4 pr-6 md:pl-10 md:pr-8";
 
 /** Simulated primary border via shadow at ~30% opacity */
 const primaryIconShadow =
@@ -115,16 +124,16 @@ function NarrativeSection({
   centerWithIcon = false,
   children,
 }: {
-  heading: string;
+  heading?: string;
   iconSrc?: string;
   centerWithIcon?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <SectionHeading>{heading}</SectionHeading>
+      {heading ? <SectionHeading>{heading}</SectionHeading> : null}
       <div
-        className={`mt-6 grid gap-6 md:mt-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-8 ${
+        className={`${heading ? "mt-6 md:mt-8" : ""} grid gap-6 md:grid-cols-[auto_minmax(0,1fr)] md:gap-8 ${
           centerWithIcon ? "md:items-center" : "md:items-start"
         }`}
       >
@@ -190,39 +199,28 @@ export default function WorkDetailView({
   return (
     <div ref={rootRef} className="bg-surface-container-lowest pb-12 text-on-background md:pb-16">
 
-      <header className="relative md:min-h-[480px]">
-        <div className={`${heroInset} relative z-10`}>
-          <div className="flex flex-col md:flex-row md:gap-6">
-            <div className="md:max-w-[40%] py-1 md:py-4 md:pr-4" data-reveal>
-              <nav aria-label="Breadcrumb" className="font-body text-sm text-on-surface-variant mt-4 mb-4 md:mb-6">
-                <Link href="/" className="font-semibold text-primary underline-offset-4 hover:underline">
-                  Home
-                </Link>
-                <span className="mx-2 text-neutral-400" aria-hidden>
-                  /
-                </span>
-                <Link href="/work" className="font-semibold text-primary underline-offset-4 hover:underline">
-                  Work
-                </Link>
-                <span className="mx-2 text-neutral-400" aria-hidden>
-                  /
-                </span>
-                <span className="text-on-background">{study.listTitle}</span>
-              </nav>
-              <p className="font-label text-sm font-bold uppercase tracking-[0.18em] text-primary md:text-base">
-                {study.heroMeta}
-              </p>
-              <h1 className="mt-2 font-headline text-[clamp(1.75rem,4.5vw,3.25rem)] font-black uppercase leading-[0.95] tracking-tight text-on-surface">
+      <header className="relative bg-white md:min-h-[calc(100dvh-5.55rem)]">
+        <div
+          className={`${splitHeroInset} relative z-10 flex min-h-0 flex-col md:min-h-[calc(100dvh-5.55rem)]`}
+        >
+          <PageBreadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Work", href: "/work" },
+              { label: study.listTitle },
+            ]}
+            className={splitHeroBreadcrumbNav}
+          />
+
+          <div className="flex flex-1 flex-col justify-center py-8 md:py-10">
+            <div className={splitHeroTextColumn} data-reveal>
+              <p className={splitHeroEyebrow}>{study.heroMeta}</p>
+              <h1 className={splitHeroTitle}>
                 {study.heroTitle}
                 {study.heroTitleAccent ? (
                   <span className="block text-primary">{study.heroTitleAccent}</span>
                 ) : null}
               </h1>
-              <div className="mt-4 space-y-3">
-                {study.heroSubtitle.split("\n\n").map((para) => (
-                  <CaseStudyRichText key={para.slice(0, 40)} content={para} />
-                ))}
-              </div>
               {study.trustedBy ? (
                 <div className="mt-6">
                   <span className="mb-2 block h-0.5 w-10 bg-primary" aria-hidden />
@@ -245,13 +243,12 @@ export default function WorkDetailView({
                 </div>
               ) : null}
             </div>
-            <div className="hidden md:block" aria-hidden />
           </div>
         </div>
 
         <figure
           data-reveal
-          className="relative mt-5 min-h-[260px] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] md:rounded-none md:rounded-bl-[1.25rem]"
+          className="relative mt-5 min-h-[min(56vw,320px)] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] md:rounded-none md:rounded-bl-[1.25rem]"
         >
           <Image
             src={study.heroImage}
@@ -260,6 +257,10 @@ export default function WorkDetailView({
             priority
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 55vw"
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-white via-white/75 to-transparent md:w-[32%]"
+            aria-hidden
           />
         </figure>
       </header>
@@ -332,54 +333,20 @@ export default function WorkDetailView({
       <section className="bg-[#fbf8f6] py-10 md:py-14">
         <div className={band} data-reveal>
           <NarrativeSection heading="The Bigger Picture" iconSrc={sectionIcons.biggerPicture} centerWithIcon>
-            <CaseStudyRichText content={study.closingStatement} />
+            <div className="space-y-3">
+              {study.heroSubtitle.split("\n\n").map((para) => (
+                <CaseStudyRichText key={para.slice(0, 40)} content={para} />
+              ))}
+              <CaseStudyRichText content={study.closingStatement} />
+            </div>
           </NarrativeSection>
         </div>
       </section>
 
-      {relatedStudies.length > 0 ? (
-        <section className="mt-10 md:mt-12">
-          <div className={band}>
-            <div data-reveal className="mb-6 text-center md:mb-8">
-              <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
-                Related Case Studies
-              </h2>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
-              {relatedStudies.map((related) => (
-                <Link
-                  key={related.slug}
-                  href={`/work/${related.slug}`}
-                  data-reveal
-                  className="group block"
-                >
-                  <figure className="relative aspect-[16/10] overflow-hidden rounded-sm">
-                    <Image
-                      src={related.listImage}
-                      alt={related.listImageAlt}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </figure>
-                  <div className="pt-3">
-                    <h3 className="font-headline text-base font-bold leading-snug tracking-tight text-on-background md:text-lg">
-                      {related.listTagline}
-                    </h3>
-                    <p className="mt-1 font-body text-sm text-on-surface-variant">
-                      {related.listTitle}
-                      <span className="text-primary" aria-hidden>
-                        {" "}
-                        ·
-                      </span>
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
+      <RelatedCaseStudiesSection
+        cards={relatedStudies.map(mapCaseStudyToSolutionsCard)}
+        reveal
+      />
 
       <section className="mt-10 md:mt-12">
         <div className={band}>
