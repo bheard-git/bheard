@@ -21,7 +21,7 @@ export const aiGuestAgentsContent = {
       href: "/work/radisson-blu-goa",
     },
     ctaLabel: "Book a Demo",
-    imageSrc: publicAsset("assets", "guest ai", "hero.png"),
+    imageSrc: publicAsset("assets", "guest ai", "guest ai hero.png"),
     imageAlt: "AI Guest Agent at a luxury hotel reception desk with digital concierge interfaces",
   },
   intro: {

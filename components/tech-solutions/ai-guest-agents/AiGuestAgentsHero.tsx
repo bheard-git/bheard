@@ -28,7 +28,7 @@ export default function AiGuestAgentsHero() {
   return (
     <header className="relative bg-white md:min-h-[calc(100dvh-5.55rem)]">
       <div className={`${splitHeroInset} relative z-10 flex min-h-0 flex-col md:min-h-[calc(100dvh-5.55rem)]`}>
-        <PageBreadcrumb items={breadcrumbItems} className={splitHeroBreadcrumbNav} />
+        {/* <PageBreadcrumb items={breadcrumbItems} className={splitHeroBreadcrumbNav} /> */}
 
         <div className="flex flex-1 flex-col justify-center py-8 md:py-10">
           <div className={splitHeroTextColumn}>
@@ -74,13 +74,13 @@ export default function AiGuestAgentsHero() {
         </div>
       </div>
 
-      <figure className="relative mt-5 min-h-[min(56vw,320px)] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] md:rounded-none md:rounded-bl-[1.25rem]">
+      <figure className="relative mt-5 min-h-[min(56vw,320px)] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] lg:w-[78%] md:rounded-none md:rounded-bl-[1.25rem]">
         <Image
           src={hero.imageSrc}
           alt={hero.imageAlt}
           fill
           priority
-          className="object-cover"
+          className="object-cover object-right"
           sizes="(max-width: 768px) 100vw, 55vw"
         />
         <div

@@ -172,7 +172,7 @@ export default function HorizontalProcessRail({
                           alt={s.imageAlt ?? ""}
                           fill
                           sizes="380px"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05] h-[64%]"
                           onLoadingComplete={bumpRefresh}
                         />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent" />

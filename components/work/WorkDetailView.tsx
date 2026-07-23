@@ -249,14 +249,14 @@ export default function WorkDetailView({
 
         <figure
           data-reveal
-          className="relative mt-5 min-h-[min(56vw,320px)] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] md:rounded-none md:rounded-bl-[1.25rem]"
+          className="relative mt-5 min-h-[min(56vw,320px)] overflow-hidden rounded-lg md:absolute md:inset-y-0 md:right-0 md:mt-0 md:min-h-0 md:w-[60%] lg:w-[75%] md:rounded-none md:rounded-bl-[1.25rem]"
         >
           <Image
             src={study.heroImage}
             alt={study.heroImageAlt}
             fill
             priority
-            className="object-cover"
+            className="object-cover object-center"
             sizes="(max-width: 768px) 100vw, 55vw"
           />
           <div
