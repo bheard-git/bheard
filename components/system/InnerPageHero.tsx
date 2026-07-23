@@ -29,7 +29,7 @@ export default function InnerPageHero({
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const watermarkRef = useRef<HTMLSpanElement | null>(null);
   const words = heading.trim().split(/\s+/);
-  const sectionPadding = size === "compact" ? "py-12 md:py-14" : "py-section-y-sm md:py-section-y";
+  const sectionPadding = size === "compact" ? "py-12" : "py-section-y-sm md:py-section-y";
 
   useGSAP(
     () => {

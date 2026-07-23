@@ -15,7 +15,6 @@ const links = [
   { href: "/admin/careers", label: "Career roles" },
   { href: "/admin/careers/applications", label: "Applicants" },
   { href: "/admin/crm/leads", label: "CRM Leads" },
-  { href: "/admin/success-stories", label: "Success Stories" },
   { href: "/admin/pages", label: "Pages" },
 ];
 

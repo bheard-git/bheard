@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { listPublishedBlogPosts } from "@/lib/services/blog.service";
-import { listActiveCareers } from "@/lib/services/careers.service";
 import { listPublishedStories } from "@/lib/services/stories.service";
 import { getSiteUrl } from "@/lib/seo/site";
 
@@ -19,6 +18,7 @@ const STATIC_PATHS = [
   "/careers",
   "/privacy-policy",
   "/terms-and-conditions",
+  "/sitemap",
 ] as const;
 
 function asDate(value: unknown): Date | undefined {
@@ -74,20 +74,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (err) {
     console.warn("[sitemap] skipping story URLs:", err instanceof Error ? err.message : err);
-  }
-
-  try {
-    const careerRows = (await listActiveCareers()) as Array<{ slug: string; updatedAt?: unknown }>;
-    for (const c of careerRows) {
-      const lastModified = asDate(c.updatedAt) ?? now;
-      setEntry(`/careers/${c.slug}`, {
-        lastModified,
-        changeFrequency: "weekly",
-        priority: 0.7,
-      });
-    }
-  } catch (err) {
-    console.warn("[sitemap] skipping career URLs:", err instanceof Error ? err.message : err);
   }
 
   return Array.from(byUrl.values());

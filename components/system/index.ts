@@ -1,6 +1,7 @@
 export { default as BentoGrid } from "./BentoGrid";
 export { default as ContentCard } from "./ContentCard";
 export { default as InnerPageHero } from "./InnerPageHero";
+export { default as ListingBandHero } from "./ListingBandHero";
 export { default as MetricsRow } from "./MetricsRow";
 export { default as MotionWrapper } from "./MotionWrapper";
 export { default as PinnedStorySection } from "./PinnedStorySection";

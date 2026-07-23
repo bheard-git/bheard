@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import ListingBandHero from "@/components/system/ListingBandHero";
 import { sectionPageX, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 
@@ -47,12 +48,6 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
       if (prefersReducedMotion()) return;
 
       gsap.fromTo(
-        '[data-blog-banner="eyebrow"], [data-blog-banner="title"], [data-blog-banner="copy"]',
-        { opacity: 0, y: 34 },
-        { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: "power3.out" }
-      );
-
-      gsap.fromTo(
         '[data-blog-featured]',
         { opacity: 0, y: 36 },
         {
@@ -82,29 +77,18 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
 
   return (
     <div ref={rootRef}>
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-800 px-8 pb-20 pt-36 md:pb-24 md:pt-40">
-        <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-primary/20 blur-[130px]" />
-        <div className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-primary-fixed/20 blur-[110px]" />
-        <div className="mx-auto max-w-content-max">
-          <p data-blog-banner="eyebrow" className="font-label text-label-sm uppercase tracking-[0.2em] text-primary-fixed">
-            Think & Build
-          </p>
-          <h1
-            data-blog-banner="title"
-            className="mt-4 max-w-4xl font-headline text-[clamp(2.3rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-white"
-          >
+      <ListingBandHero
+        watermark="Blog"
+        eyebrow="Think & Build"
+        title={
+          <>
             Perspectives on
             <br />
             Brand & Build
-          </h1>
-          <p
-            data-blog-banner="copy"
-            className="mt-6 max-w-2xl font-body text-base leading-relaxed text-neutral-300 md:text-lg"
-          >
-            We publish practical frameworks, campaign lessons, and product execution insights from real client work.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        copy="We publish practical frameworks, campaign lessons, and product execution insights from real client work."
+      />
 
       <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
         <div className="mx-auto max-w-content-max">

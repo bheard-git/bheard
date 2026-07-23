@@ -13,7 +13,7 @@ const TEAM_IMAGES = [
   { src: "/assets/team/team-1.jpeg", alt: "BHEARD team member collaborating in the studio" },
   { src: "/assets/team/team-3.jpeg", alt: "BHEARD team member at work" },
   { src: "/assets/team/team-5.jpeg", alt: "BHEARD team in a creative session" },
-  { src: "/assets/team/team-7.jpeg", alt: "BHEARD team member smiling" },
+  { src: "/assets/team/team.png", alt: "BHEARD team member smiling" },
 ] as const;
 
 const PROTECTED_IMAGE_CLASS =

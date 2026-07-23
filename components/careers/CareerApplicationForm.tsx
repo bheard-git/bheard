@@ -193,7 +193,13 @@ export default function CareerApplicationForm({
   }
 
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] md:p-8">
+    <div
+      className={
+        variant === "general"
+          ? "rounded-xl bg-white p-6 shadow-[0_8px_32px_-12px_rgba(255,146,62,0.22)] md:p-8"
+          : "rounded-xl border border-neutral-200 bg-white p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] md:p-8"
+      }
+    >
       <div className="mb-6 max-w-2xl">
         <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Application</p>
         <h2 id="apply-heading" className="mt-2 font-headline text-2xl font-black uppercase tracking-tight text-neutral-900">

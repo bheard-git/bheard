@@ -31,6 +31,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Params
     if (error instanceof ZodError) {
       return apiError(400, "Invalid page payload", error.flatten());
     }
-    return apiError(500, "Failed to update page");
+    console.error("[pages] update failed:", error);
+    const message = error instanceof Error ? error.message : "Failed to update page";
+    return apiError(500, "Failed to update page", message);
   }
 }

@@ -1,24 +1,20 @@
 ﻿"use client";
 
-import "@/lib/motion/config";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
-import { prefersReducedMotion } from "@/lib/motion/animations";
+import ListingBandHero from "@/components/system/ListingBandHero";
 import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const band = sectionContentBand;
 const bandLight = `bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`;
 const bandWarm = `bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`;
-const LIFE_AT_IMAGE = "/assets/home/about/team%20work.jpg";
+const LIFE_AT_IMAGE = "/assets/home/about/life%20at%20bheard.png";
 const PROTECTED_IMAGE_CLASS =
   "pointer-events-none select-none object-cover grayscale [-webkit-user-drag:none]";
+
+const ROLE_CARD_CLASS =
+  "careers-scroll-reveal rounded-lg border-l-[1.5px] border-primary bg-white px-5 py-4 shadow-[0_8px_28px_-12px_rgba(255,146,62,0.22)]";
 
 type CareersListingViewProps = {
   slug: string;
@@ -77,73 +73,31 @@ const OFFICES = [
   },
 ] as const;
 
+const ROLE_CARD_DELAYS = [
+  "",
+  "careers-scroll-reveal-delay-1",
+  "careers-scroll-reveal-delay-2",
+  "careers-scroll-reveal-delay-3",
+] as const;
+
 export default function CareersListingView({
   slug,
   roleTitle,
   onlineApplicationsReady,
 }: CareersListingViewProps) {
-  const rootRef = useRef<HTMLDivElement | null>(null);
-
-  useGSAP(
-    () => {
-      if (prefersReducedMotion()) return;
-
-      gsap.fromTo(
-        '[data-careers-banner="eyebrow"], [data-careers-banner="title"], [data-careers-banner="copy"]',
-        { opacity: 0, y: 36 },
-        { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: "power3.out" }
-      );
-
-      const reveals = gsap.utils.toArray<HTMLElement>("[data-careers-reveal]");
-      reveals.forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 36 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.55,
-            ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 90%", once: true },
-          }
-        );
-      });
-    },
-    { scope: rootRef }
-  );
-
   return (
-    <div ref={rootRef}>
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-800 px-8 pb-20 pt-36 md:pb-24 md:pt-40">
-        <div className="pointer-events-none absolute -right-20 top-10 h-64 w-64 rounded-full bg-primary/20 blur-[120px]" />
-        <div className="pointer-events-none absolute -left-14 bottom-0 h-52 w-52 rounded-full bg-primary-fixed/20 blur-[100px]" />
-        <div className={sectionContentBand}>
-          <p
-            data-careers-banner="eyebrow"
-            className="font-label text-label-sm uppercase tracking-[0.2em] text-primary-fixed"
-          >
-            Careers at BHeard
-          </p>
-          <h1
-            data-careers-banner="title"
-            className="mt-4 max-w-4xl font-headline text-[clamp(2.4rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-white"
-          >
-            Grow Your Career With Us
-          </h1>
-          <p
-            data-careers-banner="copy"
-            className="mt-6 max-w-2xl font-body text-base leading-relaxed text-neutral-300 md:text-lg"
-          >
-            Join a team where creativity, technology, and innovation come together to create
-            meaningful work and lasting impact.
-          </p>
-        </div>
-      </section>
+    <div>
+      <ListingBandHero
+        watermark="Careers"
+        eyebrow="Careers at BHeard"
+        title="Grow Your Career With Us"
+        copy="Join a team where creativity, technology, and innovation come together to create meaningful work and lasting impact."
+      />
 
       <section className={bandLight}>
-        <div className={band} data-careers-reveal>
+        <div className={band}>
           <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16">
-            <div>
+            <div className="careers-scroll-reveal">
               <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
                 Life at BHeard
               </h2>
@@ -178,7 +132,7 @@ export default function CareersListingView({
                 </p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-surface-container-high">
+            <div className="careers-scroll-reveal careers-scroll-reveal-delay-1 relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-surface-container-high">
               <Image
                 src={LIFE_AT_IMAGE}
                 alt="BHeard team collaborating in the studio"
@@ -193,13 +147,16 @@ export default function CareersListingView({
       </section>
 
       <section className={bandWarm}>
-        <div className={band} data-careers-reveal>
-          <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-primary md:text-4xl">
+        <div className={band}>
+          <h2 className="careers-scroll-reveal font-headline text-3xl font-black uppercase tracking-tight text-primary md:text-4xl">
             What We Believe
           </h2>
           <ul className="mt-8 grid grid-cols-1 divide-y divide-primary/40 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
-            {BELIEFS.map((item) => (
-              <li key={item.title} className="px-0 py-6 first:pt-0 last:pb-0 sm:px-5 sm:py-0 lg:px-6">
+            {BELIEFS.map((item, index) => (
+              <li
+                key={item.title}
+                className={`careers-scroll-reveal ${ROLE_CARD_DELAYS[index] ?? ""} px-0 py-6 first:pt-0 last:pb-0 sm:px-5 sm:py-0 lg:px-6`}
+              >
                 <h3 className="font-headline text-lg font-bold uppercase tracking-tight text-primary">
                   {item.title}
                 </h3>
@@ -213,27 +170,27 @@ export default function CareersListingView({
       </section>
 
       <section className={bandLight}>
-        <div className={band} data-careers-reveal>
-          <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
+        <div className={band}>
+          <h2 className="careers-scroll-reveal font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
             Who We&apos;re Looking For
           </h2>
-          <p className="mt-4 max-w-3xl font-body text-base text-on-surface-variant md:text-lg">
+          <p className="careers-scroll-reveal careers-scroll-reveal-delay-1 mt-4 max-w-3xl font-body text-base text-on-surface-variant md:text-lg">
             We&apos;re always open to connecting with talented people across:
           </p>
-          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {ROLE_GROUPS.map((group) => (
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ROLE_GROUPS.map((group, index) => (
               <li
                 key={group.title}
-                className="rounded-lg border border-outline-variant/60 bg-white px-4 py-3"
+                className={`${ROLE_CARD_CLASS} ${ROLE_CARD_DELAYS[index] ?? ""}`}
               >
                 <h3 className="font-headline text-sm font-bold uppercase tracking-wide text-on-background">
                   {group.title}
                 </h3>
-                <p className="mt-1.5 font-body text-sm leading-snug text-on-surface-variant">{group.roles}</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-on-surface-variant">{group.roles}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-5 max-w-3xl font-body text-base text-on-surface-variant md:text-lg">
+          <p className="careers-scroll-reveal mt-8 max-w-3xl font-body text-base text-on-surface-variant md:text-lg">
             Across every role, we value people who are agile, curious, and comfortable using AI
             tools to multiply their productivity — not replace their thinking. If your role
             isn&apos;t listed here but you believe your work speaks for itself, we&apos;d still like
@@ -243,9 +200,9 @@ export default function CareersListingView({
       </section>
 
       <section className={bandWarm}>
-        <div className={band} data-careers-reveal>
+        <div className={band}>
           <div className="grid gap-8 md:grid-cols-2 md:items-start md:gap-12">
-            <div>
+            <div className="careers-scroll-reveal">
               <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
                 Where We Work
               </h2>
@@ -255,10 +212,10 @@ export default function CareersListingView({
               </p>
             </div>
             <ul className="grid gap-4 sm:grid-cols-2">
-              {OFFICES.map((office) => (
+              {OFFICES.map((office, index) => (
                 <li
                   key={office.city}
-                  className="rounded-lg border border-outline-variant/60 bg-white px-5 py-4"
+                  className={`careers-scroll-reveal ${ROLE_CARD_DELAYS[index] ?? ""} rounded-lg border border-outline-variant/60 bg-white px-5 py-4`}
                 >
                   <p className="font-label text-xs uppercase tracking-[0.16em] text-primary">
                     {office.label}
@@ -275,12 +232,12 @@ export default function CareersListingView({
       </section>
 
       <section className={`${bandLight} border-t border-outline-variant/60`}>
-        <div className={band} data-careers-reveal>
+        <div className={band}>
           <div className="max-w-4xl">
-            <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
+            <h2 className="careers-scroll-reveal font-headline text-3xl font-black uppercase tracking-tight text-on-background md:text-4xl">
               Let&apos;s Talk
             </h2>
-            <p className="mt-4 font-body text-base text-on-surface-variant md:text-lg">
+            <p className="careers-scroll-reveal careers-scroll-reveal-delay-1 mt-4 font-body text-base text-on-surface-variant md:text-lg">
               Share your resume and a note about the work you want to do at{" "}
               <a
                 className="font-semibold text-on-background underline decoration-primary underline-offset-4"
@@ -290,7 +247,7 @@ export default function CareersListingView({
               </a>
               , or apply through the form below.
             </p>
-            <div className="mt-10">
+            <div className="careers-scroll-reveal careers-scroll-reveal-delay-2 mt-10">
               <CareerApplicationForm
                 slug={slug}
                 roleTitle={roleTitle}

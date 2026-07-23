@@ -57,7 +57,11 @@ export default function PageContentForm({
 
     if (!res.ok) {
       const payload = await res.json().catch(() => null);
-      setError(payload?.error?.message ?? "Failed to save page");
+      const details =
+        payload?.error?.details && typeof payload.error.details === "string"
+          ? payload.error.details
+          : null;
+      setError(details ?? payload?.error?.message ?? "Failed to save page");
       setSaving(false);
       return;
     }

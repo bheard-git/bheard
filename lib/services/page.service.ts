@@ -37,23 +37,22 @@ export async function listAllPages() {
 
 export async function upsertPage(slug: string, input: PageUpdateInput) {
   return runDb(async () => {
-    const updateData: Record<string, unknown> = {
+    const $set: Record<string, string> = {
       content: input.content,
     };
     if (input.title) {
-      updateData.title = input.title;
+      $set.title = input.title;
+    }
+
+    const $setOnInsert: Record<string, string> = { slug };
+    if (!input.title) {
+      $setOnInsert.title = buildPageTitleFromSlug(slug);
     }
 
     const row = await PageModel.findOneAndUpdate(
       { slug },
-      {
-        $set: updateData,
-        $setOnInsert: {
-          slug,
-          title: input.title ?? buildPageTitleFromSlug(slug),
-        },
-      },
-      { upsert: true, new: true }
+      { $set, $setOnInsert },
+      { upsert: true, new: true, runValidators: true }
     );
 
     return row ? row.toJSON() : null;

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BriefcaseBusiness, FileText, LayoutDashboard, Mail, Newspaper, Trophy } from "lucide-react";
+import { BriefcaseBusiness, FileText, LayoutDashboard, Mail, Newspaper } from "lucide-react";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/admin/ui/card";
 
@@ -11,7 +11,6 @@ type Counts = {
   blogs: number;
   careers: number;
   applicants: number;
-  stories: number;
   leads: number;
 };
 
@@ -20,7 +19,6 @@ export default function AdminDashboardPage() {
     blogs: 0,
     careers: 0,
     applicants: 0,
-    stories: 0,
     leads: 0,
   });
   const [loading, setLoading] = useState(true);
@@ -29,11 +27,10 @@ export default function AdminDashboardPage() {
     let cancelled = false;
     const run = async () => {
       setLoading(true);
-      const [blogs, careers, applicants, stories, leads] = await Promise.allSettled([
+      const [blogs, careers, applicants, leads] = await Promise.allSettled([
         fetch("/api/blog?includeDraft=true").then((r) => (r.ok ? r.json() : Promise.reject())),
         fetch("/api/careers?includeInactive=true").then((r) => (r.ok ? r.json() : Promise.reject())),
         fetch("/api/admin/career-applications").then((r) => (r.ok ? r.json() : Promise.reject())),
-        fetch("/api/stories?includeDraft=true").then((r) => (r.ok ? r.json() : Promise.reject())),
         fetch("/api/contact-leads?admin=true").then((r) => (r.ok ? r.json() : Promise.reject())),
       ]);
       if (cancelled) return;
@@ -41,7 +38,6 @@ export default function AdminDashboardPage() {
         blogs: blogs.status === "fulfilled" ? (blogs.value.data?.length ?? 0) : 0,
         careers: careers.status === "fulfilled" ? (careers.value.data?.length ?? 0) : 0,
         applicants: applicants.status === "fulfilled" ? (applicants.value.data?.length ?? 0) : 0,
-        stories: stories.status === "fulfilled" ? (stories.value.data?.length ?? 0) : 0,
         leads: leads.status === "fulfilled" ? (leads.value.data?.length ?? 0) : 0,
       });
       setLoading(false);
@@ -81,13 +77,6 @@ export default function AdminDashboardPage() {
       href: "/admin/crm/leads",
       Icon: Mail,
     },
-    {
-      label: "Success Stories",
-      description: "Curate case studies and publish proof-oriented narratives.",
-      value: counts.stories,
-      href: "/admin/success-stories",
-      Icon: Trophy,
-    },
   ];
 
   return (
@@ -95,7 +84,7 @@ export default function AdminDashboardPage() {
       <PageHeader
         eyebrow="Overview"
         title="Admin Dashboard"
-        description="Production-grade control center for content, hiring, inbound leads, and story publishing."
+        description="Production-grade control center for content, hiring, and inbound leads."
       />
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

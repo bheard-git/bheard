@@ -24,7 +24,7 @@ import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const NEHA_LINKEDIN = "https://www.linkedin.com/in/nehagupta";
-const BHEARD_STORY_IMAGE = "/assets/home/about/team%20work.jpg";
+const BHEARD_STORY_IMAGE = "/assets/home/about/the%20bheard%20story.png";
 const FOUNDER_IMAGE = "/assets/about/Neha-founder-profile-image.jpeg";
 const PROTECTED_IMAGE_CLASS =
   "pointer-events-none select-none object-cover [-webkit-user-drag:none]";
