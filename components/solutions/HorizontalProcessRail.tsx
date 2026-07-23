@@ -154,16 +154,15 @@ export default function HorizontalProcessRail({
                 >
                   {s.imageSrc ? (
                     immersiveCardStyle ? (
-                      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[62%] overflow-hidden">
                         <Image
                           src={s.imageSrc}
                           alt={s.imageAlt ?? ""}
                           fill
                           sizes="380px"
-                          className="object-cover"
+                          className="object-cover object-center"
                           onLoadingComplete={bumpRefresh}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-black/5" />
                       </div>
                     ) : (
                       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-inverse-surface/10">
