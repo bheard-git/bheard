@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP);
 
@@ -188,7 +189,7 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-surface-container-lowest pb-10 pt-24 md:min-h-[95vh] md:pb-12 md:pt-28 lg:min-h-[102vh] lg:pb-14 lg:pt-32"
+      className={`relative isolate overflow-hidden bg-surface-container-lowest ${sectionPageX} pb-10 pt-24 md:min-h-[95vh] md:pb-12 md:pt-28 lg:min-h-[102vh] lg:pb-14 lg:pt-32`}
     >
       <div
         aria-hidden
@@ -204,7 +205,7 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-content-max flex-col items-center px-gutter-sm text-center md:px-gutter">
+      <div className={`relative z-10 flex w-full flex-col items-center text-center ${sectionContentBand}`}>
         <p className="font-label text-label-sm uppercase tracking-[0.24em] text-primary">Our Success Stories</p>
         <h1 className="mt-4 max-w-4xl font-headline text-[clamp(2.1rem,6vw,5rem)] font-black leading-[0.95] tracking-tight text-on-surface">
           From Ideas to Impact

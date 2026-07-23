@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CaseStudyCardStats from "@/components/solutions/CaseStudyCardStats";
 import type { CaseStudyStat } from "@/lib/case-studies/types";
 
 export type SolutionsCaseStudyCardProps = {
@@ -55,18 +56,7 @@ function CardBody({
       <p className="mt-2 font-label text-label-sm uppercase tracking-[0.18em] text-on-surface-variant">
         {metaStrip}
       </p>
-      {stats && stats.length > 0 ? (
-        <ul className="mt-3 space-y-2">
-          {stats.map((stat) => (
-            <li key={`${stat.value}-${stat.label}`} className="flex items-start gap-2.5">
-              <span aria-hidden className="mt-[0.62em] h-px w-[25px] shrink-0 bg-primary" />
-              <span className="font-body text-sm leading-relaxed text-on-surface-variant">
-                <span className="font-semibold text-on-background">{stat.value}</span> {stat.label}
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      {stats && stats.length > 0 ? <CaseStudyCardStats stats={stats} /> : null}
     </div>
   );
 }

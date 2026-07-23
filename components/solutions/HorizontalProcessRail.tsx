@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { solutionsHomeBand } from "@/lib/solutions/solutionsSectionTheme";
+import { sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -115,14 +116,16 @@ export default function HorizontalProcessRail({
     <section
       className={`relative z-20 ${sectionBorderClass} bg-surface-container-low ${sectionClassName}`}
     >
-      <div className={solutionsHomeBand}>
-        <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-        <h2 className="mt-3 max-w-3xl font-headline text-[clamp(2rem,4vw,3.25rem)] font-black uppercase leading-tight tracking-tight text-on-background">
-          {heading}
-        </h2>
-        {subheading ? (
-          <p className="mt-4 max-w-2xl font-body text-body-lg leading-relaxed text-on-surface-variant">{subheading}</p>
-        ) : null}
+      <div className={sectionPageX}>
+        <div className={solutionsHomeBand}>
+          <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+          <h2 className="mt-3 max-w-3xl font-headline text-[clamp(2rem,4vw,3.25rem)] font-black uppercase leading-tight tracking-tight text-on-background">
+            {heading}
+          </h2>
+          {subheading ? (
+            <p className="mt-4 max-w-2xl font-body text-body-lg leading-relaxed text-on-surface-variant">{subheading}</p>
+          ) : null}
+        </div>
       </div>
       <div className="px-8">
         <div

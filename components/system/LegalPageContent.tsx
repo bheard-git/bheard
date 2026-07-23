@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import InnerPageHero from "@/components/system/InnerPageHero";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { stripLegalMarkdownDuplicateHeading } from "@/lib/content/stripLegalMarkdown";
 import { getPageBySlug } from "@/lib/services/page.service";
 
@@ -32,8 +33,8 @@ export default async function LegalPageContent({ slug, watermark, defaultTitle, 
     <>
       <InnerPageHero watermark={watermark} heading={title} subtext={subtext} size="compact" />
 
-      <section className="bg-surface px-gutter-sm py-12 md:px-gutter md:py-14">
-        <div className="mx-auto w-full max-w-content-max">
+      <section className={`bg-surface ${sectionPageX} py-12 md:py-14`}>
+        <div className={sectionContentBand}>
           {updatedLabel ? (
             <p className="mb-6 font-body text-xs uppercase tracking-[0.14em] text-on-surface-variant">
               Last updated — {updatedLabel}

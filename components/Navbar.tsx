@@ -163,9 +163,10 @@ export default function Navbar() {
 
   return (
     <>
+    <header className="fixed top-0 z-50 mx-auto  w-full  border-b border-black/5 bg-white/85 px-6 py-5 text-neutral-800 backdrop-blur-xl transition-colors duration-300 md:px-8 md:py-6">
       <nav
         ref={navRef}
-        className="fixed top-0 z-50 mx-auto flex w-full max-w-screen-2xl -translate-x-1/2 items-center justify-between border-b border-black/5 bg-white/85 px-6 py-5 left-1/2 text-neutral-800 backdrop-blur-xl transition-colors duration-300 md:px-8 md:py-6"
+        className="max-w-screen-2xl items-center justify-between flex mx-auto"
       >
         <Link href="/" data-anim="logo">
           <Image
@@ -261,6 +262,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+    </header>
 
       {/* Mobile drawer overlay */}
       <div

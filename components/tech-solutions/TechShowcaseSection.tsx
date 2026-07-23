@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { TECH_STACK_GROUPS, TECH_STACK_HIGHLIGHTS } from "@/lib/solutions/techStack";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -103,7 +104,7 @@ export default function TechShowcaseSection() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low py-section-y-sm md:py-section-y"
+      className={`relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low ${sectionPageX} py-section-y-sm md:py-section-y`}
     >
       <div
         aria-hidden
@@ -144,7 +145,7 @@ export default function TechShowcaseSection() {
         className="pointer-events-none absolute -right-[6%] -top-[24%] h-[320px] w-[320px] rounded-full bg-[#6f6dff]/10 blur-3xl"
       />
 
-      <div className="relative z-10 mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+      <div className={`relative z-10 ${sectionContentBand}`}>
         <p data-tech-intro className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">
           Technology stack
         </p>
@@ -167,7 +168,7 @@ export default function TechShowcaseSection() {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-10 max-w-content-max px-gutter-sm md:mt-14 md:px-gutter">
+      <div className={`relative mx-auto mt-10 md:mt-14 ${sectionContentBand}`}>
         <div ref={canvasRef} className="relative mt-6">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-6 md:gap-7">
             {TECH_STACK_GROUPS.map((group) => (

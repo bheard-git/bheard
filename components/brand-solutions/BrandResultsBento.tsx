@@ -107,7 +107,6 @@ const ROW_2_IDS = ["pool", "dexa", "insights", "drink"] as const;
 const ROW_3_IDS = ["dotts", "soulfulgoa", "alpha", "shammi", "brand-collab"] as const;
 
 const ROW_GAP = "gap-1.5 md:gap-2";
-const heroInsetX = "pl-4 pr-4 md:pl-10 md:pr-8";
 
 function imageById(id: string) {
   const image = COLLAGE_IMAGES.find((item) => item.id === id);
@@ -172,12 +171,12 @@ function IntroCopy() {
 function TitleRow({ images }: { images: CollageImage[] }) {
   return (
     <>
-      <div className={`flex flex-col gap-4 md:hidden ${heroInsetX}`}>
+      <div className="flex flex-col gap-4 md:hidden">
         <IntroCopy />
         <CollageImageRow images={images} />
       </div>
       <div
-        className={`hidden min-w-0 md:grid ${ROW_GAP} ${heroInsetX}`}
+        className={`hidden min-w-0 md:grid ${ROW_GAP}`}
         style={{
           gridTemplateColumns: `minmax(17rem, 22.5rem) ${images.map(aspectFr).join(" ")}`,
         }}
@@ -191,24 +190,18 @@ function TitleRow({ images }: { images: CollageImage[] }) {
   );
 }
 
-export default function BrandResultsBento({ className }: { className?: string }) {
+export default function BrandResultsBento() {
   const row1 = ROW_1_IDS.map(imageById);
   const row2 = ROW_2_IDS.map(imageById);
   const row3 = ROW_3_IDS.map(imageById);
 
   return (
-    <section className={className}>
-      <div className="flex flex-col gap-1.5 md:gap-2">
-        <div className="pb-6 md:pb-8">
-          <TitleRow images={row1} />
-        </div>
-        <div className={heroInsetX}>
-          <CollageImageRow images={row2} />
-        </div>
-        <div className={heroInsetX}>
-          <CollageImageRow images={row3} />
-        </div>
+    <div className="flex flex-col gap-1.5 md:gap-2">
+      <div className="pb-6 md:pb-8">
+        <TitleRow images={row1} />
       </div>
-    </section>
+      <CollageImageRow images={row2} />
+      <CollageImageRow images={row3} />
+    </div>
   );
 }

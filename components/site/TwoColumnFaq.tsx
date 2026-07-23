@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import type { FaqItem } from "@/components/site/FaqSection";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 function FaqColumn({
   items,
@@ -55,8 +56,8 @@ type TwoColumnFaqProps = {
 export default function TwoColumnFaq({
   heading = "Frequently Asked Questions",
   items,
-  className = "bg-surface-container-lowest py-10 md:py-14",
-  bandClassName = "mx-auto max-w-7xl px-8",
+  className = `bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`,
+  bandClassName = sectionContentBand,
 }: TwoColumnFaqProps) {
   const [openLeft, setOpenLeft] = useState<number | null>(null);
   const [openRight, setOpenRight] = useState<number | null>(null);

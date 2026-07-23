@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -269,7 +270,7 @@ export default function KineticSolutionsHero({
   return (
     <header
       ref={rootRef}
-      className={`relative overflow-hidden bg-grain px-gutter-sm pb-16 pt-28 md:px-gutter md:pb-20 md:pt-32 ${
+      className={`relative overflow-hidden bg-grain ${sectionPageX} pb-16 pt-28 md:pb-20 md:pt-32 ${
         editorialLayout || !isTech ? "bg-[#ffffff]" : "bg-gradient-to-b from-surface-container-high via-surface to-surface"
       }`}
     >
@@ -318,7 +319,7 @@ export default function KineticSolutionsHero({
         </>
       ) : null}
 
-      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-content-max flex-col gap-10">
+      <div className={`relative z-10 flex min-h-0 w-full flex-col gap-10 ${sectionContentBand}`}>
         <p className="font-label text-label-sm uppercase tracking-[0.22em] text-primary">{eyebrow}</p>
 
         <div className="max-w-5xl md:max-w-[min(52rem,58%)]">

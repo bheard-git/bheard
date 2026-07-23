@@ -8,8 +8,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
+import { StatValue } from "@/components/solutions/CaseStudyCardStats";
 import SectionCharReveal from "@/components/motion/SectionCharReveal";
-import { sectionPageX } from "@/components/system/sectionTheme";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { parallaxScroll, prefersReducedMotion, scrollScrub } from "@/lib/motion/animations";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -175,7 +176,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
     { scope: rootRef, dependencies: [study.slug], revertOnUpdate: true }
   );
 
-  const band = `mx-auto max-w-content-max ${sectionPageX}`;
+  const band = sectionContentBand;
   const challengeDescription = `${study.challenge.intro}${
     study.challenge.bullets?.length ? `\n${study.challenge.bullets.join(" • ")}` : ""
   }`;
@@ -185,7 +186,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
 
   return (
     <div ref={rootRef} className="bg-surface-container-lowest text-on-background">
-      <header ref={heroRef} className="relative overflow-hidden py-24 md:py-28">
+      <header ref={heroRef} className={`relative overflow-hidden ${sectionPageX} py-24 md:py-28`}>
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-[12%] h-40 w-[60%] -translate-x-1/2 rounded-full bg-primary/12 blur-3xl"
@@ -213,7 +214,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         </div>
       </header>
 
-      <section className="py-5 md:py-8">
+      <section className={`${sectionPageX} py-5 md:py-8`}>
         <div className={`${band} grid gap-4 md:grid-cols-3`}>
           <div data-reveal className="rounded-2xl border border-black/10 bg-surface p-5">
             <p className="font-label text-[11px] uppercase tracking-[0.18em] text-primary">Story</p>
@@ -239,10 +240,10 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         title={study.overview.heading}
         description={study.overview.body}
         className={`${sectionPageX} py-12 md:py-16`}
-        innerClassName="mx-auto max-w-content-max"
+        innerClassName={sectionContentBand}
       />
 
-      <section className="py-10 md:py-14">
+      <section className={`${sectionPageX} py-10 md:py-14`}>
         <div className={`${band} grid items-center gap-8 md:grid-cols-[0.95fr_1.05fr] md:gap-12`}>
           <div data-reveal>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">The Challenge</p>
@@ -274,7 +275,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         </div>
       </section>
 
-      <section className="bg-surface py-10 md:py-14">
+      <section className={`bg-surface ${sectionPageX} py-10 md:py-14`}>
         <div className={`${band} grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr] md:gap-12`}>
           <figure className="order-2 relative overflow-hidden rounded-2xl border border-black/10 shadow-[0_26px_70px_-44px_rgba(0,0,0,0.35)] md:order-1">
             <div data-media-parallax className="relative aspect-[4/3] will-change-transform">
@@ -306,7 +307,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className={`${sectionPageX} py-12 md:py-16`}>
         <div className={`${band}`}>
           <div data-reveal className="mb-8">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Execution Showcase</p>
@@ -336,7 +337,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         </div>
       </section>
 
-      <section data-results-band className="bg-surface py-12 md:py-16">
+      <section data-results-band className={`bg-surface ${sectionPageX} py-12 md:py-16`}>
         <div className={`${band} grid gap-8 md:grid-cols-[1.05fr_0.95fr]`}>
           <div data-reveal>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Impact</p>
@@ -349,7 +350,9 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {study.results.stats.slice(0, 2).map((s) => (
                 <div key={`impact-${s.label}`} className="rounded-xl border border-black/10 bg-white px-4 py-4">
-                  <p className="font-headline text-3xl font-black text-primary">{s.value}</p>
+                  <p className="font-headline text-3xl font-black text-primary">
+                    <StatValue value={s.value} />
+                  </p>
                   <p className="mt-1 font-body text-sm text-on-surface-variant">{s.label}</p>
                 </div>
               ))}
@@ -359,14 +362,16 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
             {study.results.stats.map((s) => (
               <div key={s.label} data-stat-card className="flex items-center justify-between rounded-xl border border-black/10 bg-white px-5 py-4">
                 <p className="font-body text-sm text-on-surface-variant md:text-base">{s.label}</p>
-                <p className="font-headline text-2xl font-black text-primary md:text-3xl">{s.value}</p>
+                <p className="font-headline text-2xl font-black text-primary md:text-3xl">
+                  <StatValue value={s.value} />
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section data-cta-band className="py-12 md:py-16">
+      <section data-cta-band className={`${sectionPageX} py-12 md:py-16`}>
         <div className={`${band} rounded-[2rem] border border-black/10 bg-[linear-gradient(145deg,#fffaf4_0%,#ffffff_46%,#fff8ef_100%)] p-7 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.28)] md:p-10`}>
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div>

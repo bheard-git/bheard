@@ -1,6 +1,6 @@
 import { ArrowRight, LineChart, Plug, Rocket, Search, Settings } from "lucide-react";
 import { aiGuestAgentsContent } from "@/lib/content/ai-guest-agents";
-import { aiGuestBandY, aiGuestContainer, sectionBgAlt } from "./sectionTheme";
+import { aiGuestBandY, aiGuestContainer, aiGuestSectionX, sectionBgAlt } from "./sectionTheme";
 import type { LucideIcon } from "lucide-react";
 
 const stepIcons: Record<string, LucideIcon> = {
@@ -18,7 +18,7 @@ export default function HowItWorksTimeline() {
   const { howItWorks } = aiGuestAgentsContent;
 
   return (
-    <section className={`${sectionBgAlt} ${aiGuestBandY}`}>
+    <section className={`${sectionBgAlt} ${aiGuestSectionX} ${aiGuestBandY}`}>
       <div className={aiGuestContainer}>
         <h2 className="font-headline text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase leading-tight tracking-tight text-on-background">
           {howItWorks.heading}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { sectionPageX } from "@/components/system/sectionTheme";
 
 type IndustriesClosingCtaProps = {
   headline?: string;
@@ -16,14 +17,14 @@ export default function IndustriesClosingCta({
   ctaHref = "/contact",
 }: IndustriesClosingCtaProps) {
   return (
-    <section className="relative overflow-hidden bg-primary-container px-6 py-14 md:px-8 md:py-16">
+    <section className={`relative overflow-hidden bg-primary-container ${sectionPageX} py-14 md:py-16`}>
       <Image
         src="/assets/industries/world-map.svg"
         alt=""
         width={800}
         height={400}
         aria-hidden
-        className="pointer-events-none absolute bottom-0 right-0 hidden w-[min(55vw,520px)] opacity-90 md:block"
+        className="pointer-events-none  absolute bottom-0 right-0 hidden w-[min(55vw,520px)] opacity-50 md:block"
       />
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-8 md:grid-cols-12 md:items-center md:gap-10">

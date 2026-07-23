@@ -10,6 +10,7 @@ import { CircleUserRound } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP);
 
@@ -79,8 +80,8 @@ export default function BlogDetailView({
   );
 
   return (
-    <section ref={rootRef} className="bg-surface py-12 md:py-16">
-      <div className="mx-auto grid max-w-content-max gap-8 px-4 md:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+    <section ref={rootRef} className={`bg-surface ${sectionPageX} py-12 md:py-16`}>
+      <div className={`${sectionContentBand} grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start`}>
         <div className="min-w-0">
           <div data-blog-detail="intro">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{post.category}</p>
@@ -135,7 +136,7 @@ export default function BlogDetailView({
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
           </article>
 
-          <div data-blog-detail="related" className="mx-auto mt-16 max-w-content-max">
+          <div data-blog-detail="related" className="mt-16">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Related posts</p>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {related.map((item) => (

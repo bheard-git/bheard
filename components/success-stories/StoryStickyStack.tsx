@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
 import { fadeUpScrollOnce, prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { usePinnedStack } from "@/lib/motion/pinnedStack";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -177,8 +178,8 @@ export default function StoryStickyStack({ cases }: { cases: CaseStudyContent[] 
   });
 
   return (
-    <section id="stories-stack" ref={sectionRef} className="relative bg-surface-container-lowest pt-8 md:pt-10">
-      <div ref={introRef} className="mx-auto mb-12 max-w-content-max px-gutter-sm md:mb-16 md:px-gutter">
+    <section id="stories-stack" ref={sectionRef} className={`relative bg-surface-container-lowest ${sectionPageX} pt-8 md:pt-10`}>
+      <div ref={introRef} className={`mb-12 md:mb-16 ${sectionContentBand}`}>
         <p
           className="mb-3 font-label text-label-sm uppercase tracking-[0.2em] text-primary"
           data-list-intro-eyebrow
@@ -200,7 +201,7 @@ export default function StoryStickyStack({ cases }: { cases: CaseStudyContent[] 
       <div ref={pinRef} className="relative h-dvh overflow-hidden">
         <div
           ref={cardsWrapRef}
-          className="relative mx-auto h-full max-w-content-max px-gutter-sm will-change-transform md:px-gutter"
+          className={`relative mx-auto h-full will-change-transform ${sectionContentBand}`}
         >
           {cases.map((study, index) => (
             <StoryStackCard key={study.slug} study={study} index={index} />

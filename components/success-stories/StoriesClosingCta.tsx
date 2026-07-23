@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP);
 
@@ -106,8 +107,8 @@ export default function StoriesClosingCta({ cases }: { cases: CaseStudyContent[]
   );
 
   return (
-    <section ref={sectionRef} className="relative bg-surface-container-lowest px-gutter-sm pb-20 pt-16 md:px-gutter md:pb-28 md:pt-24">
-      <div className="mx-auto max-w-content-max">
+    <section ref={sectionRef} className={`relative bg-surface-container-lowest ${sectionPageX} pb-20 pt-16 md:pb-28 md:pt-24`}>
+      <div className={sectionContentBand}>
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-black/10 bg-[linear-gradient(155deg,#fffaf4_0%,#ffffff_36%,#fff8ef_100%)] px-6 py-14 shadow-[0_26px_70px_-42px_rgba(0,0,0,0.28)] md:px-12 md:py-20">
           <div
             ref={trailLayerRef}

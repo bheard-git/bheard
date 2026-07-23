@@ -3,8 +3,7 @@
 import SolutionsCaseStudyCard, {
   type SolutionsCaseStudyCardProps,
 } from "@/components/solutions/SolutionsCaseStudyCard";
-
-const band = "mx-auto w-full max-w-7xl px-8";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 type RelatedCaseStudiesSectionProps = {
   cards: SolutionsCaseStudyCardProps[];
@@ -22,8 +21,8 @@ export default function RelatedCaseStudiesSection({
   if (cards.length === 0) return null;
 
   return (
-    <section className={className}>
-      <div className={band}>
+    <section className={`${sectionPageX} ${className}`}>
+      <div className={sectionContentBand}>
         <div {...(reveal ? { "data-reveal": true } : {})} className="mb-6 text-center md:mb-8">
           <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
             {heading}

@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { usePinnedStack } from "@/lib/motion/pinnedStack";
 
 gsap.registerPlugin(useGSAP);
@@ -186,8 +187,8 @@ export default function ServicePinStack({ eyebrow, heading, intro, items }: Serv
   });
 
   return (
-    <section ref={sectionRef} className="relative bg-surface pb-section-y-sm pt-4 md:pb-section-y md:pt-10">
-      <div ref={headRef} className="mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+    <section ref={sectionRef} className={`relative bg-surface ${sectionPageX} pb-section-y-sm pt-4 md:pb-section-y md:pt-10`}>
+      <div ref={headRef} className={sectionContentBand}>
         <p
           data-stack-head
           className="mb-3 font-label text-label-sm uppercase tracking-[0.2em] text-primary"
@@ -211,7 +212,7 @@ export default function ServicePinStack({ eyebrow, heading, intro, items }: Serv
       </div>
 
       <div ref={pinRef} className="relative mt-14 h-dvh overflow-hidden md:mt-20">
-        <div ref={cardsWrapRef} className="relative mx-auto h-full max-w-content-max px-gutter-sm will-change-transform md:px-gutter">
+        <div ref={cardsWrapRef} className={`relative mx-auto h-full will-change-transform ${sectionContentBand}`}>
           {items.map((item, index) => (
             <ServicePinCard key={item.id} item={item} index={index} />
           ))}

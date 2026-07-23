@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BRAND_CHAOS_MEDIA, BRAND_STRUCTURE_MEDIA } from "@/lib/solutions/visualAssets";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -76,9 +77,9 @@ export default function BrandPhilosophySection() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low py-section-y-sm md:py-section-y"
+      className={`relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low ${sectionPageX} py-section-y-sm md:py-section-y`}
     >
-      <div className="relative z-10 mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+      <div className={`relative z-10 ${sectionContentBand}`}>
         <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Brand philosophy</p>
         <h2 className="mt-3 max-w-4xl font-headline text-[clamp(2rem,4.6vw,3.5rem)] font-black uppercase leading-[1.02] tracking-tight text-on-background">
           Most brands shout. Few are heard.
@@ -92,7 +93,7 @@ export default function BrandPhilosophySection() {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-10 h-[min(58vh,460px)] w-full max-w-content-max px-gutter-sm md:mt-14 md:h-[min(62vh,560px)] md:px-gutter">
+      <div className={`relative mx-auto mt-10 h-[min(58vh,460px)] w-full md:mt-14 md:h-[min(62vh,560px)] ${sectionContentBand}`}>
         <div
           ref={mediaRef}
           className="pointer-events-none absolute -inset-x-4 -inset-y-6 hidden opacity-40 will-change-transform md:block"

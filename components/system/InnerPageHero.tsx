@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -69,12 +70,12 @@ export default function InnerPageHero({
   return (
     <section
       ref={sectionRef}
-      className={`${theme === "dark" ? "bg-surface-dim text-inverse-on-surface" : "bg-surface text-on-background"} relative overflow-hidden ${sectionPadding}`}
+      className={`${theme === "dark" ? "bg-surface-dim text-inverse-on-surface" : "bg-surface text-on-background"} relative overflow-hidden ${sectionPageX} ${sectionPadding}`}
     >
-      <div className="relative mx-auto w-full max-w-content-max px-gutter-sm md:px-gutter">
+      <div className={`relative ${sectionContentBand}`}>
         <span
           ref={watermarkRef}
-          className="pointer-events-none absolute left-gutter-sm top-0 font-headline text-display-xl font-extrabold uppercase text-on-background/5 md:left-gutter"
+          className="pointer-events-none absolute left-0 top-0 font-headline text-display-xl font-extrabold uppercase text-on-background/5"
         >
           {watermark}
         </span>

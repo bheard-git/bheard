@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import TechServiceScrollVisual, { type TechServiceVisualId } from "@/components/tech-solutions/TechServiceScrollVisual";
 import type { ServicePinItem } from "@/components/solutions/ServicePinStack";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 type TechServicesStickyFeedProps = {
   eyebrow: string;
@@ -84,8 +85,8 @@ export default function TechServicesStickyFeed({ eyebrow, heading, intro, items 
   }, [items]);
 
   return (
-    <section className="bg-surface py-section-y-sm md:py-section-y">
-      <div className="mx-auto grid max-w-content-max grid-cols-1 gap-10 px-gutter-sm md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 md:px-gutter lg:gap-12">
+    <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+      <div className={`grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 lg:gap-12 ${sectionContentBand}`}>
         <aside className="md:sticky md:top-24 md:h-[calc(100dvh-7rem)] md:self-start">
           <div className="flex flex-col item-center justify-center h-full">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>

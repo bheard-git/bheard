@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { aiGuestAgentsContent } from "@/lib/content/ai-guest-agents";
-import { aiGuestBandY, aiGuestContainer, sectionBgWhite } from "./sectionTheme";
+import { aiGuestBandY, aiGuestContainer, aiGuestSectionX, sectionBgWhite } from "./sectionTheme";
 
 const featureIcons: Record<string, LucideIcon> = {
   zap: Zap,
@@ -65,7 +65,7 @@ export default function FeatureGridSection() {
   const HighlightIcon = featureIcons[features.highlight.icon] ?? Clock;
 
   return (
-    <section className={`${sectionBgWhite} ${aiGuestBandY}`}>
+    <section className={`${sectionBgWhite} ${aiGuestSectionX} ${aiGuestBandY}`}>
       <div className={aiGuestContainer}>
         <h2 className="text-center font-headline text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase leading-tight tracking-tight text-on-background">
           {features.headingLine1}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Building2, Home, Layers, Leaf, Palmtree } from "lucide-react";
 import { aiGuestAgentsContent } from "@/lib/content/ai-guest-agents";
-import { aiGuestBandY, aiGuestContainer, sectionBgWhite } from "./sectionTheme";
+import { aiGuestBandY, aiGuestContainer, aiGuestSectionX, sectionBgWhite } from "./sectionTheme";
 import type { LucideIcon } from "lucide-react";
 
 const industryIcons: Record<string, LucideIcon> = {
@@ -16,7 +16,7 @@ export default function IndustriesSection() {
   const { industries } = aiGuestAgentsContent;
 
   return (
-    <section className={`${sectionBgWhite} ${aiGuestBandY}`}>
+    <section className={`${sectionBgWhite} ${aiGuestSectionX} ${aiGuestBandY}`}>
       <div className={aiGuestContainer}>
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           <div className="overflow-hidden rounded-lg shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)]">

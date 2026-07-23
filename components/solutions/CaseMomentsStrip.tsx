@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { CASE_MOMENT_THUMBS } from "@/lib/solutions/visualAssets";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -113,7 +114,7 @@ export default function CaseMomentsStrip({
   );
 
   return (
-    <section className="relative overflow-hidden bg-surface py-section-y-sm md:py-section-y">
+    <section className={`relative overflow-hidden bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -122,7 +123,7 @@ export default function CaseMomentsStrip({
             "radial-gradient(circle at 20% 20%, rgba(255,146,62,0.14), transparent 42%), radial-gradient(circle at 80% 0%, rgba(248,194,41,0.12), transparent 40%)",
         }}
       />
-      <div ref={rootRef} className="relative z-10 mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+      <div ref={rootRef} className={`relative z-10 ${sectionContentBand}`}>
         <h2 className="max-w-3xl font-headline text-[clamp(2rem,4vw,3.1rem)] font-black uppercase leading-tight tracking-tight text-on-background">
           {heading}
         </h2>

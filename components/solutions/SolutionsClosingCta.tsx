@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLeadForm, type LeadFormOptions } from "@/components/site/LeadFormProvider";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 type SolutionsClosingCtaProps = {
   id?: string;
@@ -24,9 +25,9 @@ export default function SolutionsClosingCta({
   return (
     <section
       id={id}
-      className={`border-t border-inverse-surface/10 bg-gradient-to-b from-surface-container-high to-surface ${sectionClassName}`}
+      className={`border-t border-inverse-surface/10 bg-gradient-to-b from-surface-container-high to-surface ${sectionPageX} ${sectionClassName}`}
     >
-      <div className="mx-auto max-w-content-max px-gutter-sm text-center md:px-gutter">
+      <div className={`${sectionContentBand} text-center`}>
         <h2 className="mx-auto max-w-3xl font-headline text-[clamp(1.85rem,4vw,3rem)] font-black uppercase leading-snug tracking-tight text-on-background">
           {headline}
         </h2>

@@ -1,18 +1,14 @@
-import { ExternalLink, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Link from "next/link";
 import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
-
-const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/place/Bheard/@18.9967888,72.8245175,17z/data=!4m8!3m7!1s0x3be7ce926dfac38d:0x510690c4739e550b!8m2!3d18.9967888!4d72.8245175!9m1!1b1!16s%2Fg%2F11c5zbnn00";
 
 const TESTIMONIALS = [
   {
     quote:
       "We have been working with BHeard for over two years now. Neha and her team have been highly instrumental in strategizing and executing the social media footprint of our resort. Their focussed effort during our special events helps increase our sales. BHeard team is diligent and approachable at all times. We look forward to work together for years to come.",
     name: "Varun Albuquerque",
-    role: "Owner, Novotel Resort",
+    role: "Owner, Novotel Goa Dona Sylvia Resort",
     rating: 5,
-    reviewUrl: GOOGLE_REVIEWS_URL,
   },
   {
     quote:
@@ -20,7 +16,6 @@ const TESTIMONIALS = [
     name: "Vivek Mundra",
     role: "MD, Treat Resorts",
     rating: 5,
-    reviewUrl: GOOGLE_REVIEWS_URL,
   },
   {
     quote:
@@ -28,34 +23,28 @@ const TESTIMONIALS = [
     name: "Dr. Mickey Mehta",
     role: "Global Leading Holistic Health Guru",
     rating: 5,
-    reviewUrl: GOOGLE_REVIEWS_URL,
   },
 ] as const;
 
-function GoogleMark({ className }: { className?: string }) {
+const VIDEO_TESTIMONIALS = [
+  {
+    label: "Radisson Blu Cavelossim | Hospitality Marketing Review",
+    href: "https://youtu.be/slyIlEBUzsA",
+  },
+  {
+    label: "Dr. Sameera Gupta | Personal Brand & Social Media Marketing Review",
+    href: "https://youtu.be/TVp_P5ZmBoI",
+  },
+] as const;
+
+function YouTubeMark({ className }: { className?: string }) {
   return (
-    <svg
-      aria-hidden
-      viewBox="0 0 24 24"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg aria-hidden viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
       <path
-        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-        fill="#4285F4"
+        d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8z"
+        fill="#FF0000"
       />
-      <path
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-        fill="#34A853"
-      />
-      <path
-        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-        fill="#EA4335"
-      />
+      <path d="M9.75 15.02l6.26-3.02-6.26-3.02v6.04z" fill="#FFFFFF" />
     </svg>
   );
 }
@@ -76,6 +65,11 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+const footerLinkClassName =
+  "inline-flex items-start gap-1.5 font-semibold text-neutral-900 underline decoration-primary underline-offset-4 transition-colors hover:text-primary lg:items-center";
+
+const videoLinkClassName = `${footerLinkClassName} max-w-full text-balance`;
+
 /** Visual testimonials only — do not add Review / AggregateRating schema. */
 export default function HomeTestimonials() {
   return (
@@ -84,30 +78,18 @@ export default function HomeTestimonials() {
       className={`bg-surface-container-low ${sectionPageX} ${sectionBandY}`}
     >
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2
-            id="home-testimonials-heading"
-            className="max-w-[14ch] font-headline text-[clamp(2rem,5vw,3.5rem)] font-black uppercase leading-[0.95] text-neutral-900"
-          >
-            What Our Clients Say
-          </h2>
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-outline-variant/60 bg-white px-4 py-2 font-body text-sm font-medium text-neutral-900 shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
-          >
-            <GoogleMark className="h-4 w-4 shrink-0" />
-            <span>Verified Google Reviews</span>
-            <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
-          </a>
-        </div>
+        <h2
+          id="home-testimonials-heading"
+          className="max-w-[14ch] font-headline text-[clamp(2rem,5vw,3.5rem)] font-black uppercase leading-[0.95] text-neutral-900"
+        >
+          What Our Clients Say
+        </h2>
 
         <ul className="mt-12 grid gap-6 md:grid-cols-3 md:gap-5">
           {TESTIMONIALS.map((item) => (
             <li key={item.name}>
               <article className="group flex h-full flex-col rounded-2xl border border-outline-variant/70 bg-white p-6 shadow-[0_18px_60px_-40px_rgba(17,24,39,0.28)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_80px_-44px_rgba(17,24,39,0.32)] md:p-7">
-                <div className="mb-5 flex items-start justify-between gap-4">
+                <div className="mb-5 flex items-center justify-between gap-4">
                   <div
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
                     aria-hidden
@@ -115,12 +97,6 @@ export default function HomeTestimonials() {
                     <Quote className="h-5 w-5 fill-primary/20" strokeWidth={2.25} />
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
-                    <div className="inline-flex items-center gap-1.5 rounded-full bg-surface-container-high px-2.5 py-1">
-                      <GoogleMark className="h-3.5 w-3.5 shrink-0" />
-                      <span className="font-body text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant">
-                        Google Review
-                      </span>
-                    </div>
                     <StarRating rating={item.rating} />
                   </div>
                 </div>
@@ -134,42 +110,41 @@ export default function HomeTestimonials() {
                     {item.name}
                   </p>
                   <p className="mt-1 font-body text-sm text-on-surface-variant">{item.role}</p>
-                  <a
-                    href={item.reviewUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-neutral-900 underline decoration-primary/60 underline-offset-4 transition-colors group-hover:text-primary hover:decoration-primary"
-                  >
-                    Read full review on Google
-                    <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
-                  </a>
                 </footer>
               </article>
             </li>
           ))}
         </ul>
 
-        <p className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-body text-sm text-on-surface-variant">
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-semibold text-neutral-900 underline decoration-primary underline-offset-4 transition-colors hover:text-primary"
-          >
-            <GoogleMark className="h-4 w-4 shrink-0" />
-            See all reviews on Google
-            <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
-          </a>
-          <span className="hidden text-outline-variant sm:inline" aria-hidden>
-            |
-          </span>
-          <Link
-            href="/work"
-            className="font-semibold text-neutral-900 underline decoration-primary underline-offset-4 transition-colors hover:text-primary"
-          >
+        <nav
+          aria-label="Testimonials and related links"
+          className="mt-10 flex flex-col gap-4 font-body text-sm text-on-surface-variant lg:gap-3 xl:flex-row xl:flex-wrap xl:items-center xl:gap-x-6 xl:gap-y-2"
+        >
+          <Link href="/work" className={footerLinkClassName}>
             Explore our success stories
           </Link>
-        </p>
+
+          <span className="h-px w-full bg-outline-variant/50 xl:hidden" aria-hidden />
+
+          <span className="hidden h-4 w-px shrink-0 bg-outline-variant xl:block" aria-hidden />
+
+          <ul className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6 lg:gap-y-2">
+            {VIDEO_TESTIMONIALS.map((video) => (
+              <li key={video.href} className="w-full lg:w-auto">
+                <a
+                  href={video.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={videoLinkClassName}
+                >
+                  <YouTubeMark className="mt-0.5 h-4 w-4 shrink-0 lg:mt-0" />
+                  <span>{video.label}</span>
+                  <span className="sr-only"> (opens on YouTube)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   );

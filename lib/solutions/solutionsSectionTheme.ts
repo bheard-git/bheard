@@ -1,7 +1,11 @@
-import { sectionStackBottom, sectionStackTop } from "@/components/system/sectionTheme";
+import {
+  sectionContentBand,
+  sectionStackBottom,
+  sectionStackTop,
+} from "@/components/system/sectionTheme";
 
 /** Homepage-aligned content band for solutions pages (non-rail sections). */
-export const solutionsHomeBand = "mx-auto max-w-7xl px-8";
+export const solutionsHomeBand = sectionContentBand;
 
 /** Full vertical padding when the next/previous section uses a different background. */
 export const solutionsBandPad = "py-10 md:py-14";

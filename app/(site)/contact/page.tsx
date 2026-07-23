@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import InnerPageHero from "@/components/system/InnerPageHero";
 import ContactLeadForm from "@/components/site/ContactLeadForm";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 export const metadata: Metadata = {
   title: "Contact BHeard - Branding & Tech Agency in Lower Parel, Mumbai",
@@ -16,8 +17,8 @@ export default function ContactPage() {
         heading="Let's Talk"
         subtext="We work with a focused number of clients each quarter. Share your brief — we'll respond within one business day."
       />
-      <section className="bg-surface px-gutter-sm py-section-y-sm md:px-gutter md:py-section-y">
-        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-12 md:gap-12">
+      <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+        <div className={`${sectionContentBand} grid max-w-5xl gap-10 md:grid-cols-12 md:gap-12`}>
           <aside className="md:col-span-4">
             <h2 className="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
               Get in touch

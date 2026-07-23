@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -52,7 +53,7 @@ export default function TechCapabilitiesGrid() {
   );
 
   return (
-    <section className="relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low py-section-y-sm md:py-section-y">
+    <section className={`relative overflow-hidden border-y border-inverse-surface/10 bg-surface-container-low ${sectionPageX} py-section-y-sm md:py-section-y`}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.45]"
@@ -62,7 +63,7 @@ export default function TechCapabilitiesGrid() {
           backgroundSize: "30px 30px",
         }}
       />
-      <div ref={rootRef} className="relative z-10 mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+      <div ref={rootRef} className={`relative z-10 ${sectionContentBand}`}>
         <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Capabilities</p>
         <h2 className="mt-3 max-w-3xl font-headline text-[clamp(2rem,4vw,3.1rem)] font-black uppercase leading-tight tracking-tight text-on-background">
           Built with modern technology.

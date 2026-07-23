@@ -9,12 +9,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const band = "mx-auto w-full max-w-7xl px-8";
-const bandLight = "bg-surface-container-lowest py-10 md:py-14";
-const bandWarm = "bg-[#fbf8f6] py-10 md:py-14";
+const band = sectionContentBand;
+const bandLight = `bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`;
+const bandWarm = `bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`;
 const LIFE_AT_IMAGE = "/assets/home/about/team%20work.jpg";
 const PROTECTED_IMAGE_CLASS =
   "pointer-events-none select-none object-cover grayscale [-webkit-user-drag:none]";
@@ -116,7 +117,7 @@ export default function CareersListingView({
       <section className="relative isolate overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-800 px-8 pb-20 pt-36 md:pb-24 md:pt-40">
         <div className="pointer-events-none absolute -right-20 top-10 h-64 w-64 rounded-full bg-primary/20 blur-[120px]" />
         <div className="pointer-events-none absolute -left-14 bottom-0 h-52 w-52 rounded-full bg-primary-fixed/20 blur-[100px]" />
-        <div className="mx-auto max-w-content-max">
+        <div className={sectionContentBand}>
           <p
             data-careers-banner="eyebrow"
             className="font-label text-label-sm uppercase tracking-[0.2em] text-primary-fixed"

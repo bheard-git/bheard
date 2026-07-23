@@ -17,6 +17,7 @@ import {
   solutionsStackBottom,
   solutionsStackTop,
 } from "@/lib/solutions/solutionsSectionTheme";
+import { sectionPageX } from "@/components/system/sectionTheme";
 import { BRAND_SERVICE_IMAGES } from "@/lib/solutions/visualAssets";
 
 const band = solutionsHomeBand;
@@ -85,8 +86,13 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
 
       <div className="bg-surface-container-lowest">
         <ClientLogos variant="bare" className={solutionsStackBottom} />
-        <BrandResultsBento className={solutionsStackTop} />
       </div>
+
+      <section className={`bg-surface-container-lowest ${sectionPageX} ${solutionsStackTop}`}>
+        <div className={band}>
+          <BrandResultsBento />
+        </div>
+      </section>
 
       <HorizontalProcessRail
         eyebrow="Services"
@@ -101,7 +107,7 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
       />
 
       {BRAND_SOLUTIONS_CASE_STUDY_CARDS.length > 0 ? (
-        <section className={`bg-[#fbf8f6] ${solutionsBandPad}`}>
+        <section className={`bg-[#fbf8f6] ${sectionPageX} ${solutionsBandPad}`}>
           <div className={band}>
             <div className="mb-6 flex flex-col items-start justify-between gap-4 md:mb-8 md:flex-row md:items-end">
               <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
@@ -126,7 +132,7 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
       <TwoColumnFaq
         heading="Brand Solutions — Frequently Asked Questions"
         items={faqItems}
-        className={`bg-surface-container-lowest ${solutionsBandPad}`}
+        className={`bg-surface-container-lowest ${sectionPageX} ${solutionsBandPad}`}
       />
 
       <div id="brand-journey">

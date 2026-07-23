@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 type SectionShellProps = {
   children: ReactNode;
@@ -23,14 +24,14 @@ export default function SectionShell({
 }: SectionShellProps) {
   return (
     <section
-      className={`relative overflow-hidden ${theme === "dark" ? "bg-surface-dim text-inverse-on-surface" : "bg-surface text-on-background"} ${padMap[padY]} ${className}`}
+      className={`relative overflow-hidden ${theme === "dark" ? "bg-surface-dim text-inverse-on-surface" : "bg-surface text-on-background"} ${sectionPageX} ${padMap[padY]} ${className}`}
     >
       {watermark ? (
         <span className="pointer-events-none absolute left-4 top-4 font-headline text-display-xl font-extrabold uppercase leading-none text-on-background/5 md:left-8">
           {watermark}
         </span>
       ) : null}
-      <div className="relative z-10 mx-auto w-full max-w-content-max px-gutter-sm md:px-gutter">{children}</div>
+      <div className={`relative z-10 ${sectionContentBand}`}>{children}</div>
     </section>
   );
 }

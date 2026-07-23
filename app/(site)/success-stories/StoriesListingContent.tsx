@@ -1,4 +1,5 @@
 import StoriesListingView from "@/components/success-stories/StoriesListingView";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { listPublishedStories } from "@/lib/services/stories.service";
 import { successStoryToCaseStudy } from "@/lib/success-stories/mapper";
 
@@ -8,8 +9,8 @@ export default async function StoriesListingContent() {
 
   if (cases.length === 0) {
     return (
-      <section className="bg-surface px-gutter-sm py-section-y-sm md:px-gutter md:py-section-y">
-        <div className="mx-auto max-w-content-max py-20 text-center">
+      <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+        <div className={`${sectionContentBand} py-20 text-center`}>
           <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Success stories</p>
           <h1 className="mt-4 font-headline text-4xl font-black uppercase tracking-tight text-on-background">
             Stories coming soon

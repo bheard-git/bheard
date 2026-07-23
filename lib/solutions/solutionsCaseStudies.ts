@@ -21,13 +21,18 @@ const BRAND_CASE_STUDY_CONFIG: CaseStudySlugConfig[] = [
   },
   {
     slug: "zumba-wear",
-    stats: [],
+    stats: [
+      { value: "23.3K", label: "Instagram Followers" },
+      { value: "274+", label: "Facebook Purchases" },
+      { value: "19%", label: "Peak FB Engagement" },
+    ],
   },
   {
     slug: "goa-tourism",
     stats: [
       { value: "261.6K", label: "Views" },
       { value: "130K+", label: "Reach" },
+      { value: "12.5%", label: "Engagement Rate" },
     ],
   },
 ];

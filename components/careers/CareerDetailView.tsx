@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
 import PageBreadcrumb from "@/components/system/PageBreadcrumb";
 import { splitHeroEyebrow, splitHeroTitle } from "@/components/system/splitHeroTheme";
-import { sectionPageX } from "@/components/system/sectionTheme";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 export type CareerDetailRole = {
   slug: string;
@@ -25,8 +25,8 @@ export default function CareerDetailView({
   onlineApplicationsReady: boolean;
 }) {
   return (
-    <div data-motion-exclude className="bg-surface pb-section-y-sm pt-8 md:pb-section-y md:pt-10">
-      <div className={`${sectionPageX} mx-auto max-w-content-max`}>
+    <div data-motion-exclude className={`${sectionPageX} bg-surface pb-section-y-sm pt-8 md:pb-section-y md:pt-10`}>
+      <div className={sectionContentBand}>
         <PageBreadcrumb
           items={[{ label: "Careers", href: "/careers" }, { label: role.title }]}
         />
@@ -54,7 +54,7 @@ export default function CareerDetailView({
         </header>
       </div>
 
-      <div className={`${sectionPageX} mx-auto mt-12 grid max-w-content-max gap-10 md:mt-16 md:grid-cols-[minmax(0,280px)_1fr] md:gap-12 lg:grid-cols-[minmax(0,300px)_1fr]`}>
+      <div className={`${sectionContentBand} mt-12 grid gap-10 md:mt-16 md:grid-cols-[minmax(0,280px)_1fr] md:gap-12 lg:grid-cols-[minmax(0,300px)_1fr]`}>
         <aside className="h-fit space-y-6">
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-200 dark:bg-white">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Role snapshot</p>

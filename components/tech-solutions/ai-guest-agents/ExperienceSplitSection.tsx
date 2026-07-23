@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ConciergeBell } from "lucide-react";
 import { aiGuestAgentsContent } from "@/lib/content/ai-guest-agents";
-import { aiGuestBandY, aiGuestContainer, sectionBgAlt } from "./sectionTheme";
+import { aiGuestBandY, aiGuestContainer, aiGuestSectionX, sectionBgAlt } from "./sectionTheme";
 
 export default function ExperienceSplitSection() {
   const { experience, intro } = aiGuestAgentsContent;
   const { left, right } = experience;
 
   return (
-    <section className={`${sectionBgAlt} ${aiGuestBandY}`}>
+    <section className={`${sectionBgAlt} ${aiGuestSectionX} ${aiGuestBandY}`}>
       <div className={aiGuestContainer}>
         <div className="grid md:grid-cols-2 md:gap-0">
           <div className="py-2 md:py-4 md:pr-10 lg:pr-12">

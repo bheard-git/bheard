@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { TECHNOLOGY_GROUPS, TECH_SHOWCASE_FEATURES, type TechFeature } from "@/lib/solutions/techShowcaseReplicaData";
 import TechnologyCard from "./TeckStack/TechnologyCard";
 import TeckStackGroup from "./TeckStack/TeckStackGroup";
@@ -136,8 +137,8 @@ export default function TechShowcaseReplicaSection({
   );
 
   return (
-    <section ref={rootRef} className={`relative overflow-hidden bg-[#f6f7fb] ${sectionClassName}`}>
-      <div className="mx-auto max-w-7xl px-8">
+    <section ref={rootRef} className={`relative overflow-hidden bg-[#f6f7fb] ${sectionPageX} ${sectionClassName}`}>
+      <div className={sectionContentBand}>
         <div className="max-w-4xl relative z-1">
             <div
               data-float="blob"

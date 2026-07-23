@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -40,7 +41,7 @@ export default function TechValueLoop() {
   );
 
   return (
-    <section ref={rootRef} className="relative overflow-hidden bg-surface py-section-y-sm md:py-section-y">
+    <section ref={rootRef} className={`relative overflow-hidden bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 top-1/2 hidden h-[min(520px,70vh)] w-[min(520px,45vw)] -translate-y-1/2 opacity-30 md:block"
@@ -54,7 +55,7 @@ export default function TechValueLoop() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-content-max px-gutter-sm md:px-gutter">
+      <div className={`relative z-10 ${sectionContentBand}`}>
         <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Beyond just development</p>
         <h2 className="mt-3 max-w-3xl font-headline text-[clamp(2rem,4.2vw,3.2rem)] font-black uppercase leading-tight tracking-tight text-on-background">
           We don&apos;t just build. We engineer growth.
