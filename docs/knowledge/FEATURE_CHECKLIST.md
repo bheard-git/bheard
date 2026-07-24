@@ -10,31 +10,42 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Promotional banner + countdown | Complete | Dark bar, orange accents, day/h/m/s boxes |
+| Promotional banner + countdown | Complete | Orange-tinted gradient bar, refined countdown pills, v2 alignment |
 | Header — global nav state | Partial | Exam switcher beside logo; verify PRD links |
 | Header — category nav state | Partial | Needs verification vs PRD |
 | Mobile nav | Partial | Exists; test against all breakpoints |
 | Floating counselling CTA | Complete | Observes `[data-counselling-cta]` only; hidden when any counselling CTA is in view; fade/slide + idle pulse; no scroll listener |
-| Footer | Partial | Social `shrink-0` rounded; brand left / links right; "Made with love" removed; social URLs TBD |
+| Footer | Partial | v2 5-column layout (brand, courses, quick links, resources, contact); legal in bottom bar; social URLs TBD |
 | Rodha Buddy CTA (external) | Partial | Outline orange in header; final URL TBD |
 | Login / Sign Up → Graphy | Partial | Outline button; redirect target TBD |
 | Promotion popup + lead form | Not Started | Modal + trigger logic |
 
 ---
 
-## Home `/`
+## Home `/` (v2 — live)
 
 | Section | Status |
 |---------|--------|
-| Hero | Complete (hero-home.png + floating features; atmospheric lighting/patterns; trust icon micro-interactions) |
-| Choose Your Exam | Complete (vertical Courses/Selections list + stagger reveal) |
-| Why Thousands Choose Rodha | Complete (icon-without-circle + SSR-safe stagger reveal + premium hover) |
-| Featured Courses carousel | Complete (category-colored bg + cutouts + selective glow/shine) |
-| Faculty carousel | Complete (transparent profile cutouts + reveal + subtle image/rating hover) |
-| Results / toppers | Complete (selection/rank icons; ambient stats panel + topper hover) |
-| Blog / insights | Complete (featured + 2-col side grid + image/title/arrow hover) |
-| CTA Band | Complete (CAT icon + dividers + premium border/shine/ambient lighting) |
-| Pixel-perfect pass vs PNG | Near complete — `.section-header` spacing + badge/contrast polish |
+| Hero (neural canvas + counselling form + YouTube + floating stats) | Complete |
+| Choose Your Exam | Complete (`ExamCard`; carousel &lt; xl, grid on xl) |
+| Impact timeline | Complete (growth path with student count badges; axis row with year/title/description) |
+| Results / toppers | Complete (`TopperCardAlternate` orange/dark alternation) |
+| App promotion | Partial (app mockup image + Play Store SVG; store links `#` until URLs arrive) |
+| CTA Band | Complete (v2 mockup layout; `home-cta-bg.png` background, split headline, orange-outline secondary) |
+| Continuous page canvas background | Complete (`body.home-gradient-page` + accent glow; transparent sections + homepage footer) |
+
+## Home `/legacy-homepage` (frozen v1 backup)
+
+| Section | Status |
+|---------|--------|
+| Hero | Complete (hero-home.png + floating features) |
+| Choose Your Exam | Complete |
+| Why Thousands Choose Rodha | Complete |
+| Featured Courses carousel | Complete |
+| Faculty carousel | Complete |
+| Results / toppers | Complete |
+| Blog / insights | Complete |
+| CTA Band | Complete |
 
 ---
 

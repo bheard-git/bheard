@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-21 (faculty detail page)
+**Last updated:** 2026-07-24 (homepage CTA layout v2)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -44,6 +44,14 @@ Update this file after every meaningful implementation task.
 - **Faculty listing `/faculty` (2026-07-20):** Full page — split hero (`FacultyHeroSection` + `hero-faulty.png`), filter bar (search/subject/experience/rating/sort), featured faculty carousel (`FacultyExpertCard`), paginated grid (`FacultyCard`), why-learn value props, CTA band, BreadcrumbList JSON-LD; data/helpers in `src/data/faculty.ts`
 - **Faculty listing UI refresh (2026-07-20):** 4-col hero stats (incl. rating); filters moved into All Faculty with `DropdownSelect` (header-style); new vertical `FacultyListingCard` for featured + grid (xl 4 / 2xl 5 cols); rating filter removed; pagination 15/page
 - **Faculty detail `/faculty/[slug]` (2026-07-21):** Full mock-aligned page — detail hero, info cards, courses, achievements+publications, reviews+videos, results podium banner, 3-action CTABand; dedicated Faculty* card variants; optional detail fields with empty sections hidden; full payloads for Nishant Agarwal, Anand Mishra, Neha Agarwal; `personJsonLd` + `generateStaticParams`
+- **Homepage v2 redesign (2026-07-24):** New `HomePage` at `/` with neural-network hero canvas, counselling form, YouTube embed, floating stats, impact timeline, alternating results cards, app promo placeholder, updated CTA copy. Legacy homepage frozen at `/legacy-homepage` via unchanged `LegacyHomePage`.
+- **Homepage v2 refinements (2026-07-24):** Hero layout tightened (2-line title, click-to-play video, `DropdownSelect` form, section-wide neural mouse); light categories/impact sections with gradient blends; impact milestone pills + left stat badges; footer v2 5-column layout; app mockup asset integrated.
+- **Homepage premium polish (2026-07-24):** Continuous `HomePageBackground` gradient canvas; transparent homepage sections; hero 7/5 column rebalance (form before description, trust metrics below video); fixed `+91` phone prefix; dropdown z-index/clipping fix; floating stats repositioned at 90% opacity; impact timeline X-axis (years below path, growth chips); horizontal `ImpactStatsRow` with 3D PNG icons; announcement bar v2 styling; Play Store full-colour SVG icon.
+- **Hero layout refinements (2026-07-24):** 6/6 grid with compact `max-w-[28rem]` content block (title + form + copy aligned); video at full right-column width (~50% hero); floating badges anchored to video edges; tighter vertical spacing for first-viewport fit.
+- **Hero badge flex column (2026-07-24):** Stat badges moved to a full-width row above the YouTube embed (flex-col stack: badges → video → trust metrics); solid `bg-bg-tertiary` badges (no glass/opacity); `HeroFloatingStats` simplified to Server Component (parallax removed).
+- **Impact timeline layout (2026-07-24):** Restored growth-path student count badges (alternating above/below nodes); timeline axis row below path with year, title, and description per milestone.
+- **Continuous homepage gradient (2026-07-24):** Document-height `body.home-gradient-page` gradient (homepage-only via `HomePageBodyTheme`); accent-only canvas glow; transparent footer on `/`; removed Results `AmbientBackground` overlay.
+- **Homepage CTA band v2 layout (2026-07-24):** Extended `CTABand` with `backgroundImage`, `titleAccent`, and `secondaryOutline` props; home page uses `home-cta-bg.png`, split white/orange headline, left copy + right buttons, orange-outline secondary.
 
 ---
 
@@ -51,7 +59,7 @@ Update this file after every meaningful implementation task.
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Homepage vs approved PNG | Partial | Layout/tokens aligned; transparent faculty/student PNG cutouts still pending |
+| Homepage vs approved PNG | Partial | Premium polish shipped (continuous canvas, hero rebalance, timeline X-axis); app store URLs still TBD |
 | Header category-state nav | Partial | Exam switcher URL-sync done; full category-state nav links still TBD |
 | Category hero photography | Partial | Non-MBA landings reuse `cat-hero.jpg` with category overlay text |
 
@@ -63,6 +71,7 @@ Update this file after every meaningful implementation task.
 - [ ] Transparent faculty / student PNGs
 - [ ] Dedicated IPMAT / Law / Banking / Skill House hero images
 - [ ] Dedicated leadership / advisor headshots (interim: homepage `profiles/`)
+- [ ] App promotion store URLs (mockup asset integrated)
 
 ### Screens
 - [ ] About / Blog / Contact / Course detail

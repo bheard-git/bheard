@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-21 (faculty detail page)
+**Last updated:** 2026-07-24 (homepage CTA layout v2)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -48,7 +48,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Component | File |
 |-----------|------|
 | CategoryHeroSection | `CategoryHeroSection.tsx` |
-| CTABand | `CTABand.tsx` |
+| CTABand | `CTABand.tsx` (optional `backgroundImage`, `titleAccent`, `secondaryOutline` for home variant) |
 | CultureSection | `CultureSection.tsx` |
 | AdvisorsSection | `AdvisorsSection.tsx` |
 | FacultyFiltersBar | `FacultyFiltersBar.tsx` |
@@ -62,6 +62,24 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | FeaturedFacultySection | `FeaturedFacultySection.tsx` |
 | FacultyWhySection | `FacultyWhySection.tsx` |
 | HeroSection | `HeroSection.tsx` |
+| HomeHeroShell | `home/HomeHeroShell.tsx` |
+| HomePageBackground | `home/HomePageBackground.tsx` |
+| HomePageBodyTheme | `home/HomePageBodyTheme.tsx` |
+| HomeHeroSection | `home/HomeHeroSection.tsx` |
+| HeroCounsellingForm | `home/HeroCounsellingForm.tsx` |
+| HeroNeuralCanvas | `home/HeroNeuralCanvas.tsx` |
+| HeroVideoEmbed | `home/HeroVideoEmbed.tsx` |
+| HeroFloatingStats | `home/HeroFloatingStats.tsx` |
+| HeroTrustMetrics | `home/HeroTrustMetrics.tsx` |
+| HomeCategoriesSection | `home/HomeCategoriesSection.tsx` |
+| HomeImpactSection | `home/HomeImpactSection.tsx` |
+| ImpactGrowthTimeline | `home/ImpactGrowthTimeline.tsx` |
+| ImpactGrowthBadge | `home/ImpactGrowthBadge.tsx` |
+| ImpactTimelineAxisItem | `home/ImpactTimelineAxisItem.tsx` |
+| ImpactStatBadge | `home/ImpactStatBadge.tsx` |
+| ImpactStatsRow | `home/ImpactStatsRow.tsx` |
+| HomeResultsSection | `home/HomeResultsSection.tsx` |
+| HomeAppPromotionSection | `home/HomeAppPromotionSection.tsx` |
 | LegalPageLayout | `LegalPageLayout.tsx` |
 | ResultsStatsPanel | `ResultsStatsPanel.tsx` |
 | SectionHeader | `SectionHeader.tsx` |
@@ -94,6 +112,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | TestimonialCard | `TestimonialCard.tsx` |
 | TestSeriesCard | `TestSeriesCard.tsx` |
 | TopperCard | `TopperCard.tsx` |
+| TopperCardAlternate | `TopperCardAlternate.tsx` |
 | ValuePropCard | `ValuePropCard.tsx`
 
 ## Forms — `src/components/forms/`
@@ -137,6 +156,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | results | `results.ts` |
 | skillhouse-landing | `skillhouse-landing.ts` |
 | team | `team.ts` |
+| home-impact | `home-impact.ts` |
 | testimonials | `testimonials.ts` |
 
 ---
@@ -144,7 +164,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 ## Public Assets — `public/assets/`
 
 ### Icons (`icons/`)
-menu, close, chevron-down/left/right, search, user, faculty, ai-buddy, practice, guidance, top-faculty, mentorship, result-oriented, ai-powered, test-series, community, clock, video, book, users, star, star-half, star-outline, instagram, facebook, twitter, linkedin, youtube, phone, email, location, whatsapp, calendar, download, external-link, arrow-right, check, info, heart, play, quote, cat-icon, ipmat-icon, gdpi-icon, clat-icon
+menu, close, chevron-down/left/right, search, user, faculty, ai-buddy, practice, guidance, top-faculty, mentorship, result-oriented, ai-powered, test-series, community, clock, video, book, users, star, star-half, star-outline, instagram, facebook, twitter, linkedin, youtube, phone, email, location, whatsapp, calendar, download, external-link, arrow-right, check, info, heart, play, quote, cat-icon, ipmat-icon, gdpi-icon, clat-icon, **playstore-svgrepo-com.svg** (full-colour Play Store badge)
 
 ### Images (`images/`)
 rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-logo-orange.svg, rodha-icon.svg  
@@ -153,6 +173,7 @@ rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-lo
 **Result stat icons:** images/icons/selection.png, images/icons/rank.png, images/icons/CAT-icon.png  
 **Test series / CAT hero icons:** images/icons/ts-mocks.png, ts-sectional.png, ts-topic.png, ts-mini-mocks.png  
 **Profiles (cutouts):** images/profiles/male-1..6.png, female-1..4.png (faculty, course, topper)  
+**App promotion:** `app promotion/app mockup.png` (homepage app section)  
 **Faculty listing hero:** `images/faculty/listings page/hero-faulty.png`  
 **Faculty detail:** `images/faculty/detail/results-podium.png` (results banner); achievements reuse `images/icons/rank.png`; hero decoration reuses listing `hero-faulty.png`  
 **Courses / faculty / results / blog:** JPG assets under `images/courses`, `images/faculty`, `images/results`, `images/blog` (legacy)  
@@ -166,7 +187,7 @@ rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-lo
 - Reuse global: `/assets/icons/linkedin.svg` (leadership cards)
 
 ### Backgrounds
-hero-glow.svg, section-glow.svg, footer-gradient.svg
+hero-glow.svg, section-glow.svg, footer-gradient.svg, **backgrounds/home-cta-bg.png** (homepage footer CTA band)
 
 ### Patterns
 dot-grid.svg, noise-texture.svg
@@ -178,4 +199,4 @@ blob-orange.svg, circle-gradient.svg, curved-divider.svg, ring-decoration.svg
 
 ## Design System Utilities (CSS)
 
-Defined in `src/app/globals.css`: `.container-rodha`, `.section-spacing`, `.section-header`, `.card-base`, `.card-hover`, `.card-premium-hover`, `.premium-border-glow`, `.glow-accent-orange`, `.glow-accent-silver`, `.shine-sweep`, `.shine-sweep-hover`, `.shine-sweep-outline`, `.shine-delay-1..4`, `.hover-shine`, `.ambient-layer`, `.ambient-drift`, `.hero-atmosphere`, `.quote-glow`, `.btn-primary`, `.btn-primary-premium`, `.btn-outlined-premium`, `.btn-secondary`, `.btn-ghost`, `.btn-view-all`, `.floating-cta-pulse`, `.input-base`, `.badge-base`, `.text-gradient-orange`, `.bg-hero-gradient`, `.glow-orange`, `.glow-orange-strong`, `.overlay-gradient`, `.animate-shimmer`
+Defined in `src/app/globals.css`: ... `body.home-gradient-page`, `.home-page-canvas`, `.home-page-canvas-glow`, `.home-on-light`, `.home-section-light`, `.home-light-heading`, `.home-light-body`, `.home-light-muted`, `.impact-milestone-pill`, `.impact-stat-badge`, ...

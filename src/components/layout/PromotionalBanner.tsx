@@ -26,12 +26,13 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
   return (
     <div
       className={cn(
-        "relative z-50 bg-bg-primary border-b border-border-subtle text-text-primary py-2 px-4",
+        "relative z-50 border-b border-orange-500/15 text-text-primary py-2.5 min-h-[40px] px-4",
+        "bg-gradient-to-r from-[#1a1410] via-[#1f1812] to-[#1a1410]",
         className
       )}
     >
-      <div className="container-rodha flex items-center justify-center gap-3 sm:gap-6 relative">
-        <p className="text-caption sm:text-body-sm text-center text-text-secondary flex-1 min-w-0">
+      <div className="container-rodha flex items-center justify-center gap-3 sm:gap-5 relative min-h-[24px]">
+        <p className="text-caption sm:text-body-sm text-center text-text-secondary flex-1 min-w-0 leading-snug">
           <span aria-hidden="true">🔥 </span>
           <span className="hidden sm:inline">Early Bird Offer! Get up to </span>
           <span className="sm:hidden">Early Bird: </span>
@@ -40,7 +41,7 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
           <span className="sm:hidden"> on CAT Batches. </span>
           <Link
             href="/mba"
-            className="font-semibold text-orange-500 hover:text-orange-400 underline underline-offset-2 transition-colors"
+            className="font-semibold text-orange-500 hover:text-orange-400 sm:no-underline underline underline-offset-2 transition-colors"
           >
             Enroll Now
           </Link>
@@ -49,12 +50,14 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
         <div className="hidden sm:flex items-center gap-1 shrink-0">
           {units.map((unit, i) => (
             <div key={unit.label} className="flex items-center gap-1">
-              <span className="inline-flex items-center justify-center min-w-[36px] h-7 px-1.5 rounded bg-bg-tertiary border border-border-default text-caption font-bold tabular-nums text-text-primary">
+              <span className="inline-flex items-center justify-center min-w-[34px] h-6 px-1.5 rounded-[4px] bg-black/30 border border-orange-500/20 text-[11px] font-bold tabular-nums text-text-primary">
                 {String(unit.value).padStart(2, "0")}
-                <span className="text-text-dimmed font-medium ml-0.5">{unit.label}</span>
+                <span className="text-text-dimmed font-medium ml-0.5 text-[10px]">
+                  {unit.label}
+                </span>
               </span>
               {i < units.length - 1 && (
-                <span className="text-text-dimmed text-caption font-bold">:</span>
+                <span className="text-orange-500/40 text-[10px] font-bold">:</span>
               )}
             </div>
           ))}
@@ -62,7 +65,7 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
 
         <button
           onClick={() => setDismissed(true)}
-          className="absolute right-0 sm:static text-text-dimmed hover:text-text-primary transition-colors shrink-0 ml-1"
+          className="absolute right-0 sm:static flex items-center justify-center w-6 h-6 text-text-dimmed hover:text-text-primary transition-colors shrink-0"
           aria-label="Dismiss banner"
         >
           <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -22,39 +22,34 @@ const SOCIAL_ICON_PATHS: Record<string, string> = {
   twitter: "/assets/icons/twitter.svg",
 };
 
-const FOOTER_COLS = {
-  exams: CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` })),
-  courses: [
-    { label: "All Courses", href: "/mba" },
-    { label: "Live Classes", href: "/mba" },
-    { label: "Test Series", href: "/mba" },
-    { label: "Study Material", href: "/blog" },
-  ],
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Meet the Team", href: "/team" },
-    { label: "Careers", href: "/contact" },
-    { label: "Contact Us", href: "/contact" },
-  ],
-  resources: [
-    { label: "Blog", href: "/blog" },
-    { label: "Free Resources", href: "/blog" },
-    { label: "Webinars", href: "/blog" },
-    { label: "Success Stories", href: "/#results" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms & Conditions", href: "/terms-and-conditions" },
-    { label: "Refund Policy", href: "/refund-policy" },
-    { label: "Disclaimer", href: "/disclaimer" },
-  ],
-};
+const QUICK_LINKS = [
+  { label: "About Us", href: "/about" },
+  { label: "Faculty", href: "/faculty" },
+  { label: "Meet the Team", href: "/team" },
+  { label: "Blogs", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
+];
 
-/** When multiple footer links share a path, only this label is marked active. */
+const RESOURCES_LINKS = [
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Free Resources", href: "/blog" },
+  { label: "Success Stories", href: "/#results" },
+];
+
+const LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Refund Policy", href: "/refund-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
+];
+
 const PREFERRED_ACTIVE_LABEL: Record<string, string> = {
   "/mba": "MBA (CAT + GDPI)",
   "/blog": "Blog",
   "/contact": "Contact Us",
+  "/faq": "FAQ",
+  "/team": "Meet the Team",
 };
 
 function normalizePath(path: string): string {
@@ -74,16 +69,19 @@ function getActiveFooterLabel(pathname: string, currentHash: string): string | n
   const currentPath = normalizePath(pathname);
   const hash = currentHash || "";
 
-  const matches = Object.values(FOOTER_COLS)
-    .flat()
-    .filter((item) => {
-      const { path, hash: itemHash } = parseFooterHref(item.href);
-      if (path !== currentPath) return false;
-      // Hash links (e.g. /#results) only match when the hash is present
-      if (itemHash) return itemHash === hash;
-      // Plain path links only match when there is no hash in the URL
-      return hash === "";
-    });
+  const allLinks = [
+    ...CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` })),
+    ...QUICK_LINKS,
+    ...RESOURCES_LINKS,
+    ...LEGAL_LINKS,
+  ];
+
+  const matches = allLinks.filter((item) => {
+    const { path, hash: itemHash } = parseFooterHref(item.href);
+    if (path !== currentPath) return false;
+    if (itemHash) return itemHash === hash;
+    return hash === "";
+  });
 
   if (matches.length === 0) return null;
 
@@ -105,7 +103,7 @@ function FooterColumn({
   activeLabel: string | null;
 }) {
   return (
-    <div className="text-left lg:text-right">
+    <div className="text-left">
       <h4 className="text-body font-semibold text-text-primary mb-4">{title}</h4>
       <ul className="space-y-2.5">
         {links.map((item) => {
@@ -144,11 +142,31 @@ export function Footer() {
   }, [pathname]);
 
   const activeLabel = getActiveFooterLabel(pathname, hash);
+  const examLinks = CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` }));
+  const isHomePage = pathname === "/";
 
   return (
-    <footer className="bg-bg-secondary border-t border-border-default relative">
-      <div className="container-rodha py-8 md:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 lg:gap-6">
+    <footer
+      className={cn(
+        "relative",
+        isHomePage
+          ? "bg-transparent border-t border-transparent"
+          : "bg-bg-primary border-t border-border-default"
+      )}
+    >
+      {!isHomePage && (
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          aria-hidden
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(249,115,22,0.08) 0%, transparent 70%)",
+          }}
+        />
+      )}
+
+      <div className="container-rodha relative py-10 md:py-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2 text-left">
             <Link href="/" className="inline-block">
               <Image
@@ -159,7 +177,7 @@ export function Footer() {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-3 text-body-sm text-text-muted max-w-[220px] leading-relaxed">
+            <p className="mt-3 text-body-sm text-text-muted max-w-xs leading-relaxed">
               {SITE_TAGLINE}
             </p>
             <div className="mt-5 flex items-center gap-2.5">
@@ -180,29 +198,60 @@ export function Footer() {
                 </a>
               ))}
             </div>
-            <div className="mt-4 text-caption text-text-dimmed space-y-1">
-              <p>{CONTACT_INFO.email}</p>
-              <p>{CONTACT_INFO.phone}</p>
-            </div>
           </div>
 
-          <FooterColumn title="Exams" links={FOOTER_COLS.exams} activeLabel={activeLabel} />
-          <FooterColumn title="Courses" links={FOOTER_COLS.courses} activeLabel={activeLabel} />
-          <FooterColumn title="Company" links={FOOTER_COLS.company} activeLabel={activeLabel} />
-          <FooterColumn title="Resources" links={FOOTER_COLS.resources} activeLabel={activeLabel} />
-          <FooterColumn title="Legal" links={FOOTER_COLS.legal} activeLabel={activeLabel} />
+          <FooterColumn title="Courses" links={examLinks} activeLabel={activeLabel} />
+          <FooterColumn title="Quick Links" links={QUICK_LINKS} activeLabel={activeLabel} />
+          <FooterColumn title="Resources" links={RESOURCES_LINKS} activeLabel={activeLabel} />
+
+          <div className="col-span-2 sm:col-span-1 text-left">
+            <h4 className="text-body font-semibold text-text-primary mb-4">Contact Us</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+                <Icon src="/assets/icons/phone.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
+                <span>{CONTACT_INFO.phone}</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+                <Icon src="/assets/icons/email.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-orange-400 transition-colors">
+                  {CONTACT_INFO.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+                <Icon src="/assets/icons/location.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
+                <span>{CONTACT_INFO.address}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div className="border-t border-border-default">
-        <div className="container-rodha py-5 flex flex-col md:flex-row items-center justify-between gap-3 relative">
-          <p className="text-caption text-text-dimmed">
+        <div className="container-rodha py-5 flex flex-col md:flex-row items-center justify-between gap-4 relative">
+          <p className="text-caption text-text-dimmed text-center md:text-left">
             &copy; {currentYear} {SITE_NAME}. All rights reserved.
           </p>
 
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            {LEGAL_LINKS.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "text-caption transition-colors",
+                  activeLabel === item.label
+                    ? "text-orange-400 font-medium"
+                    : "text-text-dimmed hover:text-orange-400"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="absolute right-4 md:static md:ml-2 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
+            className="md:absolute md:right-4 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors shadow-orange"
             aria-label="Scroll to top"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -214,5 +263,3 @@ export function Footer() {
     </footer>
   );
 }
-
-

@@ -86,7 +86,7 @@ export function DropdownSelect({
         <div
           role="listbox"
           aria-label={ariaLabel}
-          className="absolute top-full left-0 right-0 mt-2 min-w-full max-h-60 overflow-y-auto rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50 animate-[dropdown-in_180ms_var(--ease-premium)]"
+          className="absolute top-full left-0 right-0 mt-2 min-w-full max-h-60 overflow-y-auto rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-[100] animate-[dropdown-in_180ms_var(--ease-premium)]"
         >
           {options.map((option) => {
             const isActive = option.value === value;

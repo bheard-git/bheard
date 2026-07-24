@@ -14,6 +14,44 @@ Format:
 
 ---
 
+### 2026-07-24 — Homepage CTA image-background variant
+- **Decision:** Extend `CTABand` with optional `backgroundImage`, `titleAccent`, and `secondaryOutline` props instead of a separate `HomeCtaSection`. When `backgroundImage` is set, skip CAT icon, gradient overlays, and `AmbientBackground`; render split headline and orange-outline secondary.
+- **Rationale:** Matches existing `decorativeImage` variant pattern; keeps one reusable CTA component; other pages unchanged.
+- **Alternatives considered:** Dedicated `HomeCtaSection` wrapper; site-wide CTA restyle.
+- **Consequences:** Home page passes `home-cta-bg.png` and split title props; category/team/faculty CTAs keep default gradient style.
+
+### 2026-07-24 — Continuous homepage gradient (document-level)
+- **Decision:** Move the base dark→light→dark gradient to `body.home-gradient-page` (applied only on `/` via `HomePageBodyTheme` client island). `HomePageBackground` retains accent-only radial glows; section shells stay transparent. Footer is transparent on homepage only; other routes unchanged.
+- **Rationale:** Footer sits outside `HomePageBackground` in root layout; body-level gradient spans main + footer without seams. Sharper canvas linear-gradient stops caused visible bands when stretched over tall pages.
+- **Alternatives considered:** Fixed viewport gradient; wrapping footer inside homepage; site-wide transparent footer.
+- **Consequences:** Client navigation away from `/` must remove body class (handled in cleanup). Hero components untouched.
+
+---
+
+### 2026-07-24 — Homepage premium polish (continuous canvas)
+- **Decision:** Wrap v2 homepage in `HomePageBackground` with a single vertical gradient stack (`.home-page-canvas` + glow layer). Strip per-section solid backgrounds and blend pseudo-elements from homepage sections; use `.home-on-light` text overrides on categories/impact only. Hero shell becomes transparent with `overflow-visible` (canvas clipped in inner wrapper). Extract `HeroTrustMetrics` below video; `ImpactStatsRow` replaces vertical stat stack.
+- **Rationale:** Eliminate hard section color breaks and hero gradient artifact; align with v2 mock's seamless scroll experience; fix dropdown clipping from hero `overflow-hidden`.
+- **Alternatives considered:** Keep per-section gradient blends; retain vertical impact stats.
+- **Consequences:** Legacy route retains old section-gradient CSS; homepage sections are transparent shells; `DropdownSelect` menu z-index raised globally to `z-[100]`.
+
+---
+
+### 2026-07-24 — Homepage v2 UI refinements
+- **Decision:** Hero mouse tracking lifted to `HomeHeroShell` (section-level) with canvas `pointer-events-none`. Form exam field uses `DropdownSelect` (not `Select`). Video is click-to-play (no autoplay). Light homepage sections via additive `.home-section-light` + extended gradient blends. Impact stats move to left column as icon badges; timeline uses positioned milestone pills; final milestone year `2026`. Footer restructured to v2 5-column + bottom legal bar. App promo uses `public/assets/app promotion/app mockup.png`.
+- **Rationale:** Close gaps with approved v2 mock; improve neural interaction responsiveness; seamless dark→light scroll transitions.
+- **Alternatives considered:** Keep stats below timeline; keep canvas mouse listeners; autoplay video on scroll.
+- **Consequences:** `Footer.tsx` updated globally; neural physics constants tuned in `HeroNeuralCanvas`.
+
+---
+
+### 2026-07-24 — Homepage v2 redesign + legacy route preservation
+- **Decision:** Ship v2 homepage at `/` via new `HomePage` composition (`src/components/sections/home/*`). Freeze v1 at `/legacy-homepage` using unchanged `LegacyHomePage`. Do not modify legacy section components (`HeroSection`, `TopperCard`, `LeadCaptureForm`, etc.); add variants (`TopperCardAlternate`, `HeroCounsellingForm`) instead. Hero background uses a single client `<canvas>` neural-network animation (RAF, spatial grid connections, mouse repulsion). Design reference: `referrence/ui/home page Ui v2.png`.
+- **Rationale:** Approved v2 layout differs materially (counselling form hero, video, impact timeline, no courses/faculty/blog on home). Preserving legacy route enables rollback/comparison without duplicating the entire codebase.
+- **Alternatives considered:** In-place refactor of `LegacyHomePage`; SVG particle hero; animation library (Framer/GSAP).
+- **Consequences:** `/` is v2; `/legacy-homepage` is noindex backup; app promo uses placeholder until device assets arrive; new CSS utilities (`.home-hero-shell`, `.glass-card-hero`, `.section-blend-*`) are additive only.
+
+---
+
 ### 2026-07-21 — Faculty detail optional fields + dedicated cards
 - **Decision:** Extend `Faculty` with optional detail fields (`about`, `philosophy`, `coursesTaught`, `publications`, `reviews`, `videos`, `resultStats`, etc.). Fully populate only 3 featured profiles (Nishant Agarwal, Anand Mishra, Neha Agarwal); other slugs render hero + CTA and hide empty sections. Create faculty-specific card variants instead of stretching `CourseCard` / `TestimonialCard`. Extend `CTABand` with optional `tertiaryAction`. Achievements use `rank.png`; results use `faculty/detail/results-podium.png`.
 - **Rationale:** Approved mock spacing/composition differs from listing/homepage cards; Phase 1 static content cannot fully author every faculty profile yet.
