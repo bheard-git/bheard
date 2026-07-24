@@ -7,7 +7,7 @@ import { CATEGORIES } from "@/lib/constants";
 
 export function HomeCategoriesSection() {
   return (
-    <section className="section-spacing home-on-light relative">
+    <section className="section-spacing relative">
       <Container>
         <SectionHeader
           title={

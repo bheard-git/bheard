@@ -101,7 +101,7 @@ export function CTABand({
           className={cn(
             "relative overflow-hidden rounded-[6px] border border-orange-500/30",
             isImageBg
-              ? "min-h-[160px] md:min-h-[200px] px-5 py-8 md:px-8 md:py-10"
+              ? "bg-bg-secondary min-h-[160px] md:min-h-[200px] px-5 py-8 md:px-8 md:py-10"
               : cn(
                   "bg-bg-secondary surface-gradient-cta premium-border-glow shine-sweep",
                   isDecorated
@@ -116,12 +116,12 @@ export function CTABand({
                 src={backgroundImage}
                 alt=""
                 fill
-                className="object-cover object-[center_top] pointer-events-none"
+                className="object-cover object-[right_center] pointer-events-none"
                 sizes="(max-width: 1280px) 100vw, 1280px"
                 priority={false}
               />
               <div
-                className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/50 via-black/20 to-transparent"
+                className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/30 via-black/10 to-transparent"
                 aria-hidden
               />
             </>
@@ -199,7 +199,7 @@ export function CTABand({
                 {title}
                 {titleAccent && (
                   <>
-                    {" "}
+                    {isImageBg ? <br /> : " "}
                     <span className="text-orange-500">{titleAccent}</span>
                   </>
                 )}

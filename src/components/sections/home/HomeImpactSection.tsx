@@ -42,7 +42,7 @@ export function HomeImpactSection() {
   }, [isInView, reducedMotion]);
 
   return (
-    <section className="section-spacing home-on-light relative overflow-hidden">
+    <section className="section-spacing home-section-light relative overflow-hidden">
       <Container>
         <div ref={ref}>
           <RevealGroup>
@@ -52,7 +52,9 @@ export function HomeImpactSection() {
                   Our Impact
                 </p>
                 <h2 className="text-h2 md:text-h1 font-bold home-light-heading leading-tight">
-                  Two lakh+ students. A decade of{" "}
+                  Two lakh+ students.
+                  <br />
+                  A decade of{" "}
                   <span className="text-orange-500">momentum.</span>
                 </h2>
                 <p className="mt-3 text-body home-light-body leading-relaxed">

@@ -11,22 +11,24 @@ interface ExamCardProps {
 
 export function ExamCard({ category, className }: ExamCardProps) {
   const accent = category.color || "#F97316";
+  const tintedBg = `color-mix(in srgb, ${accent} 8%, #0d0b0a)`;
 
   return (
     <Link
       href={`/${category.slug}`}
       className={cn(
-        "card-base !bg-[#0d0b0a] card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px]",
+        "card-base card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px]",
         className
       )}
       style={{
-        boxShadow: `inset 0 0 0 1px ${accent}28`,
+        backgroundColor: tintedBg,
+        boxShadow: `0 0 24px ${accent}18, inset 0 0 0 1px ${accent}28`,
         ["--glow-base" as string]: `${accent}24`,
         ["--glow-peak" as string]: `${accent}B3`,
       }}
     >
       <div
-        className="pointer-events-none absolute -bottom-8 -right-6 w-40 h-40 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"
+        className="pointer-events-none absolute -bottom-8 -right-6 w-40 h-40 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity"
         style={{
           background: `radial-gradient(circle, ${accent}50 0%, transparent 70%)`,
         }}

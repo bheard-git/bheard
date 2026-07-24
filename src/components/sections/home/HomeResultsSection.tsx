@@ -7,7 +7,7 @@ import { topResults } from "@/data/results";
 
 export function HomeResultsSection() {
   return (
-    <section id="results" className="section-spacing relative overflow-hidden">
+    <section id="results" className="section-spacing home-section-light section-blend-light-to-dark relative overflow-hidden">
       <Container>
         <SectionHeader
           title={

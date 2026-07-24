@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-24 (homepage CTA layout v2)
+**Last updated:** 2026-07-24 (homepage background flow + section styling fixes)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -52,6 +52,7 @@ Update this file after every meaningful implementation task.
 - **Impact timeline layout (2026-07-24):** Restored growth-path student count badges (alternating above/below nodes); timeline axis row below path with year, title, and description per milestone.
 - **Continuous homepage gradient (2026-07-24):** Document-height `body.home-gradient-page` gradient (homepage-only via `HomePageBodyTheme`); accent-only canvas glow; transparent footer on `/`; removed Results `AmbientBackground` overlay.
 - **Homepage CTA band v2 layout (2026-07-24):** Extended `CTABand` with `backgroundImage`, `titleAccent`, and `secondaryOutline` props; home page uses `home-cta-bg.png`, split white/orange headline, left copy + right buttons, orange-outline secondary.
+- **Homepage background flow fixes (2026-07-24):** Removed hero bottom vignette; tuned `body.home-gradient-page` stops; wired `home-section-light` on Impact/Results, `home-section-transition-to-dark` on App promo; Categories reverted to dark-theme text; `ExamCard` accent tint/glow; light `btn-view-all` on Results; CTA dark card bg + visible bg image + accent line break; Impact 3-line heading.
 
 ---
 

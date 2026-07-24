@@ -796,28 +796,27 @@
       linear-gradient(
         180deg,
         #0a0a0a 0%,
-        #0a0a0a 10%,
-        #0c0a09 14%,
-        #100e0c 18%,
-        #161310 22%,
-        #1e1a16 26%,
-        #2a241e 30%,
-        #3d352c 34%,
-        #5c5248 38%,
-        #8a7f72 42%,
-        #b8aea2 46%,
-        #d8cfc4 50%,
-        #ebe4da 54%,
-        #f5f0ea 58%,
-        #f8f6f2 62%,
-        #f0ebe4 66%,
-        #e2dbd2 70%,
-        #c9bfb4 74%,
-        #9a9086 78%,
-        #6a6258 82%,
-        #3a342e 86%,
-        #221e1a 90%,
-        #141210 94%,
+        #0a0a0a 8%,
+        #0c0a09 12%,
+        #100e0c 16%,
+        #161310 20%,
+        #1e1a16 24%,
+        #2a241e 28%,
+        #3d352c 32%,
+        #5c5248 35%,
+        #8a7f72 38%,
+        #b8aea2 40%,
+        #d8cfc4 41%,
+        #f0ece6 42%,
+        #f8f6f2 50%,
+        #f8f6f2 58%,
+        #e2dbd2 62%,
+        #c9bfb4 66%,
+        #9a9086 70%,
+        #6a6258 74%,
+        #3a342e 80%,
+        #221e1a 86%,
+        #141210 92%,
         #0a0a0a 98%,
         #0a0a0a 100%
       );
@@ -860,9 +859,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-      radial-gradient(ellipse 55% 50% at 75% 45%, rgba(249, 115, 22, 0.06) 0%, transparent 65%),
-      radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+    background: radial-gradient(ellipse 55% 50% at 75% 45%, rgba(249, 115, 22, 0.06) 0%, transparent 65%);
     z-index: 1;
   }
 
@@ -926,6 +923,28 @@
 
   .home-section-light .section-header p {
     color: #737373;
+  }
+
+  .home-section-light .btn-view-all {
+    background-color: #ffffff;
+    color: #171717;
+    border-color: rgba(249, 115, 22, 0.35);
+  }
+
+  .home-section-light .btn-view-all:hover {
+    background-color: rgba(249, 115, 22, 0.08);
+    border-color: #F97316;
+  }
+
+  .home-section-transition-to-dark {
+    background: linear-gradient(
+      180deg,
+      #f8f6f2 0%,
+      #e2dbd2 18%,
+      #6a6258 45%,
+      #221e1a 72%,
+      #0a0a0a 100%
+    );
   }
 
   .impact-milestone-pill {

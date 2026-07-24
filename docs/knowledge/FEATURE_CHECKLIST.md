@@ -27,12 +27,12 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Section | Status |
 |---------|--------|
 | Hero (neural canvas + counselling form + YouTube + floating stats) | Complete |
-| Choose Your Exam | Complete (`ExamCard`; carousel &lt; xl, grid on xl) |
-| Impact timeline | Complete (growth path with student count badges; axis row with year/title/description) |
-| Results / toppers | Complete (`TopperCardAlternate` orange/dark alternation) |
-| App promotion | Partial (app mockup image + Play Store SVG; store links `#` until URLs arrive) |
-| CTA Band | Complete (v2 mockup layout; `home-cta-bg.png` background, split headline, orange-outline secondary) |
-| Continuous page canvas background | Complete (`body.home-gradient-page` + accent glow; transparent sections + homepage footer) |
+| Choose Your Exam | Complete (`ExamCard` accent tint/glow; dark-theme heading on transitional bg) |
+| Impact timeline | Complete (3-line heading; `home-section-light` opaque bg) |
+| Results / toppers | Complete (`TopperCardAlternate` orange/dark alternation; light heading + white View All btn) |
+| App promotion | Partial (app mockup image + Play Store SVG; `home-section-transition-to-dark`; store links `#` until URLs arrive) |
+| CTA Band | Complete (v2 layout; dark card bg; `home-cta-bg.png` visible; accent on separate line) |
+| Continuous page canvas background | Complete (tuned gradient stops; section theme utilities wired; seamless dark→light→dark flow) |
 
 ## Home `/legacy-homepage` (frozen v1 backup)
 
