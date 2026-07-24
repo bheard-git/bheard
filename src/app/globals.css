@@ -186,9 +186,9 @@
   88%, 100% { transform: translateX(150%) skewX(-18deg); opacity: 0; }
 }
 
-@keyframes soft-pulse {
-  0%, 84%, 100% { box-shadow: var(--shadow-md); }
-  90% { box-shadow: 0 6px 28px rgba(249, 115, 22, 0.34); }
+@keyframes floating-cta-glow {
+  0%, 84%, 100% { box-shadow: 0 4px 14px rgba(249, 115, 22, 0.28); }
+  90% { box-shadow: 0 6px 28px rgba(249, 115, 22, 0.42); }
 }
 
 @keyframes quote-glow {
@@ -639,11 +639,17 @@
   }
 
   .floating-cta-pulse {
-    animation: soft-pulse 8s ease-in-out infinite;
+    border-radius: 6px;
+    animation: floating-cta-glow 8s ease-in-out infinite;
   }
 
   .floating-cta-pulse:hover {
     animation-play-state: paused;
+  }
+
+  .floating-cta-btn:hover {
+    transform: none;
+    box-shadow: 0 7px 24px rgba(249, 115, 22, 0.36);
   }
   .btn-primary:active {
     transform: translateY(0);

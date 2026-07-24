@@ -108,7 +108,7 @@ export function FloatingCounsellingCta() {
         "fixed bottom-4 right-4 z-30 md:bottom-6 md:right-6",
         "transition-[opacity,transform] duration-600",
         isVisible
-          ? "floating-cta-pulse opacity-100 translate-y-0 pointer-events-auto"
+          ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 translate-y-3 pointer-events-none"
       )}
     >
@@ -116,7 +116,7 @@ export function FloatingCounsellingCta() {
         type="button"
         onClick={() => openCounsellingModal()}
         aria-label="Book free counselling"
-        className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange inline-flex min-h-11 items-center justify-center rounded-[6px] px-4 py-3 text-body-sm shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+        className="floating-cta-btn floating-cta-pulse btn-primary btn-primary-premium premium-border-glow glow-accent-orange inline-flex min-h-11 items-center justify-center rounded-[6px] px-4 py-3 text-body-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-0"
       >
         Book Free Counselling
       </button>
