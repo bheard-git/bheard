@@ -9,6 +9,8 @@ interface CTABandProps {
   subtitle?: string;
   primaryAction: { label: string; href: string };
   secondaryAction?: { label: string; href: string };
+  /** Optional third CTA (e.g. Ask Rodha Buddy on faculty detail) */
+  tertiaryAction?: { label: string; href: string };
   /** Decorative image on the left (e.g. Meet the Team CTA) */
   decorativeImage?: string;
   className?: string;
@@ -25,8 +27,8 @@ function SecondaryCta({
   const isCounselling = /counselling/i.test(action.label);
   const className =
     variant === "decorated"
-      ? "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-2 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold"
-      : "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-1.5 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold";
+      ? "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-2 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold w-full sm:w-auto"
+      : "btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-1.5 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold w-full sm:w-auto";
 
   const content = (
     <>
@@ -67,11 +69,13 @@ export function CTABand({
   subtitle,
   primaryAction,
   secondaryAction,
+  tertiaryAction,
   decorativeImage,
   className,
 }: CTABandProps) {
   const isDecorated = Boolean(decorativeImage);
   const primaryIsCounselling = /counselling/i.test(primaryAction.label);
+  const hasBuddy = Boolean(tertiaryAction && /buddy/i.test(tertiaryAction.label));
 
   return (
     <section id="site-footer-cta" className={cn("section-spacing pt-6 md:pt-8", className)}>
@@ -149,24 +153,48 @@ export function CTABand({
               )}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:flex-col lg:flex-row items-center md:gap-2.5 shrink-0">
+            <div
+              className={cn(
+                "flex flex-col sm:flex-row gap-3 md:gap-2.5 items-stretch sm:items-center shrink-0 w-full sm:w-auto",
+                tertiaryAction
+                  ? "md:flex-row lg:flex-row"
+                  : "md:flex-col lg:flex-row"
+              )}
+            >
               <Link
                 href={primaryAction.href}
-                className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap"
+                className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap text-center w-full sm:w-auto"
                 {...(primaryIsCounselling ? { "data-counselling-cta": true } : {})}
               >
                 {primaryAction.label}
               </Link>
               {secondaryAction && (
                 <>
-                  {!isDecorated && (
+                  {!isDecorated && !tertiaryAction && (
                     <div className="hidden sm:block w-px h-8 bg-white/20 shrink-0" aria-hidden />
                   )}
                   <SecondaryCta
                     action={secondaryAction}
-                    variant={isDecorated ? "decorated" : "default"}
+                    variant={isDecorated && !tertiaryAction ? "decorated" : "default"}
                   />
                 </>
+              )}
+              {tertiaryAction && (
+                <a
+                  href={tertiaryAction.href}
+                  target={tertiaryAction.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    tertiaryAction.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="btn-outlined-premium premium-border-glow glow-accent-silver shine-sweep shine-sweep-outline inline-flex items-center justify-center gap-2 text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap border border-white text-white bg-transparent hover:bg-white/10 transition-colors font-semibold w-full sm:w-auto"
+                >
+                  {hasBuddy && (
+                    <Icon src="/assets/icons/ai-buddy.svg" size={16} className="text-orange-400" />
+                  )}
+                  {tertiaryAction.label}
+                </a>
               )}
             </div>
           </div>

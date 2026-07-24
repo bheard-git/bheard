@@ -80,8 +80,8 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 |------|--------|-------|
 | About `/about` | Not Started | Placeholder |
 | Team `/team` | Complete | Hero + leadership/faculty carousels + advisors + culture + CTA; mockup-aligned |
-| Faculty listing `/faculty` | Not Started | Placeholder (data + FacultyCard exist) |
-| Faculty detail `/faculty/[slug]` | Not Started | Placeholder |
+| Faculty listing `/faculty` | Complete | Vertical listing cards, header-style filters in All Faculty, 4-col hero stats; mockup-aligned |
+| Faculty detail `/faculty/[slug]` | Complete | Pixel mock: hero + info/courses/achievements/reviews/videos/results; full detail for 3 featured; empty sections hidden |
 | Blog listing `/blog` | Not Started | Placeholder (data + BlogCard exist) |
 | Blog detail `/blog/[slug]` | Not Started | Placeholder |
 | Contact `/contact` | Not Started | ContactForm exists; page stub |

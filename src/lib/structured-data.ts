@@ -68,3 +68,26 @@ export function faqPageJsonLd(items: FaqItem[]): JsonLd {
     })),
   };
 }
+
+export function personJsonLd(person: {
+  name: string;
+  description: string;
+  image?: string;
+  url: string;
+  jobTitle?: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name,
+    description: person.description,
+    image: person.image ? `${SITE_URL}${person.image}` : undefined,
+    url: `${SITE_URL}${person.url}`,
+    jobTitle: person.jobTitle,
+    worksFor: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+}

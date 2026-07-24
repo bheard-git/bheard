@@ -48,6 +48,53 @@ export interface Course {
   startDate?: string;
 }
 
+export interface FacultyHeroStat {
+  id: string;
+  value: string;
+  label: string;
+  icon: string;
+}
+
+export interface FacultyCourseTaught {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  lectures: string;
+  enrolled: string;
+  href: string;
+}
+
+export interface FacultyPublication {
+  id: string;
+  title: string;
+  meta: string;
+  thumbnail: string;
+  href?: string;
+}
+
+export interface FacultyReview {
+  id: string;
+  name: string;
+  quote: string;
+  rating: number;
+  avatar?: string;
+}
+
+export interface FacultyVideo {
+  id: string;
+  title: string;
+  thumbnail: string;
+  duration: string;
+  href?: string;
+}
+
+export interface FacultyResultStat {
+  id: string;
+  value: string;
+  label: string;
+}
+
 export interface Faculty {
   id: string;
   name: string;
@@ -62,6 +109,20 @@ export interface Faculty {
   studentsMentored?: string;
   achievements?: string[];
   categories: CategoryId[];
+  featured?: boolean;
+  /** Detail page — optional; omit to hide related sections */
+  designation?: string;
+  badgeLabel?: string;
+  about?: string;
+  philosophy?: string;
+  expertiseTags?: string[];
+  heroStats?: FacultyHeroStat[];
+  coursesTaught?: FacultyCourseTaught[];
+  publications?: FacultyPublication[];
+  reviews?: FacultyReview[];
+  videos?: FacultyVideo[];
+  resultStats?: FacultyResultStat[];
+  reviewCountLabel?: string;
 }
 
 export interface BlogPost {

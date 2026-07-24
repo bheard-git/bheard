@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-17  
+**Last updated:** 2026-07-21 (faculty detail page)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -41,6 +41,9 @@ Update this file after every meaningful implementation task.
 - **Hover shine sweep utility (2026-07-17):** Added `.shine-sweep-hover` — one-shot diagonal light sweep on card hover (0.72s, no loop). Applied to results/topper cards, stats panel, course/faculty/testimonial/advisor/value-prop cards; coexists with existing `.shine-sweep` ambient animation and `.card-premium-hover` lift/glow.
 - **Shine-splash hover (2026-07-17):** Added `.hover-shine` (reference skewed light band, 1s). Replaced `.shine-sweep*` on TopperCard, CourseCard, FacultyCard, ValuePropCard, and AdvisorCard so `::after` effects do not conflict. Extended to LeadershipCard, FacultyExpertCard, and BlogCard.
 - **CTA border glow (2026-07-17):** Border glow sped to 6s with stronger focused peak. Orange CTAs use `.glow-accent-orange`; white outline CTAs keep `.glow-accent-silver` (intensified).
+- **Faculty listing `/faculty` (2026-07-20):** Full page — split hero (`FacultyHeroSection` + `hero-faulty.png`), filter bar (search/subject/experience/rating/sort), featured faculty carousel (`FacultyExpertCard`), paginated grid (`FacultyCard`), why-learn value props, CTA band, BreadcrumbList JSON-LD; data/helpers in `src/data/faculty.ts`
+- **Faculty listing UI refresh (2026-07-20):** 4-col hero stats (incl. rating); filters moved into All Faculty with `DropdownSelect` (header-style); new vertical `FacultyListingCard` for featured + grid (xl 4 / 2xl 5 cols); rating filter removed; pagination 15/page
+- **Faculty detail `/faculty/[slug]` (2026-07-21):** Full mock-aligned page — detail hero, info cards, courses, achievements+publications, reviews+videos, results podium banner, 3-action CTABand; dedicated Faculty* card variants; optional detail fields with empty sections hidden; full payloads for Nishant Agarwal, Anand Mishra, Neha Agarwal; `personJsonLd` + `generateStaticParams`
 
 ---
 
@@ -62,7 +65,9 @@ Update this file after every meaningful implementation task.
 - [ ] Dedicated leadership / advisor headshots (interim: homepage `profiles/`)
 
 ### Screens
-- [ ] About / Faculty / Blog / Contact / Course detail
+- [ ] About / Blog / Contact / Course detail
+- [x] Faculty listing `/faculty`
+- [x] Faculty detail `/faculty/[slug]`
 - [x] Meet the Team `/team`
 - [x] FAQ listing (`/faq`)
 - [x] Legal pages (Privacy / Terms / Refund / Disclaimer)

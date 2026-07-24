@@ -314,7 +314,8 @@
       box-shadow 250ms ease;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  /* any-hover: primary input may be touch on hybrid devices; still honor mouse hover */
+  @media (any-hover: hover) {
     .card-hover:hover,
     .card-premium-hover:hover {
       border-color: rgba(249, 115, 22, 0.45);
@@ -489,7 +490,7 @@
     );
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .shine-sweep-hover:not(.shine-sweep):hover::after {
       animation: shine-sweep-hover 0.72s cubic-bezier(0.33, 0.08, 0.22, 1) forwards;
     }
@@ -500,7 +501,8 @@
     }
   }
 
-  /* Reference shine-splash — skewed light band on hover/focus-within */
+  /* Reference shine-splash — skewed light band on hover/focus-within.
+     Transition only on :hover so leave snaps back (no reverse sweep). */
   .hover-shine {
     position: relative;
     overflow: hidden;
@@ -512,7 +514,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 5;
     width: 50%;
     height: 100%;
     pointer-events: none;
@@ -520,11 +522,9 @@
     transform: skewX(-0.08turn) translateX(-180%);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .hover-shine:is(:hover, :focus-within)::after {
-      transform: skewX(-0.08turn) translateX(275%);
-      transition: transform 1000ms ease;
-    }
+  .hover-shine:is(:hover, :focus-within)::after {
+    transform: skewX(-0.08turn) translateX(275%);
+    transition: transform 1000ms ease;
   }
 
   .btn-outlined-premium {

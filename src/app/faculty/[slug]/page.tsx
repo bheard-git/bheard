@@ -1,27 +1,104 @@
-import { Container } from "@/components/layout/Container";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { FacultyDetailHeroSection } from "@/components/sections/FacultyDetailHeroSection";
+import { FacultyInfoCardsSection } from "@/components/sections/FacultyInfoCardsSection";
+import { FacultyCoursesSection } from "@/components/sections/FacultyCoursesSection";
+import { FacultyAchievementsPublicationsSection } from "@/components/sections/FacultyAchievementsPublicationsSection";
+import { FacultyReviewsVideosSection } from "@/components/sections/FacultyReviewsVideosSection";
+import { FacultyResultsSection } from "@/components/sections/FacultyResultsSection";
+import { CTABand } from "@/components/sections/CTABand";
+import { RevealGroup } from "@/components/ui/RevealGroup";
+import { faculty, getFacultyBySlug } from "@/data/faculty";
+import { EXTERNAL_URLS } from "@/lib/constants";
+import { breadcrumbJsonLd, personJsonLd } from "@/lib/structured-data";
 
 interface FacultyDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: FacultyDetailPageProps) {
+export function generateStaticParams() {
+  return faculty.map((member) => ({ slug: member.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: FacultyDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const member = getFacultyBySlug(slug);
+
+  if (!member) {
+    return { title: "Faculty — Rodha" };
+  }
+
   return {
-    title: `Faculty — ${slug} — Rodha`,
-    description: `Learn more about our expert faculty member.`,
+    title: `${member.name} — Faculty — Rodha`,
+    description: member.about ?? member.bio,
   };
 }
 
 export default async function FacultyDetailPage({ params }: FacultyDetailPageProps) {
   const { slug } = await params;
+  const member = getFacultyBySlug(slug);
+
+  if (!member) {
+    notFound();
+  }
+
+  const categoryHref = `/${member.categories[0] ?? "mba"}`;
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Faculty", href: "/faculty" },
+    { label: member.name },
+  ];
 
   return (
-    <section className="section-spacing">
-      <Container>
-        <h1 className="text-h1 font-bold">Faculty Profile</h1>
-        <p className="mt-4 text-body-lg text-text-muted">Profile for: {slug}</p>
-        <p className="mt-8 text-text-dimmed">Full faculty profile coming soon...</p>
-      </Container>
-    </section>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd(breadcrumbItems)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            personJsonLd({
+              name: member.name,
+              description: member.about ?? member.bio,
+              image: member.image,
+              url: `/faculty/${member.slug}`,
+              jobTitle: member.designation ?? member.title,
+            })
+          ),
+        }}
+      />
+
+      <FacultyDetailHeroSection faculty={member} />
+
+      <FacultyInfoCardsSection faculty={member} />
+
+      <FacultyCoursesSection faculty={member} />
+
+      <FacultyAchievementsPublicationsSection faculty={member} />
+
+      <FacultyReviewsVideosSection faculty={member} />
+
+      <FacultyResultsSection faculty={member} />
+
+      <RevealGroup>
+        <CTABand
+          title="Take the Next Step Towards Success"
+          subtitle="Explore courses, book a free demo, or ask Rodha Buddy — your AI study companion."
+          primaryAction={{ label: "Explore Courses →", href: categoryHref }}
+          secondaryAction={{ label: "Book a Demo →", href: "/contact" }}
+          tertiaryAction={{
+            label: "Ask Rodha Buddy",
+            href: EXTERNAL_URLS.rodhaBuddy,
+          }}
+          className="reveal-child reveal-delay-1"
+        />
+      </RevealGroup>
+    </>
   );
 }

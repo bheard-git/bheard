@@ -14,6 +14,14 @@ Format:
 
 ---
 
+### 2026-07-21 — Faculty detail optional fields + dedicated cards
+- **Decision:** Extend `Faculty` with optional detail fields (`about`, `philosophy`, `coursesTaught`, `publications`, `reviews`, `videos`, `resultStats`, etc.). Fully populate only 3 featured profiles (Nishant Agarwal, Anand Mishra, Neha Agarwal); other slugs render hero + CTA and hide empty sections. Create faculty-specific card variants instead of stretching `CourseCard` / `TestimonialCard`. Extend `CTABand` with optional `tertiaryAction`. Achievements use `rank.png`; results use `faculty/detail/results-podium.png`.
+- **Rationale:** Approved mock spacing/composition differs from listing/homepage cards; Phase 1 static content cannot fully author every faculty profile yet.
+- **Alternatives considered:** Full mock detail for all faculty; reuse generic CourseCard/TestimonialCard; page-local 3-button CTA without extending CTABand.
+- **Consequences:** `/faculty/[slug]` is mock-faithful for flagship profiles; thin profiles stay usable via listing fields in the hero; inventory gains Faculty* cards/sections.
+
+---
+
 ### 2026-07-17 — CTA glow color-matched and sped up
 - **Decision:** Rotate `.premium-border-glow` at 6s with a tighter, brighter peak. Orange CTAs use `.glow-accent-orange`; white outline CTAs use intensified `.glow-accent-silver`.
 - **Rationale:** 16s sweep felt slow and faint; orange outline buttons incorrectly used silver glow so CTAs read as white.

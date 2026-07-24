@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-17 (hover-shine splash)
+**Last updated:** 2026-07-21 (faculty detail page)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -20,6 +20,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Carousel | `Carousel.tsx` |
 | CountdownTimer | `CountdownTimer.tsx` |
 | Divider | `Divider.tsx` |
+| DropdownSelect | `DropdownSelect.tsx` |
 | Input | `Input.tsx` |
 | Modal | `Modal.tsx` |
 | Pagination | `Pagination.tsx` |
@@ -50,6 +51,16 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | CTABand | `CTABand.tsx` |
 | CultureSection | `CultureSection.tsx` |
 | AdvisorsSection | `AdvisorsSection.tsx` |
+| FacultyFiltersBar | `FacultyFiltersBar.tsx` |
+| FacultyHeroSection | `FacultyHeroSection.tsx` |
+| FacultyDetailHeroSection | `FacultyDetailHeroSection.tsx` |
+| FacultyInfoCardsSection | `FacultyInfoCardsSection.tsx` |
+| FacultyCoursesSection | `FacultyCoursesSection.tsx` |
+| FacultyAchievementsPublicationsSection | `FacultyAchievementsPublicationsSection.tsx` |
+| FacultyReviewsVideosSection | `FacultyReviewsVideosSection.tsx` |
+| FacultyResultsSection | `FacultyResultsSection.tsx` |
+| FeaturedFacultySection | `FeaturedFacultySection.tsx` |
+| FacultyWhySection | `FacultyWhySection.tsx` |
 | HeroSection | `HeroSection.tsx` |
 | LegalPageLayout | `LegalPageLayout.tsx` |
 | ResultsStatsPanel | `ResultsStatsPanel.tsx` |
@@ -67,6 +78,15 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | ExamCard | `ExamCard.tsx` |
 | FacultyCard | `FacultyCard.tsx` |
 | FacultyExpertCard | `FacultyExpertCard.tsx` |
+| FacultyListingCard | `FacultyListingCard.tsx` |
+| FacultyStatCard | `FacultyStatCard.tsx` |
+| FacultyInfoCard | `FacultyInfoCard.tsx` |
+| FacultyCourseCard | `FacultyCourseCard.tsx` |
+| FacultyAchievementCard | `FacultyAchievementCard.tsx` |
+| FacultyPublicationCard | `FacultyPublicationCard.tsx` |
+| FacultyReviewCard | `FacultyReviewCard.tsx` |
+| FacultyVideoCard / FacultyVideosPanel | `FacultyVideoCard.tsx` |
+| FacultyResultStatCard | `FacultyResultStatCard.tsx` |
 | FeatureCard | `FeatureCard.tsx` |
 | LeadershipCard | `LeadershipCard.tsx` |
 | ResourceCard | `ResourceCard.tsx` |
@@ -96,7 +116,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Module | File | Role |
 |--------|------|------|
 | constants | `constants.ts` | Site config, categories, trust metrics, value props |
-| structured-data | `structured-data.ts` | Server-rendered JSON-LD helpers |
+| structured-data | `structured-data.ts` | Server-rendered JSON-LD helpers (Organization, Breadcrumb, FAQ, Person) |
 | types | `types.ts` | Shared domain types |
 | utils | `utils.ts` | `cn()` helper |
 
@@ -133,6 +153,8 @@ rodha-logo.webp (official brand), rodha-logo.svg, rodha-logo-white.svg, rodha-lo
 **Result stat icons:** images/icons/selection.png, images/icons/rank.png, images/icons/CAT-icon.png  
 **Test series / CAT hero icons:** images/icons/ts-mocks.png, ts-sectional.png, ts-topic.png, ts-mini-mocks.png  
 **Profiles (cutouts):** images/profiles/male-1..6.png, female-1..4.png (faculty, course, topper)  
+**Faculty listing hero:** `images/faculty/listings page/hero-faulty.png`  
+**Faculty detail:** `images/faculty/detail/results-podium.png` (results banner); achievements reuse `images/icons/rank.png`; hero decoration reuses listing `hero-faulty.png`  
 **Courses / faculty / results / blog:** JPG assets under `images/courses`, `images/faculty`, `images/results`, `images/blog` (legacy)  
 **Placeholders:** hero-illustration, course-thumbnail, faculty-avatar, blog-thumbnail, topper-photo  
 **Meet the Team (`images/meet the team/`):**  
