@@ -43,7 +43,7 @@ export function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 bg-bg-primary/95 backdrop-blur-lg border-b border-border-default",
+        "sticky top-0 z-40 site-header bg-white/50 backdrop-blur-md",
         className
       )}
     >

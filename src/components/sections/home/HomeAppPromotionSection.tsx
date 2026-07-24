@@ -4,9 +4,12 @@ import { RevealGroup } from "@/components/ui/RevealGroup";
 
 const APP_MOCKUP_SRC = "/assets/app promotion/app mockup.png";
 
+const storeButtonClassName =
+  "inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[6px] border border-neutral-300 bg-white text-body-sm font-semibold text-neutral-900 transition-colors hover:border-orange-500 hover:bg-neutral-50 active:bg-neutral-100";
+
 export function HomeAppPromotionSection() {
   return (
-    <section data-home-zone="app-promo" className="home-section-spacing relative">
+    <section data-home-zone="app-promo" className="home-section-spacing home-on-light relative">
       <Container>
         <RevealGroup>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -25,14 +28,14 @@ export function HomeAppPromotionSection() {
             </div>
 
             <div className="reveal-child reveal-delay-2">
-              <p className="text-body-sm uppercase tracking-wider text-orange-400 font-semibold mb-2">
+              <p className="text-body-sm uppercase tracking-wider text-orange-500 font-semibold mb-2">
                 Access. Learn. Succeed.
               </p>
-              <h2 className="text-h2 md:text-h1 font-bold text-text-primary leading-tight">
+              <h2 className="text-h2 md:text-h1 font-bold home-light-heading leading-tight">
                 Learn Anytime, Anywhere with the{" "}
                 <span className="text-orange-500">Rodha App</span>
               </h2>
-              <p className="mt-4 text-body text-text-muted leading-relaxed max-w-lg">
+              <p className="mt-4 text-body text-white leading-relaxed max-w-lg">
                 Live classes, test series, performance analysis and personalised
                 mentorship — all in your pocket.
               </p>
@@ -40,7 +43,7 @@ export function HomeAppPromotionSection() {
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[6px] border border-white/20 bg-bg-secondary/60 text-body-sm font-semibold text-text-primary hover:bg-bg-hover transition-colors"
+                  className={storeButtonClassName}
                   aria-label="Get it on Google Play — coming soon"
                 >
                   <Image
@@ -53,7 +56,7 @@ export function HomeAppPromotionSection() {
                 </a>
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[6px] border border-white/20 bg-bg-secondary/60 text-body-sm font-semibold text-text-primary hover:bg-bg-hover transition-colors"
+                  className={storeButtonClassName}
                   aria-label="Download on the App Store — coming soon"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

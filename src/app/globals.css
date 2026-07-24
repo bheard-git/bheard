@@ -787,25 +787,74 @@
 
   /* Homepage v2 — single continuous page background (body-level, section-anchored) */
   body.home-gradient-page {
-    --home-hero-end: 18%;
-    --home-categories-end: 32%;
-    --home-light-end: 58%;
-    --home-app-end: 78%;
+    --home-warm-blend-start: 10%;
+    --home-orange-peak: 20%;
+    --home-warm-fade-start: 24%;
+    --home-light-start: 34%;
+    --home-light-end: 64%;
+    --home-bottom-warm-start: 78%;
+    --home-bottom-orange-peak: 81%;
+    --home-dark-plateau-start: 85%;
+    --home-page-end: 100%;
 
     background-color: #0a0a0a;
     background-image:
-      radial-gradient(ellipse 90% 42% at 18% 6%, rgba(249, 115, 22, 0.11) 0%, transparent 52%),
-      radial-gradient(ellipse 75% 38% at 82% 10%, rgba(249, 115, 22, 0.06) 0%, transparent 48%),
-      radial-gradient(ellipse 70% 45% at 50% 48%, rgba(249, 115, 22, 0.05) 0%, transparent 58%),
-      radial-gradient(ellipse 80% 40% at 50% 92%, rgba(249, 115, 22, 0.07) 0%, transparent 55%),
       linear-gradient(
         180deg,
         #0a0a0a 0%,
-        #0a0a0a var(--home-hero-end),
-        #f8f6f2 var(--home-categories-end),
+        #0a0a0a calc(var(--home-warm-blend-start) * 0.85),
+        #0c0a09 calc(var(--home-warm-blend-start) * 0.95),
+        #0e0c0a var(--home-warm-blend-start),
+        #120e0c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.08),
+        #181008 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.16),
+        #1e140c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.24),
+        #261810 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.32),
+        #2e1c14 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.4),
+        #382218 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.48),
+        #442a1c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.56),
+        #503020 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.64),
+        #603828 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.72),
+        #704430 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.8),
+        #7c4c34 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.88),
+        #845028 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.94),
+        #8a5028 var(--home-orange-peak),
+        #9a6038 calc(var(--home-orange-peak) + (var(--home-warm-fade-start) - var(--home-orange-peak)) * 0.5),
+        #a87048 var(--home-warm-fade-start),
+        #b88058 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.12),
+        #c89870 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.25),
+        #d4a888 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.38),
+        #e0bca0 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.5),
+        #e8ccb0 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.62),
+        #f0dcc8 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.75),
+        #f4e8dc calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.87),
+        #f8f2ea calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.95),
+        #f8f6f2 var(--home-light-start),
         #f8f6f2 var(--home-light-end),
-        #0a0a0a var(--home-app-end),
-        #0a0a0a 100%
+        #f8f2ea calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.05),
+        #f4e8dc calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.12),
+        #f0dcc8 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.25),
+        #e8ccb0 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.38),
+        #e0bca0 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.5),
+        #d4a888 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.62),
+        #c89870 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.75),
+        #b88058 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.87),
+        #a87048 calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.94),
+        #8a5028 var(--home-bottom-orange-peak),
+        #845028 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.06),
+        #7c4c34 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.12),
+        #704430 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.2),
+        #603828 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.28),
+        #503020 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.36),
+        #442a1c calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.44),
+        #382218 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.52),
+        #2e1c14 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.6),
+        #261810 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.68),
+        #1e140c calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.76),
+        #181008 calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.84),
+        #120e0c calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.92),
+        #0e0c0a calc(var(--home-bottom-orange-peak) + (var(--home-dark-plateau-start) - var(--home-bottom-orange-peak)) * 0.97),
+        #0a0a0a var(--home-dark-plateau-start),
+        #0a0a0a var(--home-page-end)
       );
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -856,17 +905,6 @@
     }
   }
 
-  .home-top-zone {
-    position: relative;
-    background: transparent;
-    overflow-x: clip;
-  }
-
-  .home-top-zone-canvas {
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
-  }
-
   /* Light-zone text overrides — no section backgrounds */
   .home-on-light .section-header h2,
   .home-on-light .home-light-heading {
@@ -906,6 +944,14 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .site-header {
+    background-color: rgba(10, 10, 10, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
   .section-blend-hero-to-light::after {

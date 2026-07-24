@@ -9,6 +9,7 @@ interface SectionHeaderProps {
   viewAllHref?: string;
   viewAllLabel?: string;
   align?: "left" | "center";
+  subtitleClassName?: string;
   className?: string;
 }
 
@@ -20,6 +21,7 @@ export function SectionHeader({
   viewAllHref,
   viewAllLabel = "View All",
   align = "left",
+  subtitleClassName,
   className,
 }: SectionHeaderProps) {
   const isExternal = Boolean(viewAllHref?.startsWith("http"));
@@ -46,7 +48,8 @@ export function SectionHeader({
           <p
             className={cn(
               "mt-1 text-body text-text-muted",
-              align === "center" && "max-w-2xl mx-auto"
+              align === "center" && "max-w-2xl mx-auto",
+              subtitleClassName
             )}
           >
             {subtitle}

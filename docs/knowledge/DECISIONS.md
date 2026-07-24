@@ -16,6 +16,12 @@ Format:
 
 ---
 
+### 2026-07-24 — Homepage gradient transition fix (hero-only canvas)
+- **Decision:** Scope `HeroNeuralCanvas` to `#site-hero` via `HomeHeroShell`; remove full-rect canvas bg glows and dark vignette (particles/lines only); delete `HomeTopZone`. Anchor `--home-hero-blend-start` at hero bottom, `--home-orange-peak` at categories bottom, `--home-light-start` at impact top. Use proportional `calc()` stops between anchors in `body.home-gradient-page`. Homepage header transparent with backdrop blur.
+- **Rationale:** Canvas fills and bottom fade mask created visible seams inside Categories; warm blend starting at 72% hero height misaligned with section boundaries.
+- **Alternatives considered:** Keep shared Hero+Categories canvas with mask removed only; fixed-percent gradient stops.
+- **Consequences:** Categories shows uninterrupted page gradient; neural animation confined to hero; `HomeTopZone.tsx` removed.
+
 ### 2026-07-24 — Global counselling modal
 - **Decision:** Add `CounsellingModalProvider` at root layout; reuse `HeroCounsellingForm` inside existing `Modal`. Site-wide counselling CTAs with `href: "/contact"` render via `CounsellingCtaAction` / `CounsellingCtaButton` (opens modal). Homepage `ExamCard` uses `onCounsellingSelect` to open modal with exam pre-selected. Floating CTA opens modal directly (no `data-counselling-cta` on itself); hides when modal is open or any `[data-counselling-cta]` is in view.
 - **Rationale:** Keeps one lead-capture form UX everywhere; avoids `/contact` navigation for counselling intent; preserves existing IntersectionObserver hide logic for hero submit + CTABand buttons.

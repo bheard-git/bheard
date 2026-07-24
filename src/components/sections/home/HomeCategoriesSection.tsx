@@ -22,6 +22,7 @@ export function HomeCategoriesSection() {
             </>
           }
           subtitle="Comprehensive preparation for every competitive exam"
+          subtitleClassName="text-white"
           align="center"
         />
 

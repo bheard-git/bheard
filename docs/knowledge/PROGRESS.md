@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-24 (homepage section-anchored gradient + layout refinements)
+**Last updated:** 2026-07-24 (homepage warm-orange gradient blend)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -55,8 +55,17 @@ Update this file after every meaningful implementation task.
 - **Homepage background flow fixes (2026-07-24):** Removed hero bottom vignette; tuned `body.home-gradient-page` stops; wired `home-section-light` on Impact/Results, `home-section-transition-to-dark` on App promo; Categories reverted to dark-theme text; `ExamCard` accent tint/glow; light `btn-view-all` on Results; CTA dark card bg + visible bg image + accent line break; Impact 3-line heading.
 - **Homepage final background polish (2026-07-24):** Single document-height `body.home-gradient-page` layer (`background-size: 100% 100%`); removed all section-specific backgrounds/blend overlays (`home-section-light`, `home-section-transition-to-dark`, canvas glow); `home-on-light` text-only utility on Impact/Results; CTA buttons shifted left with right padding to clear artwork; Back to Top fixed above footer legal links.
 - **Homepage section-anchored gradient (2026-07-24):** `HomePageGradientAnchors` measures section boundaries and drives CSS vars for dark→light→dark flow; `HomeTopZone` spans Hero+Categories with shared neural canvas + fade mask; `home-section-spacing` / `home-section-spacing-lg` utilities; heading line breaks fixed in Impact (3-line), Results (2-line), CTA (2-line block layout).
+- **Homepage warm-orange gradient blend (2026-07-24):** 7-phase anchor system (`hero-blend-start` through `page-end`) measured against full body height incl. footer; 18-stop linear gradient with warm-orange middle phase (lower hero → categories → light); flat light plateau for Impact/Results; gradual light→dark through App Promo/CTA/Footer; reduced mid-page radial banding; softer neural canvas mask fade.
+- **Homepage gradient transition fix (2026-07-24):** Neural canvas scoped to `#site-hero` only (`HomeHeroShell`); removed canvas bg glow/vignette fills and `HomeTopZone` wrapper; gradient anchors at hero bottom + categories bottom + impact top; proportional CSS stops between anchors; homepage header transparent with backdrop blur; removed top radial banding.
+- **Homepage categories orange-to-white fade (2026-07-24):** Added `--home-warm-fade-start` anchor (58% through Categories); orange peak at 38% Categories height; light plateau starts 32% into Impact; 10-stop proportional fade from warm-fade to light for seamless Categories→Impact transition.
+- **Homepage dark-to-orange fade (2026-07-24):** Replaced hero-bottom anchor with `--home-warm-blend-start` at 30% through Hero; 14-stop proportional ramp from dark through warm-blend to orange-peak; orange→white anchors unchanged.
+- **Homepage bottom black plateau + text (2026-07-24):** Neutral light→`#0a0a0a` gradient (no brown stops) from Results tail through mid-CTA; solid black footer; removed bottom radial glow; app promo icon removed + white description; hero stats/body + categories subtitle → white; CTABand card unchanged.
 - **Counselling modal dialog (2026-07-24):** Global `CounsellingModalProvider` reuses `HeroCounsellingForm` in `Modal`; site-wide counselling CTAs (`CounsellingCtaButton` / `CounsellingCtaAction`) open dialog instead of `/contact`; homepage category cards open modal with exam pre-selected; floating CTA hides when modal open or inline `[data-counselling-cta]` in view.
 - **Hero video autoplay on click (2026-07-24):** `HeroVideoEmbed` iframe loads with `autoplay=1` after custom play click so YouTube starts immediately (no second play button); still no autoplay on page load.
+- **Opaque site header (2026-07-24):** `.site-header` uses solid `bg-primary` on non-home routes; homepage uses transparent header + backdrop blur via `body.home-gradient-page .site-header`.
+- **Site header frosted bar (2026-07-24):** Removed homepage transparent header override; unified `.site-header` to near-opaque `rgba(10,10,10,0.94)` with `blur(12px)` on all routes.
+- **App promo light typography (2026-07-24):** `HomeAppPromotionSection` uses `home-on-light` black heading/body copy; orange accent on "Rodha App" only; glowing Rodha logo title icon; light-theme store buttons.
+- **Homepage bottom orange gradient ramp (2026-07-24):** Light plateau through Results only; cream→orange ramp spans full App Promo (`--home-bottom-warm-start` → `--home-bottom-orange-peak`); orange→dark completes through CTA; neutral gray stops removed.
 
 ---
 

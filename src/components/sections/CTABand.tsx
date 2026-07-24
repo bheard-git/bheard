@@ -75,7 +75,7 @@ export function CTABand({
           className={cn(
             "relative overflow-hidden rounded-[6px] border border-orange-500/30",
             isImageBg
-              ? "bg-bg-secondary min-h-[160px] md:min-h-[200px] px-5 py-8 md:px-8 md:py-10"
+              ? "bg-[#210c00da] min-h-[160px] md:min-h-[200px] px-5 py-8 md:px-8 md:py-10"
               : cn(
                   "bg-bg-secondary surface-gradient-cta premium-border-glow shine-sweep",
                   isDecorated

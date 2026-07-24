@@ -58,7 +58,7 @@ export function HeroFloatingStats({ className }: HeroFloatingStatsProps) {
             <div className="text-caption font-bold text-text-primary leading-none truncate">
               {stat.value}
             </div>
-            <div className="text-[10px] text-text-dimmed mt-0.5 truncate">{stat.label}</div>
+            <div className="text-[10px] text-white mt-0.5 truncate">{stat.label}</div>
           </div>
         </div>
       ))}

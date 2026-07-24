@@ -45,7 +45,7 @@ export function HeroTrustMetrics() {
             <div className="text-body-sm font-bold text-text-primary leading-none">
               {metric.value}
             </div>
-            <div className="text-caption text-text-dimmed mt-0.5">{metric.label}</div>
+            <div className="text-caption text-white mt-0.5">{metric.label}</div>
           </div>
         </div>
       ))}

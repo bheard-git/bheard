@@ -27,13 +27,13 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Section | Status |
 |---------|--------|
-| Hero (neural canvas + counselling form + YouTube + floating stats) | Complete (`HomeTopZone` shared canvas through Categories) |
-| Choose Your Exam | Complete (`home-section-spacing-lg`; hosts dark→light gradient transition) |
+| Hero (neural canvas + counselling form + YouTube + floating stats) | Complete (hero-only transparent canvas in `HomeHeroShell`) |
+| Choose Your Exam | Complete (`home-section-spacing-lg`; page gradient only — no canvas overlay) |
 | Impact timeline | Complete (3-line heading: students / decade of / momentum.) |
 | Results / toppers | Complete (2-line heading: speak / for themselves.) |
 | App promotion | Partial (app mockup image + Play Store SVG; store links `#` until URLs arrive) |
 | CTA Band | Complete (2-line block heading; buttons clear of bg artwork) |
-| Continuous page canvas background | Complete (section-anchored `HomePageGradientAnchors`; no section bg breaks) |
+| Continuous page canvas background | Complete (7-phase warm-orange gradient; body-height anchors incl. footer) |
 
 ## Home `/legacy-homepage` (frozen v1 backup)
 

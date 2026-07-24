@@ -162,24 +162,6 @@ export function HeroNeuralCanvas({ mouseRef, className }: HeroNeuralCanvasProps)
 
       ctx.clearRect(0, 0, w, h);
 
-      const bgGlow = ctx.createRadialGradient(w * 0.7, h * 0.35, 0, w * 0.7, h * 0.35, w * 0.5);
-      bgGlow.addColorStop(0, "rgba(249, 115, 22, 0.12)");
-      bgGlow.addColorStop(1, "transparent");
-      ctx.fillStyle = bgGlow;
-      ctx.fillRect(0, 0, w, h);
-
-      const bgGlow2 = ctx.createRadialGradient(w * 0.2, h * 0.7, 0, w * 0.2, h * 0.7, w * 0.35);
-      bgGlow2.addColorStop(0, "rgba(249, 115, 22, 0.06)");
-      bgGlow2.addColorStop(1, "transparent");
-      ctx.fillStyle = bgGlow2;
-      ctx.fillRect(0, 0, w, h);
-
-      const vignette = ctx.createRadialGradient(w / 2, h / 2, w * 0.2, w / 2, h / 2, w * 0.75);
-      vignette.addColorStop(0, "transparent");
-      vignette.addColorStop(1, "rgba(0, 0, 0, 0.55)");
-      ctx.fillStyle = vignette;
-      ctx.fillRect(0, 0, w, h);
-
       if (!reduced) {
         for (const node of nodes) {
           node.phase += node.phaseSpeed;

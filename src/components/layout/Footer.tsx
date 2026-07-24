@@ -147,10 +147,11 @@ export function Footer() {
 
   return (
     <footer
+      data-home-zone={isHomePage ? "footer" : undefined}
       className={cn(
         "relative",
         isHomePage
-          ? "bg-transparent border-t border-transparent"
+          ? "bg-[#0a0a0a] border-t border-transparent"
           : "bg-bg-primary border-t border-border-default"
       )}
     >

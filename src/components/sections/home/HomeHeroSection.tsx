@@ -24,7 +24,7 @@ export function HomeHeroSection() {
                 <HeroCounsellingForm />
               </div>
 
-              <p className="mt-3 text-body-lg text-text-secondary leading-relaxed">
+              <p className="mt-3 text-body-lg text-white leading-relaxed">
                 Join India&apos;s most trusted platform for CAT, IPMAT, CLAT &amp; more.
                 Let&apos;s achieve your dream together.
               </p>
