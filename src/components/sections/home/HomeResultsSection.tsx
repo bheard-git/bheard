@@ -7,13 +7,14 @@ import { topResults } from "@/data/results";
 
 export function HomeResultsSection() {
   return (
-    <section id="results" className="section-spacing home-section-light section-blend-light-to-dark relative overflow-hidden">
+    <section id="results" data-home-zone="results" className="home-section-spacing home-on-light relative">
       <Container>
         <SectionHeader
           title={
             <>
-              Results that{" "}
-              <span className="text-orange-500">speak for themselves.</span>
+              Results that speak
+              <br />
+              <span className="text-orange-500">for themselves.</span>
             </>
           }
           subtitle="Real students. Real success."

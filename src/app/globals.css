@@ -785,8 +785,13 @@
     display: none;
   }
 
-  /* Homepage v2 utilities */
+  /* Homepage v2 — single continuous page background (body-level, section-anchored) */
   body.home-gradient-page {
+    --home-hero-end: 18%;
+    --home-categories-end: 32%;
+    --home-light-end: 58%;
+    --home-app-end: 78%;
+
     background-color: #0a0a0a;
     background-image:
       radial-gradient(ellipse 90% 42% at 18% 6%, rgba(249, 115, 22, 0.11) 0%, transparent 52%),
@@ -796,71 +801,104 @@
       linear-gradient(
         180deg,
         #0a0a0a 0%,
-        #0a0a0a 8%,
-        #0c0a09 12%,
-        #100e0c 16%,
-        #161310 20%,
-        #1e1a16 24%,
-        #2a241e 28%,
-        #3d352c 32%,
-        #5c5248 35%,
-        #8a7f72 38%,
-        #b8aea2 40%,
-        #d8cfc4 41%,
-        #f0ece6 42%,
-        #f8f6f2 50%,
-        #f8f6f2 58%,
-        #e2dbd2 62%,
-        #c9bfb4 66%,
-        #9a9086 70%,
-        #6a6258 74%,
-        #3a342e 80%,
-        #221e1a 86%,
-        #141210 92%,
-        #0a0a0a 98%,
+        #0a0a0a var(--home-hero-end),
+        #f8f6f2 var(--home-categories-end),
+        #f8f6f2 var(--home-light-end),
+        #0a0a0a var(--home-app-end),
         #0a0a0a 100%
       );
     background-repeat: no-repeat;
     background-attachment: scroll;
+    background-size: 100% 100%;
+    overflow-x: clip;
   }
 
   .home-page-canvas {
     position: relative;
     background: transparent;
-    overflow-x: hidden;
   }
 
-  .home-page-canvas-glow {
-    background:
-      radial-gradient(ellipse 80% 50% at 15% 8%, rgba(249, 115, 22, 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 45% at 85% 12%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
-    z-index: 0;
+  .home-section-spacing {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
+  @media (min-width: 768px) {
+    .home-section-spacing {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-section-spacing {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+  }
+
+  .home-section-spacing-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-section-spacing-lg {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-section-spacing-lg {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .home-top-zone {
+    position: relative;
+    background: transparent;
+    overflow-x: clip;
+  }
+
+  .home-top-zone-canvas {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+  }
+
+  /* Light-zone text overrides — no section backgrounds */
   .home-on-light .section-header h2,
   .home-on-light .home-light-heading {
     color: #0a0a0a;
   }
 
-  .home-on-light .section-header p,
-  .home-on-light .home-light-body,
-  .home-on-light .home-light-muted {
+  .home-on-light .section-header p {
+    color: #737373;
+  }
+
+  .home-on-light .home-light-body {
     color: #525252;
+  }
+
+  .home-on-light .home-light-muted {
+    color: #737373;
+  }
+
+  .home-on-light .btn-view-all {
+    background-color: #ffffff;
+    color: #171717;
+    border-color: rgba(249, 115, 22, 0.35);
+  }
+
+  .home-on-light .btn-view-all:hover {
+    background-color: rgba(249, 115, 22, 0.08);
+    border-color: #F97316;
   }
 
   .home-hero-shell {
     position: relative;
     background: transparent;
-    isolation: isolate;
-  }
-
-  .home-hero-shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(ellipse 55% 50% at 75% 45%, rgba(249, 115, 22, 0.06) 0%, transparent 65%);
-    z-index: 1;
   }
 
   .glass-card-hero {
@@ -871,80 +909,7 @@
   }
 
   .section-blend-hero-to-light::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 160px;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(240, 236, 230, 0.35) 45%,
-      #f0ece6 100%
-    );
-    z-index: 2;
-  }
-
-  .home-section-light {
-    position: relative;
-    isolation: isolate;
-    background: linear-gradient(180deg, #f0ece6 0%, #f8f6f2 100%);
-    color: #171717;
-  }
-
-  .home-section-light::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 55% 45% at 50% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 35% at 85% 75%, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
-  }
-
-  .home-section-light .home-light-heading {
-    color: #0a0a0a;
-  }
-
-  .home-section-light .home-light-body {
-    color: #525252;
-  }
-
-  .home-section-light .home-light-muted {
-    color: #737373;
-  }
-
-  .home-section-light .section-header h2 {
-    color: #0a0a0a;
-  }
-
-  .home-section-light .section-header p {
-    color: #737373;
-  }
-
-  .home-section-light .btn-view-all {
-    background-color: #ffffff;
-    color: #171717;
-    border-color: rgba(249, 115, 22, 0.35);
-  }
-
-  .home-section-light .btn-view-all:hover {
-    background-color: rgba(249, 115, 22, 0.08);
-    border-color: #F97316;
-  }
-
-  .home-section-transition-to-dark {
-    background: linear-gradient(
-      180deg,
-      #f8f6f2 0%,
-      #e2dbd2 18%,
-      #6a6258 45%,
-      #221e1a 72%,
-      #0a0a0a 100%
-    );
+    display: none;
   }
 
   .impact-milestone-pill {
@@ -978,36 +943,11 @@
   }
 
   .section-blend-light-to-dark::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 140px;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(10, 10, 10, 0.15) 50%,
-      var(--bg-primary) 100%
-    );
-    z-index: 1;
-  }
-
-  .section-blend-dark-to-cta {
-    position: relative;
+    display: none;
   }
 
   .section-blend-dark-to-cta::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    pointer-events: none;
-    background: linear-gradient(to top, transparent, var(--bg-primary));
-    z-index: 1;
+    display: none;
   }
 
   @keyframes impact-milestone-pulse {

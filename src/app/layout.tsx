@@ -5,6 +5,7 @@ import { PromotionalBanner } from "@/components/layout/PromotionalBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCounsellingCta } from "@/components/layout/FloatingCounsellingCta";
+import { CounsellingModalProvider } from "@/components/layout/CounsellingModalProvider";
 import { organizationJsonLd } from "@/lib/structured-data";
 
 const inter = Inter({
@@ -56,8 +57,10 @@ export default function RootLayout({
         />
         <PromotionalBanner />
         <Header />
-        <main>{children}</main>
-        <FloatingCounsellingCta />
+        <CounsellingModalProvider>
+          <main>{children}</main>
+          <FloatingCounsellingCta />
+        </CounsellingModalProvider>
         <Footer />
       </body>
     </html>

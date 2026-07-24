@@ -14,6 +14,14 @@ Format:
 
 ---
 
+---
+
+### 2026-07-24 — Global counselling modal
+- **Decision:** Add `CounsellingModalProvider` at root layout; reuse `HeroCounsellingForm` inside existing `Modal`. Site-wide counselling CTAs with `href: "/contact"` render via `CounsellingCtaAction` / `CounsellingCtaButton` (opens modal). Homepage `ExamCard` uses `onCounsellingSelect` to open modal with exam pre-selected. Floating CTA opens modal directly (no `data-counselling-cta` on itself); hides when modal is open or any `[data-counselling-cta]` is in view.
+- **Rationale:** Keeps one lead-capture form UX everywhere; avoids `/contact` navigation for counselling intent; preserves existing IntersectionObserver hide logic for hero submit + CTABand buttons.
+- **Alternatives considered:** Separate modal form component; URL query param (`?counselling=open`); homepage-only modal wiring.
+- **Consequences:** `Modal` is now in use; `HeroCounsellingForm` supports `inline` / `modal` variants; category cards on homepage no longer navigate to category pages.
+
 ### 2026-07-24 — Homepage CTA image-background variant
 - **Decision:** Extend `CTABand` with optional `backgroundImage`, `titleAccent`, and `secondaryOutline` props instead of a separate `HomeCtaSection`. When `backgroundImage` is set, skip CAT icon, gradient overlays, and `AmbientBackground`; render split headline and orange-outline secondary.
 - **Rationale:** Matches existing `decorativeImage` variant pattern; keeps one reusable CTA component; other pages unchanged.
@@ -37,7 +45,7 @@ Format:
 ---
 
 ### 2026-07-24 — Homepage v2 UI refinements
-- **Decision:** Hero mouse tracking lifted to `HomeHeroShell` (section-level) with canvas `pointer-events-none`. Form exam field uses `DropdownSelect` (not `Select`). Video is click-to-play (no autoplay). Light homepage sections via additive `.home-section-light` + extended gradient blends. Impact stats move to left column as icon badges; timeline uses positioned milestone pills; final milestone year `2026`. Footer restructured to v2 5-column + bottom legal bar. App promo uses `public/assets/app promotion/app mockup.png`.
+- **Decision:** Hero mouse tracking lifted to `HomeHeroShell` (section-level) with canvas `pointer-events-none`. Form exam field uses `DropdownSelect` (not `Select`). Video is click-to-play with no autoplay on page load; iframe mounts with `autoplay=1` only after the user clicks the custom play button. Light homepage sections via additive `.home-section-light` + extended gradient blends. Impact stats move to left column as icon badges; timeline uses positioned milestone pills; final milestone year `2026`. Footer restructured to v2 5-column + bottom legal bar. App promo uses `public/assets/app promotion/app mockup.png`.
 - **Rationale:** Close gaps with approved v2 mock; improve neural interaction responsiveness; seamless dark→light scroll transitions.
 - **Alternatives considered:** Keep stats below timeline; keep canvas mouse listeners; autoplay video on scroll.
 - **Consequences:** `Footer.tsx` updated globally; neural physics constants tuned in `HeroNeuralCanvas`.

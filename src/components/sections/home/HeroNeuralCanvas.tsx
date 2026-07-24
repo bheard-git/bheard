@@ -141,6 +141,15 @@ export function HeroNeuralCanvas({ mouseRef, className }: HeroNeuralCanvasProps)
     resize();
     window.addEventListener("resize", resize);
 
+    const parent = canvas.parentElement;
+    const resizeObserver =
+      parent && typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => resize())
+        : null;
+    if (parent && resizeObserver) {
+      resizeObserver.observe(parent);
+    }
+
     const draw = () => {
       rafRef.current = requestAnimationFrame(draw);
       if (pausedRef.current) return;
@@ -269,6 +278,7 @@ export function HeroNeuralCanvas({ mouseRef, className }: HeroNeuralCanvasProps)
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
+      resizeObserver?.disconnect();
       document.removeEventListener("visibilitychange", handleVisibility);
       mediaQuery.removeEventListener("change", handleMotionChange);
     };

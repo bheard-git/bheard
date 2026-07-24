@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const VIDEO_ID = "W1dLmx5-tH4";
-const EMBED_URL = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&controls=1&playsinline=1`;
+const EMBED_URL = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&controls=1&playsinline=1`;
 const THUMBNAIL = `https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 
 interface HeroVideoEmbedProps {
@@ -50,8 +50,8 @@ export function HeroVideoEmbed({ className }: HeroVideoEmbedProps) {
           src={EMBED_URL}
           title="Rodha promotional video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
           className="absolute inset-0 w-full h-full"
-          loading="lazy"
         />
       )}
     </div>

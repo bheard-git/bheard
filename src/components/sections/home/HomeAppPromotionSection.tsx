@@ -6,7 +6,7 @@ const APP_MOCKUP_SRC = "/assets/app promotion/app mockup.png";
 
 export function HomeAppPromotionSection() {
   return (
-    <section className="section-spacing home-section-transition-to-dark relative overflow-hidden">
+    <section data-home-zone="app-promo" className="home-section-spacing relative">
       <Container>
         <RevealGroup>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">

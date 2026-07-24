@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { CounsellingCtaAction } from "@/components/sections/CounsellingCtaAction";
 
 interface CTABandProps {
   title: string;
@@ -32,7 +32,6 @@ function SecondaryCta({
   variant: "default" | "decorated";
   outline?: "white" | "orange";
 }) {
-  const isCounselling = /counselling/i.test(action.label);
   const isOrangeOutline = outline === "orange";
 
   const className = cn(
@@ -43,37 +42,13 @@ function SecondaryCta({
       : "glow-accent-silver border border-white text-white hover:bg-white/10"
   );
 
-  const content = (
-    <>
+  return (
+    <CounsellingCtaAction action={action} className={className}>
       {action.label}
       {variant === "decorated" && (
         <Icon src="/assets/icons/arrow-right.svg" size={14} className="text-orange-500" />
       )}
-    </>
-  );
-
-  if (action.href.startsWith("http")) {
-    return (
-      <a
-        href={action.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={className}
-        {...(isCounselling ? { "data-counselling-cta": true } : {})}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <Link
-      href={action.href}
-      className={className}
-      {...(isCounselling ? { "data-counselling-cta": true } : {})}
-    >
-      {content}
-    </Link>
+    </CounsellingCtaAction>
   );
 }
 
@@ -91,11 +66,10 @@ export function CTABand({
 }: CTABandProps) {
   const isDecorated = Boolean(decorativeImage);
   const isImageBg = Boolean(backgroundImage);
-  const primaryIsCounselling = /counselling/i.test(primaryAction.label);
   const hasBuddy = Boolean(tertiaryAction && /buddy/i.test(tertiaryAction.label));
 
   return (
-    <section id="site-footer-cta" className={cn("section-spacing pt-6 md:pt-8", className)}>
+    <section id="site-footer-cta" data-home-zone="cta" className={cn("home-section-spacing pt-6 md:pt-8", className)}>
       <div className="container-rodha">
         <div
           className={cn(
@@ -170,7 +144,7 @@ export function CTABand({
             className={cn(
               "relative z-10 flex gap-5 md:gap-6",
               isImageBg
-                ? "flex-col lg:flex-row lg:items-center lg:justify-between text-left"
+                ? "flex-col lg:flex-row lg:items-center lg:gap-8 text-left pr-[22%] sm:pr-[26%] md:pr-[30%] lg:pr-[34%]"
                 : cn(
                     "flex-col md:flex-row items-center",
                     isDecorated
@@ -196,11 +170,22 @@ export function CTABand({
 
             <div className={cn("min-w-0", !isImageBg && "flex-1")}>
               <h2 className="text-h3 md:text-h2 font-bold leading-tight">
-                {title}
-                {titleAccent && (
+                {isImageBg && titleAccent ? (
                   <>
-                    {isImageBg ? <br /> : " "}
-                    <span className="text-orange-500">{titleAccent}</span>
+                    <span className="block whitespace-nowrap max-[360px]:whitespace-normal">
+                      {title}
+                    </span>
+                    <span className="block text-orange-500">{titleAccent}</span>
+                  </>
+                ) : (
+                  <>
+                    {title}
+                    {titleAccent && (
+                      <>
+                        {" "}
+                        <span className="text-orange-500">{titleAccent}</span>
+                      </>
+                    )}
                   </>
                 )}
               </h2>
@@ -227,13 +212,10 @@ export function CTABand({
                     )
               )}
             >
-              <Link
-                href={primaryAction.href}
+              <CounsellingCtaAction
+                action={primaryAction}
                 className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange text-body-sm px-5 py-2.5 rounded-[6px] whitespace-nowrap text-center w-full sm:w-auto"
-                {...(primaryIsCounselling ? { "data-counselling-cta": true } : {})}
-              >
-                {primaryAction.label}
-              </Link>
+              />
               {secondaryAction && (
                 <>
                   {!isDecorated && !tertiaryAction && !isImageBg && (

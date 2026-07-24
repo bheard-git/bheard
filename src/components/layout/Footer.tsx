@@ -227,7 +227,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border-default">
-        <div className="container-rodha py-5 flex flex-col md:flex-row items-center justify-between gap-4 relative">
+        <div className="container-rodha py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-caption text-text-dimmed text-center md:text-left">
             &copy; {currentYear} {SITE_NAME}. All rights reserved.
           </p>
@@ -248,18 +248,18 @@ export function Footer() {
               </Link>
             ))}
           </div>
-
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="md:absolute md:right-4 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors shadow-orange"
-            aria-label="Scroll to top"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-            </svg>
-          </button>
         </div>
       </div>
+
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-[5.25rem] right-4 z-40 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors shadow-orange sm:bottom-[5.5rem] md:bottom-[6.25rem] md:right-6"
+        aria-label="Scroll to top"
+      >
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
     </footer>
   );
 }

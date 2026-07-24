@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-24 (homepage background flow + section styling fixes)
+**Last updated:** 2026-07-24 (homepage section-anchored gradient + layout refinements)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -53,6 +53,10 @@ Update this file after every meaningful implementation task.
 - **Continuous homepage gradient (2026-07-24):** Document-height `body.home-gradient-page` gradient (homepage-only via `HomePageBodyTheme`); accent-only canvas glow; transparent footer on `/`; removed Results `AmbientBackground` overlay.
 - **Homepage CTA band v2 layout (2026-07-24):** Extended `CTABand` with `backgroundImage`, `titleAccent`, and `secondaryOutline` props; home page uses `home-cta-bg.png`, split white/orange headline, left copy + right buttons, orange-outline secondary.
 - **Homepage background flow fixes (2026-07-24):** Removed hero bottom vignette; tuned `body.home-gradient-page` stops; wired `home-section-light` on Impact/Results, `home-section-transition-to-dark` on App promo; Categories reverted to dark-theme text; `ExamCard` accent tint/glow; light `btn-view-all` on Results; CTA dark card bg + visible bg image + accent line break; Impact 3-line heading.
+- **Homepage final background polish (2026-07-24):** Single document-height `body.home-gradient-page` layer (`background-size: 100% 100%`); removed all section-specific backgrounds/blend overlays (`home-section-light`, `home-section-transition-to-dark`, canvas glow); `home-on-light` text-only utility on Impact/Results; CTA buttons shifted left with right padding to clear artwork; Back to Top fixed above footer legal links.
+- **Homepage section-anchored gradient (2026-07-24):** `HomePageGradientAnchors` measures section boundaries and drives CSS vars for dark→light→dark flow; `HomeTopZone` spans Hero+Categories with shared neural canvas + fade mask; `home-section-spacing` / `home-section-spacing-lg` utilities; heading line breaks fixed in Impact (3-line), Results (2-line), CTA (2-line block layout).
+- **Counselling modal dialog (2026-07-24):** Global `CounsellingModalProvider` reuses `HeroCounsellingForm` in `Modal`; site-wide counselling CTAs (`CounsellingCtaButton` / `CounsellingCtaAction`) open dialog instead of `/contact`; homepage category cards open modal with exam pre-selected; floating CTA hides when modal open or inline `[data-counselling-cta]` in view.
+- **Hero video autoplay on click (2026-07-24):** `HeroVideoEmbed` iframe loads with `autoplay=1` after custom play click so YouTube starts immediately (no second play button); still no autoplay on page load.
 
 ---
 

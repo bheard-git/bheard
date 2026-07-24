@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { CounsellingCtaButton } from "@/components/ui/CounsellingCtaButton";
 import { HERO_FEATURES, TRUST_METRICS } from "@/lib/constants";
 
 interface HeroSectionProps {
@@ -100,13 +101,9 @@ export function HeroSection({ title, subtitle, children, className }: HeroSectio
               >
                 Explore Courses
               </Link>
-              <Link
-                href="/contact"
-                data-counselling-cta
-                className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline text-body px-6 py-2.5 rounded-[6px]"
-              >
+              <CounsellingCtaButton className="btn-secondary btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline text-body px-6 py-2.5 rounded-[6px]">
                 Book Free Counselling
-              </Link>
+              </CounsellingCtaButton>
             </div>
 
             <div className="mt-7 flex flex-wrap items-center gap-5 md:gap-6">

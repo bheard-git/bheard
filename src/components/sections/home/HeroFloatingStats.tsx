@@ -39,7 +39,7 @@ interface HeroFloatingStatsProps {
 
 export function HeroFloatingStats({ className }: HeroFloatingStatsProps) {
   return (
-    <div className={cn("flex w-full gap-1.5 sm:gap-3", className)}>
+    <div className={cn("flex w-full mt-6 gap-1.5 sm:gap-3", className)}>
       {FLOATING_STATS.map((stat) => (
         <div
           key={stat.id}

@@ -1,7 +1,7 @@
 # Reusable Inventory
 
 **Search this file and the codebase before creating anything new.**  
-**Last updated:** 2026-07-24 (homepage CTA layout v2)
+**Last updated:** 2026-07-24 (counselling modal dialog)
 
 After adding a reusable component, hook, util, type, or asset, update this inventory.
 
@@ -22,6 +22,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Divider | `Divider.tsx` |
 | DropdownSelect | `DropdownSelect.tsx` |
 | Input | `Input.tsx` |
+| CounsellingCtaButton | `CounsellingCtaButton.tsx` |
 | Modal | `Modal.tsx` |
 | Pagination | `Pagination.tsx` |
 | Rating | `Rating.tsx` |
@@ -38,6 +39,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 |-----------|------|
 | Container | `Container.tsx` |
 | Footer | `Footer.tsx` |
+| CounsellingModalProvider | `CounsellingModalProvider.tsx` |
 | FloatingCounsellingCta | `FloatingCounsellingCta.tsx` |
 | Header | `Header.tsx` |
 | MobileNav | `MobileNav.tsx` |
@@ -48,7 +50,8 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Component | File |
 |-----------|------|
 | CategoryHeroSection | `CategoryHeroSection.tsx` |
-| CTABand | `CTABand.tsx` (optional `backgroundImage`, `titleAccent`, `secondaryOutline` for home variant) |
+| CounsellingCtaAction | `CounsellingCtaAction.tsx` |
+| CTABand | `CTABand.tsx` (optional `backgroundImage`, `titleAccent`, `secondaryOutline` for home variant; counselling `/contact` actions open modal) |
 | CultureSection | `CultureSection.tsx` |
 | AdvisorsSection | `AdvisorsSection.tsx` |
 | FacultyFiltersBar | `FacultyFiltersBar.tsx` |
@@ -93,7 +96,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | AdvisorCard | `AdvisorCard.tsx` |
 | BlogCard | `BlogCard.tsx` |
 | CourseCard | `CourseCard.tsx` |
-| ExamCard | `ExamCard.tsx` |
+| ExamCard | `ExamCard.tsx` (optional `onCounsellingSelect` opens modal instead of category link) |
 | FacultyCard | `FacultyCard.tsx` |
 | FacultyExpertCard | `FacultyExpertCard.tsx` |
 | FacultyListingCard | `FacultyListingCard.tsx` |
@@ -128,6 +131,7 @@ After adding a reusable component, hook, util, type, or asset, update this inven
 | Hook | File |
 |------|------|
 | useCountdown | `useCountdown.ts` |
+| useCounsellingModal | `useCounsellingModal.ts` |
 | useInView | `useInView.ts` |
 
 ## Lib — `src/lib/`

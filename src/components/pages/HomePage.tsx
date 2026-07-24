@@ -1,5 +1,7 @@
 import { HomePageBackground } from "@/components/sections/home/HomePageBackground";
 import { HomePageBodyTheme } from "@/components/sections/home/HomePageBodyTheme";
+import { HomePageGradientAnchors } from "@/components/sections/home/HomePageGradientAnchors";
+import { HomeTopZone } from "@/components/sections/home/HomeTopZone";
 import { HomeHeroSection } from "@/components/sections/home/HomeHeroSection";
 import { HomeCategoriesSection } from "@/components/sections/home/HomeCategoriesSection";
 import { HomeImpactSection } from "@/components/sections/home/HomeImpactSection";
@@ -12,8 +14,11 @@ export function HomePage() {
   return (
     <HomePageBackground>
       <HomePageBodyTheme />
-      <HomeHeroSection />
-      <HomeCategoriesSection />
+      <HomePageGradientAnchors />
+      <HomeTopZone>
+        <HomeHeroSection />
+        <HomeCategoriesSection />
+      </HomeTopZone>
       <HomeImpactSection />
       <HomeResultsSection />
       <HomeAppPromotionSection />

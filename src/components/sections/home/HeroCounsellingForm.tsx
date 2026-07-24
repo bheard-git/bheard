@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { DropdownSelect } from "@/components/ui/DropdownSelect";
 import { Button } from "@/components/ui/Button";
@@ -9,14 +9,29 @@ import { cn } from "@/lib/utils";
 
 interface HeroCounsellingFormProps {
   className?: string;
+  defaultExam?: string;
+  variant?: "inline" | "modal";
+  showHeader?: boolean;
 }
 
-export function HeroCounsellingForm({ className }: HeroCounsellingFormProps) {
+export function HeroCounsellingForm({
+  className,
+  defaultExam = "",
+  variant = "inline",
+  showHeader,
+}: HeroCounsellingFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [exam, setExam] = useState("");
+  const [exam, setExam] = useState(defaultExam);
   const [loading, setLoading] = useState(false);
   const [phoneFocused, setPhoneFocused] = useState(false);
+
+  const isInline = variant === "inline";
+  const shouldShowHeader = showHeader ?? isInline;
+
+  useEffect(() => {
+    setExam(defaultExam);
+  }, [defaultExam]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,19 +41,18 @@ export function HeroCounsellingForm({ className }: HeroCounsellingFormProps) {
     setLoading(false);
   };
 
-  return (
-    <div
-      className={cn(
-        "glass-card-hero premium-border-glow rounded-[6px] p-4 sm:p-5 relative z-30 overflow-visible w-full",
-        className
+  const form = (
+    <>
+      {shouldShowHeader && (
+        <>
+          <h3 className="text-h4 font-bold text-text-primary">Book Your Free Counselling</h3>
+          <p className="mt-1 text-body-sm text-text-muted">
+            Our experts will help you choose the right course.
+          </p>
+        </>
       )}
-    >
-      <h3 className="text-h4 font-bold text-text-primary">Book Your Free Counselling</h3>
-      <p className="mt-1 text-body-sm text-text-muted">
-        Our experts will help you choose the right course.
-      </p>
 
-      <form onSubmit={handleSubmit} className="mt-4 space-y-3">
+      <form onSubmit={handleSubmit} className={cn(shouldShowHeader ? "mt-4" : "", "space-y-3")}>
         <Input
           placeholder="Full Name"
           value={name}
@@ -81,11 +95,26 @@ export function HeroCounsellingForm({ className }: HeroCounsellingFormProps) {
           fullWidth
           size="lg"
           disabled={!exam}
-          data-counselling-cta
         >
           Book Free Counselling Now
         </Button>
       </form>
+    </>
+  );
+
+  if (!isInline) {
+    return <div className={className}>{form}</div>;
+  }
+
+  return (
+    <div
+      className={cn(
+        "glass-card-hero premium-border-glow rounded-[6px] p-4 sm:p-5 relative z-30 overflow-visible w-full",
+        className
+      )}
+      {...(isInline ? { "data-counselling-cta": true } : {})}
+    >
+      {form}
     </div>
   );
 }

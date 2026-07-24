@@ -14,7 +14,8 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 | Header — global nav state | Partial | Exam switcher beside logo; verify PRD links |
 | Header — category nav state | Partial | Needs verification vs PRD |
 | Mobile nav | Partial | Exists; test against all breakpoints |
-| Floating counselling CTA | Complete | Observes `[data-counselling-cta]` only; hidden when any counselling CTA is in view; fade/slide + idle pulse; no scroll listener |
+| Floating counselling CTA | Complete | Observes `[data-counselling-cta]` only; hidden when any counselling CTA is in view or modal is open; fade/slide + idle pulse; opens counselling modal on click |
+| Counselling modal (lead form) | Complete | Global provider + `HeroCounsellingForm` in `Modal`; site-wide CTABand counselling actions; homepage category cards pre-fill exam |
 | Footer | Partial | v2 5-column layout (brand, courses, quick links, resources, contact); legal in bottom bar; social URLs TBD |
 | Rodha Buddy CTA (external) | Partial | Outline orange in header; final URL TBD |
 | Login / Sign Up → Graphy | Partial | Outline button; redirect target TBD |
@@ -26,13 +27,13 @@ Update when page/section status changes. Detail: [PROGRESS.md](PROGRESS.md) · S
 
 | Section | Status |
 |---------|--------|
-| Hero (neural canvas + counselling form + YouTube + floating stats) | Complete |
-| Choose Your Exam | Complete (`ExamCard` accent tint/glow; dark-theme heading on transitional bg) |
-| Impact timeline | Complete (3-line heading; `home-section-light` opaque bg) |
-| Results / toppers | Complete (`TopperCardAlternate` orange/dark alternation; light heading + white View All btn) |
-| App promotion | Partial (app mockup image + Play Store SVG; `home-section-transition-to-dark`; store links `#` until URLs arrive) |
-| CTA Band | Complete (v2 layout; dark card bg; `home-cta-bg.png` visible; accent on separate line) |
-| Continuous page canvas background | Complete (tuned gradient stops; section theme utilities wired; seamless dark→light→dark flow) |
+| Hero (neural canvas + counselling form + YouTube + floating stats) | Complete (`HomeTopZone` shared canvas through Categories) |
+| Choose Your Exam | Complete (`home-section-spacing-lg`; hosts dark→light gradient transition) |
+| Impact timeline | Complete (3-line heading: students / decade of / momentum.) |
+| Results / toppers | Complete (2-line heading: speak / for themselves.) |
+| App promotion | Partial (app mockup image + Play Store SVG; store links `#` until URLs arrive) |
+| CTA Band | Complete (2-line block heading; buttons clear of bg artwork) |
+| Continuous page canvas background | Complete (section-anchored `HomePageGradientAnchors`; no section bg breaks) |
 
 ## Home `/legacy-homepage` (frozen v1 backup)
 

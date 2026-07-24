@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -7,26 +9,27 @@ import type { Category } from "@/lib/types";
 interface ExamCardProps {
   category: Category;
   className?: string;
+  onCounsellingSelect?: (category: Category) => void;
 }
 
-export function ExamCard({ category, className }: ExamCardProps) {
+export function ExamCard({ category, className, onCounsellingSelect }: ExamCardProps) {
   const accent = category.color || "#F97316";
   const tintedBg = `color-mix(in srgb, ${accent} 8%, #0d0b0a)`;
 
-  return (
-    <Link
-      href={`/${category.slug}`}
-      className={cn(
-        "card-base card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px]",
-        className
-      )}
-      style={{
-        backgroundColor: tintedBg,
-        boxShadow: `0 0 24px ${accent}18, inset 0 0 0 1px ${accent}28`,
-        ["--glow-base" as string]: `${accent}24`,
-        ["--glow-peak" as string]: `${accent}B3`,
-      }}
-    >
+  const cardClassName = cn(
+    "card-base card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px] text-left w-full",
+    className
+  );
+
+  const cardStyle = {
+    backgroundColor: tintedBg,
+    boxShadow: `0 0 24px ${accent}18, inset 0 0 0 1px ${accent}28`,
+    ["--glow-base" as string]: `${accent}24`,
+    ["--glow-peak" as string]: `${accent}B3`,
+  };
+
+  const content = (
+    <>
       <div
         className="pointer-events-none absolute -bottom-8 -right-6 w-40 h-40 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity"
         style={{
@@ -84,6 +87,26 @@ export function ExamCard({ category, className }: ExamCardProps) {
           </div>
         </div>
       </div>
+    </>
+  );
+
+  if (onCounsellingSelect) {
+    return (
+      <button
+        type="button"
+        onClick={() => onCounsellingSelect(category)}
+        className={cardClassName}
+        style={cardStyle}
+        aria-label={`Book free counselling for ${category.name}`}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <Link href={`/${category.slug}`} className={cardClassName} style={cardStyle}>
+      {content}
     </Link>
   );
 }
