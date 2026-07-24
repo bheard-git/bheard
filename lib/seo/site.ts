@@ -10,3 +10,21 @@ export function getSiteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://bheard.in";
   return raw.replace(/\/+$/, "");
 }
+
+/**
+ * Whether this deployment should be indexed by search and AI crawlers.
+ * Preview/staging hosts (e.g. *.vercel.app) are excluded unless explicitly overridden.
+ */
+export function isIndexableDeployment(): boolean {
+  const override = process.env.NEXT_PUBLIC_INDEXABLE?.trim().toLowerCase();
+  if (override === "true") return true;
+  if (override === "false") return false;
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "";
+  if (siteUrl) {
+    return siteUrl.includes("bheard.in") && !siteUrl.includes("vercel.app");
+  }
+
+  if (process.env.VERCEL_URL?.includes("vercel.app")) return false;
+  return process.env.NODE_ENV === "production";
+}

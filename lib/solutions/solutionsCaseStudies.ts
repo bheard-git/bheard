@@ -2,6 +2,7 @@ import { getCaseStudyBySlug } from "@/lib/case-studies";
 import type { CaseStudyContent } from "@/lib/case-studies/types";
 import type { CaseStudyStat } from "@/lib/case-studies/types";
 import type { SolutionsCaseStudyCardProps } from "@/components/solutions/SolutionsCaseStudyCard";
+import { publicAsset } from "@/lib/utils/publicAsset";
 
 type CaseStudySlugConfig = {
   slug: string;
@@ -47,7 +48,7 @@ const TECH_CASE_STUDY_CONFIG: Array<CaseStudySlugConfig | StaticCaseStudyCardCon
   },
   {
     id: "digi-1",
-    image: null,
+    image: publicAsset("assets", "tech solutions", "Digi1.png"),
     imageAlt: "DIGI 1 customer experience platform",
     brandName: "DIGI 1",
     title: "Customer experience platform for retail engagement and loyalty.",

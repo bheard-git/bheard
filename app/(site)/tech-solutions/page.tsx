@@ -1,11 +1,13 @@
+import type { Metadata } from "next";
 import TechSolutionsView from "@/components/tech-solutions/TechSolutionsView";
+import JsonLd from "@/components/seo/JsonLd";
 import type { FaqAccordionItem } from "@/components/solutions/TwoColumnFaqSection";
+import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
+import { metadataFromPageSeo } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { buildBreadcrumbSchema, buildFaqSchema, buildServiceSchema } from "@/lib/seo/schema";
 
-export const metadata = {
-  title: "Custom Software, AI & Mobile App Development | BHeard",
-  description:
-    "Custom software, mobile apps, AI solutions, UI/UX and e-commerce platforms for growing businesses — built by BHeard's tech team in Mumbai.",
-};
+export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.techSolutions);
 
 const TECH_FAQS: FaqAccordionItem[] = [
   {
@@ -35,23 +37,21 @@ const TECH_FAQS: FaqAccordionItem[] = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: TECH_FAQS.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
 export default function TechSolutionsPage() {
+  const schema = [
+    buildServiceSchema({
+      name: "Tech Solutions",
+      description: PAGE_SEO.techSolutions.description,
+      pathname: PAGE_SEO.techSolutions.pathname,
+      serviceType: "Custom Software & Mobile App Development",
+    }),
+    buildFaqSchema(TECH_FAQS),
+    buildBreadcrumbSchema(BREADCRUMBS.techSolutions),
+  ];
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd data={schema} />
       <TechSolutionsView faqItems={TECH_FAQS} />
     </>
   );

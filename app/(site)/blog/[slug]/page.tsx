@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogDetailView from "@/components/blog/BlogDetailView";
+import JsonLd from "@/components/seo/JsonLd";
 import {
   getPublishedBlogPostBySlug,
   listPublishedBlogPosts,
 } from "@/lib/services/blog.service";
 import type { BlogDetail } from "@/components/blog/BlogDetailView";
-import { getSiteUrl } from "@/lib/seo/site";
+import { blogDetailBreadcrumbs } from "@/lib/seo/breadcrumbs";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildBlogPostingSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const dynamic = "force-dynamic";
 
@@ -17,66 +20,18 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const post = await getPublishedBlogPostBySlug(slug);
 
   if (!post) {
-    return { title: "Post Not Found | BHEARD" };
+    return { title: "Post Not Found | BHeard" };
   }
 
-  const siteUrl = getSiteUrl();
-  const canonical = `${siteUrl}/blog/${post.slug}`;
+  const title = `${post.title} | BHeard`;
 
-  return {
-    title: `${post.title} | BHEARD`,
+  return buildPageMetadata({
+    title,
     description: post.excerpt,
-    alternates: { canonical },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      url: canonical,
-      ...(post.thumbnailUrl ? { images: [{ url: post.thumbnailUrl, alt: post.thumbnailAlt ?? post.title }] } : {}),
-    },
-  };
-}
-
-function buildBlogPostingSchema(post: BlogDetail, siteUrl: string) {
-  const url = `${siteUrl}/blog/${post.slug}`;
-  const datePublished = post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined;
-  const dateModified = post.updatedAt ? new Date(post.updatedAt).toISOString() : datePublished;
-
-  const authorName = post.showAuthorDetails && post.author ? post.author : "Neha Gupta";
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    url,
-    ...(datePublished ? { datePublished } : {}),
-    ...(dateModified ? { dateModified } : {}),
-    author: {
-      "@type": "Person",
-      name: authorName,
-      url: `${siteUrl}/about`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "BHEARD",
-      url: siteUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/logo.png`,
-      },
-    },
-    ...(post.thumbnailUrl
-      ? { image: { "@type": "ImageObject", url: post.thumbnailUrl, description: post.thumbnailAlt ?? post.title } }
-      : {}),
-    articleSection: post.category,
-    inLanguage: "en-IN",
-    isPartOf: {
-      "@type": "Blog",
-      name: "BHEARD Blog",
-      url: `${siteUrl}/blog`,
-    },
-  };
+    pathname: `/blog/${post.slug}`,
+    ogType: "article",
+    ogImage: post.thumbnailUrl ?? undefined,
+  });
 }
 
 export default async function BlogDetailPage({ params }: { params: Promise<Params> }) {
@@ -97,12 +52,26 @@ export default async function BlogDetailPage({ params }: { params: Promise<Param
   const categories = Array.from(categoryMap.entries()).map(([label, count]) => ({ label, count }));
   const recent = allPosts.filter((item) => item.slug !== slug).slice(0, 4);
 
-  const siteUrl = getSiteUrl();
-  const schema = buildBlogPostingSchema(post as BlogDetail, siteUrl);
+  const authorName = post.showAuthorDetails && post.author ? post.author : "Neha Gupta";
+
+  const schema = [
+    buildBlogPostingSchema({
+      title: post.title,
+      excerpt: post.excerpt,
+      slug: post.slug,
+      publishedAt: post.publishedAt,
+      updatedAt: post.updatedAt,
+      thumbnailUrl: post.thumbnailUrl,
+      thumbnailAlt: post.thumbnailAlt,
+      category: post.category,
+      authorName,
+    }),
+    buildBreadcrumbSchema(blogDetailBreadcrumbs(post.title)),
+  ];
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <BlogDetailView
         post={post as BlogDetail}
         related={related as BlogDetail[]}

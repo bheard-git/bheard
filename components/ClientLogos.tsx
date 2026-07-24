@@ -29,7 +29,7 @@ const rowOneLogos: ClientLogo[] = [
   { src: "/assets/client-logos/goa-portuguesa.webp", alt: "Goa Portuguesa" },
   { src: "/assets/client-logos/goa-tourism.webp", alt: "Goa Tourism" },
   { src: "/assets/client-logos/hindustan-unilever.webp", alt: "Hindustan Unilever" },
-  { src: "/assets/client-logos/itc.png", alt: "ITC" },
+  { src: clientLogo("fortune hotels.png"), alt: "Fortune Hotels" },
   { src: "/assets/client-logos/kadkani.webp", alt: "Kadkani" },
 ];
 
@@ -37,7 +37,6 @@ const rowTwoLogos: ClientLogo[] = [
   { src: "/assets/client-logos/mickey-mehta.webp", alt: "Mickey Mehta" },
   { src: "/assets/client-logos/novotel.webp", alt: "Novotel" },
   { src: "/assets/client-logos/radisson-blu.webp", alt: "Radisson Blu" },
-  { src: clientLogo("jaslok hospital.jpg"), alt: "Jaslok Hospital" },
   { src: clientLogo("Manderem.jpeg"), alt: "Manderem" },
   { src: clientLogo("my goa.png"), alt: "My Goa" },
   { src: clientLogo("Rodha.png"), alt: "Rodha" },

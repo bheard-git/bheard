@@ -1,26 +1,34 @@
+import type { Metadata } from "next";
 import AiGuestAgentsView from "@/components/tech-solutions/ai-guest-agents/AiGuestAgentsView";
+import JsonLd from "@/components/seo/JsonLd";
 import { aiGuestAgentsContent } from "@/lib/content/ai-guest-agents";
+import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
+import { metadataFromPageSeo } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { buildBreadcrumbSchema, buildFaqSchema, buildServiceSchema } from "@/lib/seo/schema";
 
-export const metadata = {
-  title: "AI Guest Agents for Hotels & Resorts | BHeard",
-  description:
-    "AI Guest Agents that answer enquiries, recommend rooms, qualify leads and upsell 24/7 across website, WhatsApp, Instagram and more. Trusted by Radisson.",
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: aiGuestAgentsContent.faq.items.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-};
+export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.aiGuestAgents);
 
 export default function AiGuestAgentsPage() {
+  const faqs = aiGuestAgentsContent.faq.items.map((item) => ({
+    question: item.question,
+    answer: item.answer,
+  }));
+
+  const schema = [
+    buildServiceSchema({
+      name: "AI Guest Agents",
+      description: PAGE_SEO.aiGuestAgents.description,
+      pathname: PAGE_SEO.aiGuestAgents.pathname,
+      serviceType: "AI Guest Agents for Hospitality",
+    }),
+    buildFaqSchema(faqs),
+    buildBreadcrumbSchema(BREADCRUMBS.aiGuestAgents),
+  ];
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd data={schema} />
       <AiGuestAgentsView />
     </>
   );

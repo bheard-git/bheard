@@ -1,11 +1,13 @@
+import type { Metadata } from "next";
 import BrandSolutionsView from "@/components/brand-solutions/BrandSolutionsView";
+import JsonLd from "@/components/seo/JsonLd";
 import type { FaqItem } from "@/components/site/FaqSection";
+import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
+import { metadataFromPageSeo } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { buildBreadcrumbSchema, buildFaqSchema, buildServiceSchema } from "@/lib/seo/schema";
 
-export const metadata = {
-  title: "Brand Solutions | BHEARD",
-  description:
-    "Story systems, content engines, and campaigns engineered for memorability — brand strategy, execution, and proof in one motion language.",
-};
+export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.brandSolutions);
 
 const BRAND_FAQS: FaqItem[] = [
   {
@@ -35,23 +37,21 @@ const BRAND_FAQS: FaqItem[] = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: BRAND_FAQS.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
 export default function BrandSolutionsPage() {
+  const schema = [
+    buildServiceSchema({
+      name: "Brand Solutions",
+      description: PAGE_SEO.brandSolutions.description,
+      pathname: PAGE_SEO.brandSolutions.pathname,
+      serviceType: "Branding & Digital Marketing",
+    }),
+    buildFaqSchema(BRAND_FAQS),
+    buildBreadcrumbSchema(BREADCRUMBS.brandSolutions),
+  ];
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd data={schema} />
       <BrandSolutionsView faqItems={BRAND_FAQS} />
     </>
   );

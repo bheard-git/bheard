@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import logo from "@/app/logo.png";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { publicAsset } from "@/lib/utils/publicAsset";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -185,6 +186,24 @@ export default function Footer() {
                 {icon}
               </Link>
             ))}
+          </div>
+          <div className="mt-6">
+            <p className="mb-2 font-label text-xs uppercase tracking-widest text-neutral-500">Partner Agency</p>
+            <Link
+              href="https://www.innowrap.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Innowrap Technologies — partner agency"
+              className="inline-block transition-opacity duration-300 hover:opacity-80"
+            >
+              <Image
+                src={publicAsset("assets", "about", "innowrap technologies.webp")}
+                alt="Innowrap Technologies"
+                width={160}
+                height={48}
+                className="h-9 w-auto object-contain"
+              />
+            </Link>
           </div>
         </div>
         <div data-footer-reveal className="opacity-100 md:col-span-2">

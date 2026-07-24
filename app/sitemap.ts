@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { listPublishedBlogPosts } from "@/lib/services/blog.service";
+import { listActiveCareers } from "@/lib/services/careers.service";
 import { listPublishedStories } from "@/lib/services/stories.service";
 import { getSiteUrl } from "@/lib/seo/site";
 
@@ -74,6 +75,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (err) {
     console.warn("[sitemap] skipping story URLs:", err instanceof Error ? err.message : err);
+  }
+
+  try {
+    const careerRows = await listActiveCareers();
+    for (const role of careerRows) {
+      if (!role.slug) continue;
+      const lastModified = asDate(role.updatedAt) ?? now;
+      setEntry(`/careers/${role.slug}`, {
+        lastModified,
+        changeFrequency: "weekly",
+        priority: 0.6,
+      });
+    }
+  } catch (err) {
+    console.warn("[sitemap] skipping career URLs:", err instanceof Error ? err.message : err);
   }
 
   return Array.from(byUrl.values());

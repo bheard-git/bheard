@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import ListingBandHero from "@/components/system/ListingBandHero";
 import ContactLeadForm from "@/components/site/ContactLeadForm";
+import ListingBandHero from "@/components/system/ListingBandHero";
+import JsonLd from "@/components/seo/JsonLd";
 import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
+import { metadataFromPageSeo } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { buildBreadcrumbSchema, buildContactPageSchema } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
-  title: "Contact BHeard - Branding & Tech Agency in Lower Parel, Mumbai",
-  description:
-    "Book a call with BHeard. Head office in Lower Parel, Mumbai, with a branch office in Delhi. Write to hello@bheard.in or call +91 9326602832.",
-};
+export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.contact);
 
 export default function ContactPage() {
+  const schema = [buildContactPageSchema(), buildBreadcrumbSchema(BREADCRUMBS.contact)];
+
   return (
     <>
+      <JsonLd data={schema} />
       <ListingBandHero
         watermark="Contact"
         eyebrow="Get in Touch"
