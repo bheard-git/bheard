@@ -20,6 +20,7 @@ import AboutHeroSection from "@/components/about/AboutHeroSection";
 import ClientLogos from "@/components/ClientLogos";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
+import { ListingBandHero } from "../system";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -133,7 +134,12 @@ export default function AboutPageView() {
 
   return (
     <div ref={rootRef}>
-      <AboutHeroSection />
+      <ListingBandHero
+        watermark="About"
+        eyebrow="About BHeard"
+        title="Glad you're taking time to get to know us better"
+        copy="Strategy. Creativity. Technology. Brought together to help brands grow, connect, and stay ahead in a digital-first world."
+      />
 
       <section className={`bg-surface-container-highest/60 ${sectionPageX} ${sectionBandY}`}>
         <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-2 md:gap-20 md:items-center">

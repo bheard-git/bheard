@@ -1,0 +1,193 @@
+
+BHEARD.IN — SEO STRATEGY & DEVELOPER BUILD SPEC
+Website Revamp | Content locked — this document covers architecture, metadata, and technical implementation only
+Prepared: July 2026 · Target markets: India, US, Southeast Asia · Target clients: consumer, lifestyle, luxury, hotels & resorts
+1. SEO Positioning (Locked)
+Primary positioning phrase: “Mumbai's integrated branding and technology agency for hospitality, lifestyle and consumer brands.” Use consistently in homepage title tag, Organization schema description, and footer boilerplate.
+Strategy: Do not compete on “social media marketing agency Mumbai.” Lead with the two-pillar (Brand + Tech) integrated positioning and the hospitality vertical, where the client roster (Accor, Radisson, Novotel, ITC, Goa Tourism) is the differentiator.
+Build order: /industries/hospitality-luxury and /services/tech-solutions/ai-chatbots-agents ship first — low-competition, high-intent pages with genuine proof. Rank these, then use internal links from them to lift harder head terms.
+2. URL Architecture
+All URLs lowercase, hyphenated, no trailing parameters. One canonical domain: https://bheard.in (www redirects to non-www, or vice versa — pick one, 301 the other).
+URL
+Page (maps to content doc)
+Priority
+/
+Homepage
+P0
+/services/brand-solutions
+Brand Solutions (revised)
+P0
+/services/tech-solutions
+Tech Solutions (revised)
+P0
+/services/tech-solutions/ai-chatbots-agents
+AI Guest Agents for Hotels & Resorts
+P0 — build first
+/industries
+Industries We Serve (hub)
+P1
+/industries/hospitality-luxury
+Hospitality & Luxury section
+P0 — build first
+/industries/consumer-fmcg
+Consumer & FMCG section
+P1
+/industries/health-wellness
+Health & Wellness section
+P1
+/industries/travel-tourism
+Travel & Tourism section
+P1
+/industries/education-edtech
+Education & EdTech section
+P1
+/work
+Success Stories (hub)
+P1
+/work/radisson-blu-goa
+Radisson Blu case study
+P1
+/work/curly-tales-app
+Curly Tales case study
+P1
+/work/goa-tourism
+My Goa / destination marketing case study
+P1
+/work/dr-mickey-mehta
+Health & Wellness case study
+P2
+/work/rodha-edtech
+Education Technology case study
+P2
+/about
+About BHeard (revised)
+P1
+/careers
+Careers
+P2
+/contact
+Let's Talk / contact form
+P0
+
+The Industries page in the content doc is one long page. Build it as a hub with short summaries, each linking to its own standalone industry page carrying the full section content. Standalone pages are what rank for vertical queries.
+“Stories” in the doc = /work in the URL. “Work” is the term buyers search and matches the homepage “See Our Work” CTA.
+3. Page Metadata (Title Tags, Meta Descriptions, H1s)
+Titles ≤ 60 characters where possible; descriptions ≤ 155. H1s below use the locked copy — do not change on-page headings, only the <title> and <meta description> differ from visible copy.
+Homepage /
+Title: Integrated Branding & Tech Agency in Mumbai | BHeard
+Description: BHeard is Mumbai's integrated branding and technology agency for hospitality, lifestyle and consumer brands. Brand strategy and tech under one roof.
+H1: Capturing voice in the noise. (as per locked copy — one H1 only)
+/services/brand-solutions
+Title: Branding & Digital Marketing for Lifestyle & Hospitality Brands | BHeard
+Description: Social media, content, design, influencer and campaign strategy for consumer, lifestyle, wellness and hospitality brands. Trusted by Accor, HUL, ITC, Radisson.
+H1: Branding & Digital Marketing for Consumer, Lifestyle & Hospitality Brands
+/services/tech-solutions
+Title: Custom Software, AI & Mobile App Development | BHeard
+Description: Custom software, mobile apps, AI solutions, UI/UX and e-commerce platforms for growing businesses — built by BHeard's tech team in Mumbai.
+H1: Custom Software, AI & Mobile App Development for Growing Businesses
+/services/tech-solutions/ai-chatbots-agents  (PRIORITY)
+Title: AI Guest Agents for Hotels & Resorts | BHeard
+Description: AI Guest Agents that answer enquiries, recommend rooms, qualify leads and upsell 24/7 across website, WhatsApp, Instagram and more. Trusted by Radisson.
+H1: AI Guest Agents for Hotels & Resorts
+/industries/hospitality-luxury  (PRIORITY)
+Title: Hospitality & Luxury Marketing Agency | BHeard Mumbai
+Description: A decade of brand, marketing and technology work for hotels, resorts and luxury brands — Accor, Radisson, Novotel, ITC. Social, performance, AI Guest Agents.
+H1: Where Guest Experience Begins Before Check-in
+Remaining pages — pattern
+Industry pages: “[Industry] Marketing Agency | BHeard” + the section's locked H1 (e.g. “Trust Comes Before Conversion” for wellness).
+Case studies: “[Client] Case Study — [Discipline] | BHeard” (e.g. “Radisson Blu Goa Case Study — Hospitality Marketing | BHeard”).
+/about: “About BHeard — Brand & Technology Studio, Mumbai (Since 2014)”.
+/contact: “Contact BHeard — Branding & Tech Agency in Lower Parel, Mumbai”.
+4. Structured Data (JSON-LD)
+Implement as JSON-LD in <head>, per page. Validate with Google's Rich Results Test before launch.
+Page(s)
+Schema type(s)
+Notes
+All pages (sitewide)
+Organization + LocalBusiness
+Name, logo, sameAs (Instagram, LinkedIn), foundingDate 2014, founder Neha Gupta (Person). Two location nodes: Lower Parel Mumbai HQ + Delhi branch, with exact NAP as in footer.
+All inner pages
+BreadcrumbList
+Mirror URL hierarchy (Home > Services > Tech Solutions > AI Chatbots & Agents).
+Brand Solutions, Tech Solutions, AI Guest Agents, industry pages
+Service
+serviceType per page; areaServed: India, United States, Southeast Asia; provider = Organization.
+Brand Solutions, Tech Solutions, AI Guest Agents
+FAQPage
+FAQs already written in the content doc — mark up verbatim. Only mark up FAQs visible on the page.
+Case study pages (/work/*)
+Article
+headline, datePublished, author = Organization, about = client industry.
+/about
+AboutPage + Person (Neha Gupta)
+Link Person to her LinkedIn via sameAs once the profile link is added.
+/contact
+ContactPage
+Include contactPoint with +91 phone and hello@bheard.in.
+5. Technical Requirements for the Developer
+Rendering & indexation
+Server-render or statically generate every page. All copy, headings, FAQs and client names must be present in the initial HTML response — not injected client-side after load.
+Noindex all Vercel staging domains. bheard.vercel.app and bheard-in.vercel.app must serve an X-Robots-Tag: noindex header (or password protection). If they are already indexed, keep noindex live until they drop out, then optionally 301 to bheard.in.
+Self-referencing canonical on every page pointing to the https://bheard.in URL. Staging must never be the canonical.
+Remove all bheard.vercel.app links from live content. The content doc's CTA and footer links (Privacy, Terms, Sitemap, #work) currently point to the Vercel domain — replace with relative or bheard.in URLs before launch.
+XML sitemap at /sitemap.xml, auto-generated, listing only indexable 200-status canonical URLs. Reference it in robots.txt and submit in Google Search Console.
+robots.txt: allow all on production; disallow nothing except admin/api routes. Do not block CSS/JS.
+301 redirect map: map every current live bheard.in URL to its new equivalent before switchover. No 404s on previously indexed URLs.
+Performance (Core Web Vitals)
+Serve images in WebP/AVIF with explicit width/height attributes; lazy-load everything below the fold; the hero image/video loads eagerly with high fetch priority.
+Client logo strips: single optimized sprite or individually compressed SVG/WebP files — not 25 separate PNG requests.
+Self-host fonts with font-display: swap; preload the primary heading font.
+No layout shift from the stats counters (10+ / 50+ / 200+) or logo carousels — reserve space in CSS.
+Defer all third-party scripts (analytics, chat widget); nothing render-blocking in <head> except critical CSS.
+On-page hygiene
+Exactly one H1 per page; heading levels nest without skipping (H1 → H2 → H3). The content doc's visual hierarchy maps cleanly — confirm in code, not just design.
+Descriptive alt text on all case-study and client imagery (e.g. “Radisson Blu Goa social media campaign creative”). Decorative flourishes get empty alt="".
+Fix known live-site bugs before launch: “BEHEARD” typo in footer CTA, placeholder footer address, duplicate Tech Solutions section render.
+Footer NAP (name, address, phone) must exactly match the Google Business Profile listing — character for character.
+Internal linking rules
+Homepage → both service pillars, /industries/hospitality-luxury, and /work. “06 / AI FOR HOSPITALITY” card links to /services/tech-solutions/ai-chatbots-agents.
+Hospitality industry page ↔ AI Guest Agents page link to each other in body copy — this pair is the ranking engine; the content doc already flags the Guest AI hyperlink placement in the Radisson case study.
+Every case study → its industry page + the service pages used (e.g. Radisson Blu → hospitality-luxury + brand-solutions + ai-chatbots-agents).
+Every industry page → its relevant case studies under “Work.”
+Anchor text: descriptive, not “click here” / “learn more” alone (e.g. “AI Guest Agents for hotels”).
+Never link to innowrap.com anywhere on the site, including the guest-ai reference in the keyword notes. All tech capability is presented as in-house.
+6. International Targeting (India, US, Southeast Asia)
+No hreflang. One English-language site serving all markets needs no hreflang; adding it with a single language/region variant creates errors, not gains.
+Signal reach through content, which the locked copy already does (“across India and international markets,” Broward College US, Caper Travel South Asia) and through Service schema areaServed values.
+Google Business Profiles for the Mumbai HQ and Delhi branch, categories “Marketing agency” / “Software company,” linked to bheard.in. This is the local-pack lever for “branding agency Lower Parel”-type queries.
+Keep the .in domain. It does not prevent US/SEA rankings for the service and hospitality-AI queries being targeted; a domain migration would cost more than it gains.
+7. Pre-Launch Checklist
+#
+Check
+Owner
+1
+Staging domains noindexed / password-protected
+Developer
+2
+301 map from all existing live URLs tested
+Developer
+3
+All internal links point to bheard.in (no vercel.app)
+Developer
+4
+Titles, descriptions, H1s implemented per Section 3
+Developer
+5
+JSON-LD validates in Rich Results Test (all types, Section 4)
+Developer
+6
+Sitemap live, robots.txt correct, GSC property verified & sitemap submitted
+Developer
+7
+Core Web Vitals pass in Lighthouse on the homepage, both priority pages, and one case study (mobile)
+Developer
+8
+Footer typo, placeholder address, duplicate section fixed
+Developer
+9
+No innowrap.com references in code, links or schema
+Developer
+10
+Google Business Profiles live and NAP-matched
+BHeard
+Post-launch: monitor GSC coverage for the two priority pages weekly; once they hold page-one positions for their target queries, extend internal links from them toward the harder head terms (“integrated branding and tech agency Mumbai”).

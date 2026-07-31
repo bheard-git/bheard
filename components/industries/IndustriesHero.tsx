@@ -10,7 +10,7 @@ const HERO_PARAGRAPHS = [
 
 export default function IndustriesHero() {
   return (
-    <section className={`relative isolate overflow-hidden bg-white ${sectionPageX} pb-16 pt-8 md:pb-20 md:pt-10`}>
+    <section className={`relative isolate overflow-hidden bg-white ${sectionPageX} pb-20 pt-20 md:pb-24 md:pt-24`}>
       <div
         aria-hidden
         className="pointer-events-none absolute -z-10 right-[-5%] top-[5%] h-56 w-56 rounded-full bg-primary/20 blur-[100px] md:right-[6%] md:top-[8%] md:h-72 md:w-72"
@@ -21,10 +21,6 @@ export default function IndustriesHero() {
       <GlowOrb className="right-0 top-0 block h-48 w-48 md:hidden" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <PageBreadcrumb
-          items={[{ label: "Home", href: "/" }, { label: "Industries" }]}
-          className="mb-8 md:mb-10"
-        />
 
         <div className="grid gap-10 md:grid-cols-2 md:gap-16 lg:gap-20">
           <div className="relative">

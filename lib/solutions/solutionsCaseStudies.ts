@@ -21,11 +21,10 @@ const BRAND_CASE_STUDY_CONFIG: CaseStudySlugConfig[] = [
     ],
   },
   {
-    slug: "zumba-wear",
+    slug: "dr-mickey-mehta",
     stats: [
-      { value: "23.3K", label: "Instagram Followers" },
-      { value: "274+", label: "Facebook Purchases" },
-      { value: "19%", label: "Peak FB Engagement" },
+      { value: "4M+", label: "Campaign impressions" },
+      { value: "10+", label: "Milestone campaigns" },
     ],
   },
   {

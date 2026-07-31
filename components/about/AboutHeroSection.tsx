@@ -11,9 +11,9 @@ gsap.registerPlugin(useGSAP);
 
 const TEAM_IMAGES = [
   { src: "/assets/team/team-1.jpeg", alt: "BHEARD team member collaborating in the studio" },
-  { src: "/assets/team/team-3.jpeg", alt: "BHEARD team member at work" },
+  { src: "/assets/team/team-3.png", alt: "BHEARD team member at work" },
   { src: "/assets/team/team-5.jpeg", alt: "BHEARD team in a creative session" },
-  { src: "/assets/team/team.png", alt: "BHEARD team member smiling" },
+  { src: "/assets/team/team-2.png", alt: "BHEARD team member smiling" },
 ] as const;
 
 const PROTECTED_IMAGE_CLASS =
@@ -67,7 +67,7 @@ export default function AboutHeroSection() {
           data-about-hero-intro="eyebrow"
           className="mb-5 font-body text-xs font-bold uppercase tracking-[0.22em] text-primary opacity-0 motion-reduce:opacity-100"
         >
-          About BHeard
+          Careers At BHeard
         </p>
 
         <h1
@@ -75,15 +75,14 @@ export default function AboutHeroSection() {
           data-about-hero-intro="headline"
           className="max-w-[18ch] font-headline text-[clamp(1.75rem,4.8vw,3.35rem)] font-black leading-[1.12] tracking-tight text-neutral-900 opacity-0 motion-reduce:opacity-100 md:max-w-[22ch] md:leading-[1.1]"
         >
-          Glad you&apos;re taking time to get to know us better
+          Grow Your Career With Us
         </h1>
 
         <p
           data-about-hero-intro="sub"
           className="mt-5 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant opacity-0 motion-reduce:opacity-100 md:text-lg"
         >
-          Strategy. Creativity. Technology. Brought together to help brands grow, connect, and stay
-          ahead in a digital-first world.
+          Join a team where creativity, technology, and innovation come together to create meaningful work and lasting impact.
         </p>
       </div>
 

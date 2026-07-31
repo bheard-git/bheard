@@ -65,7 +65,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy }: Lis
   return (
     <section
       ref={sectionRef}
-      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} py-16 md:py-20`}
+      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}
     >
       <div
         aria-hidden

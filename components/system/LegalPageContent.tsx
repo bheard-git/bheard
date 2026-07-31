@@ -33,7 +33,7 @@ export default async function LegalPageContent({ slug, watermark, defaultTitle, 
     <>
       <InnerPageHero watermark={watermark} heading={title} subtext={subtext} size="compact" />
 
-      <section className={`bg-surface ${sectionPageX} py-12 md:py-14`}>
+      <section className={`bg-surface ${sectionPageX} pb-12 md:pb-14`}>
         <div className={sectionContentBand}>
           {updatedLabel ? (
             <p className="mb-6 font-body text-xs uppercase tracking-[0.14em] text-on-surface-variant">

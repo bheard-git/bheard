@@ -94,7 +94,7 @@ export const CASE_STUDIES: CaseStudyContent[] = [
     listImage: workImage("zumba forever case study-compressed.jpg"),
     listImageAlt: "Zumba Wear activewear lifestyle campaign",
     listStats: [
-      { value: "23.3K", label: "Instagram followers" },
+      { value: "345K", label: "Reach" },
       { value: "274+", label: "Facebook purchases" },
       { value: "19%", label: "Peak FB engagement" },
     ],

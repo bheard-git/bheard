@@ -5,6 +5,7 @@ import Link from "next/link";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
 import ListingBandHero from "@/components/system/ListingBandHero";
 import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import AboutHeroSection from "../about/AboutHeroSection";
 
 const band = sectionContentBand;
 const bandLight = `bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`;
@@ -87,12 +88,7 @@ export default function CareersListingView({
 }: CareersListingViewProps) {
   return (
     <div>
-      <ListingBandHero
-        watermark="Careers"
-        eyebrow="Careers at BHeard"
-        title="Grow Your Career With Us"
-        copy="Join a team where creativity, technology, and innovation come together to create meaningful work and lasting impact."
-      />
+      <AboutHeroSection />
 
       <section className={bandLight}>
         <div className={band}>
