@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
-import { Select } from "@/components/ui/Select";
+import { DropdownSelect } from "@/components/ui/DropdownSelect";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { CATEGORIES } from "@/lib/constants";
@@ -58,11 +58,13 @@ export function ContactForm({ className }: ContactFormProps) {
             required
           />
         </div>
-        <Select
+        <DropdownSelect
           label="Interested Exam"
           placeholder="Select an exam"
           value={formData.exam}
-          onChange={(e) => setFormData((prev) => ({ ...prev, exam: e.target.value as ContactFormData["exam"] }))}
+          onChange={(exam) =>
+            setFormData((prev) => ({ ...prev, exam: exam as ContactFormData["exam"] }))
+          }
           options={CATEGORIES.map((c) => ({ value: c.id, label: c.menuLabel }))}
         />
         <Textarea

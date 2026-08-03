@@ -316,6 +316,124 @@ export const topResults: TopperResult[] = [
     image: "/assets/images/profiles/male-1.png",
   },
 ];
+interface ResultBanner {
+  id: string;
+
+  badge: string;
+
+  title: string;
+
+  highlight: string;
+
+  subtitle: string;
+
+  description: string;
+
+  cta: string;
+
+  href: string;
+
+  backgroundClass: string;
+
+  toppers: TopperResult[];
+}
+export const resultBanners: ResultBanner[] = [
+  {
+    id: "ipmat",
+
+    badge: "IPMAT 2025",
+
+    title: "IIM",
+
+    highlight: "Selections",
+
+    subtitle: "& counting",
+
+    description:
+      "Outstanding IPMAT achievers securing admissions into India's premier IIMs.",
+
+    cta: "Explore Results",
+
+    href: "/mba/ipmat",
+
+    backgroundClass:
+      "bg-gradient-to-br from-[#2A1408] via-[#4A2108] to-[#7C320C]",
+
+    toppers: topResults.slice(0, 4),
+  },
+
+  {
+    id: "cat",
+
+    badge: "CAT 2025",
+
+    title: "99%ile",
+
+    highlight: "Achievers",
+
+    subtitle: "Top Converts",
+
+    description:
+      "Students converting dream B-Schools across the country.",
+
+    cta: "View CAT Results",
+
+    href: "/mba/cat",
+
+    backgroundClass:
+      "bg-gradient-to-br from-[#0C2D4A] via-[#103C63] to-[#164E7A]",
+
+    toppers: topResults.slice(4, 8),
+  },
+
+  {
+    id: "gdpi",
+
+    badge: "GDPI 2025",
+
+    title: "Interview",
+
+    highlight: "Success",
+
+    subtitle: "Final Converts",
+
+    description:
+      "Outstanding interview performances leading to final admissions.",
+
+    cta: "View GDPI Results",
+
+    href: "/mba/gdpi",
+
+    backgroundClass:
+      "bg-gradient-to-br from-[#26103A] via-[#3A165A] to-[#5A2390]",
+
+    toppers: topResults.slice(8, 12),
+  },
+
+  {
+    id: "clat",
+
+    badge: "CLAT 2025",
+
+    title: "National",
+
+    highlight: "Rankers",
+
+    subtitle: "NLU Admissions",
+
+    description:
+      "Top CLAT performers securing admissions into premier NLUs.",
+
+    cta: "View CLAT Results",
+
+    href: "/law/clat",
+
+    backgroundClass:
+      "bg-gradient-to-br from-[#0F3A2A] via-[#17543C] to-[#227D56]",
+
+    toppers: topResults.slice(12, 16),
+  },
+];
 
 export const overallStats: ResultStat[] = [
   { label: "Selections", value: "10,000", suffix: "+", description: "across all exams" },

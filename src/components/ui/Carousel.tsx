@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface CarouselProps {
@@ -10,6 +10,8 @@ interface CarouselProps {
   itemClassName?: string;
   autoPlay?: boolean;
   autoPlayInterval?: number;
+  /** Optional. Defaults to current behaviour. */
+  itemsPerView?: number;
 }
 
 export function Carousel({
@@ -19,6 +21,7 @@ export function Carousel({
   itemClassName,
   autoPlay = false,
   autoPlayInterval = 5000,
+  itemsPerView
 }: CarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -78,9 +81,13 @@ export function Carousel({
     const el = scrollRef.current;
     if (!el) return;
     const firstChild = el.firstElementChild as HTMLElement | null;
-    const amount = firstChild
-      ? firstChild.offsetWidth + 20
-      : el.clientWidth * 0.8;
+
+    const amount =
+      itemsPerView === 1
+        ? el.clientWidth
+        : firstChild
+          ? firstChild.offsetWidth + 20
+          : el.clientWidth * 0.8;
     el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
   }, []);
 
@@ -159,7 +166,20 @@ export function Carousel({
         )}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        {children}
+        {itemsPerView
+          ? Array.from(React.Children.toArray(children)).map((child, index) => (
+              <div
+                key={index}
+                className="shrink-0 snap-start"
+                style={{
+                  width: `${100 / itemsPerView}%`,
+                  flex: `0 0 ${100 / itemsPerView}%`,
+                }}
+              >
+                {child}
+              </div>
+            ))
+          : children}
       </div>
     </div>
   );

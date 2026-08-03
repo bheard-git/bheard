@@ -757,6 +757,62 @@
     cursor: not-allowed;
   }
 
+  .dropdown-menu {
+    border-radius: 6px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-hover);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem 0;
+  }
+
+  .dropdown-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.625rem 1rem;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  button.dropdown-option {
+    border: none;
+    font: inherit;
+  }
+
+  .dropdown-menu .dropdown-option:hover,
+  button.dropdown-option:hover,
+  a.dropdown-option:hover {
+    background-color: rgba(249, 115, 22, 0.12);
+    color: #fb923c;
+  }
+
+  .dropdown-option:focus-visible {
+    background-color: rgba(249, 115, 22, 0.12);
+    color: #fb923c;
+    outline: none;
+  }
+
+  .dropdown-option--active {
+    background-color: rgba(249, 115, 22, 0.1);
+    color: #fb923c;
+  }
+
+  .dropdown-menu .dropdown-option--active:hover,
+  button.dropdown-option--active:hover,
+  a.dropdown-option--active:hover {
+    background-color: rgba(249, 115, 22, 0.16);
+    color: #fb923c;
+  }
+
+  .dropdown-menu .dropdown-option:hover .text-text-dimmed,
+  a.dropdown-option:hover .text-text-dimmed {
+    color: rgba(251, 146, 60, 0.75);
+  }
+
   .badge-base {
     display: inline-flex;
     align-items: center;
@@ -794,14 +850,14 @@
   /* Homepage v2 — single continuous page background (body-level, section-anchored) */
   body.home-gradient-page {
     --home-warm-blend-start: 10%;
-    --home-orange-peak: 20%;
-    --home-warm-fade-start: 24%;
-    --home-light-start: 34%;
+    --home-orange-peak: 10%;
+    --home-warm-fade-start: 13%;
+    --home-light-start: 25%;
     --home-light-end: 64%;
-    --home-bottom-warm-start: 78%;
-    --home-bottom-orange-peak: 81%;
-    --home-dark-plateau-start: 85%;
-    --home-page-end: 100%;
+    --home-bottom-warm-start: 98%;
+    --home-bottom-orange-peak: 97.6%;
+    --home-dark-plateau-start: 110%;
+    /* --home-page-end: 100%; */
 
     background-color: #0a0a0a;
     background-image:
@@ -810,30 +866,30 @@
         #0a0a0a 0%,
         #0a0a0a calc(var(--home-warm-blend-start) * 0.85),
         #0c0a09 calc(var(--home-warm-blend-start) * 0.95),
-        #0e0c0a var(--home-warm-blend-start),
-        #120e0c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.08),
-        #181008 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.16),
-        #1e140c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.24),
-        #261810 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.32),
-        #2e1c14 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.4),
-        #382218 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.48),
-        #442a1c calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.56),
-        #503020 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.64),
-        #603828 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.72),
-        #704430 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.8),
-        #7c4c34 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.88),
-        #845028 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.94),
-        #8a5028 var(--home-orange-peak),
-        #9a6038 calc(var(--home-orange-peak) + (var(--home-warm-fade-start) - var(--home-orange-peak)) * 0.5),
-        #a87048 var(--home-warm-fade-start),
-        #b88058 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.12),
-        #c89870 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.25),
-        #d4a888 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.38),
-        #e0bca0 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.5),
-        #e8ccb0 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.62),
-        #f0dcc8 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.75),
-        #f4e8dc calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.87),
-        #f8f2ea calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.95),
+        #0c0a09 var(--home-warm-blend-start),
+        #0c0a09 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.08),
+        #0c0a09 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.16),
+        #130c07 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.24),
+        #130c07 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.32),
+        #130c07 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.4),
+        #130c07 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.48),
+        #100b06 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.56),
+        #110a07 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.64),
+        #0a0604 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.72),
+        #0e0906 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.8),
+        #150d09 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.88),
+        #090503 calc(var(--home-warm-blend-start) + (var(--home-orange-peak) - var(--home-warm-blend-start)) * 0.94),
+        #291609 var(--home-orange-peak),
+        #000000 calc(var(--home-orange-peak) + (var(--home-warm-fade-start) - var(--home-orange-peak)) * 0.5),
+        #fdf1e9 var(--home-warm-fade-start),
+        #faeede95 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.12),
+        #fcebde calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.25),
+        #f6f2f0 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.38),
+        #f8f5f2 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.5),
+        #fcf8f3 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.62),
+        #f5f2ef calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.75),
+        #f7f4f2 calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.87),
+        #f4f1ee calc(var(--home-warm-fade-start) + (var(--home-light-start) - var(--home-warm-fade-start)) * 0.95),
         #f8f6f2 var(--home-light-start),
         #f8f6f2 var(--home-light-end),
         #f8f2ea calc(var(--home-light-end) + (var(--home-bottom-orange-peak) - var(--home-light-end)) * 0.05),

@@ -14,11 +14,12 @@ interface ExamCardProps {
 
 export function ExamCard({ category, className, onCounsellingSelect }: ExamCardProps) {
   const accent = category.color || "#F97316";
-  const tintedBg = `color-mix(in srgb, ${accent} 8%, #0d0b0a)`;
+  const tintedBg = `color-mix(in srgb, ${accent} 8%, #ffffff)`;
 
   const cardClassName = cn(
     "card-base card-premium-hover premium-border-glow relative overflow-hidden p-5 flex flex-col group min-h-[220px] md:min-h-[240px] rounded-[6px] text-left w-full",
-    className
+    className,
+    `!border-[#ff9a52e1]`
   );
 
   const cardStyle = {
@@ -31,7 +32,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
   const content = (
     <>
       <div
-        className="pointer-events-none absolute -bottom-8 -right-6 w-40 h-40 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity"
+        className="pointer-events-none absolute -bottom-8 border-[#ff9a52e1] -right-6 w-40 h-40 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity"
         style={{
           background: `radial-gradient(circle, ${accent}50 0%, transparent 70%)`,
         }}
@@ -68,7 +69,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
         >
           {category.name}
         </h3>
-        <p className="mt-2.5 text-body-sm text-text-secondary leading-relaxed">
+        <p className="mt-2.5 text-body-sm text-text-dimmed leading-relaxed">
           {category.description}
         </p>
 
@@ -77,13 +78,13 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
             <span style={{ color: accent }}>
               <Icon src="/assets/icons/book.svg" size={14} />
             </span>
-            <span>{category.courseCount || "50+"} Courses</span>
+            <span className="text-black">{category.courseCount || "50+"} Courses</span>
           </div>
           <div className="flex items-center gap-1.5 text-caption text-text-primary/90">
             <span style={{ color: accent }}>
               <Icon src="/assets/icons/check.svg" size={14} />
             </span>
-            <span>{category.selectionCount || "100+"} Selections</span>
+            <span className="text-black">{category.selectionCount || "100+"} Selections</span>
           </div>
         </div>
       </div>

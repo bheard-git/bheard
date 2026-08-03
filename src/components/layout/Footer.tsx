@@ -93,41 +93,6 @@ function getActiveFooterLabel(pathname: string, currentHash: string): string | n
   return matches[0].label;
 }
 
-function FooterColumn({
-  title,
-  links,
-  activeLabel,
-}: {
-  title: string;
-  links: { label: string; href: string }[];
-  activeLabel: string | null;
-}) {
-  return (
-    <div className="text-left">
-      <h4 className="text-body font-semibold text-text-primary mb-4">{title}</h4>
-      <ul className="space-y-2.5">
-        {links.map((item) => {
-          const isActive = activeLabel === item.label;
-          return (
-            <li key={item.label}>
-              <Link
-                href={item.href}
-                className={cn(
-                  "text-body-sm transition-colors",
-                  isActive
-                    ? "text-orange-400 font-medium"
-                    : "text-text-muted hover:text-orange-400"
-                )}
-              >
-                {item.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
 
 export function Footer() {
   const pathname = usePathname();
@@ -143,8 +108,80 @@ export function Footer() {
 
   const activeLabel = getActiveFooterLabel(pathname, hash);
   const examLinks = CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` }));
-  const isHomePage = pathname === "/";
+  
+const isHomePage = pathname === "/";
+const footerTheme = isHomePage
+? {
+    heading: "text-white-900",
+    body: "text-white-600",
+    muted: "text-white-500",
+    dimmed: "text-white-500",
 
+    link: "text-white-600 hover:text-orange-500",
+    activeLink: "text-orange-600 font-medium",
+
+    social:
+      "border-white-300 text-white-700 hover:border-orange-500 hover:text-orange-500",
+
+    divider: "border-white-200",
+  }
+: {
+    heading: "text-text-primary",
+    body: "text-text-secondary",
+    muted: "text-text-muted",
+    dimmed: "text-text-dimmed",
+
+    link: "text-text-dimmed hover:text-orange-400",
+    activeLink: "text-orange-400 font-medium",
+
+    social:
+      "border-white/40 text-white hover:border-orange-500 hover:text-orange-400",
+
+    divider: "border-border-default",
+  };
+
+function FooterColumn({
+  title,
+  links,
+  activeLabel,
+  }: {
+  title: string;
+  links: { label: string; href: string }[];
+  activeLabel: string | null;
+  }) {
+  return (
+    <div className="text-left">
+      <h4
+            className={cn(
+              "text-body font-semibold mb-4",
+              footerTheme.heading
+            )}
+          >{title}</h4>
+      <ul className="space-y-2.5">
+        {links.map((item) => {
+          const isActive = activeLabel === item.label;
+          return (
+            <li
+                className={cn(
+                  "flex items-start gap-2.5 text-body-sm",
+                  footerTheme.muted
+                )}
+              >
+              <Link
+                href={item.href}
+                className={cn(
+                  "text-body-sm transition-colors",
+                )}
+              >
+                {item.label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
   return (
     <footer
       data-home-zone={isHomePage ? "footer" : undefined}
@@ -178,7 +215,12 @@ export function Footer() {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-3 text-body-sm text-text-muted max-w-xs leading-relaxed">
+            <p
+              className={cn(
+                "mt-3 text-body-sm max-w-xs leading-relaxed",
+                footerTheme.muted
+              )}
+            >
               {SITE_TAGLINE}
             </p>
             <div className="mt-5 flex items-center gap-2.5">
@@ -188,7 +230,10 @@ export function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-transparent border border-white/40 text-white hover:border-orange-500 hover:text-orange-400 transition-all"
+                  className={cn(
+                    "w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-transparent border transition-all",
+                    footerTheme.social
+                  )}
                   aria-label={link.platform}
                 >
                   <Icon
@@ -206,19 +251,44 @@ export function Footer() {
           <FooterColumn title="Resources" links={RESOURCES_LINKS} activeLabel={activeLabel} />
 
           <div className="col-span-2 sm:col-span-1 text-left">
-            <h4 className="text-body font-semibold text-text-primary mb-4">Contact Us</h4>
+          <h4
+            className={cn(
+              "text-body font-semibold mb-4",
+              footerTheme.heading
+            )}
+          >Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+              <li
+                className={cn(
+                  "flex items-start gap-2.5 text-body-sm",
+                  footerTheme.muted
+                )}
+              >
                 <Icon src="/assets/icons/phone.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
                 <span>{CONTACT_INFO.phone}</span>
               </li>
-              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+              <li
+                className={cn(
+                  "flex items-start gap-2.5 text-body-sm",
+                  footerTheme.muted
+                )}
+              >
                 <Icon src="/assets/icons/email.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-orange-400 transition-colors">
+                <a href={`mailto:${CONTACT_INFO.email}`} className={cn(
+                  "transition-colors",
+                  isHomePage
+                    ? "hover:text-orange-600"
+                    : "hover:text-orange-400"
+                )}>
                   {CONTACT_INFO.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-body-sm text-text-muted">
+              <li
+                className={cn(
+                  "flex items-start gap-2.5 text-body-sm",
+                  footerTheme.muted
+                )}
+              >
                 <Icon src="/assets/icons/location.svg" size={16} className="text-orange-400 mt-0.5 shrink-0" />
                 <span>{CONTACT_INFO.address}</span>
               </li>
@@ -227,9 +297,19 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border-default">
+      <div
+        className={cn(
+          "border-t",
+          footerTheme.divider
+        )}
+      >
         <div className="container-rodha py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-caption text-text-dimmed text-center md:text-left">
+          <p
+            className={cn(
+              "text-caption text-center md:text-left",
+              footerTheme.dimmed
+            )}
+          >
             &copy; {currentYear} {SITE_NAME}. All rights reserved.
           </p>
 
@@ -241,8 +321,8 @@ export function Footer() {
                 className={cn(
                   "text-caption transition-colors",
                   activeLabel === item.label
-                    ? "text-orange-400 font-medium"
-                    : "text-text-dimmed hover:text-orange-400"
+                    ? footerTheme.activeLink
+                    : footerTheme.link
                 )}
               >
                 {item.label}

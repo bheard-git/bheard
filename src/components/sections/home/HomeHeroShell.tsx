@@ -30,11 +30,19 @@ export function HomeHeroShell({ children, className }: HomeHeroShellProps) {
     <section
       id="site-hero"
       className={cn(
-        "relative home-hero-shell home-section-spacing pt-5 md:pt-6 lg:pt-6 overflow-clip",
+        "relative home-hero-shell home-section-spacing pt-5 md:pt-6 lg:pt-6 overflow-visible",
         className
       )}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{
+        backgroundImage: `linear-gradient(
+          180deg,
+          #0a0a0a 0%,
+          #0a0a0a calc(var(--home-warm-blend-start) * 0.85),
+          #0c0a09 calc(var(--home-warm-blend-start) * 0.95)
+        )`,
+      }}
     >
       <div className="absolute inset-0 overflow-clip pointer-events-none">
         <HeroNeuralCanvas mouseRef={mouseRef} />

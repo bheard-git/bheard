@@ -1,6 +1,6 @@
 # Progress Tracker
 
-**Last updated:** 2026-07-24 (homepage warm-orange gradient blend)
+**Last updated:** 2026-07-27 (dropdown menu UX)
 **Phase:** Phase 1 — Active Development
 
 Update this file after every meaningful implementation task.
@@ -66,6 +66,7 @@ Update this file after every meaningful implementation task.
 - **Site header frosted bar (2026-07-24):** Removed homepage transparent header override; unified `.site-header` to near-opaque `rgba(10,10,10,0.94)` with `blur(12px)` on all routes.
 - **App promo light typography (2026-07-24):** `HomeAppPromotionSection` uses `home-on-light` black heading/body copy; orange accent on "Rodha App" only; glowing Rodha logo title icon; light-theme store buttons.
 - **Homepage bottom orange gradient ramp (2026-07-24):** Light plateau through Results only; cream→orange ramp spans full App Promo (`--home-bottom-warm-start` → `--home-bottom-orange-peak`); orange→dark completes through CTA; neutral gray stops removed.
+- **Dropdown menu UX (2026-07-27):** Hero counselling form dropdown no longer clipped (`HomeHeroShell` overflow-visible); shared `.dropdown-option` hover/active styles on `DropdownSelect`, header exam switcher, and contact/lead forms.
 
 ---
 

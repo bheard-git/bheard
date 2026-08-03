@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
-import { Select } from "@/components/ui/Select";
+import { DropdownSelect } from "@/components/ui/DropdownSelect";
 import { Button } from "@/components/ui/Button";
 import { CATEGORIES } from "@/lib/constants";
 import type { LeadFormData } from "@/lib/types";
@@ -60,10 +60,13 @@ export function LeadCaptureForm({
           onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
           required
         />
-        <Select
+        <DropdownSelect
+          aria-label="Select exam"
           placeholder="Select Exam"
           value={formData.exam}
-          onChange={(e) => setFormData((prev) => ({ ...prev, exam: e.target.value as LeadFormData["exam"] }))}
+          onChange={(exam) =>
+            setFormData((prev) => ({ ...prev, exam: exam as LeadFormData["exam"] }))
+          }
           options={CATEGORIES.map((c) => ({ value: c.id, label: c.menuLabel }))}
         />
         <Button type="submit" loading={loading} fullWidth>

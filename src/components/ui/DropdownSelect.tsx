@@ -13,6 +13,7 @@ interface DropdownSelectProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  label?: string;
   "aria-label"?: string;
   className?: string;
   triggerClassName?: string;
@@ -23,10 +24,12 @@ export function DropdownSelect({
   value,
   onChange,
   placeholder = "Select",
+  label,
   "aria-label": ariaLabel,
   className,
   triggerClassName,
 }: DropdownSelectProps) {
+  const resolvedAriaLabel = ariaLabel ?? label;
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -52,11 +55,16 @@ export function DropdownSelect({
 
   return (
     <div ref={ref} className={cn("relative", className)}>
+      {label && (
+        <label className="block text-body-sm font-medium text-text-secondary mb-1.5">
+          {label}
+        </label>
+      )}
       <button
         type="button"
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={ariaLabel}
+        aria-label={resolvedAriaLabel}
         onClick={() => setOpen(!open)}
         className={cn(
           "flex items-center justify-between gap-2 h-9 w-full min-w-[140px] px-3 text-body-sm font-medium border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
@@ -85,8 +93,8 @@ export function DropdownSelect({
       {open && (
         <div
           role="listbox"
-          aria-label={ariaLabel}
-          className="absolute top-full left-0 right-0 mt-2 min-w-full max-h-60 overflow-y-auto rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-[100] animate-[dropdown-in_180ms_var(--ease-premium)]"
+          aria-label={resolvedAriaLabel}
+          className="dropdown-menu absolute top-full left-0 right-0 mt-2 min-w-full max-h-60 overflow-y-auto z-[100] animate-[dropdown-in_180ms_var(--ease-premium)]"
         >
           {options.map((option) => {
             const isActive = option.value === value;
@@ -101,10 +109,8 @@ export function DropdownSelect({
                   setOpen(false);
                 }}
                 className={cn(
-                  "block w-full text-left px-4 py-2.5 text-body-sm transition-colors",
-                  isActive
-                    ? "bg-orange-500/10 text-orange-400"
-                    : "text-text-secondary hover:bg-bg-hover hover:text-orange-400"
+                  "dropdown-option hover:bg-orange-500/12 hover:text-orange-400",
+                  isActive && "dropdown-option--active"
                 )}
               >
                 {option.label}

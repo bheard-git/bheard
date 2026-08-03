@@ -59,22 +59,22 @@ export function Header({ className }: HeaderProps) {
             />
           </Link>
 
-          <div ref={examRef} className="relative hidden lg:block">
+          <div onMouseLeave={() => setExamOpen(!examOpen)} ref={examRef} className="relative hidden lg:block">
             <button
-              onClick={() => setExamOpen(!examOpen)}
+              onMouseEnter={() => setExamOpen(!examOpen)}
               aria-expanded={examOpen}
               aria-haspopup="listbox"
               className={cn(
                 "flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
                 activeCategory
                   ? "text-orange-400 border-orange-500/60"
-                  : "text-text-primary border-white/30 hover:border-orange-500/60 hover:text-orange-400"
+                  : "border-orange-500/60 text-orange-400"
               )}
             >
               {examTriggerLabel}
               <svg
                 className={cn(
-                  "h-3.5 w-3.5 text-text-secondary transition-transform",
+                  "h-3.5 w-3.5 text-orange-400 transition-transform",
                   examOpen && "rotate-180"
                 )}
                 fill="none"
@@ -88,7 +88,7 @@ export function Header({ className }: HeaderProps) {
             {examOpen && (
               <div
                 role="listbox"
-                className="absolute top-full left-0 mt-2 w-72 rounded-[6px] bg-bg-surface border border-border-hover shadow-md py-2 z-50 animate-[dropdown-in_180ms_var(--ease-premium)]"
+                className="dropdown-menu absolute top-full left-0 mt-2 w-72 z-50 animate-[dropdown-in_180ms_var(--ease-premium)]"
               >
                 {CATEGORIES.map((cat) => {
                   const isActive = cat.id === activeCategoryId;
@@ -100,10 +100,8 @@ export function Header({ className }: HeaderProps) {
                       aria-selected={isActive}
                       onClick={() => setExamOpen(false)}
                       className={cn(
-                        "block px-4 py-2.5 text-body-sm transition-colors",
-                        isActive
-                          ? "bg-orange-500/10 text-orange-400"
-                          : "text-text-secondary hover:bg-bg-hover hover:text-orange-400"
+                        "dropdown-option hover:bg-orange-500/12 hover:text-orange-400",
+                        isActive && "dropdown-option--active"
                       )}
                     >
                       <span className="font-semibold">{cat.menuLabel}</span>

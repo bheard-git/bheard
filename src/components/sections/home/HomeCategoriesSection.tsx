@@ -17,12 +17,12 @@ export function HomeCategoriesSection() {
         <SectionHeader
           title={
             <>
-              Choose Your Exam,{" "}
+              <span className="text-black">Choose Your Exam,{" "}</span>
               <span className="text-orange-500">Start Your Journey</span>
             </>
           }
           subtitle="Comprehensive preparation for every competitive exam"
-          subtitleClassName="text-white"
+          subtitleClassName=""
           align="center"
         />
 
