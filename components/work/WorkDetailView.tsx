@@ -198,7 +198,7 @@ export default function WorkDetailView({
   const impactItems = normalizeImpactItems(study);
 
   return (
-    <div ref={rootRef} className="bg-surface-container-lowest pb-12 text-on-background md:pb-16">
+    <div ref={rootRef} className="bg-surface-container-lowest text-on-background">
 
       <header className="relative bg-white md:min-h-[calc(100dvh-5.55rem)]">
         <div
@@ -266,9 +266,9 @@ export default function WorkDetailView({
         </figure>
       </header>
 
-      <div className="mt-8 border-t border-black/10 md:mt-10" aria-hidden />
+      <div className="border-t border-black/10" aria-hidden />
 
-      <section className={`bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`}>
+      <section className={`bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`}>
         <div className={band} data-reveal>
           <NarrativeSection heading={study.challenge.heading} iconSrc={sectionIcons.challenge}>
             <div className="space-y-3">
@@ -289,7 +289,7 @@ export default function WorkDetailView({
         </div>
       </section>
 
-      <section className={`bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`}>
+      <section className={`bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}>
         <div className={band} data-reveal>
           <NarrativeSection heading={study.strategy.heading} iconSrc={sectionIcons.approach}>
             <div className="space-y-3">
@@ -310,7 +310,7 @@ export default function WorkDetailView({
         </div>
       </section>
 
-      <section className={`bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`}>
+      <section className={`bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`}>
         <div className={band} data-reveal>
           <SectionHeading>Impact</SectionHeading>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-8">
@@ -322,7 +322,7 @@ export default function WorkDetailView({
       </section>
 
       {study.extraSections?.map((section) => (
-        <section key={section.heading} className={`bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`}>
+        <section key={section.heading} className={`bg-surface-container-lowest ${sectionPageX} pb-20 md:pb-24`}>
           <div className={band} data-reveal>
             <NarrativeSection heading={section.heading}>
               <CaseStudyRichText content={section.body} />
@@ -331,7 +331,7 @@ export default function WorkDetailView({
         </section>
       ))}
 
-      <section className={`bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`}>
+      <section className={`bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}>
         <div className={band} data-reveal>
           <NarrativeSection heading="The Bigger Picture" iconSrc={sectionIcons.biggerPicture} centerWithIcon>
             <div className="space-y-3">
@@ -349,7 +349,7 @@ export default function WorkDetailView({
         reveal
       />
 
-      <section className={`${sectionPageX} mt-10 md:mt-12`}>
+      <section className={`${sectionPageX} py-20 md:py-24`}>
         <div className={band}>
           <div
             data-reveal

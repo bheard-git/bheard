@@ -7,7 +7,7 @@ export default async function WorkListingContent() {
 
   if (cases.length === 0) {
     return (
-      <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+      <section className={`bg-surface ${sectionPageX} py-20 md:py-24`}>
         <div className={`${sectionContentBand} py-20 text-center`}>
           <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Our work</p>
           <h1 className="mt-4 font-headline text-4xl font-black uppercase tracking-tight text-on-background">

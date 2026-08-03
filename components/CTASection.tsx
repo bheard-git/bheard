@@ -85,7 +85,7 @@ export default function CTASection() {
     <section
       ref={sectionRef}
       data-motion-exclude
-      className="bg-primary-container px-8 py-32 md:py-40"
+      className="bg-primary-container px-8 py-20 md:py-24"
     >
       <div className="mx-auto max-w-7xl text-center">
         <h3

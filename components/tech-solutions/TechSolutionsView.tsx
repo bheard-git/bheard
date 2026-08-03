@@ -68,7 +68,7 @@ export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) 
         pinHeightClassName="min-h-[calc(100dvh-6.5rem)]"
         cardClassName="h-[min(68dvh,600px)] md:h-[min(72dvh,660px)]"
         immersiveCardStyle
-        sectionClassName={solutionsBandPad}
+        sectionClassName={"pt-20 md:pt-24 pb-6 md:pb-8"}
       />
 
       <RelatedCaseStudiesSection

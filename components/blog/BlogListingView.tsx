@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ListingBandHero from "@/components/system/ListingBandHero";
-import { sectionPageX, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
+import { sectionPageX, sectionPageY, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -90,7 +90,7 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
         copy="We publish practical frameworks, campaign lessons, and product execution insights from real client work."
       />
 
-      <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionPageY}`}>
         <div className="mx-auto max-w-content-max">
           {featured ? (
             <Link
@@ -145,7 +145,7 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
 
           {posts.length > 0 ? (
           <>
-          <div className={`mt-14 ${sectionTitleMarginCompact}`}>
+          <div className={`mt-24 ${sectionTitleMarginCompact}`}>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Latest posts</p>
             <h3 className="mt-3 font-headline text-[clamp(1.8rem,3vw,2.5rem)] font-black uppercase tracking-tight text-on-background">
               Editorial notes from the team

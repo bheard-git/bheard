@@ -79,9 +79,9 @@ export default function ClientLogos({ title, variant = "default", className }: C
 
   const sectionPadding =
     variant === "bare"
-      ? "pt-10 pb-0 md:pt-12"
+      ? "pt-20 pb-0 md:pt-24"
       : title
-        ? "border-t border-neutral-200/80 pt-12 pb-16 md:pt-14 md:pb-20"
+        ? "border-t border-neutral-200/80 py-20 md:py-20"
         : sectionBandY;
 
   return (

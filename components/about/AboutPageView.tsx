@@ -275,8 +275,7 @@ export default function AboutPageView() {
         </div>
       </section>
 
-      <section
-        className={`relative overflow-hidden bg-neutral-900 ${sectionPageX} ${sectionBandY}`}
+      <section className={`relative overflow-hidden bg-neutral-900 ${sectionPageX} ${sectionBandY}`}
         data-about-values-wrap
       >
         <div className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-primary/25 blur-[100px]" />
@@ -356,7 +355,7 @@ export default function AboutPageView() {
 
       <section
         id="contact"
-        className={`scroll-mt-28 bg-gradient-to-br from-primary-container to-primary-dim ${sectionPageX} py-24 md:py-32`}
+        className={`scroll-mt-28 bg-gradient-to-br from-primary-container to-primary-dim ${sectionPageX} py-20 md:py-24`}
       >
         <div className="mx-auto max-w-8xl">
           <div

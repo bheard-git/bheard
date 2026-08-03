@@ -18,7 +18,7 @@ function FeatureIcon({ icon }: { icon: TechFeature["icon"] }) {
 }
 
 export default function TechShowcaseReplicaSection({
-  sectionClassName = "py-10 md:py-14",
+  sectionClassName = "py-20 md:py-24",
 }: {
   sectionClassName?: string;
 }) {  
@@ -164,7 +164,7 @@ export default function TechShowcaseReplicaSection({
           </p>
         </div>
 
-          <div className="relative my-8 md:my-10">
+          <div className="relative">
             
             <div
               data-float="blob"

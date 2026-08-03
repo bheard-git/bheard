@@ -27,7 +27,7 @@ export default function IndustrySectionBlock({ industry, index }: IndustrySectio
   return (
     <article
       id={industry.id}
-      className="scroll-mt-28 border-t border-neutral-200/80 py-14 first:border-t-0 first:pt-0 last:pb-8 md:py-20 md:last:pb-10"
+      className="scroll-mt-28 border-t border-neutral-200/80 py-20 md:py-24"
     >
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-16">
         <div className={imageFirst ? "order-1" : "order-1 md:order-2"}>
@@ -44,7 +44,7 @@ export default function IndustrySectionBlock({ industry, index }: IndustrySectio
           ) : null}
         </div>
 
-        <div className={imageFirst ? "order-2" : "order-2 md:order-1"}>
+        <div className={imageFirst ? "order-2" : "order-2 md:order-1 align-top h-full"}>
           {visual ? (
             <Image
               src={visual.iconSrc}

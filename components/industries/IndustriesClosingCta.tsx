@@ -17,7 +17,7 @@ export default function IndustriesClosingCta({
   ctaHref = "/contact",
 }: IndustriesClosingCtaProps) {
   return (
-    <section className={`relative overflow-hidden bg-primary-container ${sectionPageX} py-14 md:py-16`}>
+    <section className={`relative overflow-hidden bg-primary-container ${sectionPageX} py-20 md:py-24`}>
       <Image
         src="/assets/industries/world-map.svg"
         alt=""

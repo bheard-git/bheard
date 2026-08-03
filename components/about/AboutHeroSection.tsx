@@ -53,7 +53,7 @@ export default function AboutHeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 pb-14 pt-20 md:px-8 md:pb-16 md:pt-24"
+      className="relative isolate flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6  pt-20 md:px-8 md:pt-24"
       aria-labelledby="about-hero-heading"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-surface-container-low via-surface to-surface-container-lowest" />

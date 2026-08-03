@@ -8,8 +8,8 @@ import { sectionContentBand, sectionPageX } from "@/components/system/sectionThe
 import AboutHeroSection from "../about/AboutHeroSection";
 
 const band = sectionContentBand;
-const bandLight = `bg-surface-container-lowest ${sectionPageX} py-10 md:py-14`;
-const bandWarm = `bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`;
+const bandLight = `bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`;
+const bandWarm = `bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`;
 const LIFE_AT_IMAGE = "/assets/home/about/life%20at%20bheard.png";
 const PROTECTED_IMAGE_CLASS =
   "pointer-events-none select-none object-cover grayscale [-webkit-user-drag:none]";

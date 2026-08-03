@@ -162,7 +162,7 @@ export default function Footer() {
     <footer
       ref={footerRef}
       data-motion-exclude
-      className="mx-auto flex w-full max-w-screen-2xl flex-col justify-end border-t border-neutral-200 bg-white px-8 pt-8 md:pt-10"
+      className="mx-auto flex w-full max-w-screen-2xl flex-col justify-end border-t border-neutral-200 bg-white px-8 pt-20 md:pt-24"
     >
       <div className="grid grid-cols-1 items-start gap-6 pb-6 md:grid-cols-12 md:gap-8 md:pb-8">
         <div data-footer-reveal className="opacity-100 md:col-span-4">

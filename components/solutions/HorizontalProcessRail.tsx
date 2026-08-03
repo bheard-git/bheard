@@ -40,7 +40,7 @@ export default function HorizontalProcessRail({
   pinHeightClassName,
   cardClassName,
   immersiveCardStyle = false,
-  sectionClassName = "py-section-y-sm md:py-section-y",
+  sectionClassName = "py-20 md:py-24",
   borderTop = true,
 }: HorizontalProcessRailProps) {
   const pinRef = useRef<HTMLDivElement | null>(null);
@@ -130,7 +130,7 @@ export default function HorizontalProcessRail({
       <div className="px-8">
         <div
           ref={pinRef}
-          className={`relative z-10 mt-12 flex min-h-[320px] flex-col justify-center md:mt-16 md:min-h-[360px] ${immersiveCardStyle ? "py-8 md:py-12" : ""} ${pinHeightClassName ?? ""}`}
+          className={`relative z-10 flex min-h-[320px] flex-col justify-center md:min-h-[360px] ${immersiveCardStyle ? "py-8 md:py-12" : ""} ${pinHeightClassName ?? ""}`}
         >
           <div className="mb-6 h-px w-full shrink-0 overflow-hidden rounded-full bg-inverse-surface/10">
             <div

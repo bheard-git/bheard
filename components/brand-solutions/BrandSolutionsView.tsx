@@ -88,7 +88,7 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
         <ClientLogos variant="bare" className={solutionsStackBottom} />
       </div>
 
-      <section className={`bg-surface-container-lowest ${sectionPageX} ${solutionsStackTop}`}>
+      <section className={`bg-surface-container-lowest ${sectionPageX}`}>
         <div className={band}>
           <BrandResultsBento />
         </div>
@@ -103,7 +103,7 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
         cardClassName="h-[min(68dvh,600px)] md:h-[min(72dvh,660px)]"
         immersiveCardStyle
         borderTop={false}
-        sectionClassName={solutionsBandPad}
+        sectionClassName={"pt-20 md:pt-24 pb-6 md:pb-8"}
       />
 
       {BRAND_SOLUTIONS_CASE_STUDY_CARDS.length > 0 ? (

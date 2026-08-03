@@ -16,7 +16,7 @@ export default function RelatedCaseStudiesSection({
   cards,
   heading = "Related Case Studies",
   reveal = false,
-  className = "mt-10 md:mt-12",
+  className = "mt-20 md:mt-24",
 }: RelatedCaseStudiesSectionProps) {
   if (cards.length === 0) return null;
 

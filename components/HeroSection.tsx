@@ -159,7 +159,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative isolate flex min-h-screen items-end overflow-hidden px-8 pb-16 pt-12 md:pb-24"
+      className="relative isolate flex min-h-screen items-end overflow-hidden px-8 py-20 md:py-24"
     >
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-surface-container-low to-surface-container-lowest" />
       <div

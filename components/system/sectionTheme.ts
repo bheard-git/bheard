@@ -5,7 +5,7 @@ export const sectionPageX = "px-8";
 export const sectionContentBand = "mx-auto w-full max-w-7xl";
 
 /** Default vertical padding for major sections (hero-scale blocks) */
-export const sectionPageY = "py-32";
+export const sectionPageY = "py-20 md:py-24";
 
 /**
  * Standard vertical rhythm for a full marketing band (title + content).
@@ -30,5 +30,5 @@ export const sectionTitleMarginCompact = "mb-10 md:mb-12";
  * **stack bottom** on the upper band with **stack top** on the lower band
  * so the seam does not read as double padding.
  */
-export const sectionStackBottom = "pb-8 md:pb-10 lg:pb-12";
-export const sectionStackTop = "pt-8 md:pt-10 lg:pt-12";
+export const sectionStackBottom = "pb-20 md:pb-24";
+export const sectionStackTop = "pt-20 md:pt-24";

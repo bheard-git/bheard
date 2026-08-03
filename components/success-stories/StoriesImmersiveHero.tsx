@@ -190,7 +190,7 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
   return (
     <section
       ref={sectionRef}
-      className={`relative isolate overflow-hidden bg-surface-container-lowest ${sectionPageX} py-20 md:min-h-[95vh] lg:min-h-[102vh] lg:py-24`}
+      className={`relative isolate overflow-hidden bg-surface-container-lowest ${sectionPageX} pt-20 md:min-h-[102vh] md:pt-24`}
     >
       <div
         aria-hidden
@@ -225,7 +225,7 @@ export default function StoriesImmersiveHero({ cases }: { cases: CaseStudyConten
 
       <div
         ref={beltRef}
-        className="relative z-10 mx-auto mt-8 w-full max-w-[1750px] overflow-hidden px-2 pb-8 pt-5 [perspective:2200px] md:mt-9 md:px-4 lg:mt-10"
+        className="relative z-10 mx-auto mt-8 w-full max-w-[1750px] overflow-hidden px-2 pb-20 pt-5 [perspective:2200px] md:mt-9 md:px-4 lg:mt-10"
       >
         <div
           aria-hidden
