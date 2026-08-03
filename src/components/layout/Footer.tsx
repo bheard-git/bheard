@@ -112,18 +112,18 @@ export function Footer() {
 const isHomePage = pathname === "/";
 const footerTheme = isHomePage
 ? {
-    heading: "text-white-900",
-    body: "text-white-600",
-    muted: "text-white-500",
-    dimmed: "text-white-500",
+    heading: "text-slate-900",
+    body: "text-slate-600",
+    muted: "text-slate-500",
+    dimmed: "text-slate-500",
 
-    link: "text-white-600 hover:text-orange-500",
+    link: "text-slate-600 hover:text-orange-500",
     activeLink: "text-orange-600 font-medium",
 
     social:
-      "border-white-300 text-white-700 hover:border-orange-500 hover:text-orange-500",
+      "border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-500",
 
-    divider: "border-white-200",
+    divider: "border-slate-200",
   }
 : {
     heading: "text-text-primary",
@@ -187,10 +187,10 @@ function FooterColumn({
       data-home-zone={isHomePage ? "footer" : undefined}
       className={cn(
         "relative",
-        isHomePage
-          ? "bg-[#0a0a0a] border-t border-transparent"
-          : "bg-bg-primary border-t border-border-default"
-      )}
+        // isHomePage
+        //   ? "bg-[#0a0a0a] border-t border-transparent"
+        //   : "bg-bg-primary border-t border-border-default",
+       "footer-bg")}
     >
       {!isHomePage && (
         <div

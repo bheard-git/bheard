@@ -50,6 +50,10 @@ export function TopperCardAlternate({
         >
           AIR
         </span>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-left">
+        
         <div
           className={cn(
             "mt-1.5 text-[34px] font-bold leading-none tabular-nums",
@@ -60,15 +64,12 @@ export function TopperCardAlternate({
         </div>
         <p
           className={cn(
-            "text-caption mt-1 font-medium",
+            "text-caption mt-1  mb-6 font-medium",
             isOrange ? "text-white/80" : "text-text-secondary"
           )}
         >
           {topper.exam}
         </p>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-left">
         <h4
           className={cn(
             "text-body-sm font-semibold truncate",
