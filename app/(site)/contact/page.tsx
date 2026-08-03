@@ -22,16 +22,16 @@ export default function ContactPage() {
         title="Let's Talk"
         copy="We work with a focused number of clients each quarter. Share your brief — we'll respond within one business day."
       />
-      <section className={`bg-surface ${sectionPageX} py-section-y-sm md:py-section-y`}>
+      <section className={`bg-surface ${sectionPageX} py-20 md:py-24`}>
         <div className={`${sectionContentBand} grid max-w-5xl gap-10 md:grid-cols-12 md:gap-12`}>
-          <aside className="md:col-span-4">
+          <aside className="md:col-span-7">
             <h2 className="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
               Get in touch
             </h2>
             <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant">
               Head office in Lower Parel, Mumbai, with a branch office in Delhi.
             </p>
-            <ul className="mt-6 space-y-3 font-body text-sm">
+            <ul className="mt-6 flex flex-col sm:flex-row gap-4  font-body text-sm">
               <li>
                 <a
                   href="tel:+919326602832"
@@ -49,36 +49,42 @@ export default function ContactPage() {
                 </a>
               </li>
             </ul>
-            <address className="mt-8 not-italic font-body text-sm leading-relaxed text-on-surface-variant">
-              <p className="font-headline text-xs font-bold uppercase tracking-widest text-primary">
-                Head Office — Mumbai
-              </p>
-              <p className="mt-2">
-                B1-604, Marathon Innova Corporate Centre,
-                <br />
-                Marathon NextGen Compound, Lower Parel,
-                <br />
-                Mumbai, Maharashtra – 400013
-              </p>
-              <p className="mt-6 font-headline text-xs font-bold uppercase tracking-widest text-primary">
-                Branch Office — Delhi
-              </p>
-              <p className="mt-2">
-                WH-75, Mayapuri Industrial Area, Phase-1,
-                <br />
-                South West Delhi, Delhi – 110064
-              </p>
-            </address>
-          </aside>
-          <div className="rounded-2xl border border-outline-variant/60 bg-white p-6 shadow-sm md:col-span-8 md:p-8">
-            <div className="mb-6">
-              <h2 className="font-headline text-2xl font-bold text-on-surface">Send a message</h2>
-              <p className="mt-2 text-sm text-on-surface-variant">
-                Tell us about your brand, product, or campaign goals — we&apos;ll come back with a
-                clear point of view.
-              </p>
+            <div className="flex flex-col sm:flex-row gap-6 mt-8 items-start">
+              <address className="not-italic font-body text-sm leading-relaxed text-on-surface-variant">
+                <p className="font-headline text-xs font-bold uppercase tracking-widest text-primary">
+                  Head Office — Mumbai
+                </p>
+                <p className="mt-2">
+                  B1-604, Marathon Innova Corporate Centre,
+                  <br />
+                  Marathon NextGen Compound, Lower Parel,
+                  <br />
+                  Mumbai, Maharashtra – 400013
+                </p>
+              </address>
+              <address className="not-italic font-body text-sm leading-relaxed text-on-surface-variant">
+                <p className="font-headline text-xs font-bold uppercase tracking-widest text-primary">
+                    Branch Office — Delhi
+                  </p>
+                  <p className="mt-2">
+                    WH-75, Mayapuri Industrial Area, Phase-1,
+                    <br />
+                    South West Delhi, Delhi – 110064
+                  </p>
+              </address>
             </div>
-            <ContactLeadForm sourcePage="/contact" />
+          </aside>
+          <div className="md:-translate-y-[26rem] md:h-10 relative md:col-span-5">
+            <div className="rounded-2xl w-full h-fit md:absolute border border-outline-variant/60 bg-white p-6 shadow-sm md:p-8">
+              <div className="mb-6">
+                <h2 className="font-headline text-2xl font-bold text-on-surface">Send a message</h2>
+                <p className="mt-2 text-sm text-on-surface-variant">
+                  Tell us about your brand, product, or campaign goals — we&apos;ll come back with a
+                  clear point of view.
+                </p>
+              </div>
+              <ContactLeadForm sourcePage="/contact" />
+            </div>
           </div>
         </div>
       </section>
