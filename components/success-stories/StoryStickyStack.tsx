@@ -1,213 +1,147 @@
 "use client";
 
-import "@/lib/motion/config";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
-import { fadeUpScrollOnce, prefersReducedMotion } from "@/lib/motion/animations";
 import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
-import { usePinnedStack } from "@/lib/motion/pinnedStack";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-const STACK_LIFT_PX = 20;
-const CARD_TOP_REM = 5.75;
-const CARD_BOTTOM_REM = 6.25;
-const SCROLL_PER_CARD_PCT = 55;
-
-/* ─── Individual card ─── */
-
-function StoryStackCard({ study, index }: { study: CaseStudyContent; index: number }) {
-  const rootRef = useRef<HTMLAnchorElement | null>(null);
-  const imgLayerRef = useRef<HTMLDivElement | null>(null);
-
-  const lift = index * STACK_LIFT_PX;
-
-  useGSAP(
-    () => {
-      const root = rootRef.current;
-      const layer = imgLayerRef.current;
-      if (!root || !layer || prefersReducedMotion()) return;
-
-      const xTo = gsap.quickTo(layer, "x", { duration: 0.32, ease: "power2.out" });
-      const yTo = gsap.quickTo(layer, "y", { duration: 0.32, ease: "power2.out" });
-
-      const onMove = (e: PointerEvent) => {
-        const r = root.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        xTo(px * 22);
-        yTo(py * 18);
-      };
-      const reset = () => {
-        xTo(0);
-        yTo(0);
-      };
-      root.addEventListener("pointermove", onMove);
-      root.addEventListener("pointerleave", reset);
-      root.addEventListener("pointercancel", reset);
-      return () => {
-        root.removeEventListener("pointermove", onMove);
-        root.removeEventListener("pointerleave", reset);
-        root.removeEventListener("pointercancel", reset);
-      };
-    },
-    { scope: rootRef, revertOnUpdate: true }
-  );
+function StoryCard({
+  study,
+  index,
+}: {
+  study: CaseStudyContent;
+  index: number;
+}) {
+  const reversed = index % 2 === 1;
 
   return (
-    <Link
-      href={`/work/${study.slug}`}
-      ref={rootRef}
-      data-stack-card
-      className="group absolute left-0 flex w-full flex-col overflow-hidden rounded-[2rem] border border-inverse-surface/10 bg-inverse-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.45)] will-change-transform md:shadow-[0_50px_140px_-42px_rgba(0,0,0,0.5)]"
-      style={{
-        top: `calc(${CARD_TOP_REM}rem + ${lift}px)`,
-        minHeight: "min(80dvh, 520px)",
-        height: `calc(100dvh - ${CARD_BOTTOM_REM}rem - ${lift}px)`,
-        zIndex: 10 + index * 10,
-      }}
+    <article className={`${
+      index % 2 === 0
+        ? "bg-surface-container-low"
+        : "bg-surface"
+    } py-20 md:py-24 px-8`}
     >
-      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/32 to-black/10" />
-      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-br from-primary/22 via-transparent to-tertiary-container/14 opacity-85 mix-blend-screen" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[15] opacity-[0.14] mix-blend-soft-light"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg,rgba(255,255,255,0.08) 1px,transparent 1px),linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+      <div className={`grid items-center gap-10 lg:gap-16 ${sectionContentBand}  ${
+        reversed ? "lg:grid-cols-[0.9fr_1.1fr]" : "lg:grid-cols-[1.1fr_0.9fr]"
+      }`}>
+        {/* IMAGE */}
 
-      <div ref={imgLayerRef} className="absolute inset-0 will-change-transform">
-        <div className="absolute inset-0 scale-[1.14]">
-          <Image
-            src={study.listImage}
-            alt={study.listImageAlt}
-            fill
-            sizes="(max-width: 768px) 100vw, min(1280px, 96vw)"
-            className="object-cover"
-            priority={index === 0}
-          />
-        </div>
-      </div>
+        <Link
+          href={`/work/${study.slug}`}
+          className={`group relative block ${
+            reversed ? "lg:order-2" : ""
+          }`}
+        >
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-outline/20 bg-surface shadow-[0_25px_80px_-30px_rgba(0,0,0,.22)] transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_35px_100px_-30px_rgba(0,0,0,.28)]">
 
-      <div className="relative z-30 mt-auto flex flex-col justify-end gap-5 p-8 md:flex-row md:items-end md:justify-between md:gap-10 md:p-12 lg:p-14">
-        <div className="max-w-2xl">
-          <p
-            data-stack-reveal
-            className="mb-3 font-label text-label-sm uppercase tracking-[0.22em] text-tertiary-fixed"
-          >
+            <Image
+              src={study.listImage}
+              alt={study.listImageAlt}
+              fill
+              priority={index === 0}
+              sizes="(max-width:768px)100vw,50vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent" />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          </div>
+        </Link>
+
+        {/* CONTENT */}
+
+        <div
+          className={`flex flex-col ${
+            reversed ? "lg:order-1" : ""
+          }`}
+        >
+          <p className="mb-4 font-label text-label-sm uppercase tracking-[0.22em] text-primary">
             {study.listMeta}
           </p>
-          <h2
-            data-stack-reveal
-            className="font-headline text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[0.95] tracking-tighter text-surface-bright"
-          >
+
+          <h2 className="font-headline text-[clamp(2rem,5vw,3.6rem)] font-black leading-[0.95] tracking-tight text-on-surface">
             {study.listTitle}
           </h2>
-          <p
-            data-stack-reveal
-            className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/85 md:text-lg"
-          >
+
+          <p className="mt-6 max-w-xl font-body text-body-lg leading-relaxed text-on-surface-variant">
             {study.listDescription}
           </p>
-        </div>
 
-        <div className="flex shrink-0 flex-col items-start gap-4 md:items-end">
           {study.listStats?.length ? (
-            <div className="flex flex-wrap gap-3 md:justify-end" data-stack-reveal>
-              {study.listStats.map((s) => (
+            <div className={`mt-8 grid gap-4 ${
+              study.listStats.length > 2
+                ? "grid-cols-2 lg:grid-cols-3"
+                : "grid-cols-2"
+            }`} >
+              {study.listStats.map((stat) => (
                 <div
-                  key={s.label}
-                  className="rounded-xl border border-white/20 bg-white/10 px-5 py-3 backdrop-blur-md"
+                  key={stat.label}
+                  className="rounded-2xl border border-outline/20 bg-surface-container px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:shadow-lg"
                 >
-                  <p className="font-headline text-2xl font-bold tabular-nums text-surface-bright md:text-3xl">
-                    {s.value}
+                  <div className="font-headline text-3xl font-black text-primary">
+                    {stat.value}
+                  </div>
+
+                  <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                    {stat.label}
                   </p>
-                  <p className="mt-1 max-w-[12rem] font-body text-xs leading-snug text-white/75">{s.label}</p>
                 </div>
               ))}
             </div>
           ) : null}
-          <span
-            data-stack-reveal
-            className="inline-flex items-center gap-2 font-label text-sm font-bold uppercase tracking-[0.18em] text-primary-fixed transition-transform group-hover:translate-x-1"
+
+          <Link
+            href={`/work/${study.slug}`}
+            className="group mt-10 inline-flex w-fit items-center gap-3 font-label text-sm font-bold uppercase tracking-[0.18em] text-primary"
           >
-            Open story <span aria-hidden>→</span>
-          </span>
+            <span>Open Story</span>
+
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }
 
-/* ─── Parent: pins the container and drives the stacking + exit timeline ─── */
-
-export default function StoryStickyStack({ cases }: { cases: CaseStudyContent[] }) {
-  const introRef = useRef<HTMLDivElement | null>(null);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const pinRef = useRef<HTMLDivElement | null>(null);
-  const cardsWrapRef = useRef<HTMLDivElement | null>(null);
-
-  useGSAP(
-    () => {
-      const el = introRef.current;
-      if (!el || prefersReducedMotion()) return;
-      const eyebrow = el.querySelector<HTMLElement>("[data-list-intro-eyebrow]");
-      const body = el.querySelector<HTMLElement>("[data-list-intro-body]");
-      fadeUpScrollOnce(eyebrow, { start: "top 90%" });
-      fadeUpScrollOnce(body, { start: "top 88%" });
-    },
-    { scope: introRef }
-  );
-
-  usePinnedStack({
-    scopeRef: sectionRef,
-    pinRef,
-    cardsWrapRef,
-    cardSelector: "[data-stack-card]",
-    revealSelector: "[data-stack-reveal]",
-    scrollPerCardPct: SCROLL_PER_CARD_PCT,
-    exitDuration: 2,
-  });
-
+export default function StoryStickyStack({
+  cases,
+}: {
+  cases: CaseStudyContent[];
+}) {
   return (
-    <section id="stories-stack" ref={sectionRef} className={`relative bg-surface-container-lowest ${sectionPageX} pt-8 md:pt-10`}>
-      <div ref={introRef} className={`mb-12 md:mb-16 ${sectionContentBand}`}>
-        <p
-          className="mb-3 font-label text-label-sm uppercase tracking-[0.2em] text-primary"
-          data-list-intro-eyebrow
-        >
-          Case Studies
-        </p>
-        <h2 className="font-headline text-[clamp(1.8rem,3.8vw,3.2rem)] font-black leading-[1.02] tracking-tight text-on-surface">
-          The Stories Behind the Success
-        </h2>
-        <p
-          className="mt-4 max-w-2xl font-body text-body-lg leading-relaxed text-on-surface-variant md:text-xl"
-          data-list-intro-body
-        >
-          Every decision, insight, and execution contributes to the bigger picture. Here&apos;s how we helped brands
-          achieve promising outcomes.
-        </p>
-      </div>
+    <section
+      id="stories"
+      className={`relative overflow-hidden bg-surface-container-lowest py-20 md:py-28`}
+    >
+      <div className={`${sectionContentBand} px-8`}>
+        <div className="max-w-3xl">
+          <p className="mb-3 font-label text-label-sm uppercase tracking-[0.2em] text-primary">
+            Case Studies
+          </p>
 
-      <div ref={pinRef} className="relative h-dvh overflow-hidden">
-        <div
-          ref={cardsWrapRef}
-          className={`relative mx-auto h-full will-change-transform ${sectionContentBand}`}
-        >
-          {cases.map((study, index) => (
-            <StoryStackCard key={study.slug} study={study} index={index} />
-          ))}
+          <h2 className="font-headline text-[clamp(2rem,4vw,3.5rem)] font-black leading-[1.02] tracking-tight text-on-surface">
+            The Stories Behind the Success
+          </h2>
+
+          <p className="mt-5 font-body text-body-lg leading-relaxed text-on-surface-variant md:text-xl">
+            Every decision, insight, and execution contributes to the bigger
+            picture. Here's how we helped brands achieve promising outcomes.
+          </p>
         </div>
       </div>
+        <div className="">
+          {cases.map((study, index) => (
+            <StoryCard
+              key={study.slug}
+              study={study}
+              index={index}
+            />
+          ))}
+        </div>
     </section>
   );
 }

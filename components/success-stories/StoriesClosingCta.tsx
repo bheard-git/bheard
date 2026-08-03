@@ -107,7 +107,7 @@ export default function StoriesClosingCta({ cases }: { cases: CaseStudyContent[]
   );
 
   return (
-    <section ref={sectionRef} className={`relative bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`}>
+    <section ref={sectionRef} className={`relative bg-surface-container-lowest ${sectionPageX} pb-20 md:pb-24`}>
       <div className={sectionContentBand}>
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-black/10 bg-[linear-gradient(155deg,#fffaf4_0%,#ffffff_36%,#fff8ef_100%)] px-6 py-14 shadow-[0_26px_70px_-42px_rgba(0,0,0,0.28)] md:px-12 md:py-20">
           <div
