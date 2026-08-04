@@ -122,7 +122,6 @@ export function CategoryHeroSectionV2({
 
           <div className="lg:col-span-6 xl:col-span-6 relative">
             <div className="relative rounded-2xl overflow-hidden border border-border-default shadow-lg">
-                <HeroVideoEmbed />
               <div className="absolute inset-0 bg-linear-to-t from-bg-primary via-transparent to-bg-primary/30" />
               <div className="absolute inset-0 bg-linear-to-r from-bg-primary/40 via-transparent to-transparent" />
               <div
@@ -132,6 +131,7 @@ export function CategoryHeroSectionV2({
                     "radial-gradient(ellipse 60% 55% at 55% 45%, rgba(249,115,22,0.22) 0%, transparent 70%)",
                 }}
               />
+                <HeroVideoEmbed />
             </div>
           </div>
         </div>
