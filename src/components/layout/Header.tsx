@@ -118,7 +118,83 @@ export function Header({ className }: HeaderProps) {
 
         <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0">
           {HEADER_NAV.map((item) => {
-            const isActive = pathname === item.href;
+            const hasChildren = "children" in item;
+
+            const isActive = hasChildren
+              ? item.children.some((child) => pathname.startsWith(child.href))
+              : pathname === item.href;
+
+            if (hasChildren) {
+              return (
+                <div
+                  key={item.label}
+                  className="relative group"
+                >
+                  <button
+                    className={cn(
+                      "relative flex items-center gap-1 px-2 xl:px-2.5 py-1.5 text-body-sm transition-colors whitespace-nowrap after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:origin-left after:rounded-full after:bg-orange-500 after:transition-transform after:duration-300",
+                      isActive
+                        ? "text-orange-400 [text-shadow:0_0_14px_rgba(249,115,22,0.18)] after:scale-x-100"
+                        : "text-text-secondary hover:text-text-primary after:scale-x-0 hover:after:scale-x-100"
+                    )}
+                  >
+                    {item.label}
+
+                    <svg
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 011.08 1.04l-4.25 4.51a.75.75 0 01-1.08 0l-4.25-4.51a.75.75 0 01.02-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    className="
+                      invisible
+                      absolute
+                      left-0
+                      top-full
+                      z-50
+                      mt-2
+                      w-56
+                      rounded-xl
+                      border
+                      border-border-default
+                      bg-bg-primary/95
+                      backdrop-blur-xl
+                      opacity-0
+                      shadow-2xl
+                      transition-all
+                      duration-200
+                      group-hover:visible
+                      group-hover:opacity-100
+                    "
+                  >
+                    <div className="py-2">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn(
+                            "block px-4 py-2.5 text-body-sm transition-colors",
+                            pathname === child.href
+                              ? "text-orange-400 bg-orange-500/5"
+                              : "text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
+                          )}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
 
             return (
               <Link

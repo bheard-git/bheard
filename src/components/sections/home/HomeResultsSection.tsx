@@ -15,23 +15,20 @@ export function HomeResultsSection() {
     <section
       id="results"
       data-home-zone="results"
-      className="home-section-spacing home-on-light relative overflow-hidden"
+      className="home-section-spacing home-on-light relative overflow-hidden !py-0"
     >
       <Container>
         <SectionHeader
           title={
             <>
               Results that speak
-              <br />
-              <span className="text-orange-500">
-                for themselves.
-              </span>
+              <span className="text-orange-500"> for themselves.</span>
             </>
           }
           subtitle="Real students. Real success."
-          viewAllHref="/mba#results"
-          viewAllLabel="View All Results"
-          align="left"
+          // viewAllHref="/mba#results"
+          // viewAllLabel="View All Results"
+          align="center"
         />
 
         <RevealGroup>

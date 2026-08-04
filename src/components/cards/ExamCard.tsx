@@ -51,7 +51,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
       />
 
       {category.illustrationImage && (
-        <div className="absolute right-1 bottom-3 w-[88px] h-[88px] md:w-[96px] md:h-[96px] opacity-95 group-hover:scale-105 transition-transform duration-300">
+        <div className="absolute left-5 bottom-3 w-[88px] h-[88px] md:w-[96px] md:h-[96px] opacity-95 group-hover:scale-105 transition-transform duration-300">
           <Image
             src={category.illustrationImage}
             alt=""
@@ -62,7 +62,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
         </div>
       )}
 
-      <div className="relative z-10 flex flex-col flex-1 pr-10">
+      <div className="relative z-10 flex flex-col flex-1 pr-2">
         <h3
           className="text-[26px] md:text-[30px] font-bold leading-none tracking-tight"
           style={{ color: accent }}
@@ -73,7 +73,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
           {category.description}
         </p>
 
-        <div className="mt-auto pt-5 flex flex-col gap-2">
+        {/* <div className="mt-auto pt-5 flex flex-col gap-2">
           <div className="flex items-center gap-1.5 text-caption text-text-primary/90">
             <span style={{ color: accent }}>
               <Icon src="/assets/icons/book.svg" size={14} />
@@ -86,7 +86,7 @@ export function ExamCard({ category, className, onCounsellingSelect }: ExamCardP
             </span>
             <span className="text-black">{category.selectionCount || "100+"} Selections</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

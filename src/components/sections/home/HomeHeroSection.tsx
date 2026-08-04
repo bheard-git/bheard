@@ -31,14 +31,14 @@ export function HomeHeroSection() {
                 Join India&apos;s most trusted platform for CAT, IPMAT, CLAT &amp; more.
                 Let&apos;s achieve your dream together.
               </p>
-              <HeroTrustMetrics />
+              {/* <HeroTrustMetrics /> */}
             </div>
           </div>
 
           <div className="lg:col-span-6 flex flex-col items-center min-h-0 lg:pl-2 xl:pl-4">
             <div className="flex w-full flex-col gap-2.5 sm:gap-3 px-2 sm:px-4 lg:px-6">
               <HeroVideoEmbed />
-              <HeroFloatingStats />
+              {/* <HeroFloatingStats /> */}
             </div>
           </div>
         </div>

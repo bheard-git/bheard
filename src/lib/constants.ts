@@ -27,7 +27,7 @@ export const CATEGORIES: Category[] = [
     fullName: "MBA — CAT & GDPI",
     slug: "mba",
     description:
-      "CAT preparation and GDPI mastery for IIMs & top B-schools.",
+      "CAT & GDPI coaching for the IIMs and top B-schools.",
     color: "#F97316",
     accentColor: "from-orange-500/25 to-orange-900/10",
     icon: "/assets/icons/cat-icon.svg",
@@ -41,7 +41,7 @@ export const CATEGORIES: Category[] = [
     menuLabel: "Integrated Programs (IPMAT)",
     fullName: "Integrated Programme in Management Aptitude Test",
     slug: "ipmat",
-    description: "Gateway to 5-year IPM programs at IIM Indore, Rohtak & more.",
+    description: "IPMAT & integrated management prep, right after class 12.",
     color: "#A855F7",
     accentColor: "from-purple-500/25 to-purple-900/10",
     icon: "/assets/icons/ipmat-icon.svg",
@@ -55,7 +55,7 @@ export const CATEGORIES: Category[] = [
     menuLabel: "Law (CLAT)",
     fullName: "Common Law Admission Test",
     slug: "clat",
-    description: "Crack CLAT and secure your seat at top NLUs.",
+    description: "CLAT & law-entrance coaching for the National Law Universities.",
     color: "#D97706",
     accentColor: "from-amber-600/25 to-amber-900/10",
     icon: "/assets/icons/clat-icon.svg",
@@ -70,7 +70,7 @@ export const CATEGORIES: Category[] = [
     fullName: "Banking & Government Exams (including SSC)",
     slug: "banking",
     description:
-      "Prepare for banking, SSC, and other government exams with expert mentorship.",
+      "SSC, IBPS, RBI & state government exam coaching.",
     color: "#65831d",
     accentColor: "from-lime-700/25 to-lime-900/10",
     icon: "/assets/icons/cat-icon.svg",
@@ -85,7 +85,7 @@ export const CATEGORIES: Category[] = [
     fullName: "Skill House",
     slug: "skillhouse",
     description:
-      "Career-ready skills and professional programs for the next generation leaders.",
+      "Job-ready skills & placement-focused courses.",
     color: "#F97316",
     accentColor: "from-orange-500/25 to-orange-900/10",
     icon: "/assets/icons/cat-icon.svg",
@@ -110,10 +110,39 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const HEADER_NAV = [
-  { label: "About Us", href: "/about" },
-  { label: "Faculty", href: "/faculty" },
-  { label: "Blogs", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
+  {
+    label: "Choose Your Exam",
+    href: "/courses",
+  },
+  {
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    label: "Faculty",
+    href: "/faculty",
+  },
+  {
+    label: "Resources",
+    children: [
+      {
+        label: "Blogs",
+        href: "/blog",
+      },
+      {
+        label: "Free Resources",
+        href: "/resources",
+      },
+    ],
+  },
+  {
+    label: "Test Series",
+    href: "/test-series",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
 ] as const;
 
 export const NAV_ITEMS = {

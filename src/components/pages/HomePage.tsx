@@ -35,7 +35,7 @@ export function HomePage() {
 
       <HomeCategoriesSection />
 
-      <HomeImpactSection />
+      {/* <HomeImpactSection /> */}
 
       <HomeResultsSection />
 

@@ -21,7 +21,7 @@ export function HomeCategoriesSection() {
               <span className="text-orange-500">Start Your Journey</span>
             </>
           }
-          subtitle="Comprehensive preparation for every competitive exam"
+          // subtitle="Comprehensive preparation for every competitive exam"
           subtitleClassName=""
           align="center"
         />
