@@ -114,7 +114,7 @@ const footerTheme = isHomePage
 ? {
     heading: "text-slate-900",
     body: "text-slate-600",
-    muted: "text-slate-500",
+    muted: "text-slate-500 hover:text-orange-500",
     dimmed: "text-slate-500",
 
     link: "text-slate-600 hover:text-orange-500",
