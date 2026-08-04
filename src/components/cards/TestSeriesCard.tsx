@@ -37,7 +37,7 @@ export function TestSeriesCard({ item, className }: TestSeriesCardProps) {
       </p>
 
       <ul className="mt-4 space-y-2">
-        {item.features.map((feature) => (
+        {item?.features?.map((feature) => (
           <li
             key={feature}
             className="flex items-start gap-2 text-body-sm text-text-secondary"
