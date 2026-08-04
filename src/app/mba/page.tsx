@@ -39,6 +39,7 @@ import { mbaStudentStories } from "@/data/youttube-stories";
 import { StoriesModal } from "@/components/layout/VideoModal";
 import { CourseCardV2 } from "@/components/cards/CourseCardV2";
 import { TestSeriesCardV2 } from "@/components/cards/TestSeriesCardV2";
+import { TestimonialCardV2 } from "@/components/sections/home/Testimonials/TestimonialCardV2";
 
 export const metadata: Metadata = {
   title: "MBA Preparation (CAT + GDPI) — Rodha",
@@ -223,13 +224,13 @@ export default function MBAPage() {
               testimonial-marquee
               relative
               mt-12
-              h-[480px]
+              lg:h-[480px]
               overflow-hidden
             "
           >
             {/* <div className="pointer-events-none absolute top-0 inset-x-0 z-30 h-36 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0ADD] to-transparent" />
             <div className="pointer-events-none absolute bottom-0 inset-x-0 z-30 h-36 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0ADD] to-transparent" /> */}
-              <div className="grid h-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="hidden md:grid h-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <TestimonialColumn
                   testimonials={mbaTestimonials.filter((_, i) => i % 3 === 0)}
                   direction="down"
@@ -245,6 +246,21 @@ export default function MBAPage() {
                   direction="down"
                   className="hidden lg:block"
                 />
+              </div>
+              <div className="block md:hidden">
+                <InfiniteMarquee speed={35} >
+                  {mbaTestimonials.map((testimonial, index) => (
+                    <div
+                      key={testimonial.id}
+                      className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+                    >
+                      <TestimonialCardV2
+                        key={testimonial.id}
+                        testimonial={testimonial}
+                      />
+                    </div>
+                  ))}
+                </InfiniteMarquee>
               </div>
             </div>
           </RevealGroup>
@@ -269,7 +285,7 @@ export default function MBAPage() {
                 </p>
                 <h2 className="text-h2 md:text-h1 font-bold home-light-heading leading-tight">
                   Watch how they 
-                  <span className="text-orange-500">Did it.</span>
+                  <span className="text-orange-500"> Did it.</span>
                 </h2>
                   <p className="mt-3 text-body home-light-body leading-relaxed mb-6">
                   They were exactly where you are today — hear their stories, in their own words.

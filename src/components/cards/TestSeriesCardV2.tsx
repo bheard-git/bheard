@@ -24,7 +24,7 @@ export function TestSeriesCardV2({ item, className }: TestSeriesCardV2Props) {
           className
         )}
       >
-        <div className="flex-col overflow-hidden p-7 md:p-8"
+        <div className="flex-col overflow-hidden w-full p-7 md:p-8"
           style={{
             background: "linear-gradient(145deg, rgba(249,115,22,0.55) 0%, rgba(194,65,12,0.35) 55%, rgba(17,17,17,0.95) 100%)",
             boxShadow: `inset 0 0 0 1px #F9731640`,
