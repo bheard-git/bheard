@@ -32,7 +32,7 @@ export function SectionHeader({
       className={cn(
         "section-header",
         align === "center" && "text-center",
-        viewAllHref && align === "left" && !hasSplitIntro && "flex items-end justify-between gap-4",
+        viewAllHref && align === "left" && !hasSplitIntro && "flex flex-col sm:flex-row items-start justify-between gap-4",
         hasSplitIntro && "grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-end",
         className
       )}
@@ -70,12 +70,12 @@ export function SectionHeader({
             href={viewAllHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline hidden md:inline-flex"
+            className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-orange shrink-0 shine-sweep shine-sweep-outline hidden md:inline-flex"
           >
             {viewAllLabel}
           </a>
         ) : (
-          <Link href={viewAllHref} className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-orange shine-sweep shine-sweep-outline hidden md:inline-flex">
+          <Link href={viewAllHref} className="btn-view-all btn-outlined-premium premium-border-glow glow-accent-orange shrink-0 shine-sweep shine-sweep-outline hidden md:inline-flex">
             {viewAllLabel}
           </Link>
         ))}
