@@ -109,7 +109,7 @@ export function Footer() {
   const activeLabel = getActiveFooterLabel(pathname, hash);
   const examLinks = CATEGORIES.map((c) => ({ label: c.menuLabel, href: `/${c.slug}` }));
   
-const isHomePage = pathname === "/";
+const isHomePage = pathname === "/" || "/mba";
 const footerTheme = isHomePage
 ? {
     heading: "text-slate-900",

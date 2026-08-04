@@ -635,6 +635,200 @@ export const courses: Course[] = [
   },
 ];
 
+export const mbaCourses: Course[] = [
+  {
+    id: "cat-complete-2026",
+    title: "CAT 2026 Complete Program",
+    slug: "cat-2026-complete-program",
+    category: "mba",
+    features: [],
+    highlights: [],
+    enrollmentUrl: "",
+
+    badge: "For First-Time Aspirants",
+    badgeType: "audience",
+
+    description:
+      "Complete CAT preparation covering Quant, VARC, DILR and OMETs.",
+
+    shortDescription:
+      "Complete CAT preparation with live mentorship.",
+
+    duration: "12 Months",
+    mode: "Live + Recorded",
+
+    classCount: "900+",
+
+    totalHours: "900+ Hrs",
+
+    studentsEnrolled: "500+ Selections",
+
+    price: 24999,
+    originalPrice: 34999,
+
+    detailsLabel: "View Details",
+
+    details: [
+      "Full VARC, DILR & Quant — Live + Recorded",
+      "OMETs: NMAT, SNAP, XAT & CMAT",
+      "20+ Full Length Mock Tests",
+      "Personalised Mentorship",
+      "GDPI / WAT / PI Preparation",
+      "Performance Analytics",
+    ],
+
+    facultyImage: "/assets/images/profiles/male-1.png",
+
+    showFaculty: true,
+  },
+
+  {
+    id: "cat-pro-2026",
+
+    title: "CAT 2026 Pro Program",
+
+    slug: "cat-2026-pro-program",
+
+    category: "mba",
+    features: [],
+    highlights: [],
+    enrollmentUrl: "",
+
+    badge: "For Working Professionals",
+
+    badgeType: "audience",
+
+    description:
+      "Weekend-friendly CAT preparation with complete syllabus coverage.",
+
+    shortDescription:
+      "Designed for working professionals.",
+
+    duration: "10 Months",
+
+    mode: "Live + Recorded",
+
+    classCount: "700+",
+
+    totalHours: "700+ Hrs",
+
+    studentsEnrolled: "Weekend Batches",
+
+    price: 19999,
+
+    originalPrice: 27999,
+
+    detailsLabel: "View Details",
+
+    details: [
+      "Complete CAT Syllabus",
+      "OMET Preparation",
+      "Weekend Live Classes",
+      "15+ Full Length Mocks",
+      "Weekly Strategy Sessions",
+      "Sectional & Topic Tests",
+    ],
+
+    facultyImage: "/assets/images/profiles/male-2.png",
+
+    showFaculty: true,
+  },
+
+  {
+    id: "cat-crash-2026",
+
+    title: "CAT 2026 Crash Course",
+
+    slug: "cat-2026-crash-course",
+    description: "",
+    shortDescription: "",
+
+    category: "mba",
+    features: [],
+    highlights: [],
+    enrollmentUrl: "",
+
+    badge: "Fast-Track Revision",
+
+    badgeType: "audience",
+
+    duration: "4 Months",
+
+    mode: "Live",
+
+    classCount: "250+",
+
+    totalHours: "250+ Hrs",
+
+    studentsEnrolled: "Ideal for Repeaters",
+
+    price: 9999,
+
+    originalPrice: 14999,
+
+    detailsLabel: "View Details",
+
+    details: [
+      "Fast-track Revision",
+      "OMET Sessions",
+      "10+ Full Length Mocks",
+      "Exam Strategy",
+      "Last Mile Preparation",
+    ],
+
+    facultyImage: "/assets/images/profiles/female-1.png",
+
+    showFaculty: true,
+  },
+
+  {
+    id: "cat-foundation-2026",
+
+    title: "CAT 2026 Foundation Program",
+
+    slug: "cat-2026-foundation-program",
+    description: "",
+    shortDescription: "",
+
+    category: "mba",
+    features: [],
+    highlights: [],
+    enrollmentUrl: "",
+
+    badge: "For Early Starters",
+
+    badgeType: "audience",
+
+    duration: "14 Months",
+
+    mode: "Live + Recorded",
+
+    classCount: "1000+",
+
+    totalHours: "1000+ Hrs",
+
+    studentsEnrolled: "College Students",
+
+    price: 14999,
+
+    originalPrice: 19999,
+
+    detailsLabel: "View Details",
+
+    details: [
+      "Build Fundamentals",
+      "Concept-first Teaching",
+      "OMET Preparation",
+      "Sectional Tests",
+      "Long-term Mentorship",
+    ],
+
+    facultyImage: "/assets/images/profiles/male-3.png",
+
+    showFaculty: true,
+  },
+];
+
 export function getCoursesByCategory(categoryId: string): Course[] {
   return courses.filter((c) => c.category === categoryId);
 }

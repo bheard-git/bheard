@@ -15,7 +15,7 @@ import { Carousel } from "@/components/ui/Carousel";
 import { RevealGroup } from "@/components/ui/RevealGroup";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { Accordion } from "@/components/ui/Accordion";
-import { getCoursesByCategory } from "@/data/courses";
+import { getCoursesByCategory, mbaCourses } from "@/data/courses";
 import { getFacultyByCategory } from "@/data/faculty";
 import { getResultsByCategory } from "@/data/results";
 import { getTestimonialsByCategory } from "@/data/testimonials";
@@ -29,6 +29,16 @@ import {
 } from "@/data/mba-landing";
 import { EXTERNAL_URLS } from "@/lib/constants";
 import { categoryBreadcrumbJsonLd } from "@/lib/structured-data";
+import { CategoryHeroSectionV2 } from "@/components/sections/home/HeroSections/CategoryHeroSectionV2";
+import Typewritter from "@/components/Typewriter";
+import { InfiniteMarquee } from "@/components/ui/infiniteMarquee";
+import TestimonialColumn from "@/components/sections/home/Testimonials/TestimonialColumn";
+import { HeroVideoEmbed } from "@/components/sections/home/HeroVideoEmbed";
+import { YoutubeStoryCard } from "@/components/cards/YoutubeStoryCard";
+import { mbaStudentStories } from "@/data/youttube-stories";
+import { StoriesModal } from "@/components/layout/VideoModal";
+import { CourseCardV2 } from "@/components/cards/CourseCardV2";
+import { TestSeriesCardV2 } from "@/components/cards/TestSeriesCardV2";
 
 export const metadata: Metadata = {
   title: "MBA Preparation (CAT + GDPI) — Rodha",
@@ -37,7 +47,6 @@ export const metadata: Metadata = {
 };
 
 export default function MBAPage() {
-  const mbaCourses = getCoursesByCategory("mba");
   const mbaFaculty = getFacultyByCategory("mba");
   const mbaResults = getResultsByCategory("mba");
   const mbaTestimonials = getTestimonialsByCategory("mba");
@@ -61,15 +70,15 @@ export default function MBAPage() {
         />
       </Container>
 
-      <CategoryHeroSection
+      <CategoryHeroSectionV2
         categoryName="MBA"
         headline={
           <>
             MBA Prep That Transforms Aspirants into{" "}
-            <span className="text-orange-500 glow-text-orange">Top 1%</span>
+            <span className="text-orange-500 glow-text-orange"><Typewritter words={["Top B school converts.", "99 percentiers.", "The Top 1%.", "IIM Converts."]} /></span>
           </>
         }
-        subtitle="Expert mentorship for CAT and GDPI — a high-intensity learning system built to help serious aspirants crack the exam and convert top IIMs."
+        subtitle="Crack CAT with expert guidance, exam-level mock tests, and a structured preparation plan designed to help you secure your dream B-school."
         heroImageSrc="/assets/images/hero/cat-hero.jpg"
         heroImageAlt="MBA aspirant preparing for CAT and top B-school admissions"
         features={MBA_HERO_FEATURES}
@@ -82,7 +91,7 @@ export default function MBAPage() {
         }}
       />
 
-      <section id="results" className="section-spacing relative overflow-hidden">
+      <section id="results" className="home-section-spacing relative overflow-hidden">
         <AmbientBackground variant="grid" />
         <Container>
           <SectionHeader
@@ -114,70 +123,56 @@ export default function MBAPage() {
         </Container>
       </section>
 
-      <section id="courses" className="section-spacing bg-bg-secondary/40">
+      <section id="courses" data-home-zone="courses" className="home-section-spacing home-on-light relative bg-white">
         <Container>
           <SectionHeader
-            title="Our MBA Courses"
+            title="Flagship CAT 2026 Programs"
+            subtitle="Pick the track that fits you. Explore what's included in every course."
+            align="left"
             viewAllHref="/mba#courses"
             viewAllLabel="View All Courses"
-            align="left"
           />
           <RevealGroup>
-            <Carousel>
-              {mbaCourses.map((course, index) => (
-                <div
-                  key={course.id}
-                  className={`snap-start shrink-0 w-[280px] sm:w-[300px] md:w-[calc(25%-15px)] min-w-[260px] reveal-child reveal-delay-${(index % 4) + 1}`}
-                >
-                  <CourseCard
-                    course={course}
-                    className={`h-full shine-delay-${(index % 4) + 1}`}
-                  />
-                </div>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+              {mbaCourses?.map((course, index) => (
+                  <div
+                      key={course.id}
+                      className={`reveal-child reveal-delay-${(index % 4) + 1}`}
+                  >
+                      <CourseCardV2
+                          course={course}
+                          className="h-full"
+                      />
+                  </div>
               ))}
-            </Carousel>
+          </div>
           </RevealGroup>
         </Container>
       </section>
 
-      <section id="faculty" className="section-spacing">
+      <section id="test-series" data-home-zone="test-series" className="home-section-spacing home-on-light relative bg-white !pt-0">
         <Container>
-          <SectionHeader
-            title="Star Faculty for MBA"
-            viewAllHref="/faculty"
-            viewAllLabel="View All Faculty"
-            align="left"
-          />
           <RevealGroup>
-            <Carousel>
-              {mbaFaculty.map((member, index) => (
-                <div
-                  key={member.id}
-                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
-                >
-                  <FacultyCard
-                    faculty={member}
-                    className={`h-full shine-delay-${(index % 4) + 1}`}
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </RevealGroup>
-        </Container>
-      </section>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+              <div className="lg:col-span-6 reveal-child reveal-delay-1">
+                <p className="text-body-sm uppercase tracking-wider text-orange-500 font-semibold mb-2">
+                MBA TEST SERIES
+                </p>
+                <h2 className="text-h2 md:text-h1 font-bold home-light-heading leading-tight">
+                Practice like it's 
+                  <span className="text-orange-500"> the real exam.</span>
+                </h2>
+                  <p className="mt-3 text-body home-light-body leading-relaxed mb-6">
+                  Identify your strengths, fix your weak areas, and walk into CAT with confidence.
+                </p>
 
-      <section id="test-series" className="section-spacing bg-bg-secondary/40">
-        <Container>
-          <SectionHeader
-            title="MBA Test Series"
-            viewAllHref={EXTERNAL_URLS.thinkExam}
-            viewAllLabel="View All Test Series"
-            align="left"
-          />
+              </div>
+            </div>
+          </RevealGroup>
           <RevealGroup>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {MBA_TEST_SERIES.map((item, index) => (
-                <TestSeriesCard
+                <TestSeriesCardV2
                   key={item.id}
                   item={item}
                   className={`reveal-child reveal-delay-${(index % 4) + 1} shine-delay-${(index % 4) + 1}`}
@@ -188,52 +183,74 @@ export default function MBAPage() {
         </Container>
       </section>
 
-      <section id="testimonials" className="section-spacing">
+      <section id="faculty" className="home-section-spacing">
+        <Container>
+          <SectionHeader
+            title="Star Faculty for MBA"
+            viewAllHref="/faculty"
+            viewAllLabel="View All Faculty"
+            align="left"
+          />
+        </Container>
+        <RevealGroup>
+          <InfiniteMarquee speed={35} >
+            {mbaFaculty.map((member, index) => (
+              <div
+                key={member.id}
+                className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
+              >
+                <FacultyCard
+                  faculty={member}
+                  className={`h-full shine-delay-${(index % 4) + 1}`}
+                />
+              </div>
+            ))}
+          </InfiniteMarquee>
+        </RevealGroup>
+      </section>
+
+      <section id="testimonials" className="home-section-spacing !py-0">
         <Container>
           <SectionHeader
             title="What Our Students Say"
             subtitle="Real stories from Rodha MBA aspirants"
             align="left"
           />
+
           <RevealGroup>
-            <Carousel autoPlay>
-              {mbaTestimonials.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={`snap-start shrink-0 reveal-child reveal-delay-${(index % 4) + 1}`}
-                >
-                  <TestimonialCard testimonial={item} />
-                </div>
-              ))}
-            </Carousel>
+          <div
+            className="
+              testimonial-marquee
+              relative
+              mt-12
+              h-[480px]
+              overflow-hidden
+            "
+          >
+            {/* <div className="pointer-events-none absolute top-0 inset-x-0 z-30 h-36 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0ADD] to-transparent" />
+            <div className="pointer-events-none absolute bottom-0 inset-x-0 z-30 h-36 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0ADD] to-transparent" /> */}
+              <div className="grid h-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <TestimonialColumn
+                  testimonials={mbaTestimonials.filter((_, i) => i % 3 === 0)}
+                  direction="down"
+                />
+
+                <TestimonialColumn
+                  testimonials={mbaTestimonials.filter((_, i) => i % 3 === 1)}
+                  direction="up"
+                />
+
+                <TestimonialColumn
+                  testimonials={mbaTestimonials.filter((_, i) => i % 3 === 2)}
+                  direction="down"
+                  className="hidden lg:block"
+                />
+              </div>
+            </div>
           </RevealGroup>
         </Container>
       </section>
 
-      <section id="resources" className="section-spacing bg-bg-secondary/40">
-        <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {MBA_RESOURCES.map((item) => (
-              <ResourceCard key={item.id} item={item} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section id="faqs" className="section-spacing">
-        <Container>
-          <SectionHeader
-            title="MBA FAQs"
-            viewAllHref="/faq"
-            viewAllLabel="View All FAQs"
-            align="left"
-          />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 items-start">
-            <Accordion items={faqLeft} iconVariant="plus" />
-            <Accordion items={faqRight} iconVariant="plus" />
-          </div>
-        </Container>
-      </section>
 
       <CTABand
         title="Ready to Crack CAT & Convert GDPI?"
@@ -241,6 +258,41 @@ export default function MBAPage() {
         primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
         secondaryAction={{ label: "Explore Courses", href: "/mba#courses" }}
       />
+
+      <section data-home-zone="stories" className="home-section-spacing home-on-light relative bg-white">
+        <Container>
+          <RevealGroup>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+              <div className="lg:col-span-5 reveal-child reveal-delay-1">
+                <p className="text-body-sm uppercase tracking-wider text-orange-500 font-semibold mb-2">
+                Still not convinced?
+                </p>
+                <h2 className="text-h2 md:text-h1 font-bold home-light-heading leading-tight">
+                  Watch how they 
+                  <span className="text-orange-500">Did it.</span>
+                </h2>
+                  <p className="mt-3 text-body home-light-body leading-relaxed mb-6">
+                  They were exactly where you are today — hear their stories, in their own words.
+                </p>
+
+              </div>
+            </div>
+          </RevealGroup>
+        </Container>
+        <RevealGroup>
+          <InfiniteMarquee speed={35} >
+          {mbaStudentStories.map((story) => (
+            <YoutubeStoryCard
+              key={story.id}
+              youtubeId={story.youtubeId}
+              student={story.student}
+              subtitle={story.subtitle}
+            />
+          ))}
+          </InfiniteMarquee>
+        </RevealGroup>
+      </section>
+      <StoriesModal/>
     </>
   );
 }
