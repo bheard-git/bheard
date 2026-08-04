@@ -91,7 +91,7 @@ export default function MBAPage() {
         }}
       />
 
-      <section id="results" className="home-section-spacing relative overflow-hidden">
+      <section id="results" className="home-section-spacing relative overflow-hidden light-section-gradient">
         <AmbientBackground variant="grid" />
         <Container>
           <SectionHeader
@@ -150,7 +150,7 @@ export default function MBAPage() {
         </Container>
       </section>
 
-      <section id="test-series" data-home-zone="test-series" className="home-section-spacing home-on-light relative bg-white !pt-0">
+      <section id="test-series" data-home-zone="test-series" className="home-section-spacing home-on-light relative light-section-gradient bg-white !pt-0">
         <Container>
           <RevealGroup>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
@@ -259,7 +259,7 @@ export default function MBAPage() {
         secondaryAction={{ label: "Explore Courses", href: "/mba#courses" }}
       />
 
-      <section data-home-zone="stories" className="home-section-spacing home-on-light relative bg-white">
+      <section data-home-zone="stories" className="home-section-spacing home-on-light relative light-section-gradient bg-white">
         <Container>
           <RevealGroup>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
