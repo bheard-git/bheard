@@ -46,6 +46,16 @@ export interface Course {
   badge?: string;
   isPopular?: boolean;
   startDate?: string;
+
+  badgeType?: "audience";
+
+  detailsLabel?: string;
+
+  details?: string[];
+
+  showFaculty?: boolean;
+
+  totalHours?: string;
 }
 
 export interface FacultyHeroStat {
@@ -244,9 +254,10 @@ export interface TestSeriesItem {
   id: string;
   title: string;
   description: string;
-  features: string[];
+  features?: string[];
   href: string;
   icon: string;
+  value: string;
 }
 
 export interface ResourceItem {

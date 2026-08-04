@@ -105,7 +105,7 @@ export function FloatingCounsellingCta() {
   return (
     <div
       className={cn(
-        "fixed bottom-4 right-4 z-30 md:bottom-6 md:right-6",
+        "fixed top-1/2 right-0 translate-x-20 hover:-trnaslate-x-19 z-30 rotate-90",
         "transition-[opacity,transform] duration-600",
         isVisible
           ? "opacity-100 translate-y-0 pointer-events-auto"

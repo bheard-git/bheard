@@ -85,6 +85,7 @@ export const CLAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["20+ Full Length Mocks", "Detailed Analytics", "All-India Rank"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
+    value: "",
   },
   {
     id: "legal-reasoning",
@@ -93,6 +94,7 @@ export const CLAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["40+ Legal Reasoning Tests", "Principle-Fact Drills", "Error Analysis"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
+    value: "",
   },
   {
     id: "current-affairs",
@@ -101,6 +103,7 @@ export const CLAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["Daily CA Quizzes", "Monthly Compilations", "Static GK Mix"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-topic.png",
+    value: "",
   },
   {
     id: "english-comp",
@@ -109,6 +112,7 @@ export const CLAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["30+ RC Sets", "Grammar Practice", "Vocab Boosters"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
+    value: "",
   },
 ];
 

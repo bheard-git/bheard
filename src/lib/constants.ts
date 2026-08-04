@@ -85,7 +85,7 @@ export const CATEGORIES: Category[] = [
     fullName: "Skill House",
     slug: "skillhouse",
     description:
-      "Career-ready skills and professional programs for the next generation of leaders.",
+      "Career-ready skills and professional programs for the next generation leaders.",
     color: "#F97316",
     accentColor: "from-orange-500/25 to-orange-900/10",
     icon: "/assets/icons/cat-icon.svg",

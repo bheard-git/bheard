@@ -80,33 +80,37 @@ export const MBA_RESULT_STATS: ResultStat[] = [
 export const MBA_TEST_SERIES: TestSeriesItem[] = [
   {
     id: "cat-mocks",
+    value: "20+",
     title: "CAT Mocks",
-    description: "Full-length mocks designed to mirror the real CAT exam experience.",
-    features: ["20+ Full Length Mocks", "Detailed Analytics", "All-India Percentile"],
+    description:
+      "Full-length tests with AI analytics & percentile prediction.",
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
   },
   {
     id: "sectional-tests",
+    value: "60+",
     title: "Sectional Tests",
-    description: "Sharpen QA, VARC & DILR with focused sectional practice.",
-    features: ["60+ Sectional Tests", "Timed Practice", "Topic Weightage Maps"],
+    description:
+      "Topic-weighted sectional papers to fix weak areas.",
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
   },
   {
     id: "topic-tests",
+    value: "200+",
     title: "Topic Tests",
-    description: "Build depth with micro-tests after every concept class.",
-    features: ["200+ Topic Tests", "Instant Solutions", "Weak Area Tracking"],
+    description:
+      "Micro-tests with instant, detailed solutions.",
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-topic.png",
   },
   {
     id: "mini-mocks",
+    value: "40+",
     title: "Mini Mocks",
-    description: "Quick 30–45 min simulations for daily exam stamina.",
-    features: ["40+ Mini Mocks", "Speed Drills", "Smart Revision Sets"],
+    description:
+      "Timed 30–45 min drills to build exam stamina.",
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
   },
