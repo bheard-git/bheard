@@ -85,6 +85,7 @@ export const SKILLHOUSE_TEST_SERIES: TestSeriesItem[] = [
     features: ["20+ Assessments", "Detailed Analytics", "Skill Gap Reports"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
+    value: "",
   },
   {
     id: "practice-labs",
@@ -93,6 +94,7 @@ export const SKILLHOUSE_TEST_SERIES: TestSeriesItem[] = [
     features: ["60+ Lab Sessions", "Timed Challenges", "Mentor Feedback"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
+    value: "",
   },
   {
     id: "topic-drills",
@@ -101,6 +103,7 @@ export const SKILLHOUSE_TEST_SERIES: TestSeriesItem[] = [
     features: ["200+ Topic Drills", "Instant Solutions", "Weak Area Tracking"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-topic.png",
+    value: "",
   },
   {
     id: "mini-projects",
@@ -109,6 +112,7 @@ export const SKILLHOUSE_TEST_SERIES: TestSeriesItem[] = [
     features: ["40+ Mini Projects", "Portfolio Templates", "Peer Reviews"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
+    value: "",
   },
 ];
 

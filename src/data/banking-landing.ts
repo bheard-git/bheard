@@ -85,6 +85,7 @@ export const BANKING_TEST_SERIES: TestSeriesItem[] = [
     features: ["20+ Full Length Mocks", "Detailed Analytics", "All-India Percentile"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
+    value: "",
   },
   {
     id: "sectional-tests",
@@ -93,6 +94,7 @@ export const BANKING_TEST_SERIES: TestSeriesItem[] = [
     features: ["60+ Sectional Tests", "Timed Practice", "Topic Weightage Maps"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
+    value: "",
   },
   {
     id: "topic-tests",
@@ -101,6 +103,7 @@ export const BANKING_TEST_SERIES: TestSeriesItem[] = [
     features: ["200+ Topic Tests", "Instant Solutions", "Weak Area Tracking"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-topic.png",
+    value: "",
   },
   {
     id: "ssc-mocks",
@@ -109,6 +112,7 @@ export const BANKING_TEST_SERIES: TestSeriesItem[] = [
     features: ["40+ Mini Mocks", "Speed Drills", "Smart Revision Sets"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
+    value: "",
   },
 ];
 

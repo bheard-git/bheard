@@ -85,6 +85,7 @@ export const IPMAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["15+ Full Length Mocks", "Pattern Matching", "Detailed Analytics"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mocks.png",
+    value: "",
   },
   {
     id: "aptitude-tests",
@@ -93,6 +94,7 @@ export const IPMAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["50+ Aptitude Sets", "Timed Practice", "Concept Maps"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-sectional.png",
+    value: "",
   },
   {
     id: "verbal-tests",
@@ -101,6 +103,7 @@ export const IPMAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["40+ Verbal Sets", "RC Speed Drills", "Error Logs"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-topic.png",
+    value: "",
   },
   {
     id: "mini-mocks",
@@ -109,6 +112,7 @@ export const IPMAT_TEST_SERIES: TestSeriesItem[] = [
     features: ["30+ Mini Mocks", "Speed Drills", "Smart Revision"],
     href: EXTERNAL_URLS.thinkExam,
     icon: "/assets/images/icons/ts-mini-mocks.png",
+    value: "",
   },
 ];
 
