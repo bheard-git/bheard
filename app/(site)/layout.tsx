@@ -6,7 +6,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-[5.55rem]">
+      <main className="min-h-screen pt-[5rem] md:pt-[5.55rem]">
         <SitePageTransition>{children}</SitePageTransition>
       </main>
       <Footer />

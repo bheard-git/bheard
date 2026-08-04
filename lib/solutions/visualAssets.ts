@@ -4,7 +4,7 @@ import { publicAsset } from "@/lib/utils/publicAsset";
 
 export const BRAND_HERO_MEDIA = {
   kind: "video" as const,
-  src: "/assets/brand%20solutions/hero/brand%20solutions%20hero%20banner.mp4",
+  src: "/assets/brand%20solutions/hero/brand%20solutions%20hero%20banner2.mp4",
   alt: "Brand team collaborating on creative strategy in a modern studio",
 } as const;
 

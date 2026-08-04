@@ -6,6 +6,7 @@ import { useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { splitHeroEyebrow } from "../system/splitHeroTheme";
 
 gsap.registerPlugin(useGSAP);
 
@@ -53,7 +54,7 @@ export default function AboutHeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6  pt-20 md:px-8 md:pt-24"
+      className="relative isolate flex flex-col items-center justify-center overflow-hidden px-6  pt-20 md:px-8 md:pt-24"
       aria-labelledby="about-hero-heading"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-surface-container-low via-surface to-surface-container-lowest" />
@@ -65,7 +66,7 @@ export default function AboutHeroSection() {
       <div className="relative z-[1] mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <p
           data-about-hero-intro="eyebrow"
-          className="mb-5 font-body text-xs font-bold uppercase tracking-[0.22em] text-primary opacity-0 motion-reduce:opacity-100"
+          className={splitHeroEyebrow}
         >
           Careers At BHeard
         </p>
@@ -73,7 +74,7 @@ export default function AboutHeroSection() {
         <h1
           id="about-hero-heading"
           data-about-hero-intro="headline"
-          className="max-w-[18ch] font-headline text-[clamp(1.75rem,4.8vw,3.35rem)] font-black leading-[1.12] tracking-tight text-neutral-900 opacity-0 motion-reduce:opacity-100 md:max-w-[22ch] md:leading-[1.1]"
+          className="max-w-[18ch] font-headline text-[clamp(1.75rem,4.8vw,3.35rem)] font-black leading-[1.12] tracking-tight text-neutral-900 opacity-0 motion-reduce:opacity-100 md:max-w-[22ch] md:leading-[1.1] mt-2"
         >
           Grow Your Career With Us
         </h1>

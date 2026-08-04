@@ -126,6 +126,7 @@ body {
 /* Top route loading bar */
 #nprogress {
   pointer-events: none;
+  display: none;
 }
 
 #nprogress .bar {
