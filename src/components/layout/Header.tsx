@@ -58,61 +58,6 @@ export function Header({ className }: HeaderProps) {
               className="h-7 md:h-8 w-auto"
             />
           </Link>
-
-          <div onMouseLeave={() => setExamOpen(!examOpen)} ref={examRef} className="relative hidden lg:block w-46">
-            <button
-              onMouseEnter={() => setExamOpen(!examOpen)}
-              aria-expanded={examOpen}
-              aria-haspopup="listbox"
-              className={cn(
-                "flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium justify-between border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
-                activeCategory ? "text-orange-400 border-orange-500/60" : "border-orange-500/60 text-orange-400",
-                examTriggerLabel === "Choose your exam" ? "w-46":"w-35"
-              )}
-            >
-              {examTriggerLabel}
-              <svg
-                className={cn(
-                  "h-3.5 w-3.5 text-orange-400 transition-transform shrink-0",
-                  examOpen && "rotate-180"
-                )}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {examOpen && (
-              <div
-                role="listbox"
-                className="dropdown-menu absolute top-full left-0 mt-2 w-72 z-50 animate-[dropdown-in_180ms_var(--ease-premium)]"
-              >
-                {CATEGORIES.map((cat) => {
-                  const isActive = cat.id === activeCategoryId;
-                  return (
-                    <Link
-                      key={cat.id}
-                      href={`/${cat.slug}`}
-                      role="option"
-                      aria-selected={isActive}
-                      onClick={() => setExamOpen(false)}
-                      className={cn(
-                        "dropdown-option hover:bg-orange-500/12 hover:text-orange-400",
-                        isActive && "dropdown-option--active"
-                      )}
-                    >
-                      <span className="font-semibold">{cat.menuLabel}</span>
-                      <span className="block text-caption text-text-dimmed mt-0.5">
-                        {cat.description}
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-          </div>
         </div>
 
         <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0">
@@ -213,6 +158,74 @@ export function Header({ className }: HeaderProps) {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2.5 shrink-0">
+          <div onMouseLeave={() => setExamOpen(false)} ref={examRef} className="relative hidden lg:flex justify-end w-46">
+            <button
+              onMouseEnter={() => setExamOpen(!examOpen)}
+              aria-expanded={examOpen}
+              aria-haspopup="listbox"
+              className={cn(
+                "flex items-center justify-between gap-1.5 h-9 px-4 rounded-lg whitespace-nowrap text-white shadow-lg",
+                "bg-orange-500 hover:bg-orange-600 active:bg-orange-700",
+                "border border-orange-400/40 hover:border-orange-300/60",
+                "shadow-orange-500/20 hover:shadow-orange-500/30",
+                "focus:outline-none focus:ring-2 focus:ring-orange-400/40",
+                examTriggerLabel === "Choose your exam" ? "w-46" : "w-35"
+              )}
+            >
+              {examTriggerLabel}
+              <svg
+                className={cn(
+                  "h-3.5 w-3.5 text-white transition-transform shrink-0",
+                  examOpen && "rotate-180"
+                )}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {examOpen && (
+              <div role="listbox" className="absolute top-full right-0">
+                <div
+                  className={cn(
+                    "mt-3 w-72 z-50 overflow-hidden rounded-xl",
+                    "border border-orange-500/20",
+                    "bg-[#121212]/95 backdrop-blur-sm",
+                    // "shadow-[0_20px_60px_rgba(0,0,0,0.45)]",
+                    "animate-[dropdown-in_180ms_var(--ease-premium)]"
+                  )}
+                >
+                  {CATEGORIES.map((cat) => {
+                    const isActive = cat.id === activeCategoryId;
+                    return (
+                      <Link
+                        key={cat.id}
+                        href={`/${cat.slug}`}
+                        role="option"
+                        aria-selected={isActive}
+                        onClick={() => setExamOpen(false)}
+                        className={cn(
+                          "block px-4 py-3 transition-all duration-200",
+                          "border-b border-white/5 last:border-b-0",
+                          "hover:bg-orange-500/10 hover:text-orange-300",
+                          "focus:bg-orange-500/10",
+                          isActive &&
+                            "bg-orange-500/15 text-orange-300 border-l-2 border-orange-500"
+                        )}
+                      >
+                        <span className="font-semibold block text-white">{cat.menuLabel}</span>
+                        <span className="mt-1 block text-caption text-white/60">
+                          {cat.description}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
           <a
             href={EXTERNAL_URLS.rodhaBuddy}
             target="_blank"
