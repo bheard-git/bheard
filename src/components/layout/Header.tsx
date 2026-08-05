@@ -59,22 +59,21 @@ export function Header({ className }: HeaderProps) {
             />
           </Link>
 
-          <div onMouseLeave={() => setExamOpen(!examOpen)} ref={examRef} className="relative hidden lg:block">
+          <div onMouseLeave={() => setExamOpen(!examOpen)} ref={examRef} className="relative hidden lg:block w-46">
             <button
               onMouseEnter={() => setExamOpen(!examOpen)}
               aria-expanded={examOpen}
               aria-haspopup="listbox"
               className={cn(
-                "flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
-                activeCategory
-                  ? "text-orange-400 border-orange-500/60"
-                  : "border-orange-500/60 text-orange-400"
+                "flex items-center gap-1.5 h-9 px-3 text-body-sm font-medium justify-between border rounded-[6px] bg-bg-tertiary transition-colors whitespace-nowrap",
+                activeCategory ? "text-orange-400 border-orange-500/60" : "border-orange-500/60 text-orange-400",
+                examTriggerLabel === "Choose your exam" ? "w-46":"w-35"
               )}
             >
               {examTriggerLabel}
               <svg
                 className={cn(
-                  "h-3.5 w-3.5 text-orange-400 transition-transform",
+                  "h-3.5 w-3.5 text-orange-400 transition-transform shrink-0",
                   examOpen && "rotate-180"
                 )}
                 fill="none"

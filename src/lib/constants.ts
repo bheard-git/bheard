@@ -111,10 +111,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const HEADER_NAV = [
   {
-    label: "Choose Your Exam",
-    href: "/courses",
-  },
-  {
     label: "About Us",
     href: "/about",
   },
