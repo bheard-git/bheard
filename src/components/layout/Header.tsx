@@ -207,7 +207,7 @@ export function Header({ className }: HeaderProps) {
                         aria-selected={isActive}
                         onClick={() => setExamOpen(false)}
                         className={cn(
-                          "block px-4 py-3 transition-all duration-200",
+                          "block px-3 py-3 transition-all duration-200",
                           "border-b border-white/5 last:border-b-0",
                           "hover:bg-orange-500/10 hover:text-orange-300",
                           "focus:bg-orange-500/10",
@@ -215,7 +215,7 @@ export function Header({ className }: HeaderProps) {
                             "bg-orange-500/15 text-orange-300 border-l-2 border-orange-500"
                         )}
                       >
-                        <span className="font-semibold block text-white">{cat.menuLabel}</span>
+                        <span className="block text-white">{cat.menuLabel}</span>
                         <span className="mt-1 block text-caption text-white/60">
                           {cat.description}
                         </span>
