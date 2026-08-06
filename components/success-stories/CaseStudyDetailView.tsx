@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import type { CaseStudyContent } from "@/lib/case-studies";
 import { StatValue } from "@/components/solutions/CaseStudyCardStats";
 import SectionCharReveal from "@/components/motion/SectionCharReveal";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { parallaxScroll, prefersReducedMotion, scrollScrub } from "@/lib/motion/animations";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -243,7 +243,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         innerClassName={sectionContentBand}
       />
 
-      <section className={`${sectionPageX} py-10 md:py-14`}>
+      <section className={`${sectionPageX} ${sectionBandY}`}>
         <div className={`${band} grid items-center gap-8 md:grid-cols-[0.95fr_1.05fr] md:gap-12`}>
           <div data-reveal>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">The Challenge</p>
@@ -275,7 +275,7 @@ export default function CaseStudyDetailView({ study }: { study: CaseStudyContent
         </div>
       </section>
 
-      <section className={`bg-surface ${sectionPageX} py-10 md:py-14`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
         <div className={`${band} grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr] md:gap-12`}>
           <figure className="order-2 relative overflow-hidden rounded-2xl border border-black/10 shadow-[0_26px_70px_-44px_rgba(0,0,0,0.35)] md:order-1">
             <div data-media-parallax className="relative aspect-[4/3] will-change-transform">

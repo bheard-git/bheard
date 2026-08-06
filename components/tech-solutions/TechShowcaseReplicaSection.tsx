@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { TECHNOLOGY_GROUPS, TECH_SHOWCASE_FEATURES, type TechFeature } from "@/lib/solutions/techShowcaseReplicaData";
 import TechnologyCard from "./TeckStack/TechnologyCard";
 import TeckStackGroup from "./TeckStack/TeckStackGroup";
@@ -18,7 +18,7 @@ function FeatureIcon({ icon }: { icon: TechFeature["icon"] }) {
 }
 
 export default function TechShowcaseReplicaSection({
-  sectionClassName = "py-20 md:py-24",
+  sectionClassName = sectionBandY,
 }: {
   sectionClassName?: string;
 }) {  

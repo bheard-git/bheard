@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudyContent } from "@/lib/case-studies";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 function StoryCard({
   study,
@@ -19,7 +19,7 @@ function StoryCard({
       index % 2 === 0
         ? "bg-surface-container-low"
         : "bg-surface"
-    } py-20 md:py-24 px-8`}
+    } ${sectionBandY} px-8`}
     >
       <div className={`grid items-center gap-10 lg:gap-16 ${sectionContentBand}  ${
         reversed ? "lg:grid-cols-[0.9fr_1.1fr]" : "lg:grid-cols-[1.1fr_0.9fr]"
@@ -115,7 +115,7 @@ export default function StoryStickyStack({
   return (
     <section
       id="stories"
-      className={`relative overflow-hidden bg-surface-container-lowest py-20 md:py-28`}
+      className={`relative overflow-hidden bg-surface-container-lowest ${sectionBandY}`}
     >
       <div className={`${sectionContentBand} px-8`}>
         <div className="max-w-3xl">

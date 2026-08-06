@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { solutionsHomeBand } from "@/lib/solutions/solutionsSectionTheme";
-import { sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -40,7 +40,7 @@ export default function HorizontalProcessRail({
   pinHeightClassName,
   cardClassName,
   immersiveCardStyle = false,
-  sectionClassName = "py-20 md:py-24",
+  sectionClassName = sectionBandY,
   borderTop = true,
 }: HorizontalProcessRailProps) {
   const pinRef = useRef<HTMLDivElement | null>(null);
@@ -119,7 +119,7 @@ export default function HorizontalProcessRail({
       <div className={sectionPageX}>
         <div className={solutionsHomeBand}>
           <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-          <h2 className="mt-3 max-w-3xl font-headline text-[clamp(2rem,4vw,3.25rem)] font-black uppercase leading-tight tracking-tight text-on-background">
+          <h2 className="mt-3 max-w-3xl font-headline text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase leading-tight tracking-tight text-on-background">
             {heading}
           </h2>
           {subheading ? (

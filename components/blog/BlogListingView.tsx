@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ListingBandHero from "@/components/system/ListingBandHero";
-import { sectionPageX, sectionPageY, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionPageX, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -90,7 +90,7 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
         copy="We publish practical frameworks, campaign lessons, and product execution insights from real client work."
       />
 
-      <section className={`bg-surface ${sectionPageX} ${sectionPageY}`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
         <div className="mx-auto max-w-content-max">
           {featured ? (
             <Link

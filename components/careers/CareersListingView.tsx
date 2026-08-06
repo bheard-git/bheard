@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import CareerApplicationForm from "@/components/careers/CareerApplicationForm";
 import ListingBandHero from "@/components/system/ListingBandHero";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import AboutHeroSection from "../about/AboutHeroSection";
 
 const band = sectionContentBand;
-const bandLight = `bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`;
-const bandWarm = `bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`;
+const bandLight = `bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`;
+const bandWarm = `bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`;
 const LIFE_AT_IMAGE = "/assets/home/about/life%20at%20bheard.png";
 const PROTECTED_IMAGE_CLASS =
   "pointer-events-none select-none object-cover grayscale [-webkit-user-drag:none]";

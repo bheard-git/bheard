@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -29,7 +29,7 @@ export default function InnerPageHero({
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const watermarkRef = useRef<HTMLSpanElement | null>(null);
   const words = heading.trim().split(/\s+/);
-  const sectionPadding = size === "compact" ? "py-20 md:py-24" : "py-section-y-sm md:py-section-y";
+  const sectionPadding = sectionBandY;
 
   useGSAP(
     () => {

@@ -1,5 +1,5 @@
 import PageBreadcrumb from "@/components/system/PageBreadcrumb";
-import { sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
 import { splitHeroEyebrow, splitHeroTitle } from "@/components/system/splitHeroTheme";
 
 const HERO_PARAGRAPHS = [
@@ -10,7 +10,7 @@ const HERO_PARAGRAPHS = [
 
 export default function IndustriesHero() {
   return (
-    <section className={`relative isolate overflow-hidden bg-white ${sectionPageX} py-20 md:py-24`}>
+    <section className={`relative isolate overflow-hidden bg-white ${sectionPageX} ${sectionBandY}`}>
       <div
         aria-hidden
         className="pointer-events-none absolute -z-10 right-[-5%] top-[5%] h-56 w-56 rounded-full bg-primary/20 blur-[100px] md:right-[6%] md:top-[8%] md:h-72 md:w-72"

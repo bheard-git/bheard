@@ -6,6 +6,7 @@ import LogoLoop, { type LogoItem } from "@/components/LogoLoop";
 import SectionTitle from "@/components/system/SectionTitle";
 import { sectionBandY, sectionPageX, sectionTitleMarginCompact } from "@/components/system/sectionTheme";
 import { publicAsset } from "@/lib/utils/publicAsset";
+import { cn } from "@/lib/utils";
 
 const clientLogo = (file: string) => publicAsset("assets", "client-logos", file);
 
@@ -81,7 +82,7 @@ export default function ClientLogos({ title, variant = "default", className }: C
     variant === "bare"
       ? "pt-20 pb-0 md:pt-24"
       : title
-        ? "border-t border-neutral-200/80 py-20 md:py-20"
+        ? cn("border-t border-neutral-200/80", sectionBandY)
         : sectionBandY;
 
   return (

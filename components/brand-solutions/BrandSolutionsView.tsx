@@ -12,12 +12,11 @@ import TwoColumnFaq from "@/components/site/TwoColumnFaq";
 import type { FaqItem } from "@/components/site/FaqSection";
 import { BRAND_SOLUTIONS_CASE_STUDY_CARDS } from "@/lib/solutions/solutionsCaseStudies";
 import {
-  solutionsBandPad,
   solutionsHomeBand,
   solutionsStackBottom,
   solutionsStackTop,
 } from "@/lib/solutions/solutionsSectionTheme";
-import { sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionPageX } from "@/components/system/sectionTheme";
 import { BRAND_SERVICE_IMAGES } from "@/lib/solutions/visualAssets";
 
 const band = solutionsHomeBand;
@@ -107,12 +106,12 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
       />
 
       {BRAND_SOLUTIONS_CASE_STUDY_CARDS.length > 0 ? (
-        <section className={`bg-[#fbf8f6] ${sectionPageX} ${solutionsBandPad}`}>
+        <section className={`bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`}>
           <div className={band}>
             <div className="mb-6 flex flex-col items-start justify-between gap-4 md:mb-8 md:flex-row md:items-end">
-              <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
-                Featured Case Studies
-              </h2>
+            <h2 className="mt-3 max-w-3xl font-headline text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase leading-tight tracking-tight text-on-background">
+              Featured Case Studies
+            </h2>
               <Link
                 href="/work"
                 className="font-headline text-sm font-bold uppercase tracking-widest text-primary transition-opacity hover:opacity-80"
@@ -132,7 +131,7 @@ export default function BrandSolutionsView({ faqItems }: BrandSolutionsViewProps
       <TwoColumnFaq
         heading="Brand Solutions — Frequently Asked Questions"
         items={faqItems}
-        className={`bg-surface-container-lowest ${sectionPageX} ${solutionsBandPad}`}
+        className={`bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`}
       />
 
       <div id="brand-journey">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 export type FaqAccordionItem = {
   question: string;
@@ -64,7 +64,7 @@ export default function TwoColumnFaqSection({
   headingLine2,
   items,
   splitAt = 3,
-  className = `bg-[#fbf8f6] ${sectionPageX} py-10 md:py-14`,
+  className = `bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`,
   containerClassName = sectionContentBand,
 }: TwoColumnFaqSectionProps) {
   const [openLeft, setOpenLeft] = useState<number | null>(null);

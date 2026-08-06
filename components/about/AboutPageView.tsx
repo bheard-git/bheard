@@ -355,7 +355,7 @@ export default function AboutPageView() {
 
       <section
         id="contact"
-        className={`scroll-mt-28 bg-gradient-to-br from-primary-container to-primary-dim ${sectionPageX} py-20 md:py-24`}
+        className={`scroll-mt-28 bg-gradient-to-br from-primary-container to-primary-dim ${sectionPageX} ${sectionBandY}`}
       >
         <div className="mx-auto max-w-8xl">
           <div

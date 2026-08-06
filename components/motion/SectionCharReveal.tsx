@@ -16,7 +16,7 @@ const TITLE_VARIANT_CLASS = {
   compact:
     "font-headline text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl",
   display:
-    "font-headline text-5xl font-black uppercase leading-[0.9] tracking-tighter text-neutral-900 md:text-8xl",
+    "font-headline text-3xl md:text-5xl font-black uppercase leading-[0.9] tracking-tighter text-neutral-900 md:text-8xl",
 } as const;
 
 export type SectionCharRevealTitleVariant = keyof typeof TITLE_VARIANT_CLASS;

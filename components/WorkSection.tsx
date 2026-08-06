@@ -11,6 +11,7 @@ import {
   sectionPageX,
   sectionTitleMarginDisplay,
   sectionStackBottom,
+  sectionBandY,
 } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP);
@@ -179,14 +180,14 @@ export default function WorkSection() {
   return (
     <section
       id="work"
-      className={`bg-surface-container-lowest ${sectionPageX} pt-20 md:pt-24 ${sectionStackBottom}`}
+      className={`bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`}
     >
       <SectionCharReveal
         as="div"
         layout="flow"
         scrubEnd="+=32%"
         titleVariant="display"
-        className={`mx-auto flex max-w-7xl flex-col items-end justify-between gap-8 md:flex-row ${sectionTitleMarginDisplay}`}
+        className={`mx-auto flex max-w-7xl flex-col md:items-end justify-between gap-8 md:flex-row ${sectionTitleMarginDisplay}`}
         title={"Selected\nworks"}
         trailing=""
       />

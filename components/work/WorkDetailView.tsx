@@ -20,7 +20,7 @@ import {
 } from "@/components/system/splitHeroTheme";
 import { fadeUpScrollOnce, prefersReducedMotion } from "@/lib/motion/animations";
 import { publicAsset } from "@/lib/utils/publicAsset";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 const band = sectionContentBand;
 
@@ -268,7 +268,7 @@ export default function WorkDetailView({
 
       <div className="border-t border-black/10" aria-hidden />
 
-      <section className={`bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`}>
         <div className={band} data-reveal>
           <NarrativeSection heading={study.challenge.heading} iconSrc={sectionIcons.challenge}>
             <div className="space-y-3">
@@ -289,7 +289,7 @@ export default function WorkDetailView({
         </div>
       </section>
 
-      <section className={`bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`}>
         <div className={band} data-reveal>
           <NarrativeSection heading={study.strategy.heading} iconSrc={sectionIcons.approach}>
             <div className="space-y-3">
@@ -310,7 +310,7 @@ export default function WorkDetailView({
         </div>
       </section>
 
-      <section className={`bg-surface-container-lowest ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-surface-container-lowest ${sectionPageX} ${sectionBandY}`}>
         <div className={band} data-reveal>
           <SectionHeading>Impact</SectionHeading>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-8">
@@ -331,7 +331,7 @@ export default function WorkDetailView({
         </section>
       ))}
 
-      <section className={`bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`}>
         <div className={band} data-reveal>
           <NarrativeSection heading="The Bigger Picture" iconSrc={sectionIcons.biggerPicture} centerWithIcon>
             <div className="space-y-3">
@@ -349,7 +349,7 @@ export default function WorkDetailView({
         reveal
       />
 
-      <section className={`${sectionPageX} py-20 md:py-24`}>
+      <section className={`${sectionPageX} ${sectionBandY}`}>
         <div className={band}>
           <div
             data-reveal

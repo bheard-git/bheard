@@ -7,9 +7,6 @@ import {
 /** Homepage-aligned content band for solutions pages (non-rail sections). */
 export const solutionsHomeBand = sectionContentBand;
 
-/** Full vertical padding when the next/previous section uses a different background. */
-export const solutionsBandPad = "py-20 md:py-24";
-
 /** Single-side spacing when consecutive sections share the same background. */
 export const solutionsStackBottom = sectionStackBottom;
 export const solutionsStackTop = sectionStackTop;

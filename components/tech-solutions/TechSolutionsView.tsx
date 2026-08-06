@@ -7,8 +7,8 @@ import TwoColumnFaqSection, { type FaqAccordionItem } from "@/components/solutio
 import TechShowcaseReplicaSection from "@/components/tech-solutions/TechShowcaseReplicaSection";
 import RelatedCaseStudiesSection from "@/components/work/RelatedCaseStudiesSection";
 import { TECH_SOLUTIONS_CASE_STUDY_CARDS } from "@/lib/solutions/solutionsCaseStudies";
-import { solutionsBandPad } from "@/lib/solutions/solutionsSectionTheme";
 import { TECH_SERVICE_IMAGES } from "@/lib/solutions/visualAssets";
+import { sectionBandY } from "../system";
 
 const TECH_SERVICE_STEPS: ProcessRailStep[] = [
   {
@@ -58,7 +58,7 @@ export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) 
     <>
       <TechSolutionsHero />
 
-      <TechShowcaseReplicaSection sectionClassName={solutionsBandPad} />
+      <TechShowcaseReplicaSection sectionClassName={sectionBandY} />
 
       <HorizontalProcessRail
         eyebrow="Services"
@@ -73,8 +73,8 @@ export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) 
 
       <RelatedCaseStudiesSection
         cards={TECH_SOLUTIONS_CASE_STUDY_CARDS}
-        heading="Case Studies"
-        className={solutionsBandPad}
+        heading="Featured Case Studies"
+        className={sectionBandY}
       />
 
       <TwoColumnFaqSection
@@ -82,13 +82,12 @@ export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) 
         headingLine2="Questions"
         items={faqItems}
         splitAt={3}
-        className={`bg-[#fbf8f6] ${solutionsBandPad}`}
       />
 
       <SolutionsClosingCta
         id="tech-build"
         headline="Let's Build Technology That Moves Your Business Forward."
-        sectionClassName={solutionsBandPad}
+        sectionClassName={sectionBandY}
         cta={{
           label: "Start Building",
           leadForm: {

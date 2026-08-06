@@ -23,12 +23,12 @@ export default function RelatedCaseStudiesSection({
   return (
     <section className={`${sectionPageX} ${className}`}>
       <div className={sectionContentBand}>
-        <div {...(reveal ? { "data-reveal": true } : {})} className="mb-6 text-center md:mb-8">
-          <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-on-surface md:text-3xl">
+        <div {...(reveal ? { "data-reveal": true } : {})} className="mb-6 md:mb-8">
+          <h2 className="mt-3 max-w-3xl font-headline text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase leading-tight tracking-tight text-on-background">
             {heading}
           </h2>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+        <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
           {cards.map((card) => (
             <div key={card.id} {...(reveal ? { "data-reveal": true } : {})}>
               <SolutionsCaseStudyCard {...card} />

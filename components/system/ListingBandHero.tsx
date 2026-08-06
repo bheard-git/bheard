@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { splitHeroEyebrow } from "@/components/system/splitHeroTheme";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -65,7 +65,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy }: Lis
   return (
     <section
       ref={sectionRef}
-      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} py-20 md:py-24`}
+      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`}
     >
       <div
         aria-hidden

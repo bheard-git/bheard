@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { INDUSTRY_VISUALS } from "@/lib/industries/visualAssets";
+import { cn } from "@/lib/utils";
+import { sectionBandY } from "../system";
 
 export type IndustryBlockData = {
   id: string;
@@ -27,7 +29,7 @@ export default function IndustrySectionBlock({ industry, index }: IndustrySectio
   return (
     <article
       id={industry.id}
-      className="scroll-mt-28 border-t border-neutral-200/80 py-20 md:py-24"
+      className={cn("scroll-mt-28 border-t border-neutral-200/80", sectionBandY)}
     >
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-16">
         <div className={imageFirst ? "order-1" : "order-1 md:order-2"}>

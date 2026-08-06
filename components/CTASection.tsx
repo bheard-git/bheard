@@ -6,6 +6,8 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
+import { cn } from "@/lib/utils";
+import { sectionBandY } from "./system";
 
 gsap.registerPlugin(useGSAP);
 
@@ -85,7 +87,7 @@ export default function CTASection() {
     <section
       ref={sectionRef}
       data-motion-exclude
-      className="bg-primary-container px-8 py-20 md:py-24"
+      className={cn("bg-primary-container px-8",sectionBandY )}
     >
       <div className="mx-auto max-w-7xl text-center">
         <h3
