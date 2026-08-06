@@ -16,9 +16,10 @@ export type ListingBandHeroProps = {
   eyebrow: string;
   title: ReactNode;
   copy: string;
+  className?: string;
 };
 
-export default function ListingBandHero({ watermark, eyebrow, title, copy }: ListingBandHeroProps) {
+export default function ListingBandHero({ watermark, eyebrow, title, copy, className }: ListingBandHeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const watermarkRef = useRef<HTMLSpanElement | null>(null);
   const eyebrowRef = useRef<HTMLParagraphElement | null>(null);
@@ -65,7 +66,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy }: Lis
   return (
     <section
       ref={sectionRef}
-      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} ${sectionBandY}`}
+      className={`relative isolate overflow-hidden bg-[#fbf8f6] ${sectionPageX} ${sectionBandY} ${className}`}
     >
       <div
         aria-hidden

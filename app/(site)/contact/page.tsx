@@ -7,6 +7,14 @@ import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
 import { metadataFromPageSeo } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
 import { buildBreadcrumbSchema, buildContactPageSchema } from "@/lib/seo/schema";
+import SignalDivider from "@/components/signal/SignalDivider";
+import {
+  Building2,
+  MapPin,
+} from "lucide-react";
+import LinkedIn from "@/components/icons/LinkedIn";
+import InstaIcon from "@/components/icons/insta";
+import { FaInstagram } from "react-icons/fa";
 
 export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.contact);
 
@@ -18,63 +26,126 @@ export default function ContactPage() {
       <JsonLd data={schema} />
       <ListingBandHero
         watermark="Contact"
-        eyebrow="Get in Touch"
-        title="Let's Talk"
-        copy="We work with a focused number of clients each quarter. Share your brief — we'll respond within one business day."
+        eyebrow="Let's Talk"
+        title="Ready to Be Heard?"
+        copy="We work with a limited number of clients to ensure focused strategy and high-quality execution. Tell us what you're building — we'd love to help you build it."
+        className="contact-section"
       />
-      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY} !pt-10 relative`}>
+        <div className="-translate-y-[52px] md:-translate-y-20 w-screen left-0 absolute top-0">
+          <SignalDivider className="h-12 md:h-16" />
+        </div>
         <div className={`${sectionContentBand} grid max-w-5xl gap-10 md:grid-cols-12 md:gap-12`}>
           <aside className="md:col-span-7">
             <h2 className="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
-              Get in touch
+            Get in Touch Directly
             </h2>
             <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant">
-              Head office in Lower Parel, Mumbai, with a branch office in Delhi.
-            </p>
-            <ul className="mt-6 flex flex-col sm:flex-row gap-4  font-body text-sm">
-              <li>
-                <a
-                  href="tel:+919326602832"
-                  className="font-semibold text-on-surface transition-colors hover:text-primary"
-                >
-                  +91 9326602832
-                </a>
-              </li>
-              <li>
-                <a
+              Prefer to talk it through? Write to us at <a
                   href="mailto:hello@bheard.in"
-                  className="font-semibold text-on-surface transition-colors hover:text-primary"
+                  className="font-semibold text-on-surface transition-colors inline-block hover:text-primary"
                 >
                   hello@bheard.in
-                </a>
-              </li>
-            </ul>
-            <div className="flex flex-col sm:flex-row gap-6 mt-8 items-start">
-              <address className="not-italic font-body text-sm leading-relaxed text-on-surface-variant">
-                <p className="font-headline text-xs font-bold uppercase tracking-widest text-primary">
-                  Head Office — Mumbai
-                </p>
-                <p className="mt-2">
-                  B1-604, Marathon Innova Corporate Centre,
-                  <br />
-                  Marathon NextGen Compound, Lower Parel,
-                  <br />
-                  Mumbai, Maharashtra – 400013
-                </p>
-              </address>
-              <address className="not-italic font-body text-sm leading-relaxed text-on-surface-variant">
-                <p className="font-headline text-xs font-bold uppercase tracking-widest text-primary">
-                    Branch Office — Delhi
-                  </p>
-                  <p className="mt-2">
-                    WH-75, Mayapuri Industrial Area, Phase-1,
+                </a> or call <a
+                  href="tel:+919326602832"
+                  className="font-semibold text-on-surface transition-colors inline-block hover:text-primary"
+                >
+                  +91 9326602832
+                </a> — we're happy to jump on a call.
+            </p>
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+              <div className="group rounded-2xl border border-outline-variant/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+
+                  <div>
+                    <p className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                      Head Office
+                    </p>
+                    <h3 className="font-headline text-lg font-semibold text-on-surface">
+                      Mumbai
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-sm leading-relaxed text-on-surface-variant">
+                  <MapPin className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <p>
+                    B1-604, Marathon Innova Corporate Centre,
                     <br />
-                    South West Delhi, Delhi – 110064
+                    Marathon NextGen Compound,
+                    <br />
+                    Lower Parel,
+                    <br />
+                    Mumbai, Maharashtra – 400013
                   </p>
-              </address>
+                </div>
+              </div>
+
+              <div className="group rounded-2xl border border-outline-variant/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+
+                  <div>
+                    <p className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                      Branch Office
+                    </p>
+                    <h3 className="font-headline text-lg font-semibold text-on-surface">
+                      Delhi
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-sm leading-relaxed text-on-surface-variant">
+                  <MapPin className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <p>
+                    WH-75, Mayapuri Industrial Area,
+                    <br />
+                    Phase-1,
+                    <br />
+                    South West Delhi,
+                    <br />
+                    Delhi – 110064
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <p className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary whitespace-nowrap">
+                Follow us on
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://www.instagram.com/letsbheard/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="inline-flex items-center gap-1 rounded-full text-sm font-medium text-on-surface transition-all duration-300 hover:text-primary-fixed"
+                >
+                  <FaInstagram className="h-4 w-4 hover:text-primary-fixed"/>
+                  <span>Instagram</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/letsbheard/?originalSubdomain=in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="inline-flex items-center gap-1 rounded-full text-sm font-medium text-on-surface transition-all duration-300 hover:text-primary-fixed"
+                >
+                  <LinkedIn className="h-4 w-4 hover:text-primary-fixed" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
             </div>
           </aside>
-          <div className="md:-translate-y-[26rem] md:h-10 relative md:col-span-5">
+          <div className="md:-translate-y-[23rem] md:h-10 relative md:col-span-5">
             <div className="rounded-2xl w-full h-fit md:absolute border border-outline-variant/60 bg-white p-6 shadow-sm md:p-8">
               <div className="mb-6">
                 <h2 className="font-headline text-2xl font-bold text-on-surface">Send a message</h2>
