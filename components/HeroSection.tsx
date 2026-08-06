@@ -173,7 +173,7 @@ export default function HeroSection() {
           aria-hidden="true"
           data-anim="hero-bheard"
           style={{ zIndex: 3 }}
-          className="pointer-events-none absolute -bottom-10 left-0 translate-y-20 font-headline text-[clamp(4rem,18vw,20rem)] font-black uppercase leading-[0.9] text-neutral-200 opacity-0 select-none motion-reduce:translate-y-0 motion-reduce:opacity-100"
+          className="pointer-events-none absolute -bottom-20 left-0 translate-y-10 md:translate-y-20 font-headline text-[clamp(4rem,18vw,20rem)] font-black uppercase leading-[0.9] text-neutral-200 opacity-0 select-none motion-reduce:translate-y-0 motion-reduce:opacity-100"
         >
           BHEARD
         </div>

@@ -293,7 +293,7 @@ export default function ServicesSection() {
                 variant="brand"
               />
             </div>
-            <div className="bg-gradient-to-br from-[#3d1e00] via-[#4a2508] to-[#2d1600] p-8">
+            <div className="bg-gradient-to-br from-[#e59253] via-[#e58a45] to-[#eebd8e] p-8">
               <PaneBlock
                 title="Tech Solutions"
                 titleHref="/tech-solutions"
