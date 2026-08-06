@@ -251,7 +251,7 @@ export function Header({ className }: HeaderProps) {
               "
               aria-label="Account"
             >
-              <CircleUserRound className="h-5 w-5 text-white group-hover:text-orange-300 transition-colors" />
+              <User className="h-5 w-5 text-white group-hover:text-orange-300 transition-colors" />
 
               <svg
                 className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-180"
