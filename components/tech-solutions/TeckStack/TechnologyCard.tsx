@@ -8,7 +8,7 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
         group
         flex
         w-full
-        h-[110px]
+        h-[70px] md:h-[110px]
         flex-col
         items-center
         justify-center
@@ -26,8 +26,8 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
             src={item.icon}
             alt={item.name}
             className="
-            h-10
-            w-10
+            h-7 md:h-10
+            w-7 md:w-10
             object-contain
             transition-transform
             duration-300
@@ -38,8 +38,8 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
         <div
             className="
             flex
-            h-10
-            w-10
+            h-7 md:h-10
+            w-7 md:w-10
             items-center
             justify-center
             rounded-full
@@ -54,7 +54,7 @@ export default function TechnologyCard({ item }: { item: { name: string, icon: s
         </div>
         )}
 
-        <p className="mt-3 text-center text-xs text-[#3c3c3c]">
+        <p className="mt-2 md:mt-3 text-center text-[10px] md:text-xs text-[#3c3c3c]">
         {item.name}
         </p>
     </div>

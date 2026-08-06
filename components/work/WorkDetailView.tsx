@@ -213,7 +213,7 @@ export default function WorkDetailView({
             className={splitHeroBreadcrumbNav}
           /> */}
 
-          <div className="flex flex-1 flex-col justify-center py-8 md:py-10">
+          <div className="flex flex-1 flex-col justify-center md:py-10">
             <div className={splitHeroTextColumn} data-reveal>
               <p className={splitHeroEyebrow}>{study.heroMeta}</p>
               <h1 className={splitHeroTitle}>

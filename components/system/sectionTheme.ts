@@ -1,5 +1,7 @@
 /** Shared horizontal padding for full-width marketing sections */
-export const sectionPageX = "px-8";
+export const sectionPageX = "px-4 md:px-8";
+
+export const pageHeroPaddingTop = "py-20 md:py-24";
 
 /** Inner content band — pair with `sectionPageX` on the parent section, never combine with horizontal padding */
 export const sectionContentBand = "mx-auto w-full max-w-7xl";

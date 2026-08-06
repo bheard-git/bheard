@@ -7,6 +7,8 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight } from "lucide-react";
 import HeroStatsBar from "@/components/hero/HeroStatsBar";
+import { cn } from "@/lib/utils";
+import { sectionPageX } from "./system";
 
 gsap.registerPlugin(useGSAP);
 
@@ -159,7 +161,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative isolate flex min-h-screen items-end overflow-hidden px-8 py-20 md:py-24"
+      className={cn("relative isolate flex min-h-screen items-end overflow-hidden py-20 md:py-24", sectionPageX)}
     >
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-surface-container-low to-surface-container-lowest" />
       <div

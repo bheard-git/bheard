@@ -30,7 +30,7 @@ export default function AiGuestAgentsHero() {
       <div className={`${splitHeroInset} relative z-10 flex min-h-0 flex-col md:min-h-[calc(100dvh-5.55rem)]`}>
         {/* <PageBreadcrumb items={breadcrumbItems} className={splitHeroBreadcrumbNav} /> */}
 
-        <div className="flex flex-1 flex-col justify-center py-8 md:py-10">
+        <div className="flex flex-1 flex-col justify-center md:py-10">
           <div className={splitHeroTextColumn}>
             <p className={splitHeroEyebrow}>{hero.eyebrow}</p>
 

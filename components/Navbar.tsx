@@ -9,6 +9,8 @@ import logo from "@/app/logo.png";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { sectionPageX } from "./system";
 
 gsap.registerPlugin(useGSAP);
 
@@ -163,7 +165,7 @@ export default function Navbar() {
 
   return (
     <>
-    <header className="fixed top-0 z-50 mx-auto  w-full  border-b border-black/5 bg-white/85 px-6 py-5 text-neutral-800 backdrop-blur-xl transition-colors duration-300 md:px-8 md:py-6">
+    <header className={cn("fixed top-0 z-50 mx-auto  w-full  border-b border-black/5 bg-white/85  py-5 text-neutral-800 backdrop-blur-xl transition-colors duration-300 md:py-6", sectionPageX)}>
       <nav
         ref={navRef}
         className="max-w-screen-2xl items-center justify-between flex mx-auto"

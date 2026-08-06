@@ -212,12 +212,12 @@ export default function TechShowcaseReplicaSection({
               </div>
 
               <div className="relative z-10 flex flex-col gap-4">
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
                   {TECHNOLOGY_GROUPS.slice(0, 3).map((group, index) => (
                     <TeckStackGroup key={group.title} title={group.title} span={group.span} groupSpan={group.groupSpan} color={group.color} items={group.items.map((item) => ({ name: item.name, icon: item.icon as string }))} />
                   ))}
                 </div>
-                <div className="flex gap-4 my-4">
+                <div className="flex flex-col md:flex-row gap-4 my-4">
                   {TECHNOLOGY_GROUPS.slice(3, 7).map((group, index) => (
                     <TeckStackGroup key={group.title} title={group.title} span={group.span} groupSpan={group.groupSpan} color={group.color} items={group.items.map((item) => ({ name: item.name, icon: item.icon as string }))} />
                   ))}

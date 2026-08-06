@@ -1,5 +1,5 @@
 import StoriesListingView from "@/components/success-stories/StoriesListingView";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { loadPublishedCaseStudies } from "@/lib/success-stories/loadCaseStudies";
 
 export default async function WorkListingContent() {
@@ -7,7 +7,7 @@ export default async function WorkListingContent() {
 
   if (cases.length === 0) {
     return (
-      <section className={`bg-surface ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
         <div className={`${sectionContentBand} py-20 text-center`}>
           <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Our work</p>
           <h1 className="mt-4 font-headline text-4xl font-black uppercase tracking-tight text-on-background">

@@ -3,7 +3,7 @@ import TechnologyCard from './TechnologyCard'
 
 export default function TeckStackGroup({ title, color, span, groupSpan, items }: { title: string, color: string, span: string, groupSpan: string, items: { name: string, icon: string }[] }) {
   return (
-    <div className={`${groupSpan}`} style={{ width: groupSpan }}>
+    <div className={`${groupSpan}`}>
         <p
         className="mb-3 ml-1 text-[11px] font-bold uppercase tracking-[0.18em]"
         style={{ color: color }}

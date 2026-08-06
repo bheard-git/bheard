@@ -33,8 +33,8 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Frontend",
     color: "#53a1ff",
-    groupSpan: "45%",
-    span: "grid grid-cols-2 md:grid-cols-4",
+    groupSpan: "w-full md:w-[45%]",
+    span: "grid grid-cols-4",
     items: [
       {
         name: "React",
@@ -74,8 +74,8 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Mobile",
     color: "#9f8dff",
-    groupSpan: "20%",
-    span: "grid grid-cols-2",
+    groupSpan: "w-full md:w-[20%]",
+    span: "grid grid-cols-4 md:grid-cols-2",
     items: [
       {
         name: "Flutter",
@@ -99,7 +99,7 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Backend",
     color: "#35d58e",
-    groupSpan: "35%",
+    groupSpan: "w-full md:w-[35%]",
     span: "grid grid-cols-3",
     items: [
       {
@@ -136,7 +136,7 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Database",
     color: "#00b7ff",
-    groupSpan: "20%",
+    groupSpan: "w-full md:w-[20%]%",
     span: "grid grid-cols-2",
     items: [
       // TODO: MySQL icon missing
@@ -160,7 +160,7 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "E-Commerce",
     color: "#ff4be1",
-    groupSpan: "10%",
+    groupSpan: "w-full md:w-[10%]",
     span: "grid grid-cols-1",
     items: [
       {
@@ -173,7 +173,7 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Integrations & Services",
     color: "#ff9240",
-    groupSpan: "30%",
+    groupSpan: "w-full md:w-[30%]",
     span: "grid grid-cols-3",
     items: [
       // TODO: Google icon missing
@@ -196,7 +196,7 @@ export const TECHNOLOGY_GROUPS = [
   {
     title: "Cloud & DevOps",
     color: "#ff9240",
-    groupSpan: "40%",
+    groupSpan: "w-full md:w-[40%]",
     span: "grid grid-cols-4",
     items: [
       {

@@ -1,6 +1,6 @@
 /** Shared typography and layout tokens for split editorial heroes (Work detail reference). */
 
-export const splitHeroInset = "mx-auto w-full max-w-8xl pl-4 pr-6 md:pl-10 md:pr-8";
+export const splitHeroInset = "mx-auto w-full max-w-8xl px-6 md:px-8 pt-20 md:pt-0";
 
 export const splitHeroTextColumn = "md:max-w-[38%] md:pr-4";
 

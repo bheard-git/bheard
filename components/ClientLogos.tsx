@@ -49,7 +49,7 @@ const rowTwoLogos: ClientLogo[] = [
 function toLogoLoopItems(logos: ClientLogo[]): LogoItem[] {
   return logos.map((logo) => ({
     node: (
-      <span className="flex h-[92px] w-[178px] shrink-0 items-center justify-center px-2 md:px-4">
+      <span className="flex h-16 w-[120px] sm:h-[92px] sm:w-[178px] shrink-0 items-center justify-center px-2 md:px-4">
         <Image
           src={logo.src}
           alt={logo.alt}

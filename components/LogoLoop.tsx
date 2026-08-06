@@ -372,7 +372,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                 "flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]",
                 isVertical
                   ? "mb-[var(--logoloop-gap)]"
-                  : "mr-[var(--logoloop-gap)]",
+                  : " mr-0 sm:mr-[var(--logoloop-gap)]",
                 scaleOnHover && "group/item overflow-visible",
               )}
               key={key}
@@ -458,7 +458,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               "flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]",
               isVertical
                 ? "mb-[var(--logoloop-gap)]"
-                : "mr-[var(--logoloop-gap)]",
+                : "mr-3 sm:mr-[var(--logoloop-gap)]",
               scaleOnHover && "group/item overflow-visible",
             )}
             key={key}

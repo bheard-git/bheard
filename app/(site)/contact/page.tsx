@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContactLeadForm from "@/components/site/ContactLeadForm";
 import ListingBandHero from "@/components/system/ListingBandHero";
 import JsonLd from "@/components/seo/JsonLd";
-import { sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
 import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
 import { metadataFromPageSeo } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
@@ -22,7 +22,7 @@ export default function ContactPage() {
         title="Let's Talk"
         copy="We work with a focused number of clients each quarter. Share your brief — we'll respond within one business day."
       />
-      <section className={`bg-surface ${sectionPageX} py-20 md:py-24`}>
+      <section className={`bg-surface ${sectionPageX} ${sectionBandY}`}>
         <div className={`${sectionContentBand} grid max-w-5xl gap-10 md:grid-cols-12 md:gap-12`}>
           <aside className="md:col-span-7">
             <h2 className="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
