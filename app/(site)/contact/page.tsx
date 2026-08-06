@@ -9,11 +9,9 @@ import { PAGE_SEO } from "@/lib/seo/pages";
 import { buildBreadcrumbSchema, buildContactPageSchema } from "@/lib/seo/schema";
 import SignalDivider from "@/components/signal/SignalDivider";
 import {
-  Building2,
   MapPin,
 } from "lucide-react";
 import LinkedIn from "@/components/icons/LinkedIn";
-import InstaIcon from "@/components/icons/insta";
 import { FaInstagram } from "react-icons/fa";
 
 export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.contact);
