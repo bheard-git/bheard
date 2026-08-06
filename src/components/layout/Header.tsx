@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { CATEGORIES, EXTERNAL_URLS, HEADER_NAV } from "@/lib/constants";
 import type { CategoryId } from "@/lib/types";
 import { MobileNav } from "./MobileNav";
+import { CircleUserRound, User, UserPlus } from "lucide-react";
 
 interface HeaderProps {
   className?: string;
@@ -101,15 +102,15 @@ export function Header({ className }: HeaderProps) {
                     className="
                       invisible
                       absolute
-                      left-0
+                      right-0
                       top-full
                       z-50
                       mt-2
-                      w-56
+                      w-72
                       rounded-xl
                       border
-                      border-border-default
-                      bg-bg-primary/95
+                      border-white/10
+                      bg-[#121212]/95
                       backdrop-blur-xl
                       opacity-0
                       shadow-2xl
@@ -128,7 +129,7 @@ export function Header({ className }: HeaderProps) {
                             "block px-4 py-2.5 text-body-sm transition-colors",
                             pathname === child.href
                               ? "text-orange-400 bg-orange-500/5"
-                              : "text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
+                              : "text-text-secondary hover:bg-orange-500/10 hover:text-text-primary"
                           )}
                         >
                           {child.label}
@@ -234,14 +235,90 @@ export function Header({ className }: HeaderProps) {
           >
             Rodha Buddy
           </a>
-          <a
-            href={EXTERNAL_URLS.graphy}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center h-9 px-4 text-body-sm font-medium text-text-primary border border-white/30 rounded-[6px] hover:border-white/60 hover:bg-bg-hover transition-colors whitespace-nowrap"
-          >
-            Login / Sign Up
-          </a>
+          <div className="relative group shrink-0">
+            <button
+              className="
+                flex items-center gap-2
+                h-9
+                px-3
+                rounded-lg
+                border border-white/15
+                bg-white/5
+                backdrop-blur-sm
+                transition-all duration-200
+                hover:border-orange-400/50
+                hover:bg-orange-500/10
+              "
+              aria-label="Account"
+            >
+              <CircleUserRound className="h-5 w-5 text-white group-hover:text-orange-300 transition-colors" />
+
+              <svg
+                className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-180"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 011.08 1.04l-4.25 4.51a.75.75 0 01-1.08 0l-4.25-4.51a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            <div
+              className="
+                invisible
+                absolute
+                right-0
+                top-full
+                z-50
+                mt-2
+                w-72
+                rounded-xl
+                border
+                border-white/10
+                bg-[#121212]/95
+                backdrop-blur-xl
+                opacity-0
+                shadow-2xl
+                transition-all
+                duration-200
+                group-hover:visible
+                group-hover:opacity-100
+              "
+            >
+              <div className="p-2">
+
+                <a
+                  href={EXTERNAL_URLS.graphy}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    flex items-start gap-3
+                    rounded-lg
+                    px-3
+                    py-2.5
+                    transition-colors
+                    hover:bg-orange-500/10
+                  "
+                >
+                  <User className="mt-0.5 h-5 w-5 text-orange-400 shrink-0" />
+
+                  <div>
+                    <div className="font-medium text-white">
+                      Log In / Sign Up
+                    </div>
+
+                    <div className="text-caption text-white/60 mt-0.5">
+                      Access existing account or create new
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
         </div>
 
         <MobileNav activeCategoryId={activeCategoryId} />
