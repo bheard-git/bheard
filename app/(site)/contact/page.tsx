@@ -56,17 +56,10 @@ export default function ContactPage() {
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               <div className="group rounded-2xl border border-outline-variant/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
                 <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Building2 className="h-5 w-5" />
-                  </div>
-
                   <div>
                     <p className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                      Head Office
+                      Head Office - Mumbai
                     </p>
-                    <h3 className="font-headline text-lg font-semibold text-on-surface">
-                      Mumbai
-                    </h3>
                   </div>
                 </div>
 
@@ -86,17 +79,10 @@ export default function ContactPage() {
 
               <div className="group rounded-2xl border border-outline-variant/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
                 <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Building2 className="h-5 w-5" />
-                  </div>
-
                   <div>
                     <p className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                      Branch Office
+                      Branch Office - Delhi
                     </p>
-                    <h3 className="font-headline text-lg font-semibold text-on-surface">
-                      Delhi
-                    </h3>
                   </div>
                 </div>
 
@@ -145,7 +131,7 @@ export default function ContactPage() {
               </div>
             </div>
           </aside>
-          <div className="md:-translate-y-[23rem] md:h-10 relative md:col-span-5">
+          <div className="md:-translate-y-[22rem] md:h-10 relative md:col-span-5">
             <div className="rounded-2xl w-full h-fit md:absolute border border-outline-variant/60 bg-white p-6 shadow-sm md:p-8">
               <div className="mb-6">
                 <h2 className="font-headline text-2xl font-bold text-on-surface">Send a message</h2>
