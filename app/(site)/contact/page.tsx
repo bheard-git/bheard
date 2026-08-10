@@ -34,7 +34,7 @@ export default function ContactPage() {
         <div className="-translate-y-[52px] md:-translate-y-20 w-screen left-0 absolute top-0">
           <SignalDivider className="h-12 md:h-16" />
         </div>
-        <div className={`${sectionContentBand} grid max-w-5xl gap-10 lg:grid-cols-12 md:gap-12 min-h-[270px]`}>
+        <div className={`${sectionContentBand} grid max-w-5xl gap-10 lg:grid-cols-12 md:gap-12`}>
           <aside className="lg:col-span-7">
             <h2 className="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
             Let's Build What's Next
@@ -43,7 +43,7 @@ export default function ContactPage() {
             Whether you're launching a brand, growing a business, or reimagining your digital presence, every conversation starts the same way — understanding what you're trying to achieve.
             </p>
             <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant">
-            Share your brief below, and our team will get back to you shortly.
+            Share your brief, and our team will get back to you shortly.
             </p>
             <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant">
               Prefer to talk it through? Write to us at <a

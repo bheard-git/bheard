@@ -182,7 +182,7 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
           rows={6}
           className={
             (errors.message ? inputErrorCls : inputCls) +
-            " min-h-[140px] resize-y py-2.5"
+            " min-h-[100px] resize-y py-2.5"
           }
           placeholder="Share your goals, project context, and timeline (at least 20 characters)."
         />

@@ -17,8 +17,8 @@ export default function ContactPopupModal({
   open,
   onClose,
   sourcePage = "/",
-  title = "Let's talk",
-  subtitle = "Tell us about your brand goals - we'll respond within one business day.",
+  title = "Tell Us About Your Project",
+  subtitle = "Tell us about your brand, product, or campaign goals — we&apos;ll come back with aclear point of view.",
 }: Props) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
@@ -95,7 +95,7 @@ export default function ContactPopupModal({
           <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-neutral-900 md:text-3xl">
             {title}
           </h2>
-          <p className="mt-2 max-w-md text-sm text-on-surface-variant md:text-base">
+          <p className="mt-2 text-sm text-on-surface-variant md:text-base">
             {subtitle}
           </p>
         </div>
