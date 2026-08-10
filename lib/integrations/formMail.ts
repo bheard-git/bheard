@@ -205,8 +205,8 @@ function escapeHtml(input: string) {
     .replaceAll("'", "&#39;");
 }
 
-function getBrandBaseUrl(requestOrigin: string) {
-  return getFirstEnv(["NEXT_PUBLIC_SITE_URL"]) || requestOrigin;
+function getBrandBaseUrl() {
+  return getFirstEnv(["NEXT_PUBLIC_SITE_URL"]) || "https://bheard.vercel.app";
 }
 
 function formatSubmittedAt(iso: string) {
@@ -242,7 +242,7 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
                     </td>
                     <td style="vertical-align:middle;text-align:right;">
                       <div style="font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:#f59e0b;font-weight:700;">New Lead Submission</div>
-                      <div style="font-size:13px;color:#e5e7eb;margin-top:4px;">BHEARD Contact Form</div>
+                      <div style="font-size:13px;color:#4f4f4f;margin-top:4px;">BHEARD Contact Form</div>
                     </td>
                   </tr>
                 </table>
@@ -408,7 +408,7 @@ async function sendHtmlMail({
 }
 
 export async function sendLeadNotificationMail(payload: LeadMailPayload, requestOrigin: string) {
-  const logoUrl = `${getBrandBaseUrl(requestOrigin)}/icon`;
+  const logoUrl = `${getBrandBaseUrl()}/icon`;
   const html = buildLeadEmailHtml(payload, logoUrl);
   const sourceLabel = formatLeadSourceLabel(payload.sourcePage);
   const subject = `New Website Lead: ${payload.fullName} (${sourceLabel})`;

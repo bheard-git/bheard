@@ -322,7 +322,7 @@ export const CASE_STUDIES: CaseStudyContent[] = [
     listDescription:
       "Long-term social media strategy that turned credibility into scalable digital influence and community participation.",
     listMeta: "Social Media Strategy · Content Production · Community Building",
-    listImage: workImage("dr micky mehta case study-compressed.jpg"),
+    listImage: workImage("dr micky mehta case study-compressed-updated.png"),
     listImageAlt: "Dr. Mickey Mehta wellness brand",
     listStats: [
       { value: "4M+", label: "Campaign impressions" },
@@ -333,7 +333,7 @@ export const CASE_STUDIES: CaseStudyContent[] = [
     heroSubtitle:
       "Before wellness creators became digital businesses and personal branding became a growth strategy, we were helping wellness experts build audiences online.\n\nOur work in the [health and wellness space](/industries/health-wellness) spans fitness leaders, yoga communities, healthcare professionals, and wellness programmes. One of these partnerships demonstrates our approach: helping wellness pioneer Dr. Mickey Mehta build and grow his digital presence over the long term.",
     heroMeta: "Health & Wellness Marketing",
-    heroImage: workImage("dr micky mehta case study-compressed.jpg"),
+    heroImage: workImage("dr micky mehta case study-compressed-updated.png"),
     heroImageAlt: "Dr. Mickey Mehta wellness content",
     trustedBy: { name: "Dr. Mickey Mehta" },
     overview: {
