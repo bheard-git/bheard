@@ -5,7 +5,7 @@ import CountUp from "@/components/motion/CountUp";
 const HERO_STATS = [
   { value: 10, suffix: "+", label: "Years of Experience" },
   { value: 50, suffix: "+", label: "Brands Partnered With" },
-  { value: 200, suffix: "+", label: "Campaigns & Digital Launches" },
+  { value: 500, suffix: "+", label: "Campaigns & Digital Launches" },
 ] as const;
 
 function StatDivider() {
