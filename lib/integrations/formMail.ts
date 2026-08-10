@@ -408,7 +408,7 @@ async function sendHtmlMail({
 }
 
 export async function sendLeadNotificationMail(payload: LeadMailPayload, requestOrigin: string) {
-  const logoUrl = `${getBrandBaseUrl()}/icon`;
+  const logoUrl = `${getBrandBaseUrl()}/email/logo.png`;
   const html = buildLeadEmailHtml(payload, logoUrl);
   const sourceLabel = formatLeadSourceLabel(payload.sourcePage);
   const subject = `New Website Lead: ${payload.fullName} (${sourceLabel})`;

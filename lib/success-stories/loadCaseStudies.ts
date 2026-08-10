@@ -138,7 +138,7 @@ export const caseStudiesData: CaseStudyContent[] = [
     "listTagline": "Building one of India's earliest wellness personal brands online.",
     "listDescription": "Long-term social media strategy that turned credibility into scalable digital influence and community participation.",
     "listMeta": "Social Media Strategy · Content Production · Community Building",
-    "listImage": "/assets/work/dr%20micky%20mehta%20case%20study-compressed.jpg",
+    "listImage": "/assets/work/dr%20micky%20mehta%20case%20study-compressed-updated.png",
     "listImageAlt": "Dr. Mickey Mehta wellness brand",
     "listStats": [
       {
@@ -154,7 +154,7 @@ export const caseStudiesData: CaseStudyContent[] = [
     "heroTitleAccent": "Personal Brands Online",
     "heroSubtitle": "Before wellness creators became digital businesses and personal branding became a growth strategy, we were helping wellness experts build audiences online.\n\nOur work in the [health and wellness space](/industries/health-wellness) spans fitness leaders, yoga communities, healthcare professionals, and wellness programmes. One of these partnerships demonstrates our approach: helping wellness pioneer Dr. Mickey Mehta build and grow his digital presence over the long term.",
     "heroMeta": "Health & Wellness Marketing",
-    "heroImage": "/assets/work/dr%20micky%20mehta%20case%20study-compressed.jpg",
+    "heroImage": "/assets/work/dr%20micky%20mehta%20case%20study-compressed-updated.png",
     "heroImageAlt": "Dr. Mickey Mehta wellness content",
     "trustedBy": {
       "name": "Dr. Mickey Mehta"
@@ -177,7 +177,7 @@ export const caseStudiesData: CaseStudyContent[] = [
       {
         "heading": "Execution",
         "body": "Our Approach\n\nWe built and managed Dr. Mickey Mehta's social media presence across Instagram, Facebook, and LinkedIn, creating a content ecosystem designed to educate, engage, and grow a community around holistic wellness.\n\nRather than relying on promotional content, we focused on turning key moments into high-engagement brand-building opportunities. Over the course of our engagement, we conceptualised and executed more than 10 birthday campaigns, transforming annual milestones into audience participation campaigns that reinforced Dr. Mehta's positioning while driving visibility and engagement.\n\nOne of the most successful initiatives was the \"Fittest at 55\" campaign. Built around Dr. Mehta's 55th birthday, the campaign combined storytelling, community engagement, and membership promotion into a single digital movement. The campaign generated over 4 million impressions and was featured by Social Samosa, earning recognition within the marketing and advertising industry.\n\nBeyond campaign execution, our role was to create consistency—building a digital presence that could sustain engagement year after year rather than relying on one-off viral moments.",
-        "image": "/assets/work/dr%20micky%20mehta%20case%20study-compressed.jpg",
+        "image": "/assets/work/dr%20micky%20mehta%20case%20study-compressed-updated.png",
         "imageAlt": "Building One of India's Earliest Wellness",
         "align": "left"
       }
