@@ -6,8 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2 } from "lucide-react";
 import { RecaptchaNotice, useRecaptcha } from "@/components/site/RecaptchaProvider";
 import {
+  INTERESTED_IN_OPTIONS,
   contactLeadClientSchema,
   type ContactLeadClientFields,
+  type InterestedInOption,
 } from "@/lib/validators/contactLead.validator";
 
 const defaultValues: ContactLeadClientFields = {
@@ -15,6 +17,7 @@ const defaultValues: ContactLeadClientFields = {
   email: "",
   phone: "",
   company: "",
+  interestedIn: "",
   message: "",
 };
 
@@ -22,6 +25,14 @@ const fieldErrorCls = "mt-1 text-xs text-red-600";
 const inputCls =
   "h-11 w-full rounded-md border border-outline-variant bg-white px-3 text-sm text-on-surface outline-none transition focus:border-primary";
 const inputErrorCls = inputCls + " border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500/30";
+const tileBaseCls =
+  "h-11 w-full rounded-md border px-3 text-left text-sm transition outline-none focus-visible:border-primary";
+const tileIdleCls =
+  tileBaseCls + " border-outline-variant bg-white text-on-surface hover:border-primary/40";
+const tileSelectedCls =
+  tileBaseCls + " border-primary bg-primary/10 font-semibold text-primary";
+const tileErrorCls =
+  tileBaseCls + " border-red-400 bg-white text-on-surface focus-visible:border-red-500";
 
 export default function ContactLeadForm({ sourcePage }: { sourcePage?: string }) {
   const { enabled: recaptchaEnabled, ready: recaptchaReady, executeRecaptcha } = useRecaptcha();
@@ -33,6 +44,8 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<ContactLeadClientFields>({
     resolver: zodResolver(contactLeadClientSchema),
@@ -40,6 +53,8 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
+
+  const interestedIn = watch("interestedIn");
 
   const onSubmit = handleSubmit(async (values) => {
     setSubmitting(true);
@@ -83,6 +98,10 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
     setSuccess("Thanks, your message has been submitted. Our team will reach out shortly.");
     setSubmitting(false);
   });
+
+  const selectInterest = (option: InterestedInOption) => {
+    setValue("interestedIn", option, { shouldValidate: true, shouldDirty: true });
+  };
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-4 md:grid-cols-2">
@@ -130,6 +149,31 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
         />
         {errors.company ? <p className={fieldErrorCls}>{errors.company.message}</p> : null}
       </label>
+
+      <fieldset className="grid gap-1.5 md:col-span-2">
+        <legend className="text-sm font-semibold text-on-surface">I'm interested in</legend>
+        <input type="hidden" {...register("interestedIn")} />
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2" role="radiogroup" aria-label="I'm interested in">
+          {INTERESTED_IN_OPTIONS.map((option) => {
+            const selected = interestedIn === option;
+            return (
+              <button
+                key={option}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => selectInterest(option)}
+                className={
+                  selected ? tileSelectedCls : errors.interestedIn ? tileErrorCls : tileIdleCls
+                }
+              >
+                {option}
+              </button>
+            );
+          })}
+        </div>
+        {errors.interestedIn ? <p className={fieldErrorCls}>{errors.interestedIn.message}</p> : null}
+      </fieldset>
 
       <label className="grid gap-1.5 md:col-span-2">
         <span className="text-sm font-semibold text-on-surface">How can we help?</span>

@@ -113,17 +113,18 @@ model Page {
 }
 
 model ContactLead {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  fullName   String
-  email      String
-  phone      String?
-  company    String?
-  message    String
-  sourcePage String?
-  ipAddress  String?
-  userAgent  String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullName     String
+  email        String
+  phone        String?
+  company      String?
+  interestedIn String
+  message      String
+  sourcePage   String?
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([createdAt])
   @@index([email])

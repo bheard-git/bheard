@@ -53,6 +53,7 @@ export async function POST(req: NextRequest) {
           email: created.email,
           phone: created.phone,
           company: created.company,
+          interestedIn: created.interestedIn,
           message: created.message,
           sourcePage: created.sourcePage,
           submittedAtIso: created.createdAt.toISOString(),

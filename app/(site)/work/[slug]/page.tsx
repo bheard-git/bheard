@@ -6,7 +6,7 @@ import { workDetailBreadcrumbs } from "@/lib/seo/breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { CASE_STUDY_SEO } from "@/lib/seo/pages";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
-import { loadCaseStudyBySlug, loadPublishedCaseStudies } from "@/lib/success-stories/loadCaseStudies";
+import { loadCaseStudyBySlug, loadCaseStudyBySlugFromLocal, loadPublishedCaseStudies } from "@/lib/success-stories/loadCaseStudies";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +14,7 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const study = await loadCaseStudyBySlug(slug);
+  const study = await loadCaseStudyBySlugFromLocal(slug);
 
   if (!study) {
     return { title: "Case Study | BHeard" };
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function WorkDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const study = await loadCaseStudyBySlug(slug);
+  const study = await loadCaseStudyBySlugFromLocal(slug);
 
   if (!study) {
     notFound();
@@ -62,6 +62,7 @@ export default async function WorkDetailPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={schema} />
+      {/* <pre>{JSON.stringify(study, null, 2)}</pre> */}
       <WorkDetailView study={study} relatedStudies={relatedStudies} />
     </>
   );

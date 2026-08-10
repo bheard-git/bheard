@@ -158,7 +158,7 @@ export default function TechShowcaseReplicaSection({
             <br />
             Engineered for impact<span className="text-primary">.</span>
           </h2>
-          <p data-reveal="intro" className="mt-5 max-w-2xl font-body text-[clamp(1rem,1.6vw,1.38rem)] leading-relaxed text-[#5b667f]">
+          <p data-reveal="intro" className="mt-5 max-w-2xl font-body text-[clamp(1rem,1.6vw,1.38rem)] leading-relaxed text-[#5b667f] mb-5">
             We leverage best-in-class technologies and frameworks to build scalable, secure, and high-performance
             digital products.
           </p>

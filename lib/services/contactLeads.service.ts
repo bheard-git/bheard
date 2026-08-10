@@ -25,6 +25,7 @@ export async function createContactLead(input: CreateContactLeadInput) {
       email: input.email,
       phone: input.phone || null,
       company: input.company || null,
+      interestedIn: input.interestedIn,
       message: input.message,
       sourcePage: input.sourcePage || null,
       ipAddress: input.ipAddress || null,

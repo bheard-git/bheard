@@ -5,6 +5,7 @@ export type LeadMailPayload = {
   email: string;
   phone?: string | null;
   company?: string | null;
+  interestedIn?: string | null;
   message: string;
   sourcePage?: string | null;
   submittedAtIso: string;
@@ -220,6 +221,7 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
   const email = escapeHtml(payload.email);
   const phone = escapeHtml(payload.phone || "Not provided");
   const company = escapeHtml(payload.company || "Not provided");
+  const interestedIn = escapeHtml(payload.interestedIn || "Not provided");
   const source = escapeHtml(formatLeadSourceLabel(payload.sourcePage));
   const message = escapeHtml(payload.message).replaceAll("\n", "<br/>");
   const submitted = formatSubmittedAt(payload.submittedAtIso);
@@ -259,6 +261,7 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
                   <tr><td style="font-size:13px;color:#6b7280;">Email</td><td style="font-size:14px;color:#111827;font-weight:600;">${email}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Phone</td><td style="font-size:14px;color:#111827;">${phone}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Company</td><td style="font-size:14px;color:#111827;">${company}</td></tr>
+                  <tr><td style="font-size:13px;color:#6b7280;">Interested in</td><td style="font-size:14px;color:#111827;font-weight:600;">${interestedIn}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Submitted from</td><td style="font-size:14px;color:#111827;">${source}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Submitted at</td><td style="font-size:14px;color:#111827;">${submitted}</td></tr>
                 </table>

@@ -43,6 +43,7 @@ export default function AdminCrmLeadsPage() {
                 <th className={tableStyles.headCell}>Email</th>
                 <th className={tableStyles.headCell}>Phone</th>
                 <th className={tableStyles.headCell}>Company</th>
+                <th className={tableStyles.headCell}>Interested in</th>
                 <th className={tableStyles.headCell}>Source</th>
                 <th className={tableStyles.headCell}>Message</th>
                 <th className={tableStyles.headCell}>Actions</th>
@@ -58,6 +59,7 @@ export default function AdminCrmLeadsPage() {
                     <td className={tableStyles.cell}>{lead.email}</td>
                     <td className={tableStyles.cell}>{lead.phone || "—"}</td>
                     <td className={tableStyles.cell}>{lead.company || "—"}</td>
+                    <td className={tableStyles.cell}>{lead.interestedIn || "—"}</td>
                     <td className={tableStyles.cell}>
                       {lead.sourcePage ? (
                         <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
@@ -79,7 +81,7 @@ export default function AdminCrmLeadsPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={9} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={10} className="px-4 py-8 text-center text-muted-foreground">
                     No leads captured yet.
                   </td>
                 </tr>

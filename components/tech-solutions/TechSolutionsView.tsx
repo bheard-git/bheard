@@ -8,7 +8,10 @@ import TechShowcaseReplicaSection from "@/components/tech-solutions/TechShowcase
 import RelatedCaseStudiesSection from "@/components/work/RelatedCaseStudiesSection";
 import { TECH_SOLUTIONS_CASE_STUDY_CARDS } from "@/lib/solutions/solutionsCaseStudies";
 import { TECH_SERVICE_IMAGES } from "@/lib/solutions/visualAssets";
-import { sectionBandY } from "../system";
+import { sectionBandY, sectionPageX } from "../system";
+import ClientLogos from "../ClientLogos";
+import { solutionsHomeBand, solutionsStackBottom } from "@/lib/solutions/solutionsSectionTheme";
+import TechResultsBento from "./TeckStack/TechResultsBento";
 
 const TECH_SERVICE_STEPS: ProcessRailStep[] = [
   {
@@ -52,11 +55,22 @@ const TECH_SERVICE_STEPS: ProcessRailStep[] = [
 type TechSolutionsViewProps = {
   faqItems: FaqAccordionItem[];
 };
+const band = solutionsHomeBand;
 
 export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) {
   return (
     <>
       <TechSolutionsHero />
+
+      <div className="bg-surface-container-lowest">
+        <ClientLogos variant="bare" className={solutionsStackBottom} />
+      </div>
+
+      {/* <section className={`bg-surface-container-lowest ${sectionPageX}`}>
+        <div className={band}>
+          <TechResultsBento />
+        </div>
+      </section> */}
 
       <TechShowcaseReplicaSection sectionClassName={sectionBandY} />
 

@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+export const INTERESTED_IN_OPTIONS = [
+  "Brand Solutions",
+  "Tech Solutions",
+  "AI Agents",
+  "Not sure yet",
+] as const;
+
+export type InterestedInOption = (typeof INTERESTED_IN_OPTIONS)[number];
+
 export const contactLeadSchema = z.object({
   fullName: z
     .string()
@@ -14,6 +23,13 @@ export const contactLeadSchema = z.object({
     .max(200, "Email is too long"),
   phone: z.string().trim().max(40, "Phone number is too long").optional().or(z.literal("")),
   company: z.string().trim().max(160, "Company name is too long").optional().or(z.literal("")),
+  interestedIn: z
+    .string()
+    .trim()
+    .min(1, "Please select what you're interested in.")
+    .refine((value) => (INTERESTED_IN_OPTIONS as readonly string[]).includes(value), {
+      message: "Please select what you're interested in.",
+    }),
   message: z
     .string()
     .trim()
@@ -29,6 +45,7 @@ export const contactLeadClientSchema = contactLeadSchema.pick({
   email: true,
   phone: true,
   company: true,
+  interestedIn: true,
   message: true,
 });
 
