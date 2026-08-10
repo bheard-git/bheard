@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { splitHeroEyebrow } from "@/components/system/splitHeroTheme";
 import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -17,9 +18,10 @@ export type ListingBandHeroProps = {
   title: ReactNode;
   copy: string;
   className?: string;
+  copyClass?: string;
 };
 
-export default function ListingBandHero({ watermark, eyebrow, title, copy, className }: ListingBandHeroProps) {
+export default function ListingBandHero({ watermark, eyebrow, title, copy, className, copyClass }: ListingBandHeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const watermarkRef = useRef<HTMLSpanElement | null>(null);
   const eyebrowRef = useRef<HTMLParagraphElement | null>(null);
@@ -80,7 +82,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy, class
         <span
           ref={watermarkRef}
           aria-hidden
-          className="pointer-events-none absolute left-0 top-0 font-headline text-[clamp(4rem,14vw,10rem)] font-extrabold uppercase leading-none text-on-background/[0.04]"
+          className="pointer-events-none absolute left-0 top-0 font-headline text-[clamp(3rem,12vw,8rem)] xl:text-[clamp(4rem,14vw,10rem)] font-extrabold uppercase leading-none text-on-background/[0.04]"
         >
           {watermark}
         </span>
@@ -89,7 +91,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy, class
         </p>
         <h1
           ref={titleRef}
-          className="relative z-10 mt-4 max-w-4xl font-headline text-[clamp(2.3rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-on-background opacity-0 motion-reduce:opacity-100"
+          className="relative z-10 mt-4 max-w-4xl font-headline text-[clamp(2rem,6vw,4rem)] xl:text-[clamp(2.3rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-on-background opacity-0 motion-reduce:opacity-100"
         >
           {title}
         </h1>
@@ -100,7 +102,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy, class
         />
         <p
           ref={copyRef}
-          className="relative z-10 mt-6 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant opacity-0 motion-reduce:opacity-100 md:text-lg"
+          className={cn("relative z-10 mt-6 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant opacity-0 motion-reduce:opacity-100 md:text-lg", copyClass)}
         >
           {copy}
         </p>

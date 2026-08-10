@@ -21,12 +21,12 @@ const defaultValues: ContactLeadClientFields = {
   message: "",
 };
 
-const fieldErrorCls = "mt-1 text-xs text-red-600";
+const fieldErrorCls = "mt-[2px] -mb-2 text-xs text-red-600";
 const inputCls =
   "h-11 w-full rounded-md border border-outline-variant bg-white px-3 text-sm text-on-surface outline-none transition focus:border-primary";
 const inputErrorCls = inputCls + " border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500/30";
 const tileBaseCls =
-  "h-11 w-full rounded-md border px-3 text-left text-sm transition outline-none focus-visible:border-primary";
+  "h-11 shrink-0 xl:whitespace-nowrap xl:w-fit rounded-md border px-3 text-left text-sm transition outline-none focus-visible:border-primary";
 const tileIdleCls =
   tileBaseCls + " border-outline-variant bg-white text-on-surface hover:border-primary/40";
 const tileSelectedCls =
@@ -151,9 +151,9 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
       </label>
 
       <fieldset className="grid gap-1.5 md:col-span-2">
-        <legend className="text-sm font-semibold text-on-surface">I'm interested in</legend>
+        <legend className="text-sm font-semibold text-on-surface mb-1">I'm interested in</legend>
         <input type="hidden" {...register("interestedIn")} />
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2" role="radiogroup" aria-label="I'm interested in">
+        <div className="grid gap-3 grid-cols-2 xl:flex" role="radiogroup" aria-label="I'm interested in">
           {INTERESTED_IN_OPTIONS.map((option) => {
             const selected = interestedIn === option;
             return (
@@ -164,7 +164,7 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
                 aria-checked={selected}
                 onClick={() => selectInterest(option)}
                 className={
-                  selected ? tileSelectedCls : errors.interestedIn ? tileErrorCls : tileIdleCls
+                  `${selected ? tileSelectedCls : errors.interestedIn ? tileErrorCls : tileIdleCls}`
                 }
               >
                 {option}

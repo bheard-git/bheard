@@ -4,7 +4,7 @@ export const INTERESTED_IN_OPTIONS = [
   "Brand Solutions",
   "Tech Solutions",
   "AI Agents",
-  "Not sure yet",
+  "Not sure",
 ] as const;
 
 export type InterestedInOption = (typeof INTERESTED_IN_OPTIONS)[number];
@@ -13,7 +13,7 @@ export const contactLeadSchema = z.object({
   fullName: z
     .string()
     .trim()
-    .min(2, "Enter your full name (at least 2 characters)")
+    .min(2, "Enter your full name")
     .max(120, "Name is too long"),
   email: z
     .string()
