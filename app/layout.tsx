@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Space_Grotesk, Manrope } from "next/font/google";
 import MotionRoot from "@/components/motion/MotionRoot";
 import JsonLd from "@/components/seo/JsonLd";
@@ -72,7 +73,9 @@ export default function RootLayout({
             <LeadFormProvider>{children}</LeadFormProvider>
           </RecaptchaProvider>
         </MotionRoot>
-        <TopRouteLoader />
+        <Suspense fallback={null}>
+          <TopRouteLoader />
+        </Suspense>
       </body>
     </html>
   );
