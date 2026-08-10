@@ -11,7 +11,6 @@ import { TECH_SERVICE_IMAGES } from "@/lib/solutions/visualAssets";
 import { sectionBandY, sectionPageX } from "../system";
 import ClientLogos from "../ClientLogos";
 import { solutionsHomeBand, solutionsStackBottom } from "@/lib/solutions/solutionsSectionTheme";
-import TechResultsBento from "./TeckStack/TechResultsBento";
 
 const TECH_SERVICE_STEPS: ProcessRailStep[] = [
   {

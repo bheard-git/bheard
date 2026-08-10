@@ -254,7 +254,7 @@ function TechnologyBentoCard({
       </div>
 
       {/* Technology tiles */}
-      <div className={`grid ${getItemGridClass(group.title)} gap-1.5 p-1.5`}>
+      <div className={`grid ${getItemGridClass(group.title)} gap-1.5 p-1.5 items-center align-middle h-[calc(100%_-_58px)]`}>
         {group.items.map((item, index) => (
           <TechnologyTile
             key={item.name}
