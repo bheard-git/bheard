@@ -108,13 +108,9 @@ export default function HorizontalProcessRail({
     { scope: pinRef, dependencies: [steps.length], revertOnUpdate: true }
   );
 
-  const sectionBorderClass = borderTop
-    ? "border-y border-inverse-surface/10"
-    : "border-b border-inverse-surface/10";
-
   return (
     <section
-      className={`relative z-20 ${sectionBorderClass} bg-surface-container-low ${sectionClassName}`}
+      className={`relative z-20 bg-surface-container-low ${sectionClassName}`}
     >
       <div className={sectionPageX}>
         <div className={solutionsHomeBand}>

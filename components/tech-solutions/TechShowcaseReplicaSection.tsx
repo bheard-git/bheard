@@ -1,15 +1,26 @@
 "use client";
 
 import "@/lib/motion/config";
+
+import Image from "next/image";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
 import { prefersReducedMotion } from "@/lib/motion/animations";
-import { sectionBandY, sectionContentBand, sectionPageX } from "@/components/system/sectionTheme";
-import { TECHNOLOGY_GROUPS, TECH_SHOWCASE_FEATURES, type TechFeature } from "@/lib/solutions/techShowcaseReplicaData";
-import TechnologyCard from "./TeckStack/TechnologyCard";
-import TeckStackGroup from "./TeckStack/TeckStackGroup";
+import {
+  sectionBandY,
+  sectionContentBand,
+  sectionPageX,
+} from "@/components/system/sectionTheme";
+
+import {
+  TECHNOLOGY_GROUPS,
+  TECH_SHOWCASE_FEATURES,
+  type TechFeature,
+} from "@/lib/solutions/techShowcaseReplicaData";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -17,233 +28,450 @@ function FeatureIcon({ icon }: { icon: TechFeature["icon"] }) {
   return icon;
 }
 
+type TechnologyItem = {
+  name: string;
+  icon: string;
+};
+
+type TechnologyGroup = {
+  title: string;
+  color: string;
+  items: TechnologyItem[];
+};
+
+/**
+ * Desktop layout follows the Brand Solutions bento structure:
+ *
+ * Row 1:
+ * Intro | Frontend | Mobile | Backend
+ *
+ * Row 2:
+ * Database | E-Commerce | Integrations & Services | Cloud & DevOps
+ *
+ * Mobile:
+ * Everything becomes a single responsive column.
+ */
+const BENTO_GROUP_CLASSES: Record<string, string> = {
+  // Tablet: 1 of 4 equal columns
+  // Desktop: restore the Brand Solutions style proportions
+  Frontend: "md:col-span-1 lg:col-span-4",
+  Mobile: "md:col-span-1 lg:col-span-2",
+  Backend: "md:col-span-1 lg:col-span-3",
+
+  Database: "md:col-span-1 lg:col-span-3",
+  "E-Commerce": "md:col-span-1 lg:col-span-2",
+  "Integrations & Services": "md:col-span-1 lg:col-span-3",
+  "Cloud & DevOps": "md:col-span-1 lg:col-span-4",
+};
+
+const BENTO_ITEM_GRID_CLASSES: Record<string, string> = {
+  Frontend: "grid-cols-2 sm:grid-cols-4",
+  Mobile: "grid-cols-2",
+  Backend: "grid-cols-2 sm:grid-cols-3",
+  Database: "grid-cols-2",
+  "E-Commerce": "grid-cols-1",
+  "Integrations & Services": "grid-cols-3",
+  "Cloud & DevOps": "grid-cols-2 sm:grid-cols-4",
+};
+
+function getGroupClass(title: string) {
+  return BENTO_GROUP_CLASSES[title] ?? "md:col-span-4";
+}
+
+function getItemGridClass(title: string) {
+  return BENTO_ITEM_GRID_CLASSES[title] ?? "grid-cols-2";
+}
+
+function TechnologyTile({
+  item,
+  index,
+}: {
+  item: TechnologyItem;
+  index: number;
+}) {
+  return (
+    <div
+      data-reveal="tile"
+      className="
+        group/tile
+        relative
+        flex
+        min-h-[92px]
+        flex-col
+        items-center
+        justify-center
+        overflow-hidden
+        rounded-[12px]
+        border
+        border-[#e7e3df]
+        bg-white
+        px-2
+        py-3
+        text-center
+        transition-all
+        duration-300
+        hover:-translate-y-0.5
+        hover:border-[#f38358]
+        hover:shadow-[0_14px_30px_-22px_rgba(4,8,25,0.7)]
+
+        md:min-h-[88px]
+        lg:min-h-[112px]
+        lg:px-3
+        lg:py-5
+        lg:rounded-[14px]
+      "
+      style={{
+        transitionDelay: `${index * 20}ms`,
+      }}
+    >
+      <span
+        aria-hidden
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_50%_0%,rgba(243,131,88,0.12),transparent_65%)]
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover/tile:opacity-100
+        "
+      />
+
+      <div
+        className="
+          relative
+          z-10
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
+
+          lg:h-11
+          lg:w-11
+        "
+      >
+        <Image
+          src={item.icon}
+          alt={`${item.name} technology`}
+          width={44}
+          height={44}
+          className="
+            h-8
+            w-8
+            object-contain
+            transition-transform
+            duration-300
+            group-hover/tile:scale-110
+
+            lg:h-10
+            lg:w-10
+          "
+        />
+      </div>
+
+      <p
+        className="
+          relative
+          z-10
+          mt-2
+          font-body
+          text-[10px]
+          leading-tight
+          text-[#5c5c5c]
+          transition-colors
+          duration-300
+          group-hover/tile:text-[#0a1330]
+
+          lg:mt-3
+          lg:text-[11px]
+        "
+      >
+        {item.name}
+      </p>
+    </div>
+  );
+}
+
+function TechnologyBentoCard({
+  group,
+}: {
+  group: TechnologyGroup;
+}) {
+  return (
+    <article
+      data-reveal="group"
+      className={`
+        ${getGroupClass(group.title)}
+        min-w-0
+        overflow-hidden bg-[#f7f7f7] 
+        border
+        border-[#dedede]
+        bg-white
+        transition-all
+        duration-300
+      `}
+    >
+      {/* Category header */}
+      <div
+        className="
+          flex
+          min-h-[58px]
+          items-center bg-white
+          justify-between
+          gap-3
+          border-b
+          border-[#e8e5e2]
+          px-4
+          py-3
+          sm:px-5
+        "
+      >
+        <p
+          className="
+            font-label
+            text-[10px]
+            font-bold
+            uppercase
+            tracking-[0.2em]
+          "
+          style={{ color: group.color }}
+        >
+          {group.title}
+        </p>
+
+        <span
+          className="
+            h-1.5
+            w-1.5
+            shrink-0
+            rounded-full
+          "
+          style={{ backgroundColor: group.color }}
+          aria-hidden
+        />
+      </div>
+
+      {/* Technology tiles */}
+      <div className={`grid ${getItemGridClass(group.title)} gap-1.5 p-1.5`}>
+        {group.items.map((item, index) => (
+          <TechnologyTile
+            key={item.name}
+            item={{
+              name: item.name,
+              icon: item.icon as string,
+            }}
+            index={index}
+          />
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function IntroCopy() {
+  return (
+    <div
+      data-reveal="intro"
+      className="
+        min-w-0
+        md:col-span-4
+        lg:col-span-3
+        lg:row-span-1
+        flex
+        flex-col
+        justify-center
+        pr-0
+        md:pr-3
+        lg:pr-6
+      "
+    >
+      <div className="flex min-w-0 flex-col justify-between">
+      <div>
+        <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Technology stack</p>
+        <h2 className="mt-3 font-headline text-[clamp(1.25rem,2.5vw,1.85rem)] font-black uppercase leading-tight tracking-tight text-on-background">
+        Built on modern tech. Engineered for impact
+        </h2>
+        <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant md:text-base">
+        We leverage best-in-class technologies and frameworks to build scalable, secure, and high-performance
+        digital products.
+        </p>
+      </div>
+      <Link
+        href="/work"
+        className="mt-6 inline-flex w-fit items-center gap-2 rounded-sm border border-on-background px-4 py-2.5 font-headline text-xs font-bold uppercase tracking-widest text-on-background transition-colors hover:bg-on-background hover:text-surface md:mt-8"
+      >
+        View Case Studies <span aria-hidden>→</span>
+      </Link>
+    </div>
+    </div>
+  );
+}
+
 export default function TechShowcaseReplicaSection({
-  sectionClassName = sectionBandY,
+  sectionClassName = "",
 }: {
   sectionClassName?: string;
-}) {  
+}) {
   const rootRef = useRef<HTMLElement | null>(null);
-  const boardRef = useRef<HTMLDivElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
 
-  useGSAP(
-    () => {
-      const root = rootRef.current;
-      const board = boardRef.current;
-      if (!root || !board) return;
-
-      const intro = root.querySelectorAll<HTMLElement>("[data-reveal='intro']");
-      const groups = root.querySelectorAll<HTMLElement>("[data-reveal='group']");
-      const tiles = root.querySelectorAll<HTMLElement>("[data-reveal='tile']");
-      const features = root.querySelectorAll<HTMLElement>("[data-reveal='feature']");
-      const floating = root.querySelectorAll<HTMLElement>("[data-float='chip']");
-      const blobs = root.querySelectorAll<HTMLElement>("[data-float='blob']");
-
-      if (prefersReducedMotion()) {
-        gsap.set([intro, groups, tiles, features], { opacity: 1, y: 0, scale: 1 });
-        return;
-      }
-
-      gsap.fromTo(
-        intro,
-        { opacity: 0, y: 26 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.62,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: root, start: "top 82%", once: true },
-        }
-      );
-
-      gsap.fromTo(
-        groups,
-        { opacity: 0, y: 24, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: board,
-            start: "top 86%",
-            end: "top 58%",
-            scrub: 0.85,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-
-      gsap.fromTo(
-        tiles,
-        { opacity: 0, y: 14, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          stagger: 0.02,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: board,
-            start: "top 82%",
-            end: "top 54%",
-            scrub: 0.75,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-
-      gsap.fromTo(
-        features,
-        { opacity: 0, y: 10 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.06,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: board,
-            start: "bottom 100%",
-            end: "bottom 90%",
-            scrub: 0.8,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-
-      floating.forEach((el, i) => {
-        gsap.to(el, {
-          y: i % 2 === 0 ? -8 : 6,
-          duration: 3.2 + i * 0.4,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-
-      blobs.forEach((el, i) => {
-        gsap.to(el, {
-          x: i % 2 === 0 ? 10 : -12,
-          y: i % 2 === 0 ? -8 : 10,
-          duration: 7 + i * 1.2,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-    },
-    { scope: rootRef, revertOnUpdate: true }
-  );
+  const firstRowGroups = TECHNOLOGY_GROUPS.slice(0, 3);
+  const secondRowGroups = TECHNOLOGY_GROUPS.slice(3, 7);
 
   return (
-    <section ref={rootRef} className={`relative overflow-hidden bg-[#f6f7fb] ${sectionPageX} ${sectionClassName}`}>
+    <section
+      ref={rootRef}
+      className={`
+        relative
+        overflow-hidden
+        ${sectionPageX}
+        ${sectionClassName}
+      `}
+    >
       <div className={sectionContentBand}>
-        <div className="max-w-4xl relative z-1">
-            <div
-              data-float="blob"
-              className="pointer-events-none absolute -right-[16rem] top-[6rem] hidden h-[320px] w-[320px] opacity-90 rotate-180 md:block"
-              aria-hidden
-            >
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="" style={{width: "583.44px", height: "583.44px"}}><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" stroke="none" fill="#F3E2D2"></path><path d="M81,55.5Q66,61,65,76.5Q64,92,52.5,85Q41,78,31,74.5Q21,71,23,60.5Q25,50,24,40Q23,30,31,23.5Q39,17,46,28.5Q53,40,65.5,35Q78,30,87,40Q96,50,81,55.5Z" transform="translate(0.1 -2.98)" stroke="#F3E2D2" strokeWidth="0.25" fill="none"></path></svg>   
-            </div>
-          <p data-reveal="intro" className="font-label text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-            Technology stack
-          </p>
-          <h2
-            data-reveal="intro"
-            className="mt-3 font-headline text-[clamp(2.2rem,5.5vw,4.6rem)] font-black relative z-1 uppercase leading-[0.9] tracking-tight text-[#0a1330]"
+
+        {/* =========================================================
+            BRAND-STYLE BENTO GRID
+        ========================================================== */}
+        <div
+          ref={gridRef}
+          className="
+            relative
+            z-10
+            mx-auto
+          "
+        >
+          {/* FIRST ROW
+              Intro | Frontend | Mobile | Backend
+          */}
+          <div
+            className="
+              grid
+              min-w-0
+              grid-cols-1
+              gap-2
+              md:grid-cols-3
+              lg:grid-cols-12
+              md:gap-2
+            "
           >
-            Built on modern tech.
-            <br />
-            Engineered for impact<span className="text-primary">.</span>
-          </h2>
-          <p data-reveal="intro" className="mt-5 max-w-2xl font-body text-[clamp(1rem,1.6vw,1.38rem)] leading-relaxed text-[#5b667f] mb-5">
-            We leverage best-in-class technologies and frameworks to build scalable, secure, and high-performance
-            digital products.
-          </p>
-        </div>
+            <IntroCopy />
 
-          <div className="relative">
-            
-            <div
-              data-float="blob"
-              className="pointer-events-none absolute opacity-50 -left-24 bottom-8 hidden h-[220px] w-[220px] border border-[#f38458cf] rounded-[100%] bg-[radial-gradient(circle_at_40%_40%,#F3E2D2,#F3E2D2_50%,transparent_72%)] md:block"
-              aria-hidden
-            />
-            <div
-              data-float="blob"
-              className="pointer-events-none absolute -left-20 top-36 hidden h-28 w-40 opacity-100 md:block"
-              style={{
-                backgroundImage: "radial-gradient(#F3E2D2 1.1px, transparent 2.1px)",
-                backgroundSize: "8px 8px",
-              }}
-              aria-hidden
-            />
-
-            <div
-              data-float="chip"
-              className="pointer-events-none absolute text-[#F38358] -left-5 top-[44%] z-20 hidden h-11 w-11 items-center justify-center rounded-xl bg-white text-lg font-medium shadow-[0_16px_30px_-20px_rgba(0,0,0,0.35)] md:flex"
-              aria-hidden
-            >
-              {"{ }"}
-            </div>
-            <div
-              data-float="chip"
-              className="pointer-events-none absolute text-[#F38358] -right-5 -top-[11%] z-20 hidden h-11 w-11 items-center justify-center rounded-xl bg-white font-mono text-lg font-medium shadow-[0_16px_30px_-20px_rgba(0,0,0,0.35)] md:flex"
-              aria-hidden
-            >
-              {"</>"}
-            </div>
-            <div
-              data-float="chip"
-              className="pointer-events-none absolute  text-[#F38358] -right-5 bottom-[16%] z-20 hidden h-11 w-11 items-center justify-center rounded-xl bg-white font-mono text-lg font-medium shadow-[0_16px_30px_-20px_rgba(0,0,0,0.35)] md:flex"
-              aria-hidden
-            >
-              {"</>"}
-            </div>
-
-            <div
-              ref={boardRef}
-              className="relative max-w-[1200px] mx-auto overflow-hidden rounded-[32px] border border-[#ffe0cb] bg-gradient-to-b from-[#fbf8f6] via-[#f7f3f0] to-[#fdf0e7] p-4 shadow-[0_28px_70px_-34px_rgba(4,8,25,0.9)] md:p-5"
-            >
-              <div className="pointer-events-none absolute inset-0 opacity-[0.24]" aria-hidden>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(60,102,255,0.22),transparent_42%),radial-gradient(circle_at_82%_84%,rgba(75,24,143,0.2),transparent_45%)]" />
-              </div>
-
-              <div className="relative z-10 flex flex-col gap-4">
-                <div className="flex flex-col md:flex-row gap-4">
-                  {TECHNOLOGY_GROUPS.slice(0, 3).map((group, index) => (
-                    <TeckStackGroup key={group.title} title={group.title} span={group.span} groupSpan={group.groupSpan} color={group.color} items={group.items.map((item) => ({ name: item.name, icon: item.icon as string }))} />
-                  ))}
-                </div>
-                <div className="flex flex-col md:flex-row gap-4 my-4">
-                  {TECHNOLOGY_GROUPS.slice(3, 7).map((group, index) => (
-                    <TeckStackGroup key={group.title} title={group.title} span={group.span} groupSpan={group.groupSpan} color={group.color} items={group.items.map((item) => ({ name: item.name, icon: item.icon as string }))} />
-                  ))}
-                </div>
-                
-              </div>
-
-              <div className="relative z-10 mt-4 grid grid-cols-1 gap-2.5 rounded-full border border-[#ffe0cb] bg-[#fbf8f6] p-3 md:grid-cols-4 md:gap-3 md:p-4 divide-x-[1px] divide-[#ffd6ba]">
-                {TECH_SHOWCASE_FEATURES.map((feature) => (
-                  <article
-                    key={feature.id}
-                    data-reveal="feature"
-                    className="group flex items-center gap-2.5 lg:gap-5 2xl:gap-7 px-3 py-2.5 justify-center"
-                  >
-                    <div className="flex size-12 shrink-0 items-center justify-center text-primary">
-                      <FeatureIcon icon={feature.icon} />
-                    </div>
-                    <div>
-                      <p className="font-label text-sm font-bold uppercase tracking-[0.14em] text-[#F38358]">{feature.title}</p>
-                      <p className="mt-0.5 font-body text-sm max-w-[130px] leading-snug text-[#5c5c5c]">{feature.description}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
+            {firstRowGroups.map((group) => (
+              <TechnologyBentoCard
+                key={group.title}
+                group={group as TechnologyGroup}
+              />
+            ))}
           </div>
+
+          {/* SECOND ROW
+              Database | E-Commerce | Integrations | Cloud
+          */}
+          <div
+            className="
+              mt-2
+              grid
+              min-w-0
+              grid-cols-1
+              gap-2
+              md:grid-cols-4
+              lg:grid-cols-12
+              md:gap-2
+            "
+          >
+            {secondRowGroups.map((group) => (
+              <TechnologyBentoCard
+                key={group.title}
+                group={group as TechnologyGroup}
+              />
+            ))}
+          </div>
+
+          {/* =====================================================
+              FEATURE STRIP
+          ====================================================== */}
+          <div
+            className="
+              mt-2
+              grid
+              grid-cols-1
+              divide-y
+              divide-[#ffd6ba]
+              overflow-hidden
+              border
+              border-[#dedede]
+              bg-white
+              sm:grid-cols-2
+              sm:divide-x
+              sm:divide-y-0
+              lg:grid-cols-4
+            "
+          >
+            {TECH_SHOWCASE_FEATURES.map((feature) => (
+              <article
+                key={feature.id}
+                data-reveal="feature"
+                className="
+                  group
+                  flex
+                  min-h-[115px]
+                  items-center
+                  gap-4
+                  px-5
+                  py-5
+                  transition-colors
+                  duration-300
+                  hover:bg-[#fffaf7]
+                  lg:px-6
+                "
+              >
+                <div
+                  className="
+                    flex
+                    size-11
+                    shrink-0
+                    items-center
+                    justify-center
+                    text-primary
+                  "
+                >
+                  <FeatureIcon icon={feature.icon} />
+                </div>
+
+                <div className="min-w-0">
+                  <p
+                    className="
+                      font-label
+                      text-xs
+                      font-bold
+                      uppercase
+                      tracking-[0.14em]
+                      text-[#F38358]
+                    "
+                  >
+                    {feature.title}
+                  </p>
+
+                  <p
+                    className="
+                      mt-1
+                      max-w-[170px]
+                      font-body
+                      text-xs
+                      leading-snug
+                      text-[#5c5c5c]
+                    "
+                  >
+                    {feature.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

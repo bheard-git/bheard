@@ -66,13 +66,10 @@ export default function TechSolutionsView({ faqItems }: TechSolutionsViewProps) 
         <ClientLogos variant="bare" className={solutionsStackBottom} />
       </div>
 
-      {/* <section className={`bg-surface-container-lowest ${sectionPageX}`}>
-        <div className={band}>
-          <TechResultsBento />
-        </div>
-      </section> */}
+      <section className={`bg-surface-container-lowest ${sectionPageX}`}>
+          <TechShowcaseReplicaSection />
+      </section>
 
-      <TechShowcaseReplicaSection sectionClassName={sectionBandY} />
 
       <HorizontalProcessRail
         eyebrow="Services"

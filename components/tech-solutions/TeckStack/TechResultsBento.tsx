@@ -150,12 +150,13 @@ function IntroCopy() {
   return (
     <div className="flex min-w-0 flex-col justify-between">
       <div>
-        <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Brand Results</p>
+        <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Technology stack</p>
         <h2 className="mt-3 font-headline text-[clamp(1.25rem,2.5vw,1.85rem)] font-black uppercase leading-tight tracking-tight text-on-background">
-          Strategy that connects. Work that performs.
+        Built on modern tech. Engineered for impact
         </h2>
         <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant md:text-base">
-          Performance metrics and creative assets from campaigns where memorability turned into measurable lift.
+        We leverage best-in-class technologies and frameworks to build scalable, secure, and high-performance
+        digital products.
         </p>
       </div>
       <Link
