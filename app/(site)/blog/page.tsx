@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
 import JsonLd from "@/components/seo/JsonLd";
 import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
 import { metadataFromPageSeo } from "@/lib/seo/metadata";
@@ -10,7 +8,6 @@ import BlogListingContent from "./BlogListingContent";
 
 export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.blog);
 
-export const dynamic = "force-dynamic";
 
 export default function BlogListingPage() {
   const schema = [
@@ -25,9 +22,7 @@ export default function BlogListingPage() {
   return (
     <>
       <JsonLd data={schema} />
-      <Suspense fallback={<DbLoadingSkeleton variant="blog" />}>
         <BlogListingContent />
-      </Suspense>
     </>
   );
 }

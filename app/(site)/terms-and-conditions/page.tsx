@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import DbLoadingSkeleton from "@/components/system/DbLoadingSkeleton";
 import LegalPageContent from "@/components/system/LegalPageContent";
 import JsonLd from "@/components/seo/JsonLd";
 import { BREADCRUMBS } from "@/lib/seo/breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo/schema";
-
-export const dynamic = "force-dynamic";
 
 const TERMS_TITLE = "Terms & Conditions | BHeard";
 const TERMS_DESCRIPTION = "Terms and conditions governing the use of BHeard's website and services.";
@@ -33,14 +29,12 @@ export default function TermsAndConditionsPage() {
   return (
     <>
       <JsonLd data={schema} />
-      <Suspense fallback={<DbLoadingSkeleton variant="legal" />}>
-        <LegalPageContent
-          slug="terms-and-conditions"
-          watermark="Terms"
-          defaultTitle="Terms & Conditions"
-          subtext="Rules governing the use of our website and services."
-        />
-      </Suspense>
+      <LegalPageContent
+        slug="terms-and-conditions"
+        watermark="Terms"
+        defaultTitle="Terms & Conditions"
+        subtext="Rules governing the use of our website and services."
+      />
     </>
   );
 }

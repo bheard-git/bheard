@@ -11,8 +11,6 @@ import { blogDetailBreadcrumbs } from "@/lib/seo/breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { buildBlogPostingSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
-export const dynamic = "force-dynamic";
-
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
