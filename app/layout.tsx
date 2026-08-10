@@ -10,7 +10,7 @@ import { OG_IMAGE_PATH } from "@/lib/seo/constants";
 import { PAGE_SEO } from "@/lib/seo/pages";
 import { buildOrganizationSchema } from "@/lib/seo/schema";
 import { getSiteUrl, isIndexableDeployment } from "@/lib/seo/site";
-import "./globals.css";
+import "@/app/globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

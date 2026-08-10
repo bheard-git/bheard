@@ -10,8 +10,6 @@ import WorkListingContent from "./WorkListingContent";
 
 export const metadata: Metadata = metadataFromPageSeo(PAGE_SEO.work);
 
-export const dynamic = "force-dynamic";
-
 export default function WorkIndexPage() {
   const schema = [
     buildWebPageSchema({
@@ -25,9 +23,7 @@ export default function WorkIndexPage() {
   return (
     <>
       <JsonLd data={schema} />
-      <Suspense fallback={<DbLoadingSkeleton variant="stories" />}>
-        <WorkListingContent />
-      </Suspense>
+      <WorkListingContent />
     </>
   );
 }

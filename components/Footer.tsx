@@ -162,8 +162,9 @@ export default function Footer() {
     <footer
       ref={footerRef}
       data-motion-exclude
-      className="mx-auto flex w-full max-w-screen-2xl flex-col justify-end border-t border-neutral-200 bg-white px-8 pt-20 md:pt-24"
+      className="border-t border-neutral-200 bg-white"
     >
+    <div className="mx-auto flex w-full flex-col justify-end px-8 pt-20 md:pt-24 max-w-screen-2xl">
       <div className="grid grid-cols-1 items-start gap-6 pb-6 md:grid-cols-12 md:gap-8 md:pb-8">
         <div data-footer-reveal className="opacity-100 md:col-span-4">
           <div className="mb-3">
@@ -278,6 +279,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+    </div>
     </footer>
   );
 }
