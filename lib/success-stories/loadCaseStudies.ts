@@ -441,7 +441,7 @@ export const caseStudiesData: CaseStudyContent[] = [
     "listStats": [
       {
         "value": "345K",
-        "label": "Instagram followers"
+        "label": "Reach"
       },
       {
         "value": "274+",
