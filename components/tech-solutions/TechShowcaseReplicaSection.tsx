@@ -208,7 +208,6 @@ function TechnologyBentoCard({
         overflow-hidden bg-[#f4f4f4] 
         border
         border-[#dedede]
-        bg-white
         transition-all
         duration-300
       `}
