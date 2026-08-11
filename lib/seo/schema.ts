@@ -186,6 +186,83 @@ export function buildArticleSchema(options: {
   };
 }
 
+export function buildWebSiteSchema(): JsonLd {
+  const siteUrl = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: ORGANIZATION.name,
+    url: siteUrl,
+    description: ORGANIZATION.description,
+    inLanguage: "en-IN",
+    publisher: { "@id": `${siteUrl}/#organization` },
+  };
+}
+
+export function buildCreativeWorkSchema(options: {
+  headline: string;
+  description: string;
+  pathname: string;
+  image?: string;
+  about?: string;
+  datePublished?: string;
+}): JsonLd {
+  const siteUrl = getSiteUrl();
+  const url = absoluteUrl(options.pathname);
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: options.headline,
+    headline: options.headline,
+    description: options.description,
+    url,
+    author: { "@id": `${siteUrl}/#organization` },
+    publisher: { "@id": `${siteUrl}/#organization` },
+    ...(options.image
+      ? { image: options.image.startsWith("http") ? options.image : absoluteUrl(options.image) }
+      : {}),
+    ...(options.about ? { about: options.about } : {}),
+    ...(options.datePublished ? { datePublished: options.datePublished } : {}),
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${siteUrl}/#website` },
+  };
+}
+
+export function buildCollectionPageSchema(options: {
+  title: string;
+  description: string;
+  pathname: string;
+  items?: { name: string; path: string }[];
+}): JsonLd {
+  const siteUrl = getSiteUrl();
+  const url = absoluteUrl(options.pathname);
+  const collection: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: options.title,
+    description: options.description,
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": `${siteUrl}/#organization` },
+  };
+
+  if (options.items && options.items.length > 0) {
+    collection.mainEntity = {
+      "@type": "ItemList",
+      itemListElement: options.items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: absoluteUrl(item.path),
+      })),
+    };
+  }
+
+  return collection;
+}
+
 export function buildAboutPageSchema(options: { title: string; description: string }): JsonLd {
   const siteUrl = getSiteUrl();
   return {

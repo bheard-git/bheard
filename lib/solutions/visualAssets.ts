@@ -10,7 +10,7 @@ export const BRAND_HERO_MEDIA = {
 
 export const TECH_HERO_MEDIA = {
   kind: "video" as const,
-  src: publicAsset("assets", "tech solutions", "hero", "tech solutions hero banner.mp4"),
+  src: "/assets/tech%20solutions/hero/tech%20solutions%20banner.mp4",
   alt: "Product team collaborating on digital platform design and development",
 } as const;
 

@@ -205,7 +205,7 @@ function TechnologyBentoCard({
       className={`
         ${getGroupClass(group.title)}
         min-w-0
-        overflow-hidden bg-[#f7f7f7] 
+        overflow-hidden bg-[#f4f4f4] 
         border
         border-[#dedede]
         bg-white

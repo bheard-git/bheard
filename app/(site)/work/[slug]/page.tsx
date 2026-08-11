@@ -5,12 +5,17 @@ import { WorkDetailView } from "@/components/work";
 import { workDetailBreadcrumbs } from "@/lib/seo/breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { CASE_STUDY_SEO } from "@/lib/seo/pages";
-import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
-import { loadCaseStudyBySlug, loadCaseStudyBySlugFromLocal, loadPublishedCaseStudies } from "@/lib/success-stories/loadCaseStudies";
-
-export const dynamic = "force-dynamic";
+import { buildBreadcrumbSchema, buildCreativeWorkSchema } from "@/lib/seo/schema";
+import {
+  caseStudiesData,
+  loadCaseStudyBySlugFromLocal,
+} from "@/lib/success-stories/loadCaseStudies";
 
 type PageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return caseStudiesData.map((study) => ({ slug: study.slug }));
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -41,15 +46,14 @@ export default async function WorkDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const allStudies = await loadPublishedCaseStudies();
-  const relatedStudies = allStudies.filter((s) => s.slug !== study.slug).slice(0, 3);
+  const relatedStudies = caseStudiesData.filter((s) => s.slug !== study.slug).slice(0, 3);
 
   const seo = CASE_STUDY_SEO[slug];
   const title = seo?.title ?? `${study.listTitle} Case Study — ${study.heroMeta} | BHeard`;
   const description = seo?.description ?? study.listDescription;
 
   const schema = [
-    buildArticleSchema({
+    buildCreativeWorkSchema({
       headline: title,
       description,
       pathname: `/work/${slug}`,
@@ -62,7 +66,6 @@ export default async function WorkDetailPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={schema} />
-      {/* <pre>{JSON.stringify(study, null, 2)}</pre> */}
       <WorkDetailView study={study} relatedStudies={relatedStudies} />
     </>
   );

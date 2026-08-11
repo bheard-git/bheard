@@ -24,9 +24,6 @@ export const viewport: Viewport = {
 
 const homeSchema = buildMarketingAgencySchema();
 
-/** Read `SPLINE_HERO_SCENE` / `NEXT_PUBLIC_SPLINE_HERO_SCENE` on each request (fresh URL in dev after restart). */
-export const dynamic = "force-dynamic";
-
 export default function Home() {
   return (
     <>

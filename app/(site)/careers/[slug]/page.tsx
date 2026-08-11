@@ -2,14 +2,30 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CareerDetailView, { type CareerDetailRole } from "@/components/careers/CareerDetailView";
 import JsonLd from "@/components/seo/JsonLd";
-import { getActiveCareerBySlug } from "@/lib/services/careers.service";
+import {
+  GENERAL_APPLICATION_SLUG,
+  getActiveCareerBySlug,
+  listActiveCareers,
+} from "@/lib/services/careers.service";
 import { careerDetailBreadcrumbs } from "@/lib/seo/breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { buildBreadcrumbSchema, buildJobPostingSchema } from "@/lib/seo/schema";
 
-export const dynamic = "force-dynamic";
-
 type Params = { slug: string };
+
+/** Active roles change occasionally — refresh hourly. */
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  try {
+    const roles = await listActiveCareers();
+    const slugs = new Set(roles.map((role) => role.slug));
+    slugs.add(GENERAL_APPLICATION_SLUG);
+    return Array.from(slugs).map((slug) => ({ slug }));
+  } catch {
+    return [{ slug: GENERAL_APPLICATION_SLUG }];
+  }
+}
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;

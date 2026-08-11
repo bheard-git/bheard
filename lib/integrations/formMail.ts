@@ -1,4 +1,5 @@
 ﻿import nodemailer from "nodemailer";
+import { getSiteUrl } from "@/lib/seo/site";
 
 export type LeadMailPayload = {
   fullName: string;
@@ -36,13 +37,15 @@ function parseRecipientList(value: string) {
     .filter(Boolean);
 }
 
+const DEFAULT_LEAD_NOTIFICATION_TO = "hello@bheard.in";
+
 function getLeadNotificationRecipients() {
   const keys = ["LEAD_NOTIFICATION_TO", "FORM_NOTIFICATION_TO", "NOTIFICATION_EMAIL"];
   for (const key of keys) {
     const value = getFirstEnv([key]);
     if (value) return parseRecipientList(value);
   }
-  return [];
+  return [DEFAULT_LEAD_NOTIFICATION_TO];
 }
 
 const LEAD_SOURCE_PATH_LABELS: Record<string, string> = {
@@ -185,7 +188,7 @@ export function getFormMailSetupError(): string | null {
   if (isConsumerMailbox(sender) && !resolveSmtpConfig()) {
     return (
       `${sender} is a personal mailbox. Microsoft Graph cannot send from Gmail/Yahoo/etc. ` +
-      "Add SMTP_PASS (Gmail App Password) to .env â€” SMTP_HOST is optional for Gmail."
+      "Add SMTP_PASS (Gmail App Password) to .env — SMTP_HOST is optional for Gmail."
     );
   }
 
@@ -206,7 +209,7 @@ function escapeHtml(input: string) {
 }
 
 function getBrandBaseUrl() {
-  return getFirstEnv(["NEXT_PUBLIC_SITE_URL"]) || "https://bheard.vercel.app";
+  return getFirstEnv(["NEXT_PUBLIC_SITE_URL"]) || getSiteUrl();
 }
 
 function formatSubmittedAt(iso: string) {
@@ -384,8 +387,9 @@ async function sendHtmlMail({
   html: string;
 }) {
   if (to.length === 0) {
-    console.warn("[formMail] No LEAD_NOTIFICATION_TO configured; skipping email.");
-    return;
+    throw new Error(
+      `No lead notification recipients configured. Set LEAD_NOTIFICATION_TO (default: ${DEFAULT_LEAD_NOTIFICATION_TO}).`
+    );
   }
 
   const setupError = getFormMailSetupError();
