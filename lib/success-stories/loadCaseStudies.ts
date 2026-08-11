@@ -440,7 +440,7 @@ export const caseStudiesData: CaseStudyContent[] = [
     "listImageAlt": "Zumba Wear activewear lifestyle campaign",
     "listStats": [
       {
-        "value": "23.3K",
+        "value": "345K",
         "label": "Instagram followers"
       },
       {
