@@ -43,30 +43,30 @@ export function ExamCardV2({
   );
 
   const content = (
-    <>
-      {/* Category / Logo Image */}
-      {category.icon && (
-        <div className="relative z-10 mx-auto h-[65px] w-full max-w-[290px]">
-          <Image
-            src={category.icon}
-            alt=""
-            fill
-            className="object-contain mx-auto object-left"
-            sizes="290px"
-          />
-        </div>
-      )}
+    <div className="flex flex-col h-full justify-between">
 
       {/* Content */}
-      <div className="relative z-10 mt-4">
-        <h3
+      <div className="relative z-10">
+        {/* Category / Logo Image */}
+        {category.icon && (
+          <h3
+          className="text-[26px] md:text-[28px] font-bold leading-none tracking-tight text-[#f06b23]"
+          // style={{ color: accent }}
+        >
+          {category.name}
+        </h3>
+        )}
+        <h4 className="mt-4 mb-2 text-[14px] text-white font-medius leading-[1.2] tracking-tight 2xl:text-[15px] 2xl:leading-[20px]">
+          {category.subHeading}
+        </h4>
+        <p
           className="text-[14px] font-medium leading-[1.2] tracking-tight 2xl:text-[15px] 2xl:leading-[20px]"
           style={{
             color: "#B6B6B6",
           }}
         >
           {category.description}
-        </h3>
+        </p>
       </div>
 
       {/* Bottom Illustration */}
@@ -81,7 +81,7 @@ export function ExamCardV2({
           />
         </div>
       )}
-    </>
+    </div>
   );
 
   if (onCounsellingSelect) {

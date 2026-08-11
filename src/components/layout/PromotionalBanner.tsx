@@ -32,20 +32,16 @@ export function PromotionalBanner({ className }: PromotionalBannerProps) {
       )}
     >
       <div className="container-rodha flex items-center justify-center gap-3 sm:gap-5 relative min-h-[24px] lg: justify-end">
-        <p className="text-caption sm:text-body-sm text-center text-text-secondary flex-1 min-w-0 leading-snug lg:absolute lg:-translate-x-1/2 left-1/2">
-          <span aria-hidden="true">🔥 </span>
-          <span className="hidden sm:inline">Early Bird Offer! Get up to </span>
-          <span className="sm:hidden">Early Bird: </span>
-          <span className="font-bold text-orange-500">25% OFF</span>
-          <span className="hidden sm:inline"> on all CAT 2026 Batches. </span>
-          <span className="sm:hidden"> on CAT Batches. </span>
-          <Link
-            href="/mba"
-            className="font-semibold text-orange-500 hover:text-orange-400 sm:no-underline underline underline-offset-2 transition-colors"
-          >
-            Enroll Now
-          </Link>
-        </p>
+      <p className="text-caption sm:text-body-sm text-center text-text-secondary flex-1 min-w-0 leading-snug lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+  <span aria-hidden="true">🔥 </span>
+  <span>110 days to CAT 2026. Rodha&apos;s Accelerator batch is now open </span>
+  <Link
+    href="/mba"
+    className="font-semibold text-orange-500 hover:text-orange-400 underline underline-offset-2 sm:no-underline transition-colors"
+  >
+    Enroll Now
+  </Link>
+</p>
 
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           {units.map((unit, i) => (

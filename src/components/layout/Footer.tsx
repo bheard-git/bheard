@@ -161,6 +161,7 @@ function FooterColumn({
         {links.map((item) => {
           return (
             <li
+                key={item.label}
                 className={cn(
                   "flex items-start gap-2.5 text-body-sm",
                   footerTheme.muted

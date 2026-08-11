@@ -13,6 +13,7 @@ export interface Category {
   menuLabel: string;
   fullName: string;
   slug: string;
+  subHeading?: string;
   description: string;
   color?: string;
   accentColor?: string;

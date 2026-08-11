@@ -16,7 +16,7 @@ export function HomeCategoriesSection() {
     <section data-home-zone="categories" className="home-section-spacing home-section-spacing-lg relative bg-[#FFF3E8]">
       <Container>
         <SectionHeaderV2
-          title={<p>Choose Your Exam, <br />Start Your Journey</p>}
+          title={<p>Choose Your Goal, <br />Start Your Journey</p>}
           // subtitle="Comprehensive preparation for every competitive exam"
           className="max-w-[472px] mx-auto lg:!mb-10"
           align="center"

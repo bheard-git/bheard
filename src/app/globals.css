@@ -1216,3 +1216,66 @@ background-size: cover;
     font-size: 13px;
   }
 }
+
+
+/* CTA Band - image first, then content */
+@keyframes cta-image-pan-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.08) translateX(28px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes cta-content-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cta-actions-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-image-pan-in {
+  animation: cta-image-pan-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cta-content-reveal {
+  opacity: 0;
+  animation: cta-content-reveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 450ms both;
+}
+
+.cta-actions-reveal {
+  opacity: 0;
+  animation: cta-actions-reveal 450ms cubic-bezier(0.22, 1, 0.36, 1) 750ms both;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .cta-image-pan-in,
+  .cta-content-reveal,
+  .cta-actions-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

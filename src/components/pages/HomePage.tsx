@@ -31,7 +31,7 @@ export function HomePage() {
       {/* <DynamicBackground/> */}
       <HomePageBodyTheme />
 
-      <HomePageGradientAnchors />
+      {/* <HomePageGradientAnchors /> */}
 
       <HomeHeroSection />
 
@@ -43,17 +43,16 @@ export function HomePage() {
 
       {/* <HomeAppPromotionSection /> */}
 
-      <RevealGroup>
 
         <CTABandV2
 
-          title="Your Dream. Our Guidance."
+          title="Still confused? Talk to our mentors or our team for free."
 
-          titleAccent="Unstoppable You."
+          // titleAccent="Unstoppable You."
 
           subtitle="Take the first step towards your success. We'll be with you, all the way."
 
-          backgroundImage="/assets/images/background/cta-background-shadow.png"
+          backgroundImage="/assets/images/background/cta background image.jpg"
           decorativeImage="/assets/images/about us/award.png"
           primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
 
@@ -62,8 +61,6 @@ export function HomePage() {
           className="reveal-child reveal-delay-1"
 
         />
-
-      </RevealGroup>
 
       <HomeFAQSection/>
 

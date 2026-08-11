@@ -16,10 +16,10 @@ export function HomeHeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 xl:gap-8 items-center min-h-[426px]">
           <div className={`lg:col-span-6 min-h-0 overflow-visible ${HERO_CONTENT_MAX} lg:max-w-none`}>
             <div className={HERO_CONTENT_MAX}>
-              <h1 className="text-[32px] sm:text-[38px] md:text-[40px] lg:text-[3.6rem] font-bold leading-[1.4] tracking-tight">
-                Expert Mentorship. Proven Strategies.{" "} <br />
+              <h1 className="text-[32px] sm:text-[38px] md:text-[40px] lg:text-[3rem] font-bold leading-[1.4] tracking-tight">
+              You're one bridge away from your Dream  <br />  {" "}
                 <span className="text-orange-500 glow-text-orange h-4">
-                  <Typewritter words={["Real Results", "99 percentiers.", "The Top 1%.", "IIM Converts."]} />
+                  <Typewritter words={["an IIM", "an NLU.", "a Government Job."]} />
                 </span>
               </h1>
 
@@ -28,8 +28,7 @@ export function HomeHeroSection() {
               </div> */}
 
               <p className="mt-3 lg:mt-5 mb-8 lg:mb-14 text-body-lg text-white leading-relaxed">
-                Join India&apos;s most trusted platform for CAT, IPMAT, CLAT &amp; more.
-                Let&apos;s achieve your dream together.
+              Join India’s most promising online coaching for MBA entrance, IPMAT, CLAT and SSC exam. 
               </p>
               {/* <HeroTrustMetrics /> */}
             </div>

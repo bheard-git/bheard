@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { CounsellingCtaAction } from "@/components/sections/CounsellingCtaAction";
+import { RevealGroup } from "../ui/RevealGroup";
 
 interface CTABandV2Props {
   title: string;
@@ -71,86 +72,102 @@ export function CTABandV2({
   return (
     <section id="site-footer-cta" data-home-zone="cta" className={cn("home-section-spacing pt-6 md:pt-8 bg-[#FFF3E8]", className)}>
       <div className="container-rodha">
-        <div
-          className={cn(
-            "relative overflow-hidden rounded-[8px] md:rounded-s-xl border border-orange-500/30","px-5 md:px-8")}
-        >
-          {isImageBg && backgroundImage && (
-            <div className="">
-              <Image
-                src={backgroundImage}
-                alt=""
-                fill
-                className="object-cover object-[right_center] pointer-events-none"
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                priority={false}
-              />
-            </div>
-          )}
+  <div
+    className={cn(
+      "relative isolate overflow-hidden",
+      "min-h-[360px] sm:min-h-[380px] md:min-h-[400px] lg:min-h-[430px]",
+      "rounded-[8px] md:rounded-xl",
+      "border border-orange-500/30",
+      "px-5 py-10 sm:px-7 sm:py-12 md:px-10 md:py-14 lg:px-12",
+      "flex items-center",
+      "after:absolute after:inset-0 after:z-10 after:pointer-events-none",
+      "after:bg-gradient-to-r after:from-black/75 after:via-black/55 after:to-black/25"
+    )}
+  >
+    {isImageBg && backgroundImage && (
+      <Image
+        src={backgroundImage}
+        alt=""
+        fill
+        className={cn(
+          "z-0 object-cover object-[center_bottom] pointer-events-none",
+          "cta-image-pan-in"
+        )}
+        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 1280px"
+        priority={false}
+      />
+    )}
 
-          <div className="flex flex-col-reverse md:flex-row items-center gap-5 lg:gap-24 pt-10 md:pt-0">
-          {decorativeImage && (
-            <div className="pointer-events-none relative flex shrink-0 h-60 md:h-[310px] w-[270px] md:w-[260px] xl:w-[339px]">
-              <Image
-                src={decorativeImage}
-                alt=""
-                fill
-                className="object-contain object- object-bottom"
-                sizes="30vw"
-              />
+    <RevealGroup>
+      <div className="relative z-20 flex w-full items-center">
+        <div className="w-full max-w-3xl">
+          <div
+            className={cn(
+              "flex flex-col gap-5 md:gap-6",
+              isImageBg && "cta-content-reveal"
+            )}
+          >
+            <div className="min-w-0">
+              <h2 className="text-h3 md:text-[30px] lg:text-4xl font-medium font-montserrat leading-tight text-white">
+                <span className="block">
+                  {title}
+                </span>
+
+                {titleAccent && (
+                  <span className="block">
+                    {titleAccent}
+                  </span>
+                )}
+              </h2>
+
+              {subtitle && (
+                <p
+                  className={cn(
+                    "mt-2.5 max-w-xl text-body",
+                    "text-white/80"
+                  )}
+                >
+                  {subtitle}
+                </p>
+              )}
             </div>
-          )}
+
             <div
               className={cn(
-                "relative z-10  flex-col gap-5 md:gap-6",""
+                "flex w-full shrink-0 flex-col gap-3",
+                "sm:w-auto sm:flex-row sm:items-center",
+                "mt-2 md:mt-1",
+                isImageBg && "cta-actions-reveal"
               )}
             >
+              <CounsellingCtaAction
+                action={primaryAction}
+                className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange w-full px-5 py-2.5 rounded-[6px] whitespace-nowrap text-center sm:w-auto"
+              />
 
-              <div className={cn("min-w-0", "")}>
-                <h2 className="text-h3 md:text-[30px] lg:text-4xl font-medium font-montserrat leading-tight">                    <>
-                      <span className="block">
-                        {title}
-                      </span>
-                      <span className="block">{titleAccent}</span>
-                    </>
-                </h2>
-                {subtitle && (
-                  <p
-                    className={cn(
-                      "mt-2.5 text-body max-w-xl","text-[#D1D5DB]"
-                    )}
-                  >
-                    {subtitle}
-                  </p>
-                )}
-              </div>
-
-              <div
-                className={cn(
-                  "flex gap-3  flex-col md:flex-row items-stretch sm:items-center shrink-0 w-full sm:w-auto mt-7.5",
-                )}
-              >
-                <CounsellingCtaAction
-                  action={primaryAction}
-                  className="btn-primary btn-primary-premium premium-border-glow glow-accent-orange px-5 py-2.5 rounded-[6px] whitespace-nowrap text-center w-full sm:w-auto"
-                />
-                {secondaryAction && (
-                  <>
-                    {!isDecorated && !tertiaryAction && !isImageBg && (
-                      <div className="hidden sm:block w-px h-8 bg-white/20 shrink-0" aria-hidden />
-                    )}
-                    <SecondaryCta
-                      action={secondaryAction}
-                      variant={"default"}
-                      outline={isImageBg ? secondaryOutline : "white"}
+              {secondaryAction && (
+                <>
+                  {!isDecorated && !tertiaryAction && !isImageBg && (
+                    <div
+                      className="hidden sm:block w-px h-8 bg-white/20 shrink-0"
+                      aria-hidden
                     />
-                  </>
-                )}
-              </div>
+                  )}
+
+                  <SecondaryCta
+                    action={secondaryAction}
+                    variant="default"
+                    outline={isImageBg ? secondaryOutline : "white"}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
+    </RevealGroup>
+  </div>
+</div>
     </section>
   );
 }
