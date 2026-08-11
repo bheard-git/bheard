@@ -18,6 +18,8 @@ import { CTABand } from "@/components/sections/CTABand";
 
 import { RevealGroup } from "@/components/ui/RevealGroup";
 import { DynamicBackground } from "../layout/DynamicBackground";
+import { CTABandV2 } from "../sections/CTABandV2";
+import { HomeFAQSection } from "../sections/home/HomeFaqSection";
 
 
 
@@ -43,7 +45,7 @@ export function HomePage() {
 
       <RevealGroup>
 
-        <CTABand
+        <CTABandV2
 
           title="Your Dream. Our Guidance."
 
@@ -51,10 +53,8 @@ export function HomePage() {
 
           subtitle="Take the first step towards your success. We'll be with you, all the way."
 
-          backgroundImage="/assets/backgrounds/home-cta-bg.png"
-
-          secondaryOutline="orange"
-
+          backgroundImage="/assets/images/background/cta-background-shadow.png"
+          decorativeImage="/assets/images/about us/award.png"
           primaryAction={{ label: "Book Free Counselling", href: "/contact" }}
 
           secondaryAction={{ label: "Explore Courses", href: "/mba" }}
@@ -64,6 +64,8 @@ export function HomePage() {
         />
 
       </RevealGroup>
+
+      <HomeFAQSection/>
 
     </HomePageBackground>
 

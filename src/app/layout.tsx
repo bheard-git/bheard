@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { PromotionalBanner } from "@/components/layout/PromotionalBanner";
 import { Header } from "@/components/layout/Header";
@@ -10,6 +10,11 @@ import { organizationJsonLd } from "@/lib/structured-data";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
 });
@@ -49,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} dark`}>
       <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased">
         <script
           type="application/ld+json"

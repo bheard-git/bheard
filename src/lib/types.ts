@@ -17,6 +17,7 @@ export interface Category {
   color?: string;
   accentColor?: string;
   icon?: string;
+  image?: string;
   /** Large 3D illustration for exam category cards */
   illustrationImage?: string;
   courseCount?: string;

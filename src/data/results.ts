@@ -339,50 +339,48 @@ interface ResultBanner {
 }
 export const resultBanners: ResultBanner[] = [
   {
-    id: "ipmat",
-
-    badge: "IPMAT 2025",
-
-    title: "IIM",
-
-    highlight: "Selections",
-
-    subtitle: "& counting",
-
-    description:
-      "Outstanding IPMAT achievers securing admissions into India's premier IIMs.",
-
-    cta: "Explore Results",
-
-    href: "/mba/ipmat",
-
-    backgroundClass:
-      "bg-gradient-to-br from-[#2A1408] via-[#4A2108] to-[#7C320C]",
-
-    toppers: topResults.slice(0, 4),
-  },
-
-  {
     id: "cat",
 
     badge: "CAT 2025",
 
-    title: "99%ile",
+    title: "CAT 2025",
+    highlight: "Results",
 
-    highlight: "Achievers",
-
-    subtitle: "Top Converts",
+    subtitle: "100+ above 99 percentile",
 
     description:
-      "Students converting dream B-Schools across the country.",
+      "250+ BLACKI Conversions",
 
     cta: "View CAT Results",
-
     href: "/mba/cat",
 
     backgroundClass:
       "bg-gradient-to-br from-[#0C2D4A] via-[#103C63] to-[#164E7A]",
 
+    // Dynamic student images/cards
+    toppers: topResults.slice(0, 4),
+  },
+
+  {
+    id: "ipmat",
+
+    badge: "IPMAT 2026",
+
+    title: "IPMAT 2026",
+    highlight: "Results",
+
+    subtitle: "50+ Conversions into IIMs",
+
+    description:
+      "25% Conversion Rate in a span of first year",
+
+    cta: "Explore Results",
+    href: "/mba/ipmat",
+
+    backgroundClass:
+      "bg-gradient-to-br from-[#2A1408] via-[#4A2108] to-[#7C320C]",
+
+    // Dynamic student images/cards
     toppers: topResults.slice(4, 8),
   },
 

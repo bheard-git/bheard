@@ -132,7 +132,7 @@ export function Carousel({
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             className={cn(
-              "absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-10 h-10 rounded-full bg-bg-tertiary/95 border border-border-default flex items-center justify-center text-text-secondary hover:text-orange-400 hover:border-orange-500/40 transition-all shadow-md disabled:opacity-0 disabled:pointer-events-none backdrop-blur-sm",
+              "absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#F06B23] hover:text-orange-400 hover:border-orange-500/40 transition-all shadow-sm disabled:opacity-0 disabled:pointer-events-none backdrop-blur-sm",
               "hidden md:flex"
             )}
             aria-label="Previous"
@@ -145,7 +145,7 @@ export function Carousel({
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             className={cn(
-              "absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-10 h-10 rounded-full bg-bg-tertiary/95 border border-border-default flex items-center justify-center text-text-secondary hover:text-orange-400 hover:border-orange-500/40 transition-all shadow-md disabled:opacity-0 disabled:pointer-events-none backdrop-blur-sm",
+              "absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#F06B23] hover:text-orange-400 hover:border-orange-500/40 transition-all shadow-sm disabled:opacity-0 disabled:pointer-events-none backdrop-blur-sm",
               "hidden md:flex"
             )}
             aria-label="Next"

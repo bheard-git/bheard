@@ -9,26 +9,23 @@ import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Button } from "@/components/ui/Button";
 
 import { resultBanners } from "@/data/results";
+import { SectionHeaderV2 } from "../SectionHeaderV2";
+import { TopperCardV2 } from "@/components/cards/TopperCardV2";
 
 export function HomeResultsSection() {
   return (
     <section
       id="results"
       data-home-zone="results"
-      className="home-section-spacing home-on-light relative overflow-hidden !py-0"
+      className="home-section-spacing relative overflow-hidden bg-white"
     >
       <Container>
-        <SectionHeader
-          title={
-            <>
-              Results that speak
-              <span className="text-orange-500"> for themselves.</span>
-            </>
-          }
-          subtitle="Real students. Real success."
-          // viewAllHref="/mba#results"
-          // viewAllLabel="View All Results"
+      <SectionHeaderV2
+          title={"Results that speak for themselves."}
+          // subtitle="Comprehensive preparation for every competitive exam"
+          className="mx-auto lg:!mb-10"
           align="center"
+          badge="Real students. Real success."
         />
 
         <RevealGroup>
@@ -36,7 +33,7 @@ export function HomeResultsSection() {
             itemsPerView={1}
             className="mt-12"
             itemClassName="w-full shrink-0 snap-center"
-            autoPlay
+            // autoPlay
             autoPlayInterval={3000}
 
           >
@@ -49,15 +46,14 @@ export function HomeResultsSection() {
                   className={`
                     relative
                     overflow-hidden
-                    rounded-[32px]
+                    rounded-2xl md:rounded-[32px]
                     border
-                    border-white/10
-                    px-8
-                    py-8
+                    border-[#FFEAD6]
+                    px-4 md:px-8
+                    py-4 md:py-8
                     lg:px-12
                     lg:py-10
-                    bg-gradient-to-br
-                    ${banner.backgroundClass}
+                    bg-[#FFF3E8]
                   `}
                 >
                   {/* decorative glow */}
@@ -67,22 +63,21 @@ export function HomeResultsSection() {
                     <div className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full bg-orange-600/5 blur-[100px]" />
                   </div>
 
-                  <div className="relative z-10 grid gap-10 lg:grid-cols-[0.9fr_1.2fr] items-center h-full">
+                  <div className="relative z-10 grid gap-10 lg:flex items-center h-full">
 
                     {/* LEFT */}
 
-                    <div className="max-w-[420px]">
+                    <div className="max-w-[330px]">
 
                       <span
                         className={`
                           inline-flex
                           rounded-full
-                          bg-white/10
+                          bg-[#F06B23]
                           border
-                          border-white/10
                           px-4
                           py-2
-                          text-[10px]
+                          text-[10px] md:text-xs
                           font-semibold
                           uppercase
                           tracking-[0.18em]
@@ -93,26 +88,26 @@ export function HomeResultsSection() {
                         {banner.badge}
                       </span>
 
-                      <h3 className="mt-8 text-white leading-[0.95] flex md:items-center gap-3 flex-col sm:flex-row lg:items-start lg:gap-1.5 lg:flex-col">
-                        <span className="block text-5xl font-black">
+                      <h3 className="mt-4 sm:mt-8 text-black font-montserrat leading-[0.95] flex md:items-center md:gap-3 sm:flex-col sm:flex-row lg:items-start gap-1 lg:gap-1.5 lg:flex-col font-medium">
+                        <span className="text-3xl md:text-5xl">
                           {banner.title}
                         </span>
-
-                        <span className="block text-5xl font-black text-orange-500 mt-2">
+                          
+                        <span className="text-3xl md:text-5xl">
                           {banner.highlight}
                         </span>
                       </h3>
 
-                      <p className="mt-2 text-xl font-semibold text-white/80">
+                      <p className="mt-1 sm:mt-4 text-xl font-semibold text-black">
                         {banner.subtitle}
                       </p>
 
-                      <p className="mt-2 text-base leading-7 text-white/60">
+                      <p className="mt-4 text-base leading-7 text-[#727272]">
                         {banner.description}
                       </p>
 
                       <Button
-                        className="mt-5"
+                        className="mt-8"
                       >
                         <Link href={banner.href} className="flex items-center shrink-0">
                           {banner.cta}
@@ -124,18 +119,13 @@ export function HomeResultsSection() {
 
                     {/* RIGHT */}
 
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 justify-items-center">
+                    <div className="flex overflow-hidden gap-5 justify-items-center">
 
                       {banner.toppers.map((topper, index) => (
-                        <TopperCardAlternate
+                        <TopperCardV2
                           key={topper.id}
                           topper={topper}
-                          variant={
-                            index % 2 === 0
-                              ? "orange"
-                              : "dark"
-                          }
-                          className="min-w-none w-full h-[250px]"
+                          className=""
                         />
                       ))}
 

@@ -44,7 +44,7 @@ export function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 site-header bg-white/50 backdrop-blur-md",
+        "sticky top-0 z-40 site-header !bg-[#191919]",
         className
       )}
     >
@@ -165,18 +165,17 @@ export function Header({ className }: HeaderProps) {
               aria-expanded={examOpen}
               aria-haspopup="listbox"
               className={cn(
-                "flex items-center justify-between gap-1.5 h-9 px-4 rounded-lg whitespace-nowrap text-white shadow-lg",
-                "bg-orange-500 hover:bg-orange-600 active:bg-orange-700",
-                "border border-orange-400/40 hover:border-orange-300/60",
-                "shadow-orange-500/20 hover:shadow-orange-500/30",
-                "focus:outline-none focus:ring-2 focus:ring-orange-400/40",
+                "flex items-center justify-between gap-1.5 h-9.5 px-4 rounded-sm whitespace-nowrap text-[#F06B23] shadow-lg",
+                "bg-transparent",
+                "border border-[#F06B23] hover:bg-orange-600/10 hover:border-[#f06b23ca]",
+                "focus:outline-none focus:ring-2 focus:ring-[#f06b23ef]",
                 examTriggerLabel === "Choose your exam" ? "w-46" : "w-35"
               )}
             >
               {examTriggerLabel}
               <svg
                 className={cn(
-                  "h-3.5 w-3.5 text-white transition-transform shrink-0",
+                  "h-3.5 w-3.5 text-white/50 transition-transform shrink-0",
                   examOpen && "rotate-180"
                 )}
                 fill="none"
@@ -231,19 +230,19 @@ export function Header({ className }: HeaderProps) {
             href={EXTERNAL_URLS.rodhaBuddy}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center h-9 px-4 text-body-sm font-semibold text-orange-500 border border-orange-500 rounded-[6px] hover:bg-orange-500/10 transition-colors whitespace-nowrap"
+            className="inline-flex items-center justify-center h-9.5 px-4 text-body-sm font-semibold text-white border border-[#4B5563]/80 rounded-[4px] transition-colors whitespace-nowrap hover:border-orange-400/50
+                hover:bg-orange-500/10"
           >
             Rodha Buddy
           </a>
           <div className="relative group shrink-0">
             <button
               className="
-                flex items-center gap-2
-                h-9
-                px-3
-                rounded-lg
+                flex items-center justify-center
+                h-9.5
+                w-[51px]
+                rounded-sm
                 border border-white/15
-                bg-white/5
                 backdrop-blur-sm
                 transition-all duration-200
                 hover:border-orange-400/50
@@ -254,7 +253,7 @@ export function Header({ className }: HeaderProps) {
               <User className="h-5 w-5 text-white group-hover:text-orange-300 transition-colors" />
 
               <svg
-                className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-180"
+                className="h-auto w-5.5 text-white/50 transition-transform duration-300 group-hover:rotate-180"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

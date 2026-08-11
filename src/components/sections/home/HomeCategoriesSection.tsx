@@ -1,29 +1,26 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { SectionHeader } from "@/components/sections/SectionHeader";
 import { ExamCard } from "@/components/cards/ExamCard";
 import { Carousel } from "@/components/ui/Carousel";
 import { RevealGroup } from "@/components/ui/RevealGroup";
 import { CATEGORIES } from "@/lib/constants";
 import { useCounsellingModal } from "@/hooks/useCounsellingModal";
+import { SectionHeaderV2 } from "../SectionHeaderV2";
+import { ExamCardV2 } from "@/components/cards/ExamCardV2";
 
 export function HomeCategoriesSection() {
   const { openCounsellingModal } = useCounsellingModal();
 
   return (
-    <section data-home-zone="categories" className="home-section-spacing home-section-spacing-lg relative">
+    <section data-home-zone="categories" className="home-section-spacing home-section-spacing-lg relative bg-[#FFF3E8]">
       <Container>
-        <SectionHeader
-          title={
-            <>
-              <span className="text-black">Choose Your Exam,{" "}</span>
-              <span className="text-orange-500">Start Your Journey</span>
-            </>
-          }
+        <SectionHeaderV2
+          title={<p>Choose Your Exam, <br />Start Your Journey</p>}
           // subtitle="Comprehensive preparation for every competitive exam"
-          subtitleClassName=""
+          className="max-w-[472px] mx-auto lg:!mb-10"
           align="center"
+          badge="EXPLORE YOUR OPPORTUNITIES"
         />
 
         <RevealGroup>
@@ -32,9 +29,9 @@ export function HomeCategoriesSection() {
               {CATEGORIES.map((cat, index) => (
                 <div
                   key={cat.id}
-                  className={`snap-start shrink-0 w-[280px] sm:w-[300px] reveal-child reveal-delay-${(index % 4) + 1}`}
+                  className={`snap-start shrink-0 w-[200px] sm:w-[270px] reveal-child reveal-delay-${(index % 4) + 1}`}
                 >
-                  <ExamCard
+                  <ExamCardV2
                     category={cat}
                     className="h-full"
                     onCounsellingSelect={(category) =>
@@ -48,7 +45,7 @@ export function HomeCategoriesSection() {
 
           <div className="hidden xl:grid grid-cols-5 gap-4">
             {CATEGORIES.map((cat, index) => (
-              <ExamCard
+              <ExamCardV2
                 key={cat.id}
                 category={cat}
                 className={`reveal-child reveal-delay-${(index % 4) + 1}`}

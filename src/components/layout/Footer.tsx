@@ -159,7 +159,6 @@ function FooterColumn({
           >{title}</h4>
       <ul className="space-y-2.5">
         {links.map((item) => {
-          const isActive = activeLabel === item.label;
           return (
             <li
                 className={cn(
@@ -190,7 +189,7 @@ function FooterColumn({
         // isHomePage
         //   ? "bg-[#0a0a0a] border-t border-transparent"
         //   : "bg-bg-primary border-t border-border-default",
-       "footer-bg")}
+       "bg-[#FCFAF8] border-t-[10px] border-[#F06B23]")}
     >
       {!isHomePage && (
         <div
@@ -319,10 +318,8 @@ function FooterColumn({
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "text-caption transition-colors",
-                  activeLabel === item.label
-                    ? footerTheme.activeLink
-                    : footerTheme.link
+                  "flex items-start gap-2.5",
+                  footerTheme.muted
                 )}
               >
                 {item.label}
@@ -334,7 +331,7 @@ function FooterColumn({
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-[5.25rem] right-4 z-40 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors shadow-orange sm:bottom-[5.5rem] md:bottom-[6.25rem] md:right-6"
+        className="fixed bottom-4 right-4 z-40 w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors shadow-orange md:bottom-6 md:right-6"
         aria-label="Scroll to top"
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
