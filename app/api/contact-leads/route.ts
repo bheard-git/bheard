@@ -63,11 +63,16 @@ export async function POST(req: NextRequest) {
     } catch (mailError) {
       const detail = mailError instanceof Error ? mailError.message : "Unknown mail error";
       console.error("Lead saved but notification email failed:", detail);
+      const isSetupHint =
+        detail.includes("SMTP_PASS") ||
+        detail.includes("personal mailbox") ||
+        detail.includes("Email transport is not configured") ||
+        detail.includes("LEAD_NOTIFICATION_TO") ||
+        detail.includes("AZURE_SENDER_EMAIL") ||
+        detail.includes("SMTP_FROM");
       return apiError(
         500,
-        detail.includes("SMTP_PASS") || detail.includes("personal mailbox")
-          ? detail
-          : "Lead saved, but email notification failed. Please retry."
+        isSetupHint ? detail : "Lead saved, but email notification failed. Please retry."
       );
     }
 

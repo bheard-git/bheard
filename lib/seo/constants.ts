@@ -14,8 +14,8 @@ export const ORGANIZATION = {
   phone: "+91-9326602832",
   logoPath: "/logo.png",
   sameAs: [
-    "https://www.instagram.com/bheard.in",
-    "https://www.linkedin.com/company/bheard",
+    "https://www.instagram.com/letsbheard",
+    "https://www.linkedin.com/company/letsbheard/",
   ],
   areaServed: ["India", "United States", "Southeast Asia"],
   description:

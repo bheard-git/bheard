@@ -8,12 +8,10 @@ import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo/schema";
 const TERMS_TITLE = "Terms & Conditions | BHeard";
 const TERMS_DESCRIPTION = "Terms and conditions governing the use of BHeard's website and services.";
 
-/** Legacy page — content spec says do not index; 301 to /privacy-policy recommended at infra level. */
 export const metadata: Metadata = buildPageMetadata({
   title: TERMS_TITLE,
   description: TERMS_DESCRIPTION,
   pathname: "/terms-and-conditions",
-  noindex: true,
 });
 
 export default function TermsAndConditionsPage() {

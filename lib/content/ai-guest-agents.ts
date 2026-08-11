@@ -195,14 +195,14 @@ export const aiGuestAgentsContent = {
           "Absolutely. Every AI Guest Agent is trained using your property's services, brand guidelines, operational processes, FAQs, and communication style.",
       },
       {
+        question: "How long does it take to launch an AI Guest Agent?",
+        answer:
+        "Most properties move from discovery to launch in a few weeks, depending on integrations, training data, and channel setup. We work with your team through discovery, configuration, integration, and launch to get you live as efficiently as possible.",
+      },
+      {
         question: "Are AI Guest Agents suitable for boutique hotels as well as hotel groups?",
         answer:
           "Yes. Whether you manage a boutique hotel, luxury resort, wellness retreat, or multi-property hospitality group, AI Guest Agents scale to your operational requirements and guest communication needs.",
-      },
-      {
-        question: "How long does it take to launch an AI Guest Agent?",
-        answer:
-          "Most properties move from discovery to launch in a few weeks, depending on integrations, training data, and channel setup. We work with your team through discovery, configuration, integration, and launch to get you live as efficiently as possible.",
       },
     ],
   },

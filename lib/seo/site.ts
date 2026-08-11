@@ -28,3 +28,30 @@ export function isIndexableDeployment(): boolean {
   if (process.env.VERCEL_URL?.includes("vercel.app")) return false;
   return process.env.NODE_ENV === "production";
 }
+
+
+// src/lib/seo/revalidateBlog.ts
+
+import { revalidatePath } from "next/cache";
+
+export function revalidateBlogPaths(
+  slug: string,
+  previousSlug?: string,
+) {
+  // Blog listing
+  revalidatePath("/blog");
+
+  // Current/new blog URL
+  revalidatePath(`/blog/${slug}`);
+
+  // If the slug was changed, invalidate the old URL too
+  if (previousSlug && previousSlug !== slug) {
+    revalidatePath(`/blog/${previousSlug}`);
+  }
+
+   // XML sitemap
+   revalidatePath("/sitemap.xml");
+
+   // Human-readable sitemap page
+   revalidatePath("/sitemap");
+}

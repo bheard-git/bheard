@@ -8,7 +8,7 @@ import { RecaptchaProvider } from "@/components/site/RecaptchaProvider";
 import TopRouteLoader from "@/components/site/TopRouteLoader";
 import { OG_IMAGE_PATH } from "@/lib/seo/constants";
 import { PAGE_SEO } from "@/lib/seo/pages";
-import { buildOrganizationSchema } from "@/lib/seo/schema";
+import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/seo/schema";
 import { getSiteUrl, isIndexableDeployment } from "@/lib/seo/site";
 import "@/app/globals.css";
 
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = buildOrganizationSchema();
+const rootSchemas = [buildOrganizationSchema(), buildWebSiteSchema()];
 
 export default function RootLayout({
   children,
@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body className="bg-surface text-on-surface font-body">
-        <JsonLd data={organizationSchema} />
+        <JsonLd data={rootSchemas} />
         <MotionRoot>
           <RecaptchaProvider>
             <LeadFormProvider>{children}</LeadFormProvider>

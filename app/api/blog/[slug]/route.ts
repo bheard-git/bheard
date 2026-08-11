@@ -9,6 +9,7 @@ import {
   updateBlogPostBySlug,
 } from "@/lib/services/blog.service";
 import { blogPostUpdateSchema } from "@/lib/validators/blog.validator";
+import { revalidateBlogPaths } from "@/lib/seo/site";
 
 type Params = { slug: string };
 
@@ -33,6 +34,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Params
     const payload = await req.json();
     const input = blogPostUpdateSchema.parse(payload);
     const updated = await updateBlogPostBySlug(slug, input);
+    revalidateBlogPaths(updated.slug, slug);
     return NextResponse.json({ data: updated });
   } catch (error) {
     if (error instanceof ZodError) {
@@ -50,6 +52,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<Pa
     const existing = await getBlogPostBySlug(slug);
     if (!existing) return apiError(404, "Blog post not found");
     await deleteBlogPostBySlug(slug);
+    revalidateBlogPaths(slug);
     return NextResponse.json({ ok: true });
   } catch {
     return apiError(500, "Failed to delete blog post");

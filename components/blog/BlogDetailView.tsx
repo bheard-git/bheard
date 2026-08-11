@@ -136,7 +136,7 @@ export default function BlogDetailView({
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
           </article>
 
-          <div data-blog-detail="related" className="mt-16">
+          {related.length>0 &&<div data-blog-detail="related" className="mt-16">
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Related posts</p>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {related.map((item) => (
@@ -154,7 +154,7 @@ export default function BlogDetailView({
                 </article>
               ))}
             </div>
-          </div>
+          </div>}
         </div>
 
         <aside data-blog-detail="sidebar" className="space-y-5 lg:sticky lg:top-24">
@@ -170,7 +170,7 @@ export default function BlogDetailView({
             </div>
           </div>
 
-          <div className="border border-outline-variant/60 bg-surface-container-low p-5">
+          {recent.length>0 && <div className="border border-outline-variant/60 bg-surface-container-low p-5">
             <p className="font-label text-xs uppercase tracking-[0.2em] text-primary">Recent posts</p>
             <div className="mt-4 space-y-4">
               {recent.map((item) => (
@@ -182,7 +182,7 @@ export default function BlogDetailView({
                 </Link>
               ))}
             </div>
-          </div>
+          </div>}
         </aside>
       </div>
     </section>
