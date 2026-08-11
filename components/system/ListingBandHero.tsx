@@ -91,7 +91,7 @@ export default function ListingBandHero({ watermark, eyebrow, title, copy, class
         </p>
         <h1
           ref={titleRef}
-          className="relative z-10 mt-4 max-w-4xl font-headline text-[clamp(2rem,6vw,4rem)] xl:text-[clamp(2.3rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-on-background opacity-0 motion-reduce:opacity-100"
+          className="relative z-10 mt-4 max-w-4xl font-headline text-[clamp(2rem,6vw,4rem)] 2xl:text-[clamp(2.3rem,7vw,4.8rem)] font-black uppercase leading-[0.94] tracking-tight text-on-background opacity-0 motion-reduce:opacity-100"
         >
           {title}
         </h1>

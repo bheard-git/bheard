@@ -26,7 +26,7 @@ const inputCls =
   "h-11 w-full rounded-md border border-outline-variant bg-white px-3 text-sm text-on-surface outline-none transition focus:border-primary";
 const inputErrorCls = inputCls + " border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500/30";
 const tileBaseCls =
-  "h-11 shrink-0 xl:whitespace-nowrap xl:w-fit rounded-md border px-3 text-left text-sm transition outline-none focus-visible:border-primary";
+  "h-11 shrink-0 xl:whitespace-nowrap xl:w-fit rounded-md border px-3 text-left text-[13px] 2xl:text-sm transition outline-none focus-visible:border-primary";
 const tileIdleCls =
   tileBaseCls + " border-outline-variant bg-white text-on-surface hover:border-primary/40";
 const tileSelectedCls =
@@ -156,7 +156,7 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
         <div className="grid gap-3 grid-cols-2 xl:flex" role="radiogroup" aria-label="I'm interested in">
           {INTERESTED_IN_OPTIONS.map((option) => {
             const selected = interestedIn === option;
-            return (
+            return (  
               <button
                 key={option}
                 type="button"
