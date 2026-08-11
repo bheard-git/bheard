@@ -143,7 +143,7 @@ export default function BlogListingView({ posts }: { posts: BlogListItem[] }) {
             </div>
           ) : null}
 
-          {posts.length > 0 ? (
+          {posts.length > 1 ? (
           <>
           <div className={`mt-24 ${sectionTitleMarginCompact}`}>
             <p className="font-label text-label-sm uppercase tracking-[0.2em] text-primary">Latest posts</p>
