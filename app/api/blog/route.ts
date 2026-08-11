@@ -4,6 +4,7 @@ import { apiError } from "@/lib/api/responses";
 import { assertAdminApiAuth } from "@/lib/auth/adminSession";
 import { listPublishedBlogPosts, createBlogPost, listAllBlogPosts } from "@/lib/services/blog.service";
 import { blogPostSchema } from "@/lib/validators/blog.validator";
+import { revalidateBlogPaths } from "@/lib/seo/site";
 
 export async function GET(req: NextRequest) {
   try {
@@ -28,6 +29,7 @@ export async function POST(req: NextRequest) {
     const payload = await req.json();
     const input = blogPostSchema.parse(payload);
     const created = await createBlogPost(input);
+    revalidateBlogPaths(created.slug);
     return NextResponse.json({ data: created }, { status: 201 });
   } catch (error) {
     if (error instanceof ZodError) {

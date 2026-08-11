@@ -13,9 +13,6 @@ import { buildBlogPostingSchema, buildBreadcrumbSchema } from "@/lib/seo/schema"
 
 type Params = { slug: string };
 
-/** CMS-backed posts — refresh hourly. */
-export const revalidate = 3600;
-
 export async function generateStaticParams() {
   try {
     const posts = await listPublishedBlogPosts();
