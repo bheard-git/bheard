@@ -4,7 +4,7 @@ import { apiError } from "@/lib/api/responses";
 import { assertAdminApiAuth } from "@/lib/auth/adminSession";
 import { sendLeadNotificationMail } from "@/lib/integrations/formMail";
 import { createContactLead, listContactLeads } from "@/lib/services/contactLeads.service";
-import { verifyRecaptchaToken } from "@/lib/integrations/recaptcha";
+
 import { contactLeadSchema } from "@/lib/validators/contactLead.validator";
 
 export async function GET(req: NextRequest) {
@@ -23,13 +23,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-    // const recaptcha = await verifyRecaptchaToken(
-    //   typeof payload?.recaptchaToken === "string" ? payload.recaptchaToken : null,
-    //   "contact_lead"
-    // );
-    // if (!recaptcha.ok) {
-    //   return apiError(400, recaptcha.message);
-    // }
+
 
     const { ...parsed } = contactLeadSchema.parse(payload);
     const input = parsed;

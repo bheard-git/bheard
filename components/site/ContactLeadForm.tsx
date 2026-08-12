@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2 } from "lucide-react";
-import { RecaptchaNotice, useRecaptcha } from "@/components/site/RecaptchaProvider";
+
 import {
   INTERESTED_IN_OPTIONS,
   contactLeadClientSchema,
@@ -35,7 +35,7 @@ const tileErrorCls =
   tileBaseCls + " border-red-400 bg-white text-on-surface focus-visible:border-red-500";
 
 export default function ContactLeadForm({ sourcePage }: { sourcePage?: string }) {
-  const { enabled: recaptchaEnabled, ready: recaptchaReady, executeRecaptcha } = useRecaptcha();
+
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -61,21 +61,7 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
     setSubmitError(null);
     setSuccess(null);
 
-    let recaptchaToken: string | undefined;
-    if (recaptchaEnabled) {
-      if (!recaptchaReady) {
-        setSubmitError("Security check is still loading. Please wait a moment and try again.");
-        setSubmitting(false);
-        return;
-      }
-      const token = await executeRecaptcha("contact_lead");
-      if (!token) {
-        setSubmitError("Security verification failed. Please refresh and try again.");
-        setSubmitting(false);
-        return;
-      }
-      recaptchaToken = token;
-    }
+
 
     const res = await fetch("/api/contact-leads", {
       method: "POST",
@@ -83,7 +69,6 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
       body: JSON.stringify({
         ...values,
         sourcePage: sourcePage ?? "/contact",
-        recaptchaToken,
       }),
     });
 
@@ -203,12 +188,12 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
       <div className="md:col-span-2 space-y-3">
         <button
           type="submit"
-          disabled={submitting || (recaptchaEnabled && !recaptchaReady)}
+          disabled={submitting}
           className="inline-flex h-11 items-center rounded-md bg-primary px-5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {submitting ? "Sending..." : "Send message"}
         </button>
-        <RecaptchaNotice />
+
       </div>
     </form>
   );
