@@ -23,15 +23,15 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-    const recaptcha = await verifyRecaptchaToken(
-      typeof payload?.recaptchaToken === "string" ? payload.recaptchaToken : null,
-      "contact_lead"
-    );
-    if (!recaptcha.ok) {
-      return apiError(400, recaptcha.message);
-    }
+    // const recaptcha = await verifyRecaptchaToken(
+    //   typeof payload?.recaptchaToken === "string" ? payload.recaptchaToken : null,
+    //   "contact_lead"
+    // );
+    // if (!recaptcha.ok) {
+    //   return apiError(400, recaptcha.message);
+    // }
 
-    const { recaptchaToken: _token, ...parsed } = contactLeadSchema.parse(payload);
+    const { ...parsed } = contactLeadSchema.parse(payload);
     const input = parsed;
 
     const ipAddress =

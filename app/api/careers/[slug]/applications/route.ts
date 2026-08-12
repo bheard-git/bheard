@@ -48,13 +48,13 @@ export async function POST(req: NextRequest, context: { params: Promise<Params> 
   }
 
   const recaptchaToken = fd.get("recaptchaToken");
-  const recaptcha = await verifyRecaptchaToken(
-    typeof recaptchaToken === "string" ? recaptchaToken : null,
-    "career_application"
-  );
-  if (!recaptcha.ok) {
-    return apiError(400, recaptcha.message);
-  }
+  // const recaptcha = await verifyRecaptchaToken(
+  //   typeof recaptchaToken === "string" ? recaptchaToken : null,
+  //   "career_application"
+  // );
+  // if (!recaptcha.ok) {
+  //   return apiError(400, recaptcha.message);
+  // }
 
   const resume = fd.get("resume");
   if (!resume || typeof resume === "string") {
