@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/admin/ui/select";
-import { RecaptchaNotice, useRecaptcha } from "@/components/site/RecaptchaProvider";
+
 import {
   careerApplicationFieldsSchema,
   MAX_RESUME_BYTES,
@@ -71,7 +71,7 @@ export default function CareerApplicationForm({
   onlineApplicationsReady,
   variant = "role",
 }: Props) {
-  const { enabled: recaptchaEnabled, ready: recaptchaReady, executeRecaptcha } = useRecaptcha();
+
   const formId = useId();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -127,18 +127,7 @@ export default function CareerApplicationForm({
 
     const normalized = normalizeApplicationFields(values);
 
-    let recaptchaToken: string | null = null;
-    if (recaptchaEnabled) {
-      if (!recaptchaReady) {
-        setSubmitError("Security check is still loading. Please wait a moment and try again.");
-        return;
-      }
-      recaptchaToken = await executeRecaptcha("career_application");
-      if (!recaptchaToken) {
-        setSubmitError("Security verification failed. Please refresh and try again.");
-        return;
-      }
-    }
+
 
     setSubmitting(true);
     try {
@@ -158,9 +147,7 @@ export default function CareerApplicationForm({
       fd.set("referralSource", "");
       fd.set("workAuthorization", "");
       fd.set("resume", resumeFile);
-      if (recaptchaToken) {
-        fd.set("recaptchaToken", recaptchaToken);
-      }
+
 
       const res = await fetch(`/api/careers/${encodeURIComponent(slug)}/applications`, {
         method: "POST",
@@ -334,7 +321,7 @@ export default function CareerApplicationForm({
         ) : null}
 
         <div className="flex flex-col gap-4 border-t border-neutral-100 pt-5">
-          <RecaptchaNotice className="text-neutral-500" />
+
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-md font-body text-xs text-neutral-500">
               We use this data only for recruitment and role communication.
@@ -343,8 +330,7 @@ export default function CareerApplicationForm({
               type="submit"
               disabled={
                 submitting ||
-                !onlineApplicationsReady ||
-                (recaptchaEnabled && !recaptchaReady)
+                !onlineApplicationsReady
               }
               className="inline-flex min-w-[190px] items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3 font-headline text-xs font-black uppercase tracking-[0.12em] text-on-primary shadow-sm transition hover:bg-primary-fixed-dim disabled:cursor-not-allowed disabled:opacity-55"
             >

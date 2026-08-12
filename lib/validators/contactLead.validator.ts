@@ -36,7 +36,6 @@ export const contactLeadSchema = z.object({
     .min(20, "Please share a bit more detail (at least 20 characters)")
     .max(5000, "Message is too long (max 5000 characters)"),
   sourcePage: z.string().trim().max(240).optional().or(z.literal("")),
-  recaptchaToken: z.string().trim().min(1).max(4000).optional(),
 });
 
 /** Client form fields only (validated before submit). */
