@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Space_Grotesk, Manrope } from "next/font/google";
+import Analytics from "@/components/analytics/Analytics";
 import MotionRoot from "@/components/motion/MotionRoot";
 import JsonLd from "@/components/seo/JsonLd";
 import { LeadFormProvider } from "@/components/site/LeadFormProvider";
@@ -68,6 +69,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body className="bg-surface text-on-surface font-body">
         <JsonLd data={rootSchemas} />
+        <Analytics />
         <MotionRoot>
           <RecaptchaProvider>
             <LeadFormProvider>{children}</LeadFormProvider>

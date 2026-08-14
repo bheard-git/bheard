@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2 } from "lucide-react";
 
+import { trackLeadSubmission } from "@/lib/analytics/events";
 import {
   INTERESTED_IN_OPTIONS,
   contactLeadClientSchema,
@@ -35,7 +36,6 @@ const tileErrorCls =
   tileBaseCls + " border-red-400 bg-white text-on-surface focus-visible:border-red-500";
 
 export default function ContactLeadForm({ sourcePage }: { sourcePage?: string }) {
-
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -57,18 +57,17 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
   const interestedIn = watch("interestedIn");
 
   const onSubmit = handleSubmit(async (values) => {
+    const resolvedSourcePage = sourcePage ?? "/contact";
+
     setSubmitting(true);
     setSubmitError(null);
     setSuccess(null);
-
-
-
     const res = await fetch("/api/contact-leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
-        sourcePage: sourcePage ?? "/contact",
+        sourcePage: resolvedSourcePage,
       }),
     });
 
@@ -79,6 +78,10 @@ export default function ContactLeadForm({ sourcePage }: { sourcePage?: string })
       return;
     }
 
+    trackLeadSubmission({
+      formName: resolvedSourcePage === "/contact" ? "contact_form" : "lead_form",
+      sourcePage: resolvedSourcePage,
+    });
     reset(defaultValues);
     setSuccess("Thanks, your message has been submitted. Our team will reach out shortly.");
     setSubmitting(false);
