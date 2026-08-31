@@ -885,7 +885,7 @@ export default function HotelMarketingView() {
                     </a>
 
                     <Link
-                      href="/work"
+                      href="/work/radisson-blu-goa"
                       className="
                         inline-flex
                         items-center
