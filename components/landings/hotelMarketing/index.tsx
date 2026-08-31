@@ -170,7 +170,7 @@ export default function HotelMarketingView() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#faf8f5]">
+      <section id="home" className="relative overflow-hidden bg-[#faf8f5]">
   {/* =========================================================
       HERO BACKGROUND IMAGE
       - Desktop: existing full background treatment
@@ -512,6 +512,7 @@ export default function HotelMarketingView() {
           MARKETING / TECHNOLOGY / AI
       ========================================================= */}
       <section
+        id="what-we-do"
         className={`bg-surface ${sectionPageX} ${sectionBandY}`}
       >
         <div className="mx-auto max-w-7xl">
@@ -669,6 +670,7 @@ export default function HotelMarketingView() {
           AI FOR HOTELS
       ========================================================= */}
       <section
+        id="ai-for-hotels"
         className={`${sectionPageX} ${sectionBandY} bg-surface-container-lowest`}
       >
         <div className="mx-auto max-w-7xl">
@@ -777,6 +779,7 @@ export default function HotelMarketingView() {
           RADISSON BLU CASE STUDY
       ========================================================= */}
       <section
+        id="proof"
         className={`${sectionPageX} ${sectionBandY} bg-[#FCF9F7]`}
       >
         <div className="mx-auto max-w-7xl">
@@ -933,6 +936,7 @@ export default function HotelMarketingView() {
           WHY BHEARD
       ========================================================= */}
       <section
+        id="why-bheard"
         className={`${sectionPageX} ${sectionBandY} bg-surface-container-lowest`}
       >
         <div className="mx-auto max-w-7xl">

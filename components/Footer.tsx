@@ -11,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 import logo from "@/app/logo.png";
 import { prefersReducedMotion } from "@/lib/motion/animations";
 import { publicAsset } from "@/lib/utils/publicAsset";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -96,7 +97,9 @@ function FooterLinkList({ links }: { links: ReadonlyArray<{ label: string; href:
 export default function Footer() {
   const pathname = usePathname() ?? "";
   const footerRef = useRef<HTMLElement | null>(null);
-
+  const isHotelMarketingLanding =
+  pathname === "/hotel-marketing" ||
+  pathname.startsWith("/hotel-marketing/");
   useGSAP(
     () => {
       const footer = footerRef.current;
@@ -207,20 +210,46 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div data-footer-reveal className="opacity-100 md:col-span-2">
-          <h6 className="mb-3 text-sm font-bold uppercase text-orange-500">Solutions</h6>
-          <FooterLinkList links={solutionsLinks} />
-        </div>
-        <div data-footer-reveal className="opacity-100 md:col-span-2">
-          <h6 className="mb-3 text-sm font-bold uppercase text-orange-500">Company</h6>
-          <FooterLinkList links={companyLinks} />
-        </div>
-        <div data-footer-reveal className="opacity-100 md:col-span-4">
+        {!isHotelMarketingLanding? (
+          <>
+            <div
+              data-footer-reveal
+              className="opacity-100 md:col-span-2"
+            >
+              <h6 className="mb-3 text-sm font-bold uppercase text-orange-500">
+                Solutions
+              </h6>
+
+              <FooterLinkList links={solutionsLinks} />
+            </div>
+
+            <div
+              data-footer-reveal
+              className="opacity-100 md:col-span-2"
+            >
+              <h6 className="mb-3 text-sm font-bold uppercase text-orange-500">
+                Company
+              </h6>
+
+              <FooterLinkList links={companyLinks} />
+            </div>
+          </>
+        ): <>
+        <div
+        data-footer-reveal
+        className="opacity-100 md:col-span-2"
+        />
+        <div
+        data-footer-reveal
+        className="opacity-100 md:col-span-2"
+        /></>
+      }
+        <div data-footer-reveal className={cn("opacity-100 md:col-span-4", isHotelMarketingLanding?"flex flex-col items-end":"")}>
           <h6 className="mb-3 text-sm font-bold uppercase text-orange-500">Contact</h6>
           <div className="space-y-3">
             {offices.map((office) => (
               <address key={office.title} className="not-italic">
-                <p className="mb-1 font-headline text-xs font-bold uppercase tracking-wide text-neutral-900">
+                <p className={cn("mb-1 font-headline text-xs font-bold uppercase tracking-wide text-neutral-900", isHotelMarketingLanding && "text-right")}>
                   {office.title}
                 </p>
                 <p className="font-body text-sm leading-relaxed text-neutral-600">
@@ -234,7 +263,7 @@ export default function Footer() {
                 {"phone" in office && (
                   <a
                     href={`tel:${office.phone.replace(/\s/g, "")}`}
-                    className="mt-1.5 block font-body text-sm font-semibold text-neutral-600 transition-colors duration-300 hover:text-orange-500"
+                    className={cn("mt-1.5 block font-body text-sm font-semibold text-neutral-600 transition-colors duration-300 hover:text-orange-500", isHotelMarketingLanding && "text-right")}
                   >
                     {office.phone}
                   </a>
@@ -242,7 +271,7 @@ export default function Footer() {
                 {"email" in office && (
                   <a
                     href={`mailto:${office.email}`}
-                    className="mt-0.5 block font-headline text-base lowercase text-neutral-900 transition-colors duration-300 hover:text-orange-500"
+                    className={cn("mt-0.5 block font-headline text-base lowercase text-neutral-900 transition-colors duration-300 hover:text-orange-500", isHotelMarketingLanding && "text-right")}
                   >
                     {office.email}
                   </a>
@@ -270,12 +299,12 @@ export default function Footer() {
             >
               Terms &amp; Conditions
             </Link>
-            <Link
+            {!isHotelMarketingLanding && <Link
               className="text-sm font-bold uppercase tracking-widest text-neutral-600 transition-colors duration-400 ease-out hover:text-neutral-900"
               href="/sitemap"
             >
               Sitemap
-            </Link>
+            </Link>}
           </div>
         </div>
       </div>

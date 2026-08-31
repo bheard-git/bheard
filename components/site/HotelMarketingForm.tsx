@@ -117,33 +117,33 @@ export default function LandingLeadForm({
     setSuccess(null);
 
     try {
-      // const res = await fetch("/api/contact-leads", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     ...values,
-      //     phone: `${countryCode} ${values.phone}`.trim(),
-      //     sourcePage,
-      //   }),
-      // });
+      const res = await fetch("/api/contact-leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          phone: `${countryCode} ${values.phone}`.trim(),
+          sourcePage,
+        }),
+      });
 
-      // if (!res.ok) {
-      //   const payload = await res.json().catch(() => null);
+      if (!res.ok) {
+        const payload = await res.json().catch(() => null);
 
-      //   setSubmitError(
-      //     payload?.error?.message ??
-      //       "Could not submit your request. Please try again."
-      //   );
+        setSubmitError(
+          payload?.error?.message ??
+            "Could not submit your request. Please try again."
+        );
 
-      //   return;
-      // }
+        return;
+      }
 
-      // trackLeadSubmission({
-      //   formName: "hotel_marketing_lead_form",
-      //   sourcePage,
-      // });
+      trackLeadSubmission({
+        formName: "hotel_marketing_lead_form",
+        sourcePage,
+      });
 
       reset(defaultValues);
       setCountryCode("+91");

@@ -11,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sectionPageX } from "./system";
+import StartConversationButton from "./landings/hotelMarketing/StartConversationButton";
 
 gsap.registerPlugin(useGSAP);
 
@@ -35,7 +36,15 @@ const navLinks: NavLink[] = [
   { label: "Careers", href: "/careers" },
   { label: "Blogs", href: "/blog" },
 ];
+const HOTEL_MARKETING_PATH = "/hotel-marketing";
 
+const hotelMarketingLinks: NavLink[] = [
+  { label: "Home", href: `${HOTEL_MARKETING_PATH}#home` },
+  { label: "What We Do", href: `${HOTEL_MARKETING_PATH}#what-we-do` },
+  { label: "AI for Hotels", href: `${HOTEL_MARKETING_PATH}#ai-for-hotels` },
+  { label: "Proof", href: `${HOTEL_MARKETING_PATH}#proof` },
+  { label: "Why BHeard", href: `${HOTEL_MARKETING_PATH}#why-bheard` },
+];
 export default function Navbar() {
   const pathname = usePathname() ?? "";
   const navRef = useRef<HTMLElement | null>(null);
@@ -47,7 +56,9 @@ export default function Navbar() {
   const solutionsRef = useRef<HTMLDivElement | null>(null);
   const hoverOpenTimerRef = useRef<number | null>(null);
   const hoverCloseTimerRef = useRef<number | null>(null);
-
+  const isHotelMarketingLanding =
+  pathname === HOTEL_MARKETING_PATH ||
+  pathname.startsWith(`${HOTEL_MARKETING_PATH}/`);
   const isSolutionsActive =
     pathname === "/brand-solutions" ||
     pathname.startsWith("/brand-solutions/") ||
@@ -170,7 +181,7 @@ export default function Navbar() {
         ref={navRef}
         className="max-w-screen-2xl items-center justify-between flex mx-auto"
       >
-        <Link href="/" data-anim="logo">
+        <Link href={isHotelMarketingLanding?HOTEL_MARKETING_PATH:"/"} data-anim="logo">
           <Image
             src={logo}
             alt="BHEARD"
@@ -181,80 +192,182 @@ export default function Navbar() {
             priority
           />
         </Link>
-        <div className="hidden md:flex gap-12" data-anim="nav-menu">
-          <div
-            ref={solutionsRef}
-            className="relative"
-            onMouseEnter={onSolutionsMouseEnter}
-            onMouseLeave={onSolutionsMouseLeave}
-            onFocus={() => setSolutionsOpenDesktop(true)}
-            onBlur={(event) => {
-              const nextTarget = event.relatedTarget as Node | null;
-              if (!solutionsRef.current?.contains(nextTarget)) setSolutionsOpenDesktop(false);
-            }}
-          >
-            <button
-              type="button"
-              className={`inline-flex items-center gap-1 font-headline font-bold uppercase tracking-tight transition-colors duration-300 ${
-                isSolutionsActive ? "text-orange-500" : "text-neutral-700 hover:text-orange-400"
-              }`}
-              aria-haspopup="menu"
-              aria-expanded={solutionsOpenDesktop}
-            >
-              {solutionsGroup.label}
-              <ChevronDown className={`h-4 w-4 transition-transform ${solutionsOpenDesktop ? "rotate-180" : ""}`} />
-            </button>
-            {solutionsOpenDesktop ? (
+        <div
+          className="hidden items-center gap-10 md:flex justify-center"
+          data-anim="nav-menu"
+        >
+          {isHotelMarketingLanding ? (
+            <>
+              {hotelMarketingLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="
+                    font-headline
+                    text-sm
+                    font-bold
+                    uppercase
+                    tracking-tight
+                    text-neutral-700
+                    transition-colors
+                    duration-300
+                    hover:text-primary
+                  "
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </>
+          ) : (
+            <>
+              {/* Existing website navigation */}
+
               <div
-                data-solutions-menu
-                role="menu"
-                className="absolute left-0 top-full mt-2 min-w-[220px] border border-outline-variant/40 bg-white/95 p-1.5 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.22)] backdrop-blur"
+                ref={solutionsRef}
+                className="relative"
+                onMouseEnter={onSolutionsMouseEnter}
+                onMouseLeave={onSolutionsMouseLeave}
+                onFocus={() => setSolutionsOpenDesktop(true)}
+                onBlur={(event) => {
+                  const nextTarget = event.relatedTarget as Node | null;
+
+                  if (!solutionsRef.current?.contains(nextTarget)) {
+                    setSolutionsOpenDesktop(false);
+                  }
+                }}
               >
-                {solutionsGroup.children.map((item) => {
-                  const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      role="menuitem"
-                      className={`block px-3 py-2 text-sm font-headline font-bold uppercase tracking-[0.06em] transition-colors ${
-                        active ? "bg-primary/10 text-primary" : "text-neutral-700 hover:bg-neutral-100"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                <button
+                  type="button"
+                  className={`inline-flex items-center gap-1 font-headline font-bold uppercase tracking-tight transition-colors duration-300 ${
+                    isSolutionsActive
+                      ? "text-orange-500"
+                      : "text-neutral-700 hover:text-orange-400"
+                  }`}
+                  aria-haspopup="menu"
+                  aria-expanded={solutionsOpenDesktop}
+                >
+                  {solutionsGroup.label}
+
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      solutionsOpenDesktop ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {solutionsOpenDesktop ? (
+                  <div
+                    data-solutions-menu
+                    role="menu"
+                    className="
+                      absolute
+                      left-0
+                      top-full
+                      mt-2
+                      min-w-[220px]
+                      border
+                      border-outline-variant/40
+                      bg-white/95
+                      p-1.5
+                      shadow-[0_10px_30px_-22px_rgba(0,0,0,0.22)]
+                      backdrop-blur
+                    "
+                  >
+                    {solutionsGroup.children.map((item) => {
+                      const active =
+                        pathname === item.href ||
+                        pathname.startsWith(`${item.href}/`);
+
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          role="menuitem"
+                          className={`block px-3 py-2 text-sm font-headline font-bold uppercase tracking-[0.06em] transition-colors ${
+                            active
+                              ? "bg-primary/10 text-primary"
+                              : "text-neutral-700 hover:bg-neutral-100"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </div>
-          {navLinks.map((link) => {
-            const active = link.href.includes("#")
-              ? false
-              : link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
-            const base = "text-neutral-700 hover:text-orange-400";
-            const activeCls = "text-orange-500 hover:text-orange-400";
-            return (
-              <Link
-                key={link.label}
-                className={`font-headline font-bold uppercase tracking-tight transition-colors duration-300 ${active ? activeCls : base}`}
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+
+              {navLinks.map((link) => {
+                const active = link.href.includes("#")
+                  ? false
+                  : link.href === "/"
+                    ? pathname === "/"
+                    : pathname === link.href ||
+                      pathname.startsWith(`${link.href}/`);
+
+                return (
+                  <Link
+                    key={link.label}
+                    className={`font-headline font-bold uppercase tracking-tight transition-colors duration-300 ${
+                      active
+                        ? "text-orange-500 hover:text-orange-400"
+                        : "text-neutral-700 hover:text-orange-400"
+                    }`}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </>
+          )}
         </div>
         <div className="flex items-center gap-4">
-          <Link
-            href="/contact"
-            data-anim="cta"
-            className="hidden rounded-lg bg-primary px-6 py-2 font-bold uppercase text-sm tracking-widest text-on-primary transition-transform duration-300 hover:scale-[1.02] md:inline-flex"
-          >
-            Let&apos;s Talk
-          </Link>
+        {isHotelMarketingLanding ? (
+            <StartConversationButton
+              className="
+                hidden
+                rounded-lg
+                bg-primary
+                px-6
+                py-2
+                font-bold
+                uppercase
+                text-sm
+                tracking-widest
+                text-on-primary
+                transition-transform
+                duration-300
+                hover:scale-[1.02]
+                md:inline-flex
+              "
+            >
+              Start a conversation
+            </StartConversationButton>
+          ) : (
+            <Link
+              href="/contact"
+              data-anim="cta"
+              className="
+                hidden
+                rounded-lg
+                bg-primary
+                px-6
+                py-2
+                font-bold
+                uppercase
+                text-sm
+                tracking-widest
+                text-on-primary
+                transition-transform
+                duration-300
+                hover:scale-[1.02]
+                md:inline-flex
+              "
+            >
+              Let&apos;s Talk
+            </Link>
+          )}
           <button
             onClick={() => setDrawerOpen(true)}
             className="inline-flex items-center justify-center rounded-md p-2 text-neutral-800 transition-colors duration-200 hover:bg-neutral-100 md:hidden"
@@ -298,63 +411,115 @@ export default function Navbar() {
         </div>
 
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6">
-          <button
-            type="button"
-            data-drawer-link
-            onClick={() => setSolutionsOpenMobile((prev) => !prev)}
-            className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 font-headline text-lg font-bold uppercase tracking-tight transition-colors duration-200 ${
-              isSolutionsActive
-                ? "bg-primary/10 text-primary"
-                : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
-            }`}
-            aria-expanded={solutionsOpenMobile}
-            aria-controls="mobile-solutions-menu"
-          >
-            <span>{solutionsGroup.label}</span>
-            <ChevronDown className={`h-4 w-4 transition-transform ${solutionsOpenMobile ? "rotate-180" : ""}`} />
-          </button>
-          {solutionsOpenMobile ? (
-            <div id="mobile-solutions-menu" className="mt-1 grid gap-1 pl-2">
-              {solutionsGroup.children.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeDrawer}
-                    data-drawer-link
-                    className={`rounded-lg px-4 py-3 text-base font-headline font-bold uppercase tracking-tight transition-colors duration-200 ${
-                      active ? "bg-primary/10 text-primary" : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-          ) : null}
-          {navLinks.map((link) => {
-            const active = link.href.includes("#")
-              ? false
-              : link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={closeDrawer}
+          {isHotelMarketingLanding ? (
+            <>
+              {hotelMarketingLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={closeDrawer}
+                  data-drawer-link
+                  className="
+                    rounded-lg
+                    px-4
+                    py-3.5
+                    font-headline
+                    text-lg
+                    font-bold
+                    uppercase
+                    tracking-tight
+                    text-neutral-700
+                    transition-colors
+                    duration-200
+                    hover:bg-neutral-100
+                    hover:text-neutral-900
+                  "
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </>
+          ) : (
+            <>
+              {/* Existing mobile Solutions menu */}
+
+              <button
+                type="button"
                 data-drawer-link
-                className={`rounded-lg px-4 py-3.5 font-headline text-lg font-bold uppercase tracking-tight transition-colors duration-200 ${
-                  active
+                onClick={() =>
+                  setSolutionsOpenMobile((prev) => !prev)
+                }
+                className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 font-headline text-lg font-bold uppercase tracking-tight transition-colors duration-200 ${
+                  isSolutionsActive
                     ? "bg-primary/10 text-primary"
                     : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
                 }`}
+                aria-expanded={solutionsOpenMobile}
+                aria-controls="mobile-solutions-menu"
               >
-                {link.label}
-              </Link>
-            );
-          })}
+                <span>{solutionsGroup.label}</span>
+
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    solutionsOpenMobile ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {solutionsOpenMobile ? (
+                <div
+                  id="mobile-solutions-menu"
+                  className="mt-1 grid gap-1 pl-2"
+                >
+                  {solutionsGroup.children.map((item) => {
+                    const active =
+                      pathname === item.href ||
+                      pathname.startsWith(`${item.href}/`);
+
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={closeDrawer}
+                        data-drawer-link
+                        className={`rounded-lg px-4 py-3 text-base font-headline font-bold uppercase tracking-tight transition-colors duration-200 ${
+                          active
+                            ? "bg-primary/10 text-primary"
+                            : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : null}
+
+              {navLinks.map((link) => {
+                const active =
+                  link.href === "/"
+                    ? pathname === "/"
+                    : pathname === link.href ||
+                      pathname.startsWith(`${link.href}/`);
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={closeDrawer}
+                    data-drawer-link
+                    className={`rounded-lg px-4 py-3.5 font-headline text-lg font-bold uppercase tracking-tight transition-colors duration-200 ${
+                      active
+                        ? "bg-primary/10 text-primary"
+                        : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </>
+          )}
         </nav>
 
         <div className="border-t border-outline-variant/30 px-6 py-6" data-drawer-link>
