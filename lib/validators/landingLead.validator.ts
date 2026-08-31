@@ -31,9 +31,9 @@ export const hotelMarketingLeadClientSchema =
     propertyType: z
       .string()
       .refine(
-        (value): value is HotelPropertyType =>
-          HOTEL_PROPERTY_TYPE_OPTIONS.includes(
-            value as HotelPropertyType
+        (value) =>
+          (HOTEL_PROPERTY_TYPE_OPTIONS as readonly string[]).includes(
+            value
           ),
         {
           message: "Please select your property type.",
@@ -58,9 +58,9 @@ export const hotelMarketingLeadClientSchema =
     interestedIn: z
       .string()
       .refine(
-        (value): value is HotelMarketingInterest =>
-          HOTEL_MARKETING_INTEREST_OPTIONS.includes(
-            value as HotelMarketingInterest
+        (value) =>
+          (HOTEL_MARKETING_INTEREST_OPTIONS as readonly string[]).includes(
+            value
           ),
         {
           message:
@@ -79,5 +79,19 @@ export const hotelMarketingLeadClientSchema =
       .or(z.literal("")),
   });
 
+export const hotelMarketingLeadSchema =
+  hotelMarketingLeadClientSchema.extend({
+    sourcePage: z
+      .string()
+      .trim()
+      .max(240)
+      .optional()
+      .or(z.literal("")),
+  });
+
 export type HotelMarketingLeadClientFields =
   z.infer<typeof hotelMarketingLeadClientSchema>;
+
+export type HotelMarketingLeadInput = z.infer<
+  typeof hotelMarketingLeadSchema
+>;

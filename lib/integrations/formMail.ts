@@ -6,6 +6,8 @@ export type LeadMailPayload = {
   email: string;
   phone?: string | null;
   company?: string | null;
+  propertyName?: string | null;
+  propertyType?: string | null;
   interestedIn?: string | null;
   message: string;
   sourcePage?: string | null;
@@ -51,6 +53,7 @@ function getLeadNotificationRecipients() {
 const LEAD_SOURCE_PATH_LABELS: Record<string, string> = {
   "/": "Homepage",
   "/contact": "Contact page",
+  "/hotel-marketing": "Hotel Marketing landing",
 };
 
 const LEAD_SOURCE_HASH_LABELS: Record<string, string> = {
@@ -224,10 +227,19 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
   const email = escapeHtml(payload.email);
   const phone = escapeHtml(payload.phone || "Not provided");
   const company = escapeHtml(payload.company || "Not provided");
+  const propertyName = payload.propertyName
+    ? escapeHtml(payload.propertyName)
+    : "";
+  const propertyType = payload.propertyType
+    ? escapeHtml(payload.propertyType)
+    : "";
   const interestedIn = escapeHtml(payload.interestedIn || "Not provided");
   const source = escapeHtml(formatLeadSourceLabel(payload.sourcePage));
-  const message = escapeHtml(payload.message).replaceAll("\n", "<br/>");
+  const message = escapeHtml(payload.message || "Not provided").replaceAll("\n", "<br/>");
   const submitted = formatSubmittedAt(payload.submittedAtIso);
+  const formLabel = payload.sourcePage?.includes("hotel-marketing")
+    ? "Hotel Marketing Form"
+    : "BHEARD Contact Form";
 
   return `<!doctype html>
 <html>
@@ -245,7 +257,7 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
                     </td>
                     <td style="vertical-align:middle;text-align:right;">
                       <div style="font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:#f59e0b;font-weight:700;">New Lead Submission</div>
-                      <div style="font-size:13px;color:#4f4f4f;margin-top:4px;">BHEARD Contact Form</div>
+                      <div style="font-size:13px;color:#4f4f4f;margin-top:4px;">${formLabel}</div>
                     </td>
                   </tr>
                 </table>
@@ -264,6 +276,16 @@ function buildLeadEmailHtml(payload: LeadMailPayload, logoUrl: string) {
                   <tr><td style="font-size:13px;color:#6b7280;">Email</td><td style="font-size:14px;color:#111827;font-weight:600;">${email}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Phone</td><td style="font-size:14px;color:#111827;">${phone}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Company</td><td style="font-size:14px;color:#111827;">${company}</td></tr>
+                  ${
+                    propertyName
+                      ? `<tr><td style="font-size:13px;color:#6b7280;">Property / brand</td><td style="font-size:14px;color:#111827;font-weight:600;">${propertyName}</td></tr>`
+                      : ""
+                  }
+                  ${
+                    propertyType
+                      ? `<tr><td style="font-size:13px;color:#6b7280;">Property type</td><td style="font-size:14px;color:#111827;font-weight:600;">${propertyType}</td></tr>`
+                      : ""
+                  }
                   <tr><td style="font-size:13px;color:#6b7280;">Interested in</td><td style="font-size:14px;color:#111827;font-weight:600;">${interestedIn}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Submitted from</td><td style="font-size:14px;color:#111827;">${source}</td></tr>
                   <tr><td style="font-size:13px;color:#6b7280;">Submitted at</td><td style="font-size:14px;color:#111827;">${submitted}</td></tr>
@@ -415,7 +437,10 @@ export async function sendLeadNotificationMail(payload: LeadMailPayload, request
   const logoUrl = `${getBrandBaseUrl()}/email/logo.png`;
   const html = buildLeadEmailHtml(payload, logoUrl);
   const sourceLabel = formatLeadSourceLabel(payload.sourcePage);
-  const subject = `New Website Lead: ${payload.fullName} (${sourceLabel})`;
+  const isHotelMarketing = Boolean(payload.sourcePage?.includes("hotel-marketing"));
+  const subject = isHotelMarketing
+    ? `New Hotel Marketing Lead: ${payload.fullName} (${sourceLabel})`
+    : `New Website Lead: ${payload.fullName} (${sourceLabel})`;
 
   await sendHtmlMail({
     to: getLeadNotificationRecipients(),

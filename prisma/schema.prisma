@@ -118,8 +118,10 @@ model ContactLead {
   email        String
   phone        String?
   company      String?
+  propertyName String?
+  propertyType String?
   interestedIn String
-  message      String
+  message      String   @default("")
   sourcePage   String?
   ipAddress    String?
   userAgent    String?

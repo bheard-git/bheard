@@ -6,6 +6,12 @@ export type PageSeoEntry = {
 };
 
 export const PAGE_SEO = {
+  hotelMarketing: {
+    pathname: "/hotel-marketing",
+    title: "Hotel Marketing Agency for Hotels & Resorts | BHeard",
+    description:
+      "BHeard helps hotels and resorts grow direct bookings, demand and guest engagement through hospitality marketing, technology and AI — all under one roof.",
+  },
   home: {
     pathname: "/",
     title: "Integrated Branding & Tech Agency in Mumbai | BHeard",

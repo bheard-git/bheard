@@ -4,6 +4,16 @@ export type BreadcrumbItem = {
 };
 
 export const BREADCRUMBS = {
+  hotelMarketing: [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "Hotel Marketing",
+      path: "/hotel-marketing",
+    },
+  ],
   brandSolutions: [
     { name: "Home", path: "/" },
     { name: "Brand Solutions" },

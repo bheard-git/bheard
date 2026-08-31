@@ -142,8 +142,10 @@ const contactLeadSchema = new Schema(
     email: { type: String, required: true, trim: true },
     phone: { type: String, default: null },
     company: { type: String, default: null },
+    propertyName: { type: String, default: null, trim: true },
+    propertyType: { type: String, default: null, trim: true },
     interestedIn: { type: String, required: true, trim: true },
-    message: { type: String, required: true },
+    message: { type: String, default: "" },
     sourcePage: { type: String, default: null },
     ipAddress: { type: String, default: null },
     userAgent: { type: String, default: null },
@@ -239,6 +241,8 @@ export type ContactLeadRecord = {
   email: string;
   phone: string | null;
   company: string | null;
+  propertyName: string | null;
+  propertyType: string | null;
   interestedIn: string | null;
   message: string;
   sourcePage: string | null;

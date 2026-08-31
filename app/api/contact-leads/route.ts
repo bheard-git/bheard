@@ -6,6 +6,23 @@ import { sendLeadNotificationMail } from "@/lib/integrations/formMail";
 import { createContactLead, listContactLeads } from "@/lib/services/contactLeads.service";
 
 import { contactLeadSchema } from "@/lib/validators/contactLead.validator";
+import { hotelMarketingLeadSchema } from "@/lib/validators/landingLead.validator";
+
+function parseInboundLead(payload: unknown) {
+  const record =
+    payload && typeof payload === "object"
+      ? (payload as Record<string, unknown>)
+      : {};
+
+  if (
+    typeof record.propertyName === "string" ||
+    typeof record.propertyType === "string"
+  ) {
+    return hotelMarketingLeadSchema.parse(payload);
+  }
+
+  return contactLeadSchema.parse(payload);
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -23,10 +40,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-
-
-    const { ...parsed } = contactLeadSchema.parse(payload);
-    const input = parsed;
+    const parsed = parseInboundLead(payload);
 
     const ipAddress =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -35,7 +49,7 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get("user-agent");
 
     const created = await createContactLead({
-      ...input,
+      ...parsed,
       ipAddress,
       userAgent,
     });
@@ -47,6 +61,8 @@ export async function POST(req: NextRequest) {
           email: created.email,
           phone: created.phone,
           company: created.company,
+          propertyName: created.propertyName,
+          propertyType: created.propertyType,
           interestedIn: created.interestedIn,
           message: created.message,
           sourcePage: created.sourcePage,

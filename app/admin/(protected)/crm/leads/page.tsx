@@ -27,7 +27,7 @@ export default function AdminCrmLeadsPage() {
       <PageHeader
         eyebrow="CRM"
         title="Contact Leads"
-        description="Inbound leads captured from contact forms and routed to the admin CRM queue."
+        description="Inbound leads captured from contact and landing forms and routed to the admin CRM queue."
       />
 
       {loading ? <div className="h-40 animate-pulse rounded-lg border border-border bg-card" /> : null}
@@ -43,6 +43,8 @@ export default function AdminCrmLeadsPage() {
                 <th className={tableStyles.headCell}>Email</th>
                 <th className={tableStyles.headCell}>Phone</th>
                 <th className={tableStyles.headCell}>Company</th>
+                <th className={tableStyles.headCell}>Property</th>
+                <th className={tableStyles.headCell}>Property type</th>
                 <th className={tableStyles.headCell}>Interested in</th>
                 <th className={tableStyles.headCell}>Source</th>
                 <th className={tableStyles.headCell}>Message</th>
@@ -59,6 +61,16 @@ export default function AdminCrmLeadsPage() {
                     <td className={tableStyles.cell}>{lead.email}</td>
                     <td className={tableStyles.cell}>{lead.phone || "—"}</td>
                     <td className={tableStyles.cell}>{lead.company || "—"}</td>
+                    <td className={tableStyles.cell}>{lead.propertyName || "—"}</td>
+                    <td className={tableStyles.cell}>
+                      {lead.propertyType ? (
+                        <span className="inline-flex items-center rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-semibold text-foreground">
+                          {lead.propertyType}
+                        </span>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
                     <td className={tableStyles.cell}>{lead.interestedIn || "—"}</td>
                     <td className={tableStyles.cell}>
                       {lead.sourcePage ? (
@@ -69,7 +81,7 @@ export default function AdminCrmLeadsPage() {
                         "—"
                       )}
                     </td>
-                    <td className={`${tableStyles.cell} max-w-[460px]`}>{lead.message}</td>
+                    <td className={`${tableStyles.cell} max-w-[460px]`}>{lead.message || "—"}</td>
                     <td className={tableStyles.cell}>
                       <Button asChild variant="ghost" size="icon" aria-label="Email lead">
                         <Link href={`mailto:${lead.email}`}>
@@ -81,7 +93,7 @@ export default function AdminCrmLeadsPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={10} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={12} className="px-4 py-8 text-center text-muted-foreground">
                     No leads captured yet.
                   </td>
                 </tr>

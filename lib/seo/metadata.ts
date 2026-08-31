@@ -7,12 +7,11 @@ export type BuildPageMetadataOptions = {
   title: string;
   description: string;
   pathname: string;
-  /** Override default OG image (absolute or site-relative path). */
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: "website" | "article";
   noindex?: boolean;
 };
-
 function resolveCanonical(pathname: string, siteUrl: string): string {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   return path === "/" ? `${siteUrl}/` : `${siteUrl}${path}`;
@@ -28,6 +27,7 @@ export function buildPageMetadata({
   description,
   pathname,
   ogImage,
+  ogImageAlt,
   ogType = "website",
   noindex = false,
 }: BuildPageMetadataOptions): Metadata {
@@ -38,8 +38,21 @@ export function buildPageMetadata({
   return {
     title,
     description,
-    alternates: { canonical },
-    robots: noindex ? { index: false, follow: false } : { index: true, follow: true },
+
+    alternates: {
+      canonical,
+    },
+
+    robots: noindex
+      ? {
+          index: false,
+          follow: false,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+
     openGraph: {
       title,
       description,
@@ -47,15 +60,19 @@ export function buildPageMetadata({
       url: canonical,
       siteName: "BHeard",
       locale: "en_IN",
+
       images: [
         {
           url: image,
           width: 1200,
           height: 630,
-          alt: "BHeard — Integrated branding and technology agency in Mumbai",
+          alt:
+            ogImageAlt ??
+            "BHeard — Integrated branding, marketing and technology agency",
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
       title,

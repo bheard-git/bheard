@@ -12,7 +12,7 @@ declare global {
 }
 
 type LeadSubmissionEvent = {
-  formName: "contact_form" | "lead_form";
+  formName: "contact_form" | "lead_form" | "hotel_marketing_lead_form";
   sourcePage: string;
 };
 

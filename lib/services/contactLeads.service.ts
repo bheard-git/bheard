@@ -1,6 +1,7 @@
 import { withDbRetry } from "@/lib/db/withDbRetry";
 import { ContactLeadModel } from "@/lib/db/models";
 import type { ContactLeadInput } from "@/lib/validators/contactLead.validator";
+import type { HotelMarketingLeadInput } from "@/lib/validators/landingLead.validator";
 
 function requireDb() {
   if (!process.env.DATABASE_URL) {
@@ -13,21 +14,28 @@ function runDb<T>(fn: () => Promise<T>): Promise<T> {
   return withDbRetry(fn);
 }
 
-export type CreateContactLeadInput = ContactLeadInput & {
+export type CreateContactLeadInput = (ContactLeadInput | HotelMarketingLeadInput) & {
   ipAddress?: string | null;
   userAgent?: string | null;
 };
+
+function optionalText(value: string | null | undefined) {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : null;
+}
 
 export async function createContactLead(input: CreateContactLeadInput) {
   return runDb(async () => {
     const row = await ContactLeadModel.create({
       fullName: input.fullName,
       email: input.email,
-      phone: input.phone || null,
-      company: input.company || null,
+      phone: optionalText(input.phone),
+      company: "company" in input ? optionalText(input.company) : null,
+      propertyName: "propertyName" in input ? optionalText(input.propertyName) : null,
+      propertyType: "propertyType" in input ? optionalText(input.propertyType) : null,
       interestedIn: input.interestedIn,
-      message: input.message,
-      sourcePage: input.sourcePage || null,
+      message: input.message?.trim() || "",
+      sourcePage: optionalText(input.sourcePage),
       ipAddress: input.ipAddress || null,
       userAgent: input.userAgent || null,
     });
