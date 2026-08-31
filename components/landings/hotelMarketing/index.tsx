@@ -498,6 +498,8 @@ export default function HotelMarketingView() {
           </ScrollReveal>
 
           <ClientLogos
+            disableSecondRow
+            hotelLogosOnly
             variant="bare"
             className="!pt-2"
           />
@@ -517,11 +519,11 @@ export default function HotelMarketingView() {
           <ScrollReveal className="text-center">
 
             <SectionEyebrow>
-              One partner across marketing, technology &amp; AI.
+              One partner across
             </SectionEyebrow>
 
             <SectionTitle centered>
-              One partner across marketing, technology &amp; AI.
+              Marketing, technology &amp; AI.
             </SectionTitle>
 
             <p className="mx-auto mt-4 max-w-2xl font-body text-sm leading-relaxed text-on-surface-variant md:text-base">
@@ -644,7 +646,7 @@ export default function HotelMarketingView() {
             </StartConversationButton>
 
             <a
-              href="https://wa.me/917966820782"
+              href="https://wa.me/919326602832?text=Hi%20BHeard%20Team%2C%20I%27m%20interested%20in%20hotel%20marketing%20solutions%20for%20my%20property.%20I%27d%20like%20to%20know%20more%20about%20how%20BHeard%20can%20help%20with%20marketing%2C%20technology%20and%20AI."
               target="_blank"
               rel="noopener noreferrer"
               className={secondaryCtaClassName}
@@ -744,7 +746,7 @@ export default function HotelMarketingView() {
                 </StartConversationButton>
 
                 <a
-                  href="https://wa.me/917966820782"
+                  href="https://wa.me/919326602832?text=Hi%20BHeard%20Team%2C%20I%27m%20interested%20in%20hotel%20marketing%20solutions%20for%20my%20property.%20I%27d%20like%20to%20know%20more%20about%20how%20BHeard%20can%20help%20with%20marketing%2C%20technology%20and%20AI."
                   target="_blank"
                   rel="noopener noreferrer"
                   className={secondaryCtaClassName}
@@ -869,7 +871,7 @@ export default function HotelMarketingView() {
                     </StartConversationButton>
 
                     <a
-                      href="https://wa.me/917966820782"
+                      href="https://wa.me/919326602832?text=Hi%20BHeard%20Team%2C%20I%27m%20interested%20in%20hotel%20marketing%20solutions%20for%20my%20property.%20I%27d%20like%20to%20know%20more%20about%20how%20BHeard%20can%20help%20with%20marketing%2C%20technology%20and%20AI."
                       target="_blank"
                       rel="noopener noreferrer"
                       className={secondaryCtaClassName}
@@ -1224,7 +1226,7 @@ export default function HotelMarketingView() {
                 </StartConversationButton>
 
                 <a
-                  href="https://wa.me/917966820782"
+                  href="https://wa.me/919326602832?text=Hi%20BHeard%20Team%2C%20I%27m%20interested%20in%20hotel%20marketing%20solutions%20for%20my%20property.%20I%27d%20like%20to%20know%20more%20about%20how%20BHeard%20can%20help%20with%20marketing%2C%20technology%20and%20AI."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="

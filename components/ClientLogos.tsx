@@ -47,6 +47,16 @@ const rowTwoLogos: ClientLogo[] = [
   { src: clientLogo("Zumba wear.jpeg"), alt: "Zumba Wear" },
 ];
 
+const hotelLogos: ClientLogo[] = [
+  { src: "/assets/client-logos/goa-tourism.webp", alt: "Goa Tourism" },
+{ src: clientLogo("fortune hotels.png"), alt: "Fortune Hotels" },
+{ src: "/assets/client-logos/kadkani.webp", alt: "Kadkani" },
+{ src: "/assets/client-logos/novotel.webp", alt: "Novotel" },
+{ src: "/assets/client-logos/radisson-blu.webp", alt: "Radisson Blu" },
+{ src: clientLogo("my goa.png"), alt: "My Goa" },
+{ src: "/assets/client-logos/treat-resort.webp", alt: "Treat Resort" },
+]
+
 function toLogoLoopItems(logos: ClientLogo[]): LogoItem[] {
   return logos.map((logo) => ({
     node: (
@@ -70,10 +80,12 @@ type ClientLogosProps = {
   title?: string;
   variant?: "default" | "bare";
   className?: string;
+  disableSecondRow?: boolean;
+  hotelLogosOnly?: boolean;
 };
 
-export default function ClientLogos({ title, variant = "default", className }: ClientLogosProps) {
-  const logosRowOne = useMemo(() => toLogoLoopItems(rowOneLogos), []);
+export default function ClientLogos({ title, variant = "default", className, disableSecondRow=false, hotelLogosOnly=false }: ClientLogosProps) {
+  const logosRowOne = useMemo(() => toLogoLoopItems(hotelLogosOnly?hotelLogos:rowOneLogos), []);
   const logosRowTwo = useMemo(() => toLogoLoopItems(rowTwoLogos), []);
 
   const fadeTint = "#ffffff";
@@ -109,7 +121,7 @@ export default function ClientLogos({ title, variant = "default", className }: C
           fadeOutColor={fadeTint}
           className="py-2"
         />
-        <LogoLoop
+        {!disableSecondRow && <LogoLoop
           logos={logosRowTwo}
           ariaLabel="Client logos, second row"
           speed={STRIP_SPEED}
@@ -120,7 +132,7 @@ export default function ClientLogos({ title, variant = "default", className }: C
           fadeOut
           fadeOutColor={fadeTint}
           className="py-2"
-        />
+        />}
       </div>
     </section>
   );
